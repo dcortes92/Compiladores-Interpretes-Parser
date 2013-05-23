@@ -1,0 +1,371 @@
+HTML_TAG:					'<html>'  HEAD BODY '</html>' | 
+							'<html xmlns="URL">' HEAD BODY '</html>' |
+							;
+
+IMG_TAG:					'<img' IMG_ATTRIBUTE '></img>' |
+							;
+
+IMG_ATTRIBUTE:				'align="' ALIGN_VALUE '"' |
+							'alt="' TEXTO '"'' |
+							'border="' NUMERO '"' |
+							'height="' NUMERO '"' |
+							'ismap' |
+							'longdesc="' URL '"' |
+							'src="' URL|LOCAL_URL '"' |
+							'width="' NUMERO '"' |
+							'usemap="#' TEXTO '"' |
+							;
+
+ALIGN_VALUE:				'top' |
+							'bottom' |
+							'middle' |
+							'left'|
+							'right' |
+							;
+
+INPUT_TAG:					'<input' INPUT_ATTRIBUTE '></input>' |
+							;
+
+INPUT_ATTRIBUTE:			'accept="' ACCEPT_VALUE '"' |
+							'align="' ALIGN_VALUE '"' |
+							'alt="' TEXTO '"' |
+							'checked' |
+							'disabled' |
+							'form="' TEXTO '"' |
+							'formtarget="' TARGET_VALUE '"' |
+							'height="' NUMERO '"' |
+							'max="' NUMERO '"' |
+							'maxlength="' NUMERO '"' |
+							'min="' NUMERO '"' |
+							'name="' TEXTO '"' |
+							'pattern="' EXPRESION_REG '"' |
+							'placeholder="' TEXTO '"' |
+							'readonly' |
+							'required' |
+							'size="' NUMERO '"' |
+							'src="' URL '"' |
+							'type="' INPUT_TYPE_VALUE '"' |
+							'value="' TEXTO '"' |
+							'width="' NUMERO '"' |
+							;
+
+INPUT_TYPE_VALUE:			'buttn' | 
+							'checkbox' |
+							'color' | 
+							'date' |
+							'datetime' | 
+							'datetime-local' | 
+							'email' |
+							'file' | 
+							'hidden' | 
+							'image' | 
+							'month' |
+							'number' | 
+							'password' | 
+							'radio' | 
+							'range' |
+							'reset' | 
+							'search' | 
+							'submit' | 
+							'text' |
+							'time' | 
+							'url' | 
+							'week' |
+							;
+
+LI_TAG:						'<li>' TEXTO '</li>' |
+							'<li ' LI_ATTRIBUTE '>' TEXTO '</li>' |
+							;
+
+LI_ATTRIBUTE:				'type="' LI_TYPE_VALUE '"' |
+							'value="' NUMERO '"' |
+							;
+
+LI_TYPE_VALUE:				'1' | 
+							'A' | 
+							'a' | 
+							'I' | 
+							'i' | 
+							'disc' |
+							'square' | 
+							'circle' | 
+							;
+
+LINK_TAG:					'<link' LINK_ATTRIBUTE '></link>'
+
+LINK_ATTRIBUTE:				'charset="' ENCODING '"' |
+							'href="' URL '"' |
+							'hreflang="' LANGUAGE '"' |
+							'rel="' REL_VALUE '"' |
+							'size="' NUMERO 'x' NUMERO '"' |
+							'target="' TARGET_VALUE '"' |
+							'type="' LOCAL_URL '"' |
+							;
+
+
+ENCODING:					'UTF-8' |
+							'ISO-8859-1' |
+							; 
+
+LANGUAGE:					'en' | 'es'
+
+TARGET_VALUE:				'_blank' | 
+							'_self' | 
+							'top' | 
+							'parent' | 
+							TEXTO |
+							;
+
+META_TAG:					'<meta ' META_ATTRIBUTE '></meta>' |
+							;
+
+META_ATTRIBUTE:				'charset="' ENCODIGN '"' |
+							'content="' TEXT '"' |
+							'http-equiv="' META_HTTP_VALUE '"' |
+							'name="' META_NAME_VALUE '"' |
+							'scheme="' TEXTO '/' TEXTO '"' |
+							;
+
+META_HTTP_VALUE:			'content_type' |
+							'default-style' |
+							'refresh' |
+							;
+
+META_NAME_VALUE:			'application-name' |
+							'author' |
+							'description' |
+							'generator' |
+							'keywords' |
+							;
+
+OBJECT_TAG:					'<object ' OBJECT_ATTRIBUTE '></object>' |
+							;
+
+OBJECT_ATTRIBUTE:			'align="' ALIGN_VALUE '"' |
+							'archive="' URL '"' |
+							'border="' NUMERO '"' |
+							'data="' URL '"' |
+							'form="' TEXTO '"' |
+							'height="' NUMERO '"' |
+							'name="' TEXTO '"' |
+							'type="' TEXTO '"' |
+							'width="' NUMERO '"' |
+							'usemap="#' TEXTO '"' |
+							;
+
+OL_TAG:						'<ol>' LI_TAG '</ol>' |
+							'<ol ' OL_ATTRIBUTE '>' LI_TAG '</ol>' |
+							;
+
+OL_ATTRIBUTE:				'compact' | 
+							'reversed' |
+							'start="' NUMERO '"' |
+							'type="' OL_TYPE_VALUE '"' |
+							;
+
+OL_TYPE_VALUE:				'1' |
+							'A' |
+							'a' |
+							'I' |
+							'i' |
+							;
+
+P_TAG:						'<p>' TEXTO '</p>' |
+							'<p' P_ATTRIBUTE '>' TEXTO '</p>' |
+							;
+
+P_ATTRIBUTE:				'align="' P_ALING_VALUE '"'
+
+P_ALING_VALUE:				'left' |
+							'rigth' |
+							'center' |
+							'justify' |
+							;
+
+PRE_TAG:					'<pre>' TEXTO '</pre>' |
+							'<pre ' PRE_ATTRIBUTE '>' TEXTO '</pre>' |
+							;
+
+PRE_ATTRIBUTE:				'width="' NUMERO '"' |
+							;
+
+SCRIPT_TAG:					'<script ' SCRIPT_ATTRIBUTE '>' TEXTO '</script>' |
+							;
+
+SCRIPT_ATTRIBUTE:			'charset="' ENCODING '"' |
+							'defer' |
+							'src="' URL '"' |
+							'type="' TEXT '"' |
+							'preserve' |
+							;
+
+SPAN_TAG:					'<span' SPAN_ATTRIBUTE '>' TEXTO '</span>' |
+							;
+
+SPAN_ATTRIBUTE:				'name="' TEXTO '"' |
+							'class="' TEXTO '"' |
+							'style="' TEXTO '"' |
+							'title="' TEXTO '"' |
+							'dir="' SPAN_DIR_VALUE '"'|
+							;
+
+SPAN_DIR_VALUE:				'rtl' |
+							'ltr' |
+							;
+
+STRONG_TAG:					'<strong>' TEXTO '</strong>' |
+							;
+
+STYLE_TAG:					'<style ' STYLE_ATTRIBUTE '>' TEXTO '</style>'
+
+STYLE_ATTRIBUTE:			'media="' MEDIA_VALUE '"' |
+							'scoped' | 
+							'type="' LOCAL_URL '"' |
+							;
+
+MEDIA_VALUE:				'all' |
+							'aural' |
+							'braile' |
+							'handheld' |
+							'projection' |
+							'print' |
+							'screen' |
+							'tty' |
+							'tv' |
+							;
+
+TABLE_TAG:					'<table ' TABLE_ATTRIBUTE '>' TR_TAG '</table>' |
+							;
+
+TABLE_ATTRIBUTE:			'align="' left | center | rigth '"' |
+							'bgcolor="' COLOR '"' |
+							'border="' 1 | '"' |
+							'cellpadding="' NUMERO '"' |
+							'cellspacing="' NUMERO '"' |
+							'summary="' TEXTO '"' |
+							'width="' NUMERO '"' |
+							;
+
+COLOR:						TEXTO | 
+							'#' HEX | 
+							'rgb(' NUMERO_255 ',' NUMERO_255 ',' NUMERO_255 ')' |
+							;
+
+TR_TAG:						'<tr' TR_ATTRIBUTE '>' TH_TAG | TD_TAG '</tr>' |
+							;
+
+TR_ATTRIBUTE:				'align="' T_ALIGN_VALUE '"' |
+							'bgcolor="' COLOR '"' |
+							'char="' LETRA '"' |
+							'charoff="' NUMERO '"' |
+							'valign="' VALIGN_VALUE '"' |
+							;
+
+TD_TAG:						'<td ' TD_TH_ATTRIBUTE '>' TEXTO '</td>' |
+							;
+
+TD_TH_ATTRIBUTE:			'abbr="' TEXTO '"' |
+							'align="' T_ALIGN_VALUE '"' |
+							'axis="' TEXTO '"' |
+							'bgcolor="' COLOR '"' |
+							'char="' LETRA '"' |
+							'charoff="' NUMERO '"' |
+							'colspan="' NUMERO '"' |
+							'headers="' TEXTO '"' |
+							'height="' NUMERO '"' |
+							'rowspan="' NUMERO '"' |
+							'scope="' TD_TH_SCOPE_VALUE '"' |
+							'valign="' VALIGN_VALUE '"' |
+							'width="' NUMERO '"' |
+							;
+
+TD_TH_SCOPE_VALUE:			'col' | 
+							'colgroup' | 
+							'row' | 
+							'rowgroup' |
+							;
+
+T_ALIGN_VALUE:				'rigth' |
+							'left' |
+							'center' |
+							'justify' |
+							'char' |
+							;
+
+VALIGN_VALUE:				'top' |
+							'middle' |
+							'bottom' |
+							'baseline' |
+							;
+
+TH_TAG:						'<th' TD_TH_ATTRIBUTE '>' '</th>' 
+
+TEXTAREA_TAG:				'<textarea ' TEXTAREA_ATTRIBUTE '>' TEXTO ? '</textarea>' |
+							;
+
+TEXTAREA_ATTRIBUTE:			'autofocus' |
+							'cols="' NUMERO '"' |
+							'disabled' |
+							'maxlength="' NUMERO '"' |
+							'name="' TEXTO '"' |
+							'placeholder="' TEXTO '"' |
+							'readonly' |
+							'required' |
+							'rows="' NUMERO '"' |
+							'wrap="' H_S '"'|
+							;
+
+H_S:						'hard' |
+							'soft' |
+							;
+
+TITLE_TAG:					'<title>' TEXTO '</title>' |
+							;
+
+UL_TAG:						'<ul ' UL_ATTRIUTE '>' LI_TAG '</ul>' |
+							;
+
+UL_ATTRIUTE:				'compact' |
+							'type="' UL_TYPE_VALUE '"' |
+							;
+
+UL_TYPE_VALUE:				'disc' |
+							'square' |
+							'circle' |
+							;
+
+URL:						PROTOCOLO HOST DOMINIO DOMINIO_DE_PRIMER_NIVEL DIRECTORIO SUBDIRECTORIO RECURSO
+
+PROTOCOLO:					'http://' | 'ftp://' | 'gopher://' |
+							'telnet:' | 'mailto:' | 'news:' |
+							;
+
+HOST:						'www.' | 
+							TEXTO'.' |
+							;
+
+DOMINIO:					TEXTO |
+							;
+
+DOMINIO_DE_PRIMER_NIVEL:	'.com' |
+							'.cr' |
+							'.es' |
+							'.us' |
+							;
+
+DIRECTORIO:					'/' TEXTO |
+							'' |
+							;
+
+SUBDIRECTORIO:				'/' TEXTO |
+							'' |
+							;
+
+RECURSO:					'.' TEXTO |
+							'' |
+							;
+
+LOCAL_URL:					'/'? TEXTO '/' **VARIAS VECES
+
+%token <ival> NUMERO
+%token <sval> TEXTO
