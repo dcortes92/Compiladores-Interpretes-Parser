@@ -233,7 +233,6 @@ OL_TYPE_VALUE				"1" |
 							"I" |
 							"i" 
 							
-						
 
 P_ATTRIBUTE					"align=\"" P_ALING_VALUE "\""
 
@@ -374,8 +373,7 @@ DOMINIO						TEXTO
 DOMINIO_DE_PRIMER_NIVEL		".com" |
 							".cr" |
 							".es" |
-							".us"
-							
+							".us"							
 
 DIRECTORIO					"/" TEXTO |
 							"" 
@@ -389,7 +387,7 @@ RECURSO						"." TEXTO |
 							""
 							
 
-LOCAL_URL					"/" TEXTO "/"
+LOCAL_URL					(TEXTO "/")
 
 Amp							[\&]
 Hash						[\#]
@@ -399,130 +397,165 @@ PComa						[\;]
 
 %%						
 [ \n\t]+								{return *yytext;}
-"<!DOCTYPE"{TEXTO}">"					{}
-"<a>"									{yylval.string = yytext; return ;}
-"<a "									{yylval.string = yytext; return ;}
-"<b>"									{yylval.string = yytext; return ;}
-"</b>"									{yylval.string = yytext; return ;}
-"<blockquote>"							{yylval.string = yytext; return ;}
-"<blockquote "							{yylval.string = yytext; return ;}
-"</blockquote>"							{yylval.string = yytext; return ;}
-"<body>"								{yylval.string = yytext; return ;}
-"<body "								{yylval.string = yytext; return ;}
-"</body>"								{yylval.string = yytext; return ;}
-"<br>"									{yylval.string = yytext; return ;}
-"</br>"									{yylval.string = yytext; return ;}
-"<button>"								{yylval.string = yytext; return ;}
-"<button "								{yylval.string = yytext; return ;}
-"</button>"								{yylval.string = yytext; return ;}
-"<caption>"								{yylval.string = yytext; return ;}
-"<caption "								{yylval.string = yytext; return ;}
-"</caption>"							{yylval.string = yytext; return ;}
-"<code>"								{yylval.string = yytext; return ;}
-"</code>"								{yylval.string = yytext; return ;}
-"<div>"									{yylval.string = yytext; return ;}
-"</div>"								{yylval.string = yytext; return ;}
-"<dl>"									{yylval.string = yytext; return ;}
-"<dl "									{yylval.string = yytext; return ;}
-"</dl>"									{yylval.string = yytext; return ;}
-"<dt>"									{yylval.string = yytext; return ;}
-"</dt>"									{yylval.string = yytext; return ;}
-"<dd>"									{yylval.string = yytext; return ;}
-"</dd>"									{yylval.string = yytext; return ;}
-"<em>"									{yylval.string = yytext; return ;}
-"</em>"									{yylval.string = yytext; return ;}
-"<embed>"								{yylval.string = yytext; return ;}
-"<embed "								{yylval.string = yytext; return ;}
-"</embed>"								{yylval.string = yytext; return ;}
-"<footer>"								{yylval.string = yytext; return ;}
-"</footer>"								{yylval.string = yytext; return ;}
-"<form>"								{yylval.string = yytext; return ;}
-"<form "								{yylval.string = yytext; return ;}
-"</form>"								{yylval.string = yytext; return ;}
-"<h1>"									{yylval.string = yytext; return ;}
-"<h1 "									{yylval.string = yytext; return ;}
-"</h1>"									{yylval.string = yytext; return ;}
-"<h2>"									{yylval.string = yytext; return ;}
-"<h2 "									{yylval.string = yytext; return ;}
-"</h2>"									{yylval.string = yytext; return ;}
-"<h3>"									{yylval.string = yytext; return ;}
-"<h3 "									{yylval.string = yytext; return ;}
-"</h3>"									{yylval.string = yytext; return ;}
-"<h4>"									{yylval.string = yytext; return ;}
-"<h4 "									{yylval.string = yytext; return ;}
-"</h4>"									{yylval.string = yytext; return ;}
-"<h5>"									{yylval.string = yytext; return ;}
-"<h5 "									{yylval.string = yytext; return ;}
-"</h5>"									{yylval.string = yytext; return ;}
-"<h6>"									{yylval.string = yytext; return ;}
-"<h6 "									{yylval.string = yytext; return ;}
-"</h6>"									{yylval.string = yytext; return ;}
-"<head>"								{yylval.string = yytext; return ;}
-"<head "								{yylval.string = yytext; return ;}
-"</head>"								{yylval.string = yytext; return ;}
-"<header>"								{yylval.string = yytext; return ;}
-"</header>"								{yylval.string = yytext; return ;}
-"<hr>"									{yylval.string = yytext; return ;}
-"<hr "									{yylval.string = yytext; return ;}
-"</hr>"									{yylval.string = yytext; return ;}
-"<html>"								{printf("1.\n"); yylval.string = yytext; return HTML_TAG;}
-"<html "								{printf("2.\n"); yylval.string = yytext; return NC_HTML_TAG;}
-"</html>"								{printf("3.\n"); yylval.string = yytext; return C_HTML_TAG;}
-"<img "									{yylval.string = yytext; return ;}
-"</img>"								{yylval.string = yytext; return ;}
-"<input "								{yylval.string = yytext; return ;}
-"</input>"								{yylval.string = yytext; return ;}
-"<label>"								{yylval.string = yytext; return ;}
-"<li>"									{yylval.string = yytext; return ;}
-"<li "									{yylval.string = yytext; return ;}
-"</li>"									{yylval.string = yytext; return ;}
-"<link "								{yylval.string = yytext; return ;}
-"</link>"								{yylval.string = yytext; return ;}
-"<meta "								{yylval.string = yytext; return ;}
-"</meta>"								{yylval.string = yytext; return ;}
-"<object "								{yylval.string = yytext; return ;}
-"</object>"								{yylval.string = yytext; return ;}
-"<ol>"									{yylval.string = yytext; return ;}
-"<ol "									{yylval.string = yytext; return ;}
-"</ol>"									{yylval.string = yytext; return ;}
-"<option>"								{yylval.string = yytext; return ;}
-"<option "								{yylval.string = yytext; return ;}
-"</option>"								{yylval.string = yytext; return ;}
-"<p>"									{yylval.string = yytext; return ;}
-"<p "									{yylval.string = yytext; return ;}
-"</p>"									{yylval.string = yytext; return ;}
-"<pre>"									{yylval.string = yytext; return ;}
-"<pre "									{yylval.string = yytext; return ;}
-"</pre>"								{yylval.string = yytext; return ;}
-"<script "								{yylval.string = yytext; return ;}
-"</script>"								{yylval.string = yytext; return ;}
-"<span "								{yylval.string = yytext; return ;}
-"</span>"								{yylval.string = yytext; return ;}
-"<strong>"								{yylval.string = yytext; return ;}
-"</strong>"								{yylval.string = yytext; return ;}
-"<style "								{yylval.string = yytext; return ;}
-"</style>"								{yylval.string = yytext; return ;}
-"<table "								{yylval.string = yytext; return ;}
-"</table>"								{yylval.string = yytext; return ;}
-"<td "									{yylval.string = yytext; return ;}
-"</td>"									{yylval.string = yytext; return ;}
-"<textarea "							{yylval.string = yytext; return ;}
-"</textarea>"							{yylval.string = yytext; return ;}
-"<th "									{yylval.string = yytext; return ;}
-"</th>"									{yylval.string = yytext; return ;}
-"<title>"								{yylval.string = yytext; return ;}
-"</title>"								{yylval.string = yytext; return ;}
-"<tr "									{yylval.string = yytext; return ;}
-"</tr>"									{yylval.string = yytext; return ;}
-"<ul "									{yylval.string = yytext; return ;}
-"</ul>"									{yylval.string = yytext; return ;}
-">"										{printf("Cerradura\n"); yylval.string = yytext; return CLOSE;}
-
-{Amp}{Hash}[1-2]?{NUMERO}{PComa}		{}
-{Amp}{Hash}[3][0-1]{PComa}				{}
-"&#127;"								{}
-"<>"									{}
-"</>"									{}
+"<!DOCTYPE"{TEXTO}">"					{yylval.string = yytext; return ;}
+"<a>"									{yylval.string = yytext; return A;}
+"<a "									{yylval.string = yytext; return A_;}
+"</a>"									{yylval.string = yytext; return _A;}
+"<b>"									{yylval.string = yytext; return B;}
+"</b>"									{yylval.string = yytext; return _B;}
+"<blockquote>"							{yylval.string = yytext; return BLOCKQUOTE;}
+"<blockquote "							{yylval.string = yytext; return BLOCKQUOTE_;}
+"</blockquote>"							{yylval.string = yytext; return _BLOCKQUOTE;}
+"<body>"								{yylval.string = yytext; return BODY;}
+"<body "								{yylval.string = yytext; return BODY_;}
+"</body>"								{yylval.string = yytext; return _BODY;}
+"<br>"									{yylval.string = yytext; return BR;}
+"</br>"									{yylval.string = yytext; return _BR;}
+"<button>"								{yylval.string = yytext; return BUTTON;}
+"<button "								{yylval.string = yytext; return BUTTON_;}
+"</button>"								{yylval.string = yytext; return _BUTTON;}
+"<caption>"								{yylval.string = yytext; return CAPTION;}
+"<caption "								{yylval.string = yytext; return CAPTION_;}
+"</caption>"							{yylval.string = yytext; return _CAPTION;}
+"<code>"								{yylval.string = yytext; return CODE;}
+"</code>"								{yylval.string = yytext; return _CODE;}
+"<div>"									{yylval.string = yytext; return DIV;}
+"<div "									{yylval.string = yytext; return DIV_;}
+"</div>"								{yylval.string = yytext; return _DIV;}
+"<dl>"									{yylval.string = yytext; return DL;}
+"<dl "									{yylval.string = yytext; return DL_;}
+"</dl>"									{yylval.string = yytext; return _DL;}
+"<dt>"									{yylval.string = yytext; return DT;}
+"</dt>"									{yylval.string = yytext; return _DT;}
+"<dd>"									{yylval.string = yytext; return DD;}
+"</dd>"									{yylval.string = yytext; return _DD;}
+"<em>"									{yylval.string = yytext; return EM;}
+"</em>"									{yylval.string = yytext; return _EM;}
+"<embed>"								{yylval.string = yytext; return EMBED;}
+"<embed "								{yylval.string = yytext; return EMBED_;}
+"</embed>"								{yylval.string = yytext; return _EMBED;}
+"<footer>"								{yylval.string = yytext; return FOOTER;}
+"</footer>"								{yylval.string = yytext; return _FOOTER;}
+"<form>"								{yylval.string = yytext; return FORM;}
+"<form "								{yylval.string = yytext; return FORM_;}
+"</form>"								{yylval.string = yytext; return _FORM;}
+"<h1>"									{yylval.string = yytext; return H1;}
+"<h1 "									{yylval.string = yytext; return H1_;}
+"</h1>"									{yylval.string = yytext; return _H1;}
+"<h2>"									{yylval.string = yytext; return H2;}
+"<h2 "									{yylval.string = yytext; return H2_;}
+"</h2>"									{yylval.string = yytext; return _H2;}
+"<h3>"									{yylval.string = yytext; return H3;}
+"<h3 "									{yylval.string = yytext; return H3_;}
+"</h3>"									{yylval.string = yytext; return _H3;}
+"<h4>"									{yylval.string = yytext; return H4;}
+"<h4 "									{yylval.string = yytext; return H4_;}
+"</h4>"									{yylval.string = yytext; return _H4;}
+"<h5>"									{yylval.string = yytext; return H5;}
+"<h5 "									{yylval.string = yytext; return H5_;}
+"</h5>"									{yylval.string = yytext; return _H5;}
+"<h6>"									{yylval.string = yytext; return H6;}
+"<h6 "									{yylval.string = yytext; return H6_;}
+"</h6>"									{yylval.string = yytext; return _H6;}
+"<head>"								{yylval.string = yytext; return HEAD;}
+"<head "								{yylval.string = yytext; return HEAD_;}
+"</head>"								{yylval.string = yytext; return _HEAD;}
+"<header>"								{yylval.string = yytext; return HEADER;}
+"</header>"								{yylval.string = yytext; return _HEADER;}
+"<hr>"									{yylval.string = yytext; return HR;}
+"<hr "									{yylval.string = yytext; return HR_;}
+"</hr>"									{yylval.string = yytext; return _HR;}
+"<html>"								{yylval.string = yytext; return HTML;}
+"<html "								{yylval.string = yytext; return HTML_;}
+"</html>"								{yylval.string = yytext; return _HTML;}
+"<img "									{yylval.string = yytext; return IMG;}
+"</img>"								{yylval.string = yytext; return _IMG;}
+"<input "								{yylval.string = yytext; return INPUT;}
+"</input>"								{yylval.string = yytext; return _INPUT;}
+"<li>"									{yylval.string = yytext; return LI;}
+"<li "									{yylval.string = yytext; return LI_;}
+"</li>"									{yylval.string = yytext; return _LI;}
+"<link "								{yylval.string = yytext; return LINK;}
+"</link>"								{yylval.string = yytext; return _LINK;}
+"<meta "								{yylval.string = yytext; return META;}
+"</meta>"								{yylval.string = yytext; return _META;}
+"<object "								{yylval.string = yytext; return OBJECT;}
+"</object>"								{yylval.string = yytext; return _OBJECT;}
+"<ol>"									{yylval.string = yytext; return OL;}
+"<ol "									{yylval.string = yytext; return OL_;}
+"</ol>"									{yylval.string = yytext; return _OL;}
+"<option>"								{yylval.string = yytext; return OPTION;}
+"<option "								{yylval.string = yytext; return OPTION_;}
+"</option>"								{yylval.string = yytext; return _OPTION;}
+"<p>"									{yylval.string = yytext; return P;}
+"<p "									{yylval.string = yytext; return P_;}
+"</p>"									{yylval.string = yytext; return _P;}
+"<pre>"									{yylval.string = yytext; return PRE;}
+"<pre "									{yylval.string = yytext; return PRE_;}
+"</pre>"								{yylval.string = yytext; return _PRE;}
+"<script "								{yylval.string = yytext; return SCRIPT;}
+"</script>"								{yylval.string = yytext; return _SCRIPT;}
+"<span "								{yylval.string = yytext; return SPAN;}
+"</span>"								{yylval.string = yytext; return _SPAN;}
+"<strong>"								{yylval.string = yytext; return STRONG;}
+"</strong>"								{yylval.string = yytext; return _STRONG;}
+"<style "								{yylval.string = yytext; return STYLE;}
+"</style>"								{yylval.string = yytext; return _STYLE;}
+"<table "								{yylval.string = yytext; return TABLE;}
+"</table>"								{yylval.string = yytext; return _TABLE;}
+"<td "									{yylval.string = yytext; return TD;}
+"</td>"									{yylval.string = yytext; return _TD;}
+"<textarea "							{yylval.string = yytext; return TEXTAREA;}
+"</textarea>"							{yylval.string = yytext; return _TEXTAREA;}
+"<th "									{yylval.string = yytext; return TH;}
+"</th>"									{yylval.string = yytext; return _TH;}
+"<title>"								{yylval.string = yytext; return TITLE;}
+"</title>"								{yylval.string = yytext; return _TITLE;}
+"<tr "									{yylval.string = yytext; return TR;}
+"</tr>"									{yylval.string = yytext; return _TR;}
+"<ul "									{yylval.string = yytext; return UL;}
+"</ul>"									{yylval.string = yytext; return _UL;}
+">"										{yylval.string = yytext; return CLOSE;}
+{TEXTO}									{yylval.string = yytext; return TEXTO;}	
+{NUMERO}								{yylval.string = yytext; return NUMERO;}
+{NUMERO_255}							{yylval.string = yytext; return NUMERO_255;}
+{HEX}									{yylval.string = yytext; return HEX;}
+{A_ATTRIBUTE}							{yylval.string = yytext; return A_ATTRIBUTE;}
+{BLOCKQUOTE_ATTRIBUTE}					{yylval.string = yytext; return BLOCKQUOTE_ATTRIBUTE;}
+{BODY_ATTRIBUTE}						{yylval.string = yytext; return BODY_ATTRIBUTE;}
+{BUTTOM_ATTRIBUTE}						{yylval.string = yytext; return BUTTOM_ATTRIBUTE;}
+{CAPTION_ATTRIBUTE}						{yylval.string = yytext; return CAPTION_ATTRIBUTE;}
+{DIV_ATTRIBUTE}							{yylval.string = yytext; return DIV_ATTRIBUTE;}
+{EMBED_ATTRIBUTE}						{yylval.string = yytext; return EMBED_ATTRIBUTE;}
+{FORM_ATTRIBUTE}						{yylval.string = yytext; return FORM_ATTRIBUTE;}
+{H1_H6_ATTRIBUTE}						{yylval.string = yytext; return H1_H6_ATTRIBUTE;}
+{HEAD_ATTRIBUTE}						{yylval.string = yytext; return HEAD_ATTRIBUTE;}
+{HR_ATTRIBUTE}							{yylval.string = yytext; return HR_ATTRIBUTE;}
+{IMG_ATTRIBUTE}							{yylval.string = yytext; return IMG_ATTRIBUTE;}
+{INPUT_ATTRIBUTE}						{yylval.string = yytext; return INPUT_ATTRIBUTE;}
+{LI_ATTRIBUTE}							{yylval.string = yytext; return LI_ATTRIBUTE;}
+{LINK_ATTRIBUTE}						{yylval.string = yytext; return LINK_ATTRIBUTE;}
+{META_ATTRIBUTE}						{yylval.string = yytext; return META_ATTRIBUTE;}
+{OBJECT_ATTRIBUTE}						{yylval.string = yytext; return OBJECT_ATTRIBUTE;}
+{OL_ATTRIBUTE}							{yylval.string = yytext; return OL_ATTRIBUTE;}
+{P_ATTRIBUTE}							{yylval.string = yytext; return P_ATTRIBUTE;}
+{PRE_ATTRIBUTE}							{yylval.string = yytext; return PRE_ATTRIBUTE;}
+{SCRIPT_ATTRIBUTE}						{yylval.string = yytext; return SCRIPT_ATTRIBUTE;}
+{SPAN_ATTRIBUTE}						{yylval.string = yytext; return SPAN_ATTRIBUTE;}
+{STYLE_ATTRIBUTE}						{yylval.string = yytext; return STYLE_ATTRIBUTE;}
+{TABLE_ATTRIBUTE}						{yylval.string = yytext; return TABLE_ATTRIBUTE;}
+{TR_ATTRIBUTE}							{yylval.string = yytext; return TR_ATTRIBUTE;}
+{TD_TH_ATTRIBUTE}						{yylval.string = yytext; return TD_TH_ATTRIBUTE;}
+{TEXTAREA_ATTRIBUTE}					{yylval.string = yytext; return TEXTAREA_ATTRIBUTE;}
+{UL_ATTRIUTE}							{yylval.string = yytext; return UL_ATTRIUTE;}
+{URL}									{yylval.string = yytext; return URL;}
+{LOCAL_URL}								{yylval.string = yytext; return LOCAL_URL;}
+						
+{Amp}{Hash}[1-2]?{NUMERO}{PComa}		{/*ERROR*/}
+{Amp}{Hash}[3][0-1]{PComa}				{/*ERROR*/}
+"&#127;"								{/*ERROR*/}
+"<>"									{/*ERROR*/}
+"</>"									{/*ERROR*/}
 
 {Amp}{Hash}{TEXTO}{PComa}				{}
 {Amp}{String}+{PComa}					{}
