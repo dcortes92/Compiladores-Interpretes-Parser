@@ -472,7 +472,6 @@ PComa						[\;]
 "</img>"								{yylval.string = yytext; return ;}
 "<input "								{yylval.string = yytext; return ;}
 "</input>"								{yylval.string = yytext; return ;}
-"<label>"								{yylval.string = yytext; return ;}
 "<li>"									{yylval.string = yytext; return ;}
 "<li "									{yylval.string = yytext; return ;}
 "</li>"									{yylval.string = yytext; return ;}
