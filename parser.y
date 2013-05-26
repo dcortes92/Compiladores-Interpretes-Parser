@@ -1,6 +1,8 @@
 %{
 	#include <stdio.h>
 	#include <assert.h>
+	#include "Nodo.h"
+	#include "Lista.c"
 	void yyerror(char *s);
 %}
 
@@ -44,7 +46,6 @@
 %token A_
 %token _A
 %token ACRONYM
-
 %token B
 %token _B
 %token BLOCKQUOTE
