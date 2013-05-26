@@ -521,7 +521,6 @@ PComa						[\;]
 "&#127;"								{}
 "<>"									{}
 "</>"									{}
-=======
 "<!DOCTYPE"{TEXTO}">"					{yylval.string = yytext; return ;}
 "<a>"									{yylval.string = yytext; return A;}
 "<a "									{yylval.string = yytext; return A_;}
@@ -681,7 +680,6 @@ PComa						[\;]
 "&#127;"								{/*ERROR*/}
 "<>"									{/*ERROR*/}
 "</>"									{/*ERROR*/}
->>>>>>> 7dc6cc16c5195491c3e2cd1b10862380033b3f5e
 
 {Amp}{Hash}{TEXTO}{PComa}				{}
 {Amp}{String}+{PComa}					{}
