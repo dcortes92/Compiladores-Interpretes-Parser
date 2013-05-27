@@ -12,7 +12,7 @@ NUMERO_255					[0-255]
 HEX							[0-9A-Fa-f]+
 
 A_ATTRIBUTE					"charset=\"" ENCODING "\"" |
-							"coords=\"" NUMERO "," NUMERO "," NUMERO "," NUMERO "\""
+							"coords=\"" NUMERO "," NUMERO "," NUMERO "," NUMERO "\"" |
 							"href=\"" URL "\"" |
 							"hreflang=\"" LANGUAGE "\"" |
 							"media=\"" MEDIA_VALUE "\"" |
@@ -33,7 +33,7 @@ REL_VALUE				 	"alternate" |
 							"prefetch" |
 							"prev" |
 							"search" |
-							"tag" 
+							"tag"
 
 SHAPE_VALUE					"default" |
 							"rect" |
@@ -397,7 +397,6 @@ PComa						[\;]
 
 %%						
 [ \n\t]+								{return *yytext;}
-<<<<<<< HEAD
 "<!DOCTYPE"{TEXTO}">"					{}
 "<a>"									{yylval.string = yytext; return ;}
 "<a "									{yylval.string = yytext; return ;}
@@ -682,4 +681,4 @@ PComa						[\;]
 "</>"									{/*ERROR*/}
 
 {Amp}{Hash}{TEXTO}{PComa}				{}
-{Amp}{String}+{PComa}					{}
+{Amp}{TEXTO}{PComa}						{}

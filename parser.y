@@ -69,7 +69,7 @@
 %token _DL
 %token DT
 %token _DT
-$token DT
+%token DD
 %token DD_
 %token EM
 %token _EM
@@ -155,8 +155,39 @@ $token DT
 %token _TR
 %token UL
 %token _UL
+%token CLOSE
 
 %%
+
+ARCHIVO							: HTML_TAG CABEZA CUERPO HTML_TAG
+								;
+
+HTML_TAG						: HTML
+								| HTML_
+								| _HTML
+								;
+
+
+CABEZA							: CABEZA TITULO CABEZA
+								| HEAD
+								| HEAD_ HEAD_ATTRIBUTE CLOSE
+								| _HEAD
+								;
+
+
+TITULO							: TITULO TEXTO TITULO
+								| TITLE
+								| _TITLE
+								;
+
+
+CUERPO							: CUERPO CUERPO
+								| BODY
+								| BODY_
+								| _BODY
+								;
+
+
 
 %%
 

@@ -1,3 +1,11 @@
+TEXTO						[a-z]+
+
+NUMERO 						[0-9]+
+
+NUMERO_255					[0-255]
+
+HEX							[0-9A-Fa-f]+
+
 A_ATTRIBUTE					"charset=\"" ENCODING "\"" |
 							"coords=\"" NUMERO "," NUMERO "," NUMERO "," NUMERO "\""
 							"href=\"" URL "\"" |
@@ -265,7 +273,7 @@ MEDIA_VALUE:				"all" |
 							"tv"
 							
 
-TABLE_ATTRIBUTE:			"align=\"" left | center | rigth "\"" |
+TABLE_ATTRIBUTE:			"align=\"" ALIGN_VALUE "\"" |
 							"bgcolor=\"" COLOR "\"" |
 							"border=\"" 1 | "\"" |
 							"cellpadding=\"" NUMERO "\"" |
@@ -345,7 +353,7 @@ UL_TYPE_VALUE:				"disc" |
 							"circle"
 							
 
-URL:						PROTOCOLO HOST DOMINIO DOMINIO_DE_PRIMER_NIVEL DIRECTORIO SUBDIRECTORIO RECURSO
+URL:						PROTOCOLO HOST DOMINIO DOMINIO_DE_PRIMER_NIVEL (DIRECTORIO SUBDIRECTORIO RECURSO)?
 
 PROTOCOLO:					"http://" | "ftp://" | "gopher://" |
 							"telnet:" | "mailto:" | "news:"
