@@ -34,9 +34,7 @@ Terminals unused in grammar
    LOCAL_URL
    DOCTYPE_TOKEN
    A
-   A_
    _A
-   ACRONYM
    B
    _B
    BLOCKQUOTE
@@ -48,21 +46,22 @@ Terminals unused in grammar
    BUTTON_
    _BUTTON
    CAPTION
+   CAPTION_
+   _CAPTION
    CODE
    _CODE
    DIV
+   DIV_
    _DIV
    DL
-   DL_
    _DL
    DT
    _DT
    DD
-   DD_
+   _DD
    EM
    _EM
    EMBED
-   EMBED_
    _EMBED
    FOOTER
    _FOOTER
@@ -108,9 +107,6 @@ Terminals unused in grammar
    OL
    OL_
    _OL
-   OPTION
-   OPTION_
-   _OPTION
    P
    P_
    _P
@@ -118,6 +114,7 @@ Terminals unused in grammar
    PRE_
    _PRE
    SCRIPT
+   SCRIPT_
    _SCRIPT
    SPAN
    _SPAN
@@ -129,6 +126,9 @@ Terminals unused in grammar
    _TABLE
    TD
    _TD
+   TEXTAREA
+   TEXTAREA_
+   _TEXTAREA
    TH
    _TH
    TR
@@ -207,110 +207,110 @@ URL (290)
 LOCAL_URL (291)
 DOCTYPE_TOKEN (292)
 A (293)
-A_ (294)
-_A (295)
-ACRONYM (296)
-B (297)
-_B (298)
-BLOCKQUOTE (299)
-BLOCKQUOTE_ (300)
-_BLOCKQUOTE (301)
-BODY (302) 13
-BODY_ (303) 14
-_BODY (304) 15
-BR (305)
-_BR (306)
-BUTTON (307)
-BUTTON_ (308)
-_BUTTON (309)
-CAPTION (310)
+_A (294)
+B (295)
+_B (296)
+BLOCKQUOTE (297)
+BLOCKQUOTE_ (298)
+_BLOCKQUOTE (299)
+BODY (300) 13
+BODY_ (301) 14
+_BODY (302) 15
+BR (303)
+_BR (304)
+BUTTON (305)
+BUTTON_ (306)
+_BUTTON (307)
+CAPTION (308)
+CAPTION_ (309)
+_CAPTION (310)
 CODE (311)
 _CODE (312)
 DIV (313)
-_DIV (314)
-DL (315)
-DL_ (316)
+DIV_ (314)
+_DIV (315)
+DL (316)
 _DL (317)
 DT (318)
 _DT (319)
 DD (320)
-DD_ (321)
+_DD (321)
 EM (322)
 _EM (323)
 EMBED (324)
-EMBED_ (325)
-_EMBED (326)
-FOOTER (327)
-_FOOTER (328)
-FORM (329)
-FORM_ (330)
-_FORM (331)
-H1 (332)
-H1_ (333)
-_H1 (334)
-H2 (335)
-H2_ (336)
-_H2 (337)
-H3 (338)
-H3_ (339)
-_H3 (340)
-H4 (341)
-H4_ (342)
-_H4 (343)
-H5 (344)
-H5_ (345)
-_H5 (346)
-H6 (347)
-H6_ (348)
-_H6 (349)
-HEAD (350) 6
-HEAD_ (351) 7
-_HEAD (352) 8
-HEADER (353)
-HEADER_ (354)
-HR (355)
-HR_ (356)
-_HR (357)
-HTML (358) 2
-HTML_ (359) 3
-_HTML (360) 4
-IMG (361)
-_IMG (362)
-INPUT (363)
-_INPUT (364)
-LI (365)
-LI_ (366)
-_LI (367)
-LINK (368)
-_LINK (369)
-META (370)
-_META (371)
-OBJECT (372)
-_OBJECT (373)
-OL (374)
-OL_ (375)
-_OL (376)
-OPTION (377)
-OPTION_ (378)
-_OPTION (379)
-P (380)
-P_ (381)
-_P (382)
-PRE (383)
-PRE_ (384)
-_PRE (385)
-SCRIPT (386)
-_SCRIPT (387)
-SPAN (388)
-_SPAN (389)
-STRONG (390)
-_STRONG (391)
-STYLE (392)
-_STYLE (393)
-TABLE (394)
-_TABLE (395)
-TD (396)
-_TD (397)
+_EMBED (325)
+FOOTER (326)
+_FOOTER (327)
+FORM (328)
+FORM_ (329)
+_FORM (330)
+H1 (331)
+H1_ (332)
+_H1 (333)
+H2 (334)
+H2_ (335)
+_H2 (336)
+H3 (337)
+H3_ (338)
+_H3 (339)
+H4 (340)
+H4_ (341)
+_H4 (342)
+H5 (343)
+H5_ (344)
+_H5 (345)
+H6 (346)
+H6_ (347)
+_H6 (348)
+HEAD (349) 6
+HEAD_ (350) 7
+_HEAD (351) 8
+HEADER (352)
+HEADER_ (353)
+HR (354)
+HR_ (355)
+_HR (356)
+HTML (357) 2
+HTML_ (358) 3
+_HTML (359) 4
+IMG (360)
+_IMG (361)
+INPUT (362)
+_INPUT (363)
+LI (364)
+LI_ (365)
+_LI (366)
+LINK (367)
+_LINK (368)
+META (369)
+_META (370)
+OBJECT (371)
+_OBJECT (372)
+OL (373)
+OL_ (374)
+_OL (375)
+P (376)
+P_ (377)
+_P (378)
+PRE (379)
+PRE_ (380)
+_PRE (381)
+SCRIPT (382)
+SCRIPT_ (383)
+_SCRIPT (384)
+SPAN (385)
+_SPAN (386)
+STRONG (387)
+_STRONG (388)
+STYLE (389)
+_STYLE (390)
+TABLE (391)
+_TABLE (392)
+TD (393)
+_TD (394)
+TEXTAREA (395)
+TEXTAREA_ (396)
+_TEXTAREA (397)
 TH (398)
 _TH (399)
 TITLE (400) 10
