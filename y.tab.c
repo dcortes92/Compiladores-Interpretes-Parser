@@ -70,13 +70,11 @@
 
 	#include <stdio.h>
 	#include <assert.h>
-	#include "Nodo.h"
-	#include "Lista.c"
 	void yyerror(char *s);
 
 
 /* Line 268 of yacc.c  */
-#line 80 "y.tab.c"
+#line 78 "y.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -104,312 +102,258 @@
       know about them.  */
    enum yytokentype {
      TEXTO = 258,
-     NUMERO = 259,
-     NUMERO_255 = 260,
-     HEX = 261,
-     A_ATTRIBUTE = 262,
-     BLOCKQUOTE_ATTRIBUTE = 263,
-     BODY_ATTRIBUTE = 264,
-     BUTTOM_ATTRIBUTE = 265,
-     CAPTION_ATTRIBUTE = 266,
-     DIV_ATTRIBUTE = 267,
-     EMBED_ATTRIBUTE = 268,
-     FORM_ATTRIBUTE = 269,
-     H1_H6_ATTRIBUTE = 270,
-     HEAD_ATTRIBUTE = 271,
-     HR_ATTRIBUTE = 272,
-     IMG_ATTRIBUTE = 273,
-     INPUT_ATTRIBUTE = 274,
-     LI_ATTRIBUTE = 275,
-     LINK_ATTRIBUTE = 276,
-     META_ATTRIBUTE = 277,
-     OBJECT_ATTRIBUTE = 278,
-     OL_ATTRIBUTE = 279,
-     P_ATTRIBUTE = 280,
-     PRE_ATTRIBUTE = 281,
-     SCRIPT_ATTRIBUTE = 282,
-     SPAN_ATTRIBUTE = 283,
-     STYLE_ATTRIBUTE = 284,
-     TABLE_ATTRIBUTE = 285,
-     TR_ATTRIBUTE = 286,
-     TD_TH_ATTRIBUTE = 287,
-     TEXTAREA_ATTRIBUTE = 288,
-     UL_ATTRIUTE = 289,
-     URL = 290,
-     LOCAL_URL = 291,
-     DOCTYPE_TOKEN = 292,
-     A = 293,
-     _A = 294,
-     B = 295,
-     _B = 296,
-     BLOCKQUOTE = 297,
-     BLOCKQUOTE_ = 298,
-     _BLOCKQUOTE = 299,
-     BODY = 300,
-     BODY_ = 301,
-     _BODY = 302,
-     BR = 303,
-     _BR = 304,
-     BUTTON = 305,
-     BUTTON_ = 306,
-     _BUTTON = 307,
-     CAPTION = 308,
-     CAPTION_ = 309,
-     _CAPTION = 310,
-     CODE = 311,
-     _CODE = 312,
-     DIV = 313,
-     DIV_ = 314,
-     _DIV = 315,
-     DL = 316,
-     _DL = 317,
-     DT = 318,
-     _DT = 319,
-     DD = 320,
-     _DD = 321,
-     EM = 322,
-     _EM = 323,
-     EMBED = 324,
-     _EMBED = 325,
-     FOOTER = 326,
-     _FOOTER = 327,
-     FORM = 328,
-     FORM_ = 329,
-     _FORM = 330,
-     H1 = 331,
-     H1_ = 332,
-     _H1 = 333,
-     H2 = 334,
-     H2_ = 335,
-     _H2 = 336,
-     H3 = 337,
-     H3_ = 338,
-     _H3 = 339,
-     H4 = 340,
-     H4_ = 341,
-     _H4 = 342,
-     H5 = 343,
-     H5_ = 344,
-     _H5 = 345,
-     H6 = 346,
-     H6_ = 347,
-     _H6 = 348,
-     HEAD = 349,
-     HEAD_ = 350,
-     _HEAD = 351,
-     HEADER = 352,
-     HEADER_ = 353,
-     HR = 354,
-     HR_ = 355,
-     _HR = 356,
-     HTML = 357,
-     HTML_ = 358,
-     _HTML = 359,
-     IMG = 360,
-     _IMG = 361,
-     INPUT = 362,
-     _INPUT = 363,
-     LI = 364,
-     LI_ = 365,
-     _LI = 366,
-     LINK = 367,
-     _LINK = 368,
-     META = 369,
-     _META = 370,
-     OBJECT = 371,
-     _OBJECT = 372,
-     OL = 373,
-     OL_ = 374,
-     _OL = 375,
-     P = 376,
-     P_ = 377,
-     _P = 378,
-     PRE = 379,
-     PRE_ = 380,
-     _PRE = 381,
-     SCRIPT = 382,
-     SCRIPT_ = 383,
-     _SCRIPT = 384,
-     SPAN = 385,
-     _SPAN = 386,
-     STRONG = 387,
-     _STRONG = 388,
-     STYLE = 389,
-     _STYLE = 390,
-     TABLE = 391,
-     _TABLE = 392,
-     TD = 393,
-     _TD = 394,
-     TEXTAREA = 395,
-     TEXTAREA_ = 396,
-     _TEXTAREA = 397,
-     TH = 398,
-     _TH = 399,
-     TITLE = 400,
-     _TITLE = 401,
-     TR = 402,
-     _TR = 403,
-     UL = 404,
-     _UL = 405,
-     CLOSE = 406
+     DOCTYPE = 259,
+     A = 260,
+     _A = 261,
+     B = 262,
+     _B = 263,
+     BLOCKQUOTE = 264,
+     BLOCKQUOTE_ = 265,
+     _BLOCKQUOTE = 266,
+     BODY = 267,
+     BODY_ = 268,
+     _BODY = 269,
+     BR = 270,
+     _BR = 271,
+     BUTTON = 272,
+     BUTTON_ = 273,
+     _BUTTON = 274,
+     CAPTION = 275,
+     CAPTION_ = 276,
+     _CAPTION = 277,
+     CODE = 278,
+     _CODE = 279,
+     DIV = 280,
+     DIV_ = 281,
+     _DIV = 282,
+     DL = 283,
+     _DL = 284,
+     DT = 285,
+     _DT = 286,
+     DD = 287,
+     _DD = 288,
+     EM = 289,
+     _EM = 290,
+     EMBED = 291,
+     _EMBED = 292,
+     FOOTER = 293,
+     _FOOTER = 294,
+     FORM = 295,
+     FORM_ = 296,
+     _FORM = 297,
+     H1 = 298,
+     H1_ = 299,
+     _H1 = 300,
+     H2 = 301,
+     H2_ = 302,
+     _H2 = 303,
+     H3 = 304,
+     H3_ = 305,
+     _H3 = 306,
+     H4 = 307,
+     H4_ = 308,
+     _H4 = 309,
+     H5 = 310,
+     H5_ = 311,
+     _H5 = 312,
+     H6 = 313,
+     H6_ = 314,
+     _H6 = 315,
+     HEAD = 316,
+     HEAD_ = 317,
+     _HEAD = 318,
+     HEADER = 319,
+     _HEADER = 320,
+     HR = 321,
+     HR_ = 322,
+     _HR = 323,
+     HTML = 324,
+     HTML_ = 325,
+     _HTML = 326,
+     IMG = 327,
+     _IMG = 328,
+     INPUT = 329,
+     _INPUT = 330,
+     LI = 331,
+     LI_ = 332,
+     _LI = 333,
+     LINK = 334,
+     _LINK = 335,
+     META = 336,
+     _META = 337,
+     OBJECT = 338,
+     _OBJECT = 339,
+     OL = 340,
+     OL_ = 341,
+     _OL = 342,
+     P = 343,
+     P_ = 344,
+     _P = 345,
+     PRE = 346,
+     PRE_ = 347,
+     _PRE = 348,
+     SCRIPT = 349,
+     SCRIPT_ = 350,
+     _SCRIPT = 351,
+     SPAN = 352,
+     _SPAN = 353,
+     STRONG = 354,
+     _STRONG = 355,
+     STYLE = 356,
+     _STYLE = 357,
+     TABLE = 358,
+     _TABLE = 359,
+     TD = 360,
+     _TD = 361,
+     TEXTAREA = 362,
+     TEXTAREA_ = 363,
+     _TEXTAREA = 364,
+     TH = 365,
+     _TH = 366,
+     TITLE = 367,
+     _TITLE = 368,
+     TR = 369,
+     _TR = 370,
+     UL = 371,
+     _UL = 372,
+     CLOSE = 373
    };
 #endif
 /* Tokens.  */
 #define TEXTO 258
-#define NUMERO 259
-#define NUMERO_255 260
-#define HEX 261
-#define A_ATTRIBUTE 262
-#define BLOCKQUOTE_ATTRIBUTE 263
-#define BODY_ATTRIBUTE 264
-#define BUTTOM_ATTRIBUTE 265
-#define CAPTION_ATTRIBUTE 266
-#define DIV_ATTRIBUTE 267
-#define EMBED_ATTRIBUTE 268
-#define FORM_ATTRIBUTE 269
-#define H1_H6_ATTRIBUTE 270
-#define HEAD_ATTRIBUTE 271
-#define HR_ATTRIBUTE 272
-#define IMG_ATTRIBUTE 273
-#define INPUT_ATTRIBUTE 274
-#define LI_ATTRIBUTE 275
-#define LINK_ATTRIBUTE 276
-#define META_ATTRIBUTE 277
-#define OBJECT_ATTRIBUTE 278
-#define OL_ATTRIBUTE 279
-#define P_ATTRIBUTE 280
-#define PRE_ATTRIBUTE 281
-#define SCRIPT_ATTRIBUTE 282
-#define SPAN_ATTRIBUTE 283
-#define STYLE_ATTRIBUTE 284
-#define TABLE_ATTRIBUTE 285
-#define TR_ATTRIBUTE 286
-#define TD_TH_ATTRIBUTE 287
-#define TEXTAREA_ATTRIBUTE 288
-#define UL_ATTRIUTE 289
-#define URL 290
-#define LOCAL_URL 291
-#define DOCTYPE_TOKEN 292
-#define A 293
-#define _A 294
-#define B 295
-#define _B 296
-#define BLOCKQUOTE 297
-#define BLOCKQUOTE_ 298
-#define _BLOCKQUOTE 299
-#define BODY 300
-#define BODY_ 301
-#define _BODY 302
-#define BR 303
-#define _BR 304
-#define BUTTON 305
-#define BUTTON_ 306
-#define _BUTTON 307
-#define CAPTION 308
-#define CAPTION_ 309
-#define _CAPTION 310
-#define CODE 311
-#define _CODE 312
-#define DIV 313
-#define DIV_ 314
-#define _DIV 315
-#define DL 316
-#define _DL 317
-#define DT 318
-#define _DT 319
-#define DD 320
-#define _DD 321
-#define EM 322
-#define _EM 323
-#define EMBED 324
-#define _EMBED 325
-#define FOOTER 326
-#define _FOOTER 327
-#define FORM 328
-#define FORM_ 329
-#define _FORM 330
-#define H1 331
-#define H1_ 332
-#define _H1 333
-#define H2 334
-#define H2_ 335
-#define _H2 336
-#define H3 337
-#define H3_ 338
-#define _H3 339
-#define H4 340
-#define H4_ 341
-#define _H4 342
-#define H5 343
-#define H5_ 344
-#define _H5 345
-#define H6 346
-#define H6_ 347
-#define _H6 348
-#define HEAD 349
-#define HEAD_ 350
-#define _HEAD 351
-#define HEADER 352
-#define HEADER_ 353
-#define HR 354
-#define HR_ 355
-#define _HR 356
-#define HTML 357
-#define HTML_ 358
-#define _HTML 359
-#define IMG 360
-#define _IMG 361
-#define INPUT 362
-#define _INPUT 363
-#define LI 364
-#define LI_ 365
-#define _LI 366
-#define LINK 367
-#define _LINK 368
-#define META 369
-#define _META 370
-#define OBJECT 371
-#define _OBJECT 372
-#define OL 373
-#define OL_ 374
-#define _OL 375
-#define P 376
-#define P_ 377
-#define _P 378
-#define PRE 379
-#define PRE_ 380
-#define _PRE 381
-#define SCRIPT 382
-#define SCRIPT_ 383
-#define _SCRIPT 384
-#define SPAN 385
-#define _SPAN 386
-#define STRONG 387
-#define _STRONG 388
-#define STYLE 389
-#define _STYLE 390
-#define TABLE 391
-#define _TABLE 392
-#define TD 393
-#define _TD 394
-#define TEXTAREA 395
-#define TEXTAREA_ 396
-#define _TEXTAREA 397
-#define TH 398
-#define _TH 399
-#define TITLE 400
-#define _TITLE 401
-#define TR 402
-#define _TR 403
-#define UL 404
-#define _UL 405
-#define CLOSE 406
+#define DOCTYPE 259
+#define A 260
+#define _A 261
+#define B 262
+#define _B 263
+#define BLOCKQUOTE 264
+#define BLOCKQUOTE_ 265
+#define _BLOCKQUOTE 266
+#define BODY 267
+#define BODY_ 268
+#define _BODY 269
+#define BR 270
+#define _BR 271
+#define BUTTON 272
+#define BUTTON_ 273
+#define _BUTTON 274
+#define CAPTION 275
+#define CAPTION_ 276
+#define _CAPTION 277
+#define CODE 278
+#define _CODE 279
+#define DIV 280
+#define DIV_ 281
+#define _DIV 282
+#define DL 283
+#define _DL 284
+#define DT 285
+#define _DT 286
+#define DD 287
+#define _DD 288
+#define EM 289
+#define _EM 290
+#define EMBED 291
+#define _EMBED 292
+#define FOOTER 293
+#define _FOOTER 294
+#define FORM 295
+#define FORM_ 296
+#define _FORM 297
+#define H1 298
+#define H1_ 299
+#define _H1 300
+#define H2 301
+#define H2_ 302
+#define _H2 303
+#define H3 304
+#define H3_ 305
+#define _H3 306
+#define H4 307
+#define H4_ 308
+#define _H4 309
+#define H5 310
+#define H5_ 311
+#define _H5 312
+#define H6 313
+#define H6_ 314
+#define _H6 315
+#define HEAD 316
+#define HEAD_ 317
+#define _HEAD 318
+#define HEADER 319
+#define _HEADER 320
+#define HR 321
+#define HR_ 322
+#define _HR 323
+#define HTML 324
+#define HTML_ 325
+#define _HTML 326
+#define IMG 327
+#define _IMG 328
+#define INPUT 329
+#define _INPUT 330
+#define LI 331
+#define LI_ 332
+#define _LI 333
+#define LINK 334
+#define _LINK 335
+#define META 336
+#define _META 337
+#define OBJECT 338
+#define _OBJECT 339
+#define OL 340
+#define OL_ 341
+#define _OL 342
+#define P 343
+#define P_ 344
+#define _P 345
+#define PRE 346
+#define PRE_ 347
+#define _PRE 348
+#define SCRIPT 349
+#define SCRIPT_ 350
+#define _SCRIPT 351
+#define SPAN 352
+#define _SPAN 353
+#define STRONG 354
+#define _STRONG 355
+#define STYLE 356
+#define _STYLE 357
+#define TABLE 358
+#define _TABLE 359
+#define TD 360
+#define _TD 361
+#define TEXTAREA 362
+#define TEXTAREA_ 363
+#define _TEXTAREA 364
+#define TH 365
+#define _TH 366
+#define TITLE 367
+#define _TITLE 368
+#define TR 369
+#define _TR 370
+#define UL 371
+#define _UL 372
+#define CLOSE 373
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+{
+
+/* Line 293 of yacc.c  */
+#line 8 "parser.y"
+
+        char *string;
+
+
+
+/* Line 293 of yacc.c  */
+#line 356 "y.tab.c"
+} YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -420,7 +364,7 @@ typedef int YYSTYPE;
 
 
 /* Line 343 of yacc.c  */
-#line 424 "y.tab.c"
+#line 368 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -637,22 +581,22 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  6
+#define YYFINAL  4
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   101
+#define YYLAST   110
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  152
+#define YYNTOKENS  119
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  6
+#define YYNNTS  14
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  16
+#define YYNRULES  20
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  25
+#define YYNSTATES  33
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   406
+#define YYMAXUTOK   373
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -697,10 +641,7 @@ static const yytype_uint8 yytranslate[] =
       85,    86,    87,    88,    89,    90,    91,    92,    93,    94,
       95,    96,    97,    98,    99,   100,   101,   102,   103,   104,
      105,   106,   107,   108,   109,   110,   111,   112,   113,   114,
-     115,   116,   117,   118,   119,   120,   121,   122,   123,   124,
-     125,   126,   127,   128,   129,   130,   131,   132,   133,   134,
-     135,   136,   137,   138,   139,   140,   141,   142,   143,   144,
-     145,   146,   147,   148,   149,   150,   151
+     115,   116,   117,   118
 };
 
 #if YYDEBUG
@@ -708,25 +649,28 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     8,    10,    12,    14,    18,    20,    24,
-      26,    30,    32,    34,    37,    39,    41
+       0,     0,     3,     9,    12,    14,    16,    19,    21,    24,
+      28,    30,    33,    35,    38,    41,    43,    45,    48,    50,
+      53
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int16 yyrhs[] =
 {
-     153,     0,    -1,   154,   155,   157,   154,    -1,   102,    -1,
-     103,    -1,   104,    -1,   155,   156,   155,    -1,    94,    -1,
-      95,    16,   151,    -1,    96,    -1,   156,     3,   156,    -1,
-     145,    -1,   146,    -1,   157,   157,    -1,    45,    -1,    46,
-      -1,    47,    -1
+     120,     0,    -1,   121,   122,   124,   130,   123,    -1,   121,
+     118,    -1,     4,    -1,    69,    -1,    70,   118,    -1,    71,
+      -1,   125,   126,    -1,   125,   127,   126,    -1,    61,    -1,
+      62,   118,    -1,    63,    -1,   128,   129,    -1,   128,     3,
+      -1,   112,    -1,   113,    -1,   131,   132,    -1,    12,    -1,
+      13,   118,    -1,    14,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   162,   162,   165,   166,   167,   171,   172,   173,   174,
-     178,   179,   180,   184,   185,   186,   187
+       0,   132,   132,   135,   136,   139,   140,   143,   146,   148,
+     149,   150,   153,   155,   157,   158,   161,   164,   166,   167,
+     170
 };
 #endif
 
@@ -735,30 +679,23 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "TEXTO", "NUMERO", "NUMERO_255", "HEX",
-  "A_ATTRIBUTE", "BLOCKQUOTE_ATTRIBUTE", "BODY_ATTRIBUTE",
-  "BUTTOM_ATTRIBUTE", "CAPTION_ATTRIBUTE", "DIV_ATTRIBUTE",
-  "EMBED_ATTRIBUTE", "FORM_ATTRIBUTE", "H1_H6_ATTRIBUTE", "HEAD_ATTRIBUTE",
-  "HR_ATTRIBUTE", "IMG_ATTRIBUTE", "INPUT_ATTRIBUTE", "LI_ATTRIBUTE",
-  "LINK_ATTRIBUTE", "META_ATTRIBUTE", "OBJECT_ATTRIBUTE", "OL_ATTRIBUTE",
-  "P_ATTRIBUTE", "PRE_ATTRIBUTE", "SCRIPT_ATTRIBUTE", "SPAN_ATTRIBUTE",
-  "STYLE_ATTRIBUTE", "TABLE_ATTRIBUTE", "TR_ATTRIBUTE", "TD_TH_ATTRIBUTE",
-  "TEXTAREA_ATTRIBUTE", "UL_ATTRIUTE", "URL", "LOCAL_URL", "DOCTYPE_TOKEN",
-  "A", "_A", "B", "_B", "BLOCKQUOTE", "BLOCKQUOTE_", "_BLOCKQUOTE", "BODY",
-  "BODY_", "_BODY", "BR", "_BR", "BUTTON", "BUTTON_", "_BUTTON", "CAPTION",
-  "CAPTION_", "_CAPTION", "CODE", "_CODE", "DIV", "DIV_", "_DIV", "DL",
-  "_DL", "DT", "_DT", "DD", "_DD", "EM", "_EM", "EMBED", "_EMBED",
-  "FOOTER", "_FOOTER", "FORM", "FORM_", "_FORM", "H1", "H1_", "_H1", "H2",
-  "H2_", "_H2", "H3", "H3_", "_H3", "H4", "H4_", "_H4", "H5", "H5_", "_H5",
-  "H6", "H6_", "_H6", "HEAD", "HEAD_", "_HEAD", "HEADER", "HEADER_", "HR",
-  "HR_", "_HR", "HTML", "HTML_", "_HTML", "IMG", "_IMG", "INPUT", "_INPUT",
-  "LI", "LI_", "_LI", "LINK", "_LINK", "META", "_META", "OBJECT",
-  "_OBJECT", "OL", "OL_", "_OL", "P", "P_", "_P", "PRE", "PRE_", "_PRE",
-  "SCRIPT", "SCRIPT_", "_SCRIPT", "SPAN", "_SPAN", "STRONG", "_STRONG",
-  "STYLE", "_STYLE", "TABLE", "_TABLE", "TD", "_TD", "TEXTAREA",
-  "TEXTAREA_", "_TEXTAREA", "TH", "_TH", "TITLE", "_TITLE", "TR", "_TR",
-  "UL", "_UL", "CLOSE", "$accept", "ARCHIVO", "HTML_TAG", "CABEZA",
-  "TITULO", "CUERPO", 0
+  "$end", "error", "$undefined", "TEXTO", "DOCTYPE", "A", "_A", "B", "_B",
+  "BLOCKQUOTE", "BLOCKQUOTE_", "_BLOCKQUOTE", "BODY", "BODY_", "_BODY",
+  "BR", "_BR", "BUTTON", "BUTTON_", "_BUTTON", "CAPTION", "CAPTION_",
+  "_CAPTION", "CODE", "_CODE", "DIV", "DIV_", "_DIV", "DL", "_DL", "DT",
+  "_DT", "DD", "_DD", "EM", "_EM", "EMBED", "_EMBED", "FOOTER", "_FOOTER",
+  "FORM", "FORM_", "_FORM", "H1", "H1_", "_H1", "H2", "H2_", "_H2", "H3",
+  "H3_", "_H3", "H4", "H4_", "_H4", "H5", "H5_", "_H5", "H6", "H6_", "_H6",
+  "HEAD", "HEAD_", "_HEAD", "HEADER", "_HEADER", "HR", "HR_", "_HR",
+  "HTML", "HTML_", "_HTML", "IMG", "_IMG", "INPUT", "_INPUT", "LI", "LI_",
+  "_LI", "LINK", "_LINK", "META", "_META", "OBJECT", "_OBJECT", "OL",
+  "OL_", "_OL", "P", "P_", "_P", "PRE", "PRE_", "_PRE", "SCRIPT",
+  "SCRIPT_", "_SCRIPT", "SPAN", "_SPAN", "STRONG", "_STRONG", "STYLE",
+  "_STYLE", "TABLE", "_TABLE", "TD", "_TD", "TEXTAREA", "TEXTAREA_",
+  "_TEXTAREA", "TH", "_TH", "TITLE", "_TITLE", "TR", "_TR", "UL", "_UL",
+  "CLOSE", "$accept", "ARCHIVO", "DOCTYPE_DECLARATION", "HTML_OPEN_TAG",
+  "HTML_CLOSE_TAG", "CABEZA", "CABEZA_OPEN", "CABEZA_CLOSE", "TITULO",
+  "TITULO_OPEN", "TITULO_CLOSE", "CUERPO", "CUERPO_OPEN", "CUERPO_CLOSE", 0
 };
 #endif
 
@@ -778,26 +715,24 @@ static const yytype_uint16 yytoknum[] =
      335,   336,   337,   338,   339,   340,   341,   342,   343,   344,
      345,   346,   347,   348,   349,   350,   351,   352,   353,   354,
      355,   356,   357,   358,   359,   360,   361,   362,   363,   364,
-     365,   366,   367,   368,   369,   370,   371,   372,   373,   374,
-     375,   376,   377,   378,   379,   380,   381,   382,   383,   384,
-     385,   386,   387,   388,   389,   390,   391,   392,   393,   394,
-     395,   396,   397,   398,   399,   400,   401,   402,   403,   404,
-     405,   406
+     365,   366,   367,   368,   369,   370,   371,   372,   373
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,   152,   153,   154,   154,   154,   155,   155,   155,   155,
-     156,   156,   156,   157,   157,   157,   157
+       0,   119,   120,   121,   121,   122,   122,   123,   124,   125,
+     125,   125,   126,   127,   128,   128,   129,   130,   131,   131,
+     132
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     4,     1,     1,     1,     3,     1,     3,     1,
-       3,     1,     1,     2,     1,     1,     1
+       0,     2,     5,     2,     1,     1,     2,     1,     2,     3,
+       1,     2,     1,     2,     2,     1,     1,     2,     1,     2,
+       1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
@@ -805,31 +740,35 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     3,     4,     5,     0,     0,     1,     7,     0,     9,
-       0,     0,    14,    15,    16,    11,    12,     0,     0,     8,
-       0,     6,     2,    13,    10
+       0,     4,     0,     0,     1,     5,     0,     3,     0,     6,
+      10,     0,     0,     0,    11,    18,     0,     0,     0,    12,
+      15,     8,     0,     0,    19,     7,     2,    20,    17,     9,
+      14,    16,    13
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     4,     5,    10,    17,    23
+      -1,     2,     3,     8,    26,    12,    13,    21,    22,    23,
+      32,    17,    18,    28
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -132
-static const yytype_int16 yypact[] =
+#define YYPACT_NINF -109
+static const yytype_int8 yypact[] =
 {
-     -95,  -132,  -132,  -132,    18,   -84,  -132,  -132,     3,  -132,
-     -45,  -131,  -132,  -132,  -132,  -132,  -132,     0,   -41,  -132,
-    -129,  -129,  -132,   -32,    19
+       4,  -109,     9,   -68,  -109,  -109,  -108,  -109,   -57,  -109,
+    -109,  -107,    -6,   -60,  -109,  -109,  -106,   -58,     0,  -109,
+    -109,  -109,   -48,    -3,  -109,  -109,  -109,  -109,  -109,  -109,
+    -109,  -109,  -109
 };
 
 /* YYPGOTO[NTERM-NUM].  */
-static const yytype_int16 yypgoto[] =
+static const yytype_int8 yypgoto[] =
 {
-    -132,  -132,     5,     4,     6,    14
+    -109,  -109,  -109,  -109,  -109,  -109,  -109,    -5,  -109,  -109,
+    -109,  -109,  -109,  -109
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -838,47 +777,50 @@ static const yytype_int16 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-      12,    13,    14,    20,    12,    13,    14,     1,     2,     3,
-       7,     8,     9,    12,    13,    14,    15,    16,     6,    11,
-      19,    21,    20,    22,    18,     0,    24,     0,     0,     0,
+      30,     5,     6,    19,    10,    11,    15,    16,     1,     4,
+       9,    14,    24,    25,    27,    19,     0,    29,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     1,     2,     3,     0,     0,     0,     0,     0,     0,
+       7,     0,    20,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     7,     8,     9,     0,     0,     0,
-      15,    16
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+      31
 };
 
 #define yypact_value_is_default(yystate) \
-  ((yystate) == (-132))
+  ((yystate) == (-109))
 
 #define yytable_value_is_error(yytable_value) \
   YYID (0)
 
-static const yytype_int16 yycheck[] =
+static const yytype_int8 yycheck[] =
 {
-      45,    46,    47,     3,    45,    46,    47,   102,   103,   104,
-      94,    95,    96,    45,    46,    47,   145,   146,     0,    16,
-     151,    17,     3,    18,    10,    -1,    20,    -1,    -1,    -1,
+       3,    69,    70,    63,    61,    62,    12,    13,     4,     0,
+     118,   118,   118,    71,    14,    63,    -1,    22,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,   102,   103,   104,    -1,    -1,    -1,    -1,    -1,    -1,
+     118,    -1,   112,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    94,    95,    96,    -1,    -1,    -1,
-     145,   146
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+     113
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,   102,   103,   104,   153,   154,     0,    94,    95,    96,
-     155,    16,    45,    46,    47,   145,   146,   156,   157,   151,
-       3,   155,   154,   157,   156
+       0,     4,   120,   121,     0,    69,    70,   118,   122,   118,
+      61,    62,   124,   125,   118,    12,    13,   130,   131,    63,
+     112,   126,   127,   128,   118,    71,   123,    14,   132,   126,
+       3,   113,   129
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1715,7 +1657,7 @@ yyreduce:
       
 
 /* Line 1806 of yacc.c  */
-#line 1719 "y.tab.c"
+#line 1661 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1946,7 +1888,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 192 "parser.y"
+#line 174 "parser.y"
 
 
 void yyerror(char *s)

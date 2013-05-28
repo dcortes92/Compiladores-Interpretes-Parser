@@ -1,48 +1,17 @@
 %{
 	#include <stdio.h>
 	#include <assert.h>
-	#include "Nodo.h"
-	#include "Lista.c"
 	void yyerror(char *s);
 %}
 
-%token TEXTO
-%token NUMERO
-%token NUMERO_255
-%token HEX
-%token DOCTYPE
-%token A_ATTRIBUTE
-%token BLOCKQUOTE_ATTRIBUTE
-%token BODY_ATTRIBUTE
-%token BUTTOM_ATTRIBUTE
-%token CAPTION_ATTRIBUTE
-%token DIV_ATTRIBUTE
-%token EMBED_ATTRIBUTE
-%token FORM_ATTRIBUTE
-%token H1_H6_ATTRIBUTE
-%token HEAD_ATTRIBUTE
-%token HR_ATTRIBUTE
-%token IMG_ATTRIBUTE
-%token INPUT_ATTRIBUTE
-%token LI_ATTRIBUTE
-%token LINK_ATTRIBUTE
-%token META_ATTRIBUTE
-%token OBJECT_ATTRIBUTE
-%token OL_ATTRIBUTE
-%token P_ATTRIBUTE
-%token PRE_ATTRIBUTE
-%token SCRIPT_ATTRIBUTE
-%token SPAN_ATTRIBUTE
-%token STYLE_ATTRIBUTE
-%token TABLE_ATTRIBUTE
-%token TR_ATTRIBUTE
-%token TD_TH_ATTRIBUTE
-%token TEXTAREA_ATTRIBUTE
-%token UL_ATTRIUTE
-%token URL
-%token LOCAL_URL
+%union 
+{
+        char *string;
+}
 
-%token DOCTYPE_TOKEN
+
+%token TEXTO
+%token DOCTYPE
 %token A
 %token _A
 %token B
@@ -103,7 +72,7 @@
 %token HEAD_
 %token _HEAD
 %token HEADER
-%token HEADER_
+%token _HEADER
 %token HR
 %token HR_
 %token _HR
@@ -174,12 +143,9 @@ HTML_OPEN_TAG					: HTML
 HTML_CLOSE_TAG					: _HTML
 								;
 
+CABEZA 							: CABEZA_OPEN CABEZA_CLOSE
 
 CABEZA_OPEN						: CABEZA_OPEN TITULO CABEZA_CLOSE
-								| CABEZA_OPEN ESTILO CABEZA_CLOSE
-								| CABEZA_OPEN LINK CABEZA_CLOSE
-								| CABEZA_OPEN META CABEZA_CLOSE
-								| CABEZA_OPEN SCRIPT CABEZA_CLOSE
 								| HEAD
 								| HEAD_ CLOSE
 								;

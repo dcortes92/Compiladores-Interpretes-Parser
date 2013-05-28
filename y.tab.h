@@ -38,312 +38,258 @@
       know about them.  */
    enum yytokentype {
      TEXTO = 258,
-     NUMERO = 259,
-     NUMERO_255 = 260,
-     HEX = 261,
-     A_ATTRIBUTE = 262,
-     BLOCKQUOTE_ATTRIBUTE = 263,
-     BODY_ATTRIBUTE = 264,
-     BUTTOM_ATTRIBUTE = 265,
-     CAPTION_ATTRIBUTE = 266,
-     DIV_ATTRIBUTE = 267,
-     EMBED_ATTRIBUTE = 268,
-     FORM_ATTRIBUTE = 269,
-     H1_H6_ATTRIBUTE = 270,
-     HEAD_ATTRIBUTE = 271,
-     HR_ATTRIBUTE = 272,
-     IMG_ATTRIBUTE = 273,
-     INPUT_ATTRIBUTE = 274,
-     LI_ATTRIBUTE = 275,
-     LINK_ATTRIBUTE = 276,
-     META_ATTRIBUTE = 277,
-     OBJECT_ATTRIBUTE = 278,
-     OL_ATTRIBUTE = 279,
-     P_ATTRIBUTE = 280,
-     PRE_ATTRIBUTE = 281,
-     SCRIPT_ATTRIBUTE = 282,
-     SPAN_ATTRIBUTE = 283,
-     STYLE_ATTRIBUTE = 284,
-     TABLE_ATTRIBUTE = 285,
-     TR_ATTRIBUTE = 286,
-     TD_TH_ATTRIBUTE = 287,
-     TEXTAREA_ATTRIBUTE = 288,
-     UL_ATTRIUTE = 289,
-     URL = 290,
-     LOCAL_URL = 291,
-     DOCTYPE_TOKEN = 292,
-     A = 293,
-     _A = 294,
-     B = 295,
-     _B = 296,
-     BLOCKQUOTE = 297,
-     BLOCKQUOTE_ = 298,
-     _BLOCKQUOTE = 299,
-     BODY = 300,
-     BODY_ = 301,
-     _BODY = 302,
-     BR = 303,
-     _BR = 304,
-     BUTTON = 305,
-     BUTTON_ = 306,
-     _BUTTON = 307,
-     CAPTION = 308,
-     CAPTION_ = 309,
-     _CAPTION = 310,
-     CODE = 311,
-     _CODE = 312,
-     DIV = 313,
-     DIV_ = 314,
-     _DIV = 315,
-     DL = 316,
-     _DL = 317,
-     DT = 318,
-     _DT = 319,
-     DD = 320,
-     _DD = 321,
-     EM = 322,
-     _EM = 323,
-     EMBED = 324,
-     _EMBED = 325,
-     FOOTER = 326,
-     _FOOTER = 327,
-     FORM = 328,
-     FORM_ = 329,
-     _FORM = 330,
-     H1 = 331,
-     H1_ = 332,
-     _H1 = 333,
-     H2 = 334,
-     H2_ = 335,
-     _H2 = 336,
-     H3 = 337,
-     H3_ = 338,
-     _H3 = 339,
-     H4 = 340,
-     H4_ = 341,
-     _H4 = 342,
-     H5 = 343,
-     H5_ = 344,
-     _H5 = 345,
-     H6 = 346,
-     H6_ = 347,
-     _H6 = 348,
-     HEAD = 349,
-     HEAD_ = 350,
-     _HEAD = 351,
-     HEADER = 352,
-     HEADER_ = 353,
-     HR = 354,
-     HR_ = 355,
-     _HR = 356,
-     HTML = 357,
-     HTML_ = 358,
-     _HTML = 359,
-     IMG = 360,
-     _IMG = 361,
-     INPUT = 362,
-     _INPUT = 363,
-     LI = 364,
-     LI_ = 365,
-     _LI = 366,
-     LINK = 367,
-     _LINK = 368,
-     META = 369,
-     _META = 370,
-     OBJECT = 371,
-     _OBJECT = 372,
-     OL = 373,
-     OL_ = 374,
-     _OL = 375,
-     P = 376,
-     P_ = 377,
-     _P = 378,
-     PRE = 379,
-     PRE_ = 380,
-     _PRE = 381,
-     SCRIPT = 382,
-     SCRIPT_ = 383,
-     _SCRIPT = 384,
-     SPAN = 385,
-     _SPAN = 386,
-     STRONG = 387,
-     _STRONG = 388,
-     STYLE = 389,
-     _STYLE = 390,
-     TABLE = 391,
-     _TABLE = 392,
-     TD = 393,
-     _TD = 394,
-     TEXTAREA = 395,
-     TEXTAREA_ = 396,
-     _TEXTAREA = 397,
-     TH = 398,
-     _TH = 399,
-     TITLE = 400,
-     _TITLE = 401,
-     TR = 402,
-     _TR = 403,
-     UL = 404,
-     _UL = 405,
-     CLOSE = 406
+     DOCTYPE = 259,
+     A = 260,
+     _A = 261,
+     B = 262,
+     _B = 263,
+     BLOCKQUOTE = 264,
+     BLOCKQUOTE_ = 265,
+     _BLOCKQUOTE = 266,
+     BODY = 267,
+     BODY_ = 268,
+     _BODY = 269,
+     BR = 270,
+     _BR = 271,
+     BUTTON = 272,
+     BUTTON_ = 273,
+     _BUTTON = 274,
+     CAPTION = 275,
+     CAPTION_ = 276,
+     _CAPTION = 277,
+     CODE = 278,
+     _CODE = 279,
+     DIV = 280,
+     DIV_ = 281,
+     _DIV = 282,
+     DL = 283,
+     _DL = 284,
+     DT = 285,
+     _DT = 286,
+     DD = 287,
+     _DD = 288,
+     EM = 289,
+     _EM = 290,
+     EMBED = 291,
+     _EMBED = 292,
+     FOOTER = 293,
+     _FOOTER = 294,
+     FORM = 295,
+     FORM_ = 296,
+     _FORM = 297,
+     H1 = 298,
+     H1_ = 299,
+     _H1 = 300,
+     H2 = 301,
+     H2_ = 302,
+     _H2 = 303,
+     H3 = 304,
+     H3_ = 305,
+     _H3 = 306,
+     H4 = 307,
+     H4_ = 308,
+     _H4 = 309,
+     H5 = 310,
+     H5_ = 311,
+     _H5 = 312,
+     H6 = 313,
+     H6_ = 314,
+     _H6 = 315,
+     HEAD = 316,
+     HEAD_ = 317,
+     _HEAD = 318,
+     HEADER = 319,
+     _HEADER = 320,
+     HR = 321,
+     HR_ = 322,
+     _HR = 323,
+     HTML = 324,
+     HTML_ = 325,
+     _HTML = 326,
+     IMG = 327,
+     _IMG = 328,
+     INPUT = 329,
+     _INPUT = 330,
+     LI = 331,
+     LI_ = 332,
+     _LI = 333,
+     LINK = 334,
+     _LINK = 335,
+     META = 336,
+     _META = 337,
+     OBJECT = 338,
+     _OBJECT = 339,
+     OL = 340,
+     OL_ = 341,
+     _OL = 342,
+     P = 343,
+     P_ = 344,
+     _P = 345,
+     PRE = 346,
+     PRE_ = 347,
+     _PRE = 348,
+     SCRIPT = 349,
+     SCRIPT_ = 350,
+     _SCRIPT = 351,
+     SPAN = 352,
+     _SPAN = 353,
+     STRONG = 354,
+     _STRONG = 355,
+     STYLE = 356,
+     _STYLE = 357,
+     TABLE = 358,
+     _TABLE = 359,
+     TD = 360,
+     _TD = 361,
+     TEXTAREA = 362,
+     TEXTAREA_ = 363,
+     _TEXTAREA = 364,
+     TH = 365,
+     _TH = 366,
+     TITLE = 367,
+     _TITLE = 368,
+     TR = 369,
+     _TR = 370,
+     UL = 371,
+     _UL = 372,
+     CLOSE = 373
    };
 #endif
 /* Tokens.  */
 #define TEXTO 258
-#define NUMERO 259
-#define NUMERO_255 260
-#define HEX 261
-#define A_ATTRIBUTE 262
-#define BLOCKQUOTE_ATTRIBUTE 263
-#define BODY_ATTRIBUTE 264
-#define BUTTOM_ATTRIBUTE 265
-#define CAPTION_ATTRIBUTE 266
-#define DIV_ATTRIBUTE 267
-#define EMBED_ATTRIBUTE 268
-#define FORM_ATTRIBUTE 269
-#define H1_H6_ATTRIBUTE 270
-#define HEAD_ATTRIBUTE 271
-#define HR_ATTRIBUTE 272
-#define IMG_ATTRIBUTE 273
-#define INPUT_ATTRIBUTE 274
-#define LI_ATTRIBUTE 275
-#define LINK_ATTRIBUTE 276
-#define META_ATTRIBUTE 277
-#define OBJECT_ATTRIBUTE 278
-#define OL_ATTRIBUTE 279
-#define P_ATTRIBUTE 280
-#define PRE_ATTRIBUTE 281
-#define SCRIPT_ATTRIBUTE 282
-#define SPAN_ATTRIBUTE 283
-#define STYLE_ATTRIBUTE 284
-#define TABLE_ATTRIBUTE 285
-#define TR_ATTRIBUTE 286
-#define TD_TH_ATTRIBUTE 287
-#define TEXTAREA_ATTRIBUTE 288
-#define UL_ATTRIUTE 289
-#define URL 290
-#define LOCAL_URL 291
-#define DOCTYPE_TOKEN 292
-#define A 293
-#define _A 294
-#define B 295
-#define _B 296
-#define BLOCKQUOTE 297
-#define BLOCKQUOTE_ 298
-#define _BLOCKQUOTE 299
-#define BODY 300
-#define BODY_ 301
-#define _BODY 302
-#define BR 303
-#define _BR 304
-#define BUTTON 305
-#define BUTTON_ 306
-#define _BUTTON 307
-#define CAPTION 308
-#define CAPTION_ 309
-#define _CAPTION 310
-#define CODE 311
-#define _CODE 312
-#define DIV 313
-#define DIV_ 314
-#define _DIV 315
-#define DL 316
-#define _DL 317
-#define DT 318
-#define _DT 319
-#define DD 320
-#define _DD 321
-#define EM 322
-#define _EM 323
-#define EMBED 324
-#define _EMBED 325
-#define FOOTER 326
-#define _FOOTER 327
-#define FORM 328
-#define FORM_ 329
-#define _FORM 330
-#define H1 331
-#define H1_ 332
-#define _H1 333
-#define H2 334
-#define H2_ 335
-#define _H2 336
-#define H3 337
-#define H3_ 338
-#define _H3 339
-#define H4 340
-#define H4_ 341
-#define _H4 342
-#define H5 343
-#define H5_ 344
-#define _H5 345
-#define H6 346
-#define H6_ 347
-#define _H6 348
-#define HEAD 349
-#define HEAD_ 350
-#define _HEAD 351
-#define HEADER 352
-#define HEADER_ 353
-#define HR 354
-#define HR_ 355
-#define _HR 356
-#define HTML 357
-#define HTML_ 358
-#define _HTML 359
-#define IMG 360
-#define _IMG 361
-#define INPUT 362
-#define _INPUT 363
-#define LI 364
-#define LI_ 365
-#define _LI 366
-#define LINK 367
-#define _LINK 368
-#define META 369
-#define _META 370
-#define OBJECT 371
-#define _OBJECT 372
-#define OL 373
-#define OL_ 374
-#define _OL 375
-#define P 376
-#define P_ 377
-#define _P 378
-#define PRE 379
-#define PRE_ 380
-#define _PRE 381
-#define SCRIPT 382
-#define SCRIPT_ 383
-#define _SCRIPT 384
-#define SPAN 385
-#define _SPAN 386
-#define STRONG 387
-#define _STRONG 388
-#define STYLE 389
-#define _STYLE 390
-#define TABLE 391
-#define _TABLE 392
-#define TD 393
-#define _TD 394
-#define TEXTAREA 395
-#define TEXTAREA_ 396
-#define _TEXTAREA 397
-#define TH 398
-#define _TH 399
-#define TITLE 400
-#define _TITLE 401
-#define TR 402
-#define _TR 403
-#define UL 404
-#define _UL 405
-#define CLOSE 406
+#define DOCTYPE 259
+#define A 260
+#define _A 261
+#define B 262
+#define _B 263
+#define BLOCKQUOTE 264
+#define BLOCKQUOTE_ 265
+#define _BLOCKQUOTE 266
+#define BODY 267
+#define BODY_ 268
+#define _BODY 269
+#define BR 270
+#define _BR 271
+#define BUTTON 272
+#define BUTTON_ 273
+#define _BUTTON 274
+#define CAPTION 275
+#define CAPTION_ 276
+#define _CAPTION 277
+#define CODE 278
+#define _CODE 279
+#define DIV 280
+#define DIV_ 281
+#define _DIV 282
+#define DL 283
+#define _DL 284
+#define DT 285
+#define _DT 286
+#define DD 287
+#define _DD 288
+#define EM 289
+#define _EM 290
+#define EMBED 291
+#define _EMBED 292
+#define FOOTER 293
+#define _FOOTER 294
+#define FORM 295
+#define FORM_ 296
+#define _FORM 297
+#define H1 298
+#define H1_ 299
+#define _H1 300
+#define H2 301
+#define H2_ 302
+#define _H2 303
+#define H3 304
+#define H3_ 305
+#define _H3 306
+#define H4 307
+#define H4_ 308
+#define _H4 309
+#define H5 310
+#define H5_ 311
+#define _H5 312
+#define H6 313
+#define H6_ 314
+#define _H6 315
+#define HEAD 316
+#define HEAD_ 317
+#define _HEAD 318
+#define HEADER 319
+#define _HEADER 320
+#define HR 321
+#define HR_ 322
+#define _HR 323
+#define HTML 324
+#define HTML_ 325
+#define _HTML 326
+#define IMG 327
+#define _IMG 328
+#define INPUT 329
+#define _INPUT 330
+#define LI 331
+#define LI_ 332
+#define _LI 333
+#define LINK 334
+#define _LINK 335
+#define META 336
+#define _META 337
+#define OBJECT 338
+#define _OBJECT 339
+#define OL 340
+#define OL_ 341
+#define _OL 342
+#define P 343
+#define P_ 344
+#define _P 345
+#define PRE 346
+#define PRE_ 347
+#define _PRE 348
+#define SCRIPT 349
+#define SCRIPT_ 350
+#define _SCRIPT 351
+#define SPAN 352
+#define _SPAN 353
+#define STRONG 354
+#define _STRONG 355
+#define STYLE 356
+#define _STYLE 357
+#define TABLE 358
+#define _TABLE 359
+#define TD 360
+#define _TD 361
+#define TEXTAREA 362
+#define TEXTAREA_ 363
+#define _TEXTAREA 364
+#define TH 365
+#define _TH 366
+#define TITLE 367
+#define _TITLE 368
+#define TR 369
+#define _TR 370
+#define UL 371
+#define _UL 372
+#define CLOSE 373
 
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+typedef union YYSTYPE
+{
+
+/* Line 2068 of yacc.c  */
+#line 8 "parser.y"
+
+        char *string;
+
+
+
+/* Line 2068 of yacc.c  */
+#line 292 "y.tab.h"
+} YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
