@@ -11,28 +11,20 @@ NUMERO_255					[0-255]
 
 HEX							[0-9A-Fa-f]+
 
-DOCTYPE_DECLARATION			"HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"" |
-							"HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"" |
-							"HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\"" |
-							"html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"" |
-							"html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"" |
-							"html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\"" |
-							"html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\""
-
 HTML_ATTRIBUTE				"xmlns=\"" {URL} "\""
 
-A_ATTRIBUTE					"charset=\"" {ENCODING} "\"" |
-							"coords=\"" {NUMERO} "," {NUMERO} "," {NUMERO} "," {NUMERO} "\"" |
-							"href=\"" {URL} "\"" |
-							"hreflang=\"" {LANGUAGE} "\"" |
-							"media=\"" {MEDIA_VALUE} "\"" |
-							"name=\"" {TEXTO} "\"" |
-							"rel=\"" {REL_VALUE} "\"" |
-							"rev=\"" {TEXTO} "\"" |
-							"shape=\"" {SHAPE_VALUE} "\"" |
-							"target=\"" {TARGET_VALUE} "\""
+A_ATTRIBUTE					("charset=\"" {ENCODING} "\"")?
+							("coords=\"" {NUMERO} "," {NUMERO} "," {NUMERO} "," {NUMERO} "\"")?
+							("href=\"" {URL} "\"")?
+							("hreflang=\"" {LANGUAGE} "\"")?
+							("media=\"" {MEDIA_VALUE} "\"")?
+							("name=\"" {TEXTO} "\"")?
+							("rel=\"" {REL_VALUE} "\"")?
+							("rev=\"" {TEXTO} "\"")?
+							("shape=\"" {SHAPE_VALUE} "\"")?
+							("target=\"" {TARGET_VALUE} "\"")?
 
-REL_VALUE				 	"alternate" |
+REL_VALUE				 	("alternate")?
 							"author" |
 							"bookmark" |
 							"help" |
@@ -116,7 +108,7 @@ ALIGN_VALUE					"top" |
 							"right"
 											
 
-INPUT_ATTRIBUTE			"accept=\"" {ACCEPT_VALUE} "\"" |
+INPUT_ATTRIBUTE				"accept=\"" {ACCEPT_VALUE} "\"" |
 							"align=\"" {ALIGN_VALUE} "\"" |
 							"alt=\"" {TEXTO} "\"" |
 							"checked" |

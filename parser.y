@@ -198,7 +198,7 @@ TITULO_CLOSE					: _TITLE
 CUERPO 							: CUERPO_OPEN CUERPO_CLOSE
 
 CUERPO_OPEN						: BODY
-								| BODY_
+								| BODY_ CLOSE
 								;
 
 CUERPO_CLOSE					: _BODY
