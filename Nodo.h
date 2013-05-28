@@ -19,5 +19,3 @@ struct nodoLista *nodoActual = NULL; /*Puntero que tiene la refenrencia al nodo 
 struct nodoLista* crearLista(char *tag);
 struct nodoLista* insertar(char *tag);
 void imprimir(void);
-
-int cantidadTabsPorTag;
