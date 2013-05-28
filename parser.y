@@ -171,10 +171,11 @@ CUERPO_CLOSE					: _BODY {insertar("/body");}
 
 %%
 
-
+/*Variables para el árbol de parsing*/
 PTRNODOPILA ptrPila = NULL;
 struct nodoLista *ptr = NULL;
 int cantidadTabsPorTag = 0;
+/*Fin variables para el árbol de parsing*/
 
 void yyerror(char *s)
 {
@@ -184,6 +185,13 @@ void yyerror(char *s)
 int main() {
 	return yyparse();
 }
+
+
+/**********************************************/
+/**********************************************/
+/* Funciones para generar el árbol de parsing */
+/**********************************************/
+/**********************************************/
 
 /*Si al insertar el nodo no hay nada en la lista, se crea la lista con un único nodo.*/
 struct nodoLista* crearLista(char *tag)
