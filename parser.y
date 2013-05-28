@@ -10,6 +10,7 @@
 %token NUMERO
 %token NUMERO_255
 %token HEX
+%token DOCTYPE
 %token A_ATTRIBUTE
 %token BLOCKQUOTE_ATTRIBUTE
 %token BODY_ATTRIBUTE
@@ -43,9 +44,7 @@
 
 %token DOCTYPE_TOKEN
 %token A
-%token A_
 %token _A
-%token ACRONYM
 %token B
 %token _B
 %token BLOCKQUOTE
@@ -60,21 +59,22 @@
 %token BUTTON_
 %token _BUTTON
 %token CAPTION
+%token CAPTION_
+%token _CAPTION
 %token CODE
 %token _CODE
 %token DIV
+%token DIV_
 %token _DIV
 %token DL
-%token DL_
 %token _DL
 %token DT
 %token _DT
-$token DT
-%token DD_
+%token DD
+%token _DD
 %token EM
 %token _EM
 %token EMBED
-%token EMBED_
 %token _EMBED
 %token FOOTER
 %token _FOOTER
@@ -126,9 +126,6 @@ $token DT
 %token OL
 %token OL_
 %token _OL
-%token OPTION
-%token OPTION_
-%token _OPTION
 %token P
 %token P_
 %token _P
@@ -136,6 +133,7 @@ $token DT
 %token PRE_
 %token _PRE
 %token SCRIPT
+%token SCRIPT_
 %token _SCRIPT
 %token SPAN
 %token _SPAN
@@ -147,6 +145,9 @@ $token DT
 %token _TABLE
 %token TD
 %token _TD
+%token TEXTAREA
+%token TEXTAREA_
+%token _TEXTAREA
 %token TH
 %token _TH
 %token TITLE
@@ -155,8 +156,54 @@ $token DT
 %token _TR
 %token UL
 %token _UL
+%token CLOSE
 
 %%
+
+ARCHIVO							: DOCTYPE_DECLARATION HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG
+								;
+
+DOCTYPE_DECLARATION:			: DOCTYPE_DECLARATION CLOSE
+								| DOCTYPE
+								;
+
+HTML_OPEN_TAG					: HTML
+								| HTML_ CLOSE
+								;
+
+HTML_CLOSE_TAG					: _HTML
+								;
+
+
+CABEZA_OPEN						: CABEZA_OPEN TITULO CABEZA_CLOSE
+								| CABEZA_OPEN ESTILO CABEZA_CLOSE
+								| CABEZA_OPEN LINK CABEZA_CLOSE
+								| CABEZA_OPEN META CABEZA_CLOSE
+								| CABEZA_OPEN SCRIPT CABEZA_CLOSE
+								| HEAD
+								| HEAD_ CLOSE
+								;
+
+CABEZA_CLOSE					: _HEAD
+
+TITULO 							: TITULO_OPEN TITULO_CLOSE
+
+TITULO_OPEN						: TITULO_OPEN TEXTO
+								| TITLE
+								;
+
+TITULO_CLOSE					: _TITLE
+								;
+
+CUERPO 							: CUERPO_OPEN CUERPO_CLOSE
+
+CUERPO_OPEN						: BODY
+								| BODY_
+								;
+
+CUERPO_CLOSE					: _BODY
+
+
 
 %%
 

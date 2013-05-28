@@ -1,0 +1,570 @@
+Terminals unused in grammar
+
+   NUMERO
+   NUMERO_255
+   HEX
+   A_ATTRIBUTE
+   BLOCKQUOTE_ATTRIBUTE
+   BODY_ATTRIBUTE
+   BUTTOM_ATTRIBUTE
+   CAPTION_ATTRIBUTE
+   DIV_ATTRIBUTE
+   EMBED_ATTRIBUTE
+   FORM_ATTRIBUTE
+   H1_H6_ATTRIBUTE
+   HR_ATTRIBUTE
+   IMG_ATTRIBUTE
+   INPUT_ATTRIBUTE
+   LI_ATTRIBUTE
+   LINK_ATTRIBUTE
+   META_ATTRIBUTE
+   OBJECT_ATTRIBUTE
+   OL_ATTRIBUTE
+   P_ATTRIBUTE
+   PRE_ATTRIBUTE
+   SCRIPT_ATTRIBUTE
+   SPAN_ATTRIBUTE
+   STYLE_ATTRIBUTE
+   TABLE_ATTRIBUTE
+   TR_ATTRIBUTE
+   TD_TH_ATTRIBUTE
+   TEXTAREA_ATTRIBUTE
+   UL_ATTRIUTE
+   URL
+   LOCAL_URL
+   DOCTYPE_TOKEN
+   A
+   _A
+   B
+   _B
+   BLOCKQUOTE
+   BLOCKQUOTE_
+   _BLOCKQUOTE
+   BR
+   _BR
+   BUTTON
+   BUTTON_
+   _BUTTON
+   CAPTION
+   CAPTION_
+   _CAPTION
+   CODE
+   _CODE
+   DIV
+   DIV_
+   _DIV
+   DL
+   _DL
+   DT
+   _DT
+   DD
+   _DD
+   EM
+   _EM
+   EMBED
+   _EMBED
+   FOOTER
+   _FOOTER
+   FORM
+   FORM_
+   _FORM
+   H1
+   H1_
+   _H1
+   H2
+   H2_
+   _H2
+   H3
+   H3_
+   _H3
+   H4
+   H4_
+   _H4
+   H5
+   H5_
+   _H5
+   H6
+   H6_
+   _H6
+   HEADER
+   HEADER_
+   HR
+   HR_
+   _HR
+   IMG
+   _IMG
+   INPUT
+   _INPUT
+   LI
+   LI_
+   _LI
+   LINK
+   _LINK
+   META
+   _META
+   OBJECT
+   _OBJECT
+   OL
+   OL_
+   _OL
+   P
+   P_
+   _P
+   PRE
+   PRE_
+   _PRE
+   SCRIPT
+   SCRIPT_
+   _SCRIPT
+   SPAN
+   _SPAN
+   STRONG
+   _STRONG
+   STYLE
+   _STYLE
+   TABLE
+   _TABLE
+   TD
+   _TD
+   TEXTAREA
+   TEXTAREA_
+   _TEXTAREA
+   TH
+   _TH
+   TR
+   _TR
+   UL
+   _UL
+
+
+State 21 conflicts: 2 shift/reduce
+State 23 conflicts: 3 shift/reduce
+State 24 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: ARCHIVO $end
+
+    1 ARCHIVO: HTML_TAG CABEZA CUERPO HTML_TAG
+
+    2 HTML_TAG: HTML
+    3         | HTML_
+    4         | _HTML
+
+    5 CABEZA: CABEZA TITULO CABEZA
+    6       | HEAD
+    7       | HEAD_ HEAD_ATTRIBUTE CLOSE
+    8       | _HEAD
+
+    9 TITULO: TITULO TEXTO TITULO
+   10       | TITLE
+   11       | _TITLE
+
+   12 CUERPO: CUERPO CUERPO
+   13       | BODY
+   14       | BODY_
+   15       | _BODY
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+TEXTO (258) 9
+NUMERO (259)
+NUMERO_255 (260)
+HEX (261)
+A_ATTRIBUTE (262)
+BLOCKQUOTE_ATTRIBUTE (263)
+BODY_ATTRIBUTE (264)
+BUTTOM_ATTRIBUTE (265)
+CAPTION_ATTRIBUTE (266)
+DIV_ATTRIBUTE (267)
+EMBED_ATTRIBUTE (268)
+FORM_ATTRIBUTE (269)
+H1_H6_ATTRIBUTE (270)
+HEAD_ATTRIBUTE (271) 7
+HR_ATTRIBUTE (272)
+IMG_ATTRIBUTE (273)
+INPUT_ATTRIBUTE (274)
+LI_ATTRIBUTE (275)
+LINK_ATTRIBUTE (276)
+META_ATTRIBUTE (277)
+OBJECT_ATTRIBUTE (278)
+OL_ATTRIBUTE (279)
+P_ATTRIBUTE (280)
+PRE_ATTRIBUTE (281)
+SCRIPT_ATTRIBUTE (282)
+SPAN_ATTRIBUTE (283)
+STYLE_ATTRIBUTE (284)
+TABLE_ATTRIBUTE (285)
+TR_ATTRIBUTE (286)
+TD_TH_ATTRIBUTE (287)
+TEXTAREA_ATTRIBUTE (288)
+UL_ATTRIUTE (289)
+URL (290)
+LOCAL_URL (291)
+DOCTYPE_TOKEN (292)
+A (293)
+_A (294)
+B (295)
+_B (296)
+BLOCKQUOTE (297)
+BLOCKQUOTE_ (298)
+_BLOCKQUOTE (299)
+BODY (300) 13
+BODY_ (301) 14
+_BODY (302) 15
+BR (303)
+_BR (304)
+BUTTON (305)
+BUTTON_ (306)
+_BUTTON (307)
+CAPTION (308)
+CAPTION_ (309)
+_CAPTION (310)
+CODE (311)
+_CODE (312)
+DIV (313)
+DIV_ (314)
+_DIV (315)
+DL (316)
+_DL (317)
+DT (318)
+_DT (319)
+DD (320)
+_DD (321)
+EM (322)
+_EM (323)
+EMBED (324)
+_EMBED (325)
+FOOTER (326)
+_FOOTER (327)
+FORM (328)
+FORM_ (329)
+_FORM (330)
+H1 (331)
+H1_ (332)
+_H1 (333)
+H2 (334)
+H2_ (335)
+_H2 (336)
+H3 (337)
+H3_ (338)
+_H3 (339)
+H4 (340)
+H4_ (341)
+_H4 (342)
+H5 (343)
+H5_ (344)
+_H5 (345)
+H6 (346)
+H6_ (347)
+_H6 (348)
+HEAD (349) 6
+HEAD_ (350) 7
+_HEAD (351) 8
+HEADER (352)
+HEADER_ (353)
+HR (354)
+HR_ (355)
+_HR (356)
+HTML (357) 2
+HTML_ (358) 3
+_HTML (359) 4
+IMG (360)
+_IMG (361)
+INPUT (362)
+_INPUT (363)
+LI (364)
+LI_ (365)
+_LI (366)
+LINK (367)
+_LINK (368)
+META (369)
+_META (370)
+OBJECT (371)
+_OBJECT (372)
+OL (373)
+OL_ (374)
+_OL (375)
+P (376)
+P_ (377)
+_P (378)
+PRE (379)
+PRE_ (380)
+_PRE (381)
+SCRIPT (382)
+SCRIPT_ (383)
+_SCRIPT (384)
+SPAN (385)
+_SPAN (386)
+STRONG (387)
+_STRONG (388)
+STYLE (389)
+_STYLE (390)
+TABLE (391)
+_TABLE (392)
+TD (393)
+_TD (394)
+TEXTAREA (395)
+TEXTAREA_ (396)
+_TEXTAREA (397)
+TH (398)
+_TH (399)
+TITLE (400) 10
+_TITLE (401) 11
+TR (402)
+_TR (403)
+UL (404)
+_UL (405)
+CLOSE (406) 7
+
+
+Nonterminals, with rules where they appear
+
+$accept (152)
+    on left: 0
+ARCHIVO (153)
+    on left: 1, on right: 0
+HTML_TAG (154)
+    on left: 2 3 4, on right: 1
+CABEZA (155)
+    on left: 5 6 7 8, on right: 1 5
+TITULO (156)
+    on left: 9 10 11, on right: 5 9
+CUERPO (157)
+    on left: 12 13 14 15, on right: 1 12
+
+
+state 0
+
+    0 $accept: . ARCHIVO $end
+
+    HTML   shift, and go to state 1
+    HTML_  shift, and go to state 2
+    _HTML  shift, and go to state 3
+
+    ARCHIVO   go to state 4
+    HTML_TAG  go to state 5
+
+
+state 1
+
+    2 HTML_TAG: HTML .
+
+    $default  reduce using rule 2 (HTML_TAG)
+
+
+state 2
+
+    3 HTML_TAG: HTML_ .
+
+    $default  reduce using rule 3 (HTML_TAG)
+
+
+state 3
+
+    4 HTML_TAG: _HTML .
+
+    $default  reduce using rule 4 (HTML_TAG)
+
+
+state 4
+
+    0 $accept: ARCHIVO . $end
+
+    $end  shift, and go to state 6
+
+
+state 5
+
+    1 ARCHIVO: HTML_TAG . CABEZA CUERPO HTML_TAG
+
+    HEAD   shift, and go to state 7
+    HEAD_  shift, and go to state 8
+    _HEAD  shift, and go to state 9
+
+    CABEZA  go to state 10
+
+
+state 6
+
+    0 $accept: ARCHIVO $end .
+
+    $default  accept
+
+
+state 7
+
+    6 CABEZA: HEAD .
+
+    $default  reduce using rule 6 (CABEZA)
+
+
+state 8
+
+    7 CABEZA: HEAD_ . HEAD_ATTRIBUTE CLOSE
+
+    HEAD_ATTRIBUTE  shift, and go to state 11
+
+
+state 9
+
+    8 CABEZA: _HEAD .
+
+    $default  reduce using rule 8 (CABEZA)
+
+
+state 10
+
+    1 ARCHIVO: HTML_TAG CABEZA . CUERPO HTML_TAG
+    5 CABEZA: CABEZA . TITULO CABEZA
+
+    BODY    shift, and go to state 12
+    BODY_   shift, and go to state 13
+    _BODY   shift, and go to state 14
+    TITLE   shift, and go to state 15
+    _TITLE  shift, and go to state 16
+
+    TITULO  go to state 17
+    CUERPO  go to state 18
+
+
+state 11
+
+    7 CABEZA: HEAD_ HEAD_ATTRIBUTE . CLOSE
+
+    CLOSE  shift, and go to state 19
+
+
+state 12
+
+   13 CUERPO: BODY .
+
+    $default  reduce using rule 13 (CUERPO)
+
+
+state 13
+
+   14 CUERPO: BODY_ .
+
+    $default  reduce using rule 14 (CUERPO)
+
+
+state 14
+
+   15 CUERPO: _BODY .
+
+    $default  reduce using rule 15 (CUERPO)
+
+
+state 15
+
+   10 TITULO: TITLE .
+
+    $default  reduce using rule 10 (TITULO)
+
+
+state 16
+
+   11 TITULO: _TITLE .
+
+    $default  reduce using rule 11 (TITULO)
+
+
+state 17
+
+    5 CABEZA: CABEZA TITULO . CABEZA
+    9 TITULO: TITULO . TEXTO TITULO
+
+    TEXTO  shift, and go to state 20
+    HEAD   shift, and go to state 7
+    HEAD_  shift, and go to state 8
+    _HEAD  shift, and go to state 9
+
+    CABEZA  go to state 21
+
+
+state 18
+
+    1 ARCHIVO: HTML_TAG CABEZA CUERPO . HTML_TAG
+   12 CUERPO: CUERPO . CUERPO
+
+    BODY   shift, and go to state 12
+    BODY_  shift, and go to state 13
+    _BODY  shift, and go to state 14
+    HTML   shift, and go to state 1
+    HTML_  shift, and go to state 2
+    _HTML  shift, and go to state 3
+
+    HTML_TAG  go to state 22
+    CUERPO    go to state 23
+
+
+state 19
+
+    7 CABEZA: HEAD_ HEAD_ATTRIBUTE CLOSE .
+
+    $default  reduce using rule 7 (CABEZA)
+
+
+state 20
+
+    9 TITULO: TITULO TEXTO . TITULO
+
+    TITLE   shift, and go to state 15
+    _TITLE  shift, and go to state 16
+
+    TITULO  go to state 24
+
+
+state 21
+
+    5 CABEZA: CABEZA . TITULO CABEZA
+    5       | CABEZA TITULO CABEZA .
+
+    TITLE   shift, and go to state 15
+    _TITLE  shift, and go to state 16
+
+    TITLE     [reduce using rule 5 (CABEZA)]
+    _TITLE    [reduce using rule 5 (CABEZA)]
+    $default  reduce using rule 5 (CABEZA)
+
+    TITULO  go to state 17
+
+
+state 22
+
+    1 ARCHIVO: HTML_TAG CABEZA CUERPO HTML_TAG .
+
+    $default  reduce using rule 1 (ARCHIVO)
+
+
+state 23
+
+   12 CUERPO: CUERPO . CUERPO
+   12       | CUERPO CUERPO .
+
+    BODY   shift, and go to state 12
+    BODY_  shift, and go to state 13
+    _BODY  shift, and go to state 14
+
+    BODY      [reduce using rule 12 (CUERPO)]
+    BODY_     [reduce using rule 12 (CUERPO)]
+    _BODY     [reduce using rule 12 (CUERPO)]
+    $default  reduce using rule 12 (CUERPO)
+
+    CUERPO  go to state 23
+
+
+state 24
+
+    9 TITULO: TITULO . TEXTO TITULO
+    9       | TITULO TEXTO TITULO .
+
+    TEXTO  shift, and go to state 20
+
+    TEXTO     [reduce using rule 9 (TITULO)]
+    $default  reduce using rule 9 (TITULO)
