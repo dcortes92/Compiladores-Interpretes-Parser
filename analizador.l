@@ -13,379 +13,344 @@ HEX							[0-9A-Fa-f]+
 
 HTML_ATTRIBUTE				"xmlns=\"" {URL} "\""
 
-A_ATTRIBUTE					("charset=\"" {ENCODING} "\"")?
-							("coords=\"" {NUMERO} "," {NUMERO} "," {NUMERO} "," {NUMERO} "\"")?
-							("href=\"" {URL} "\"")?
-							("hreflang=\"" {LANGUAGE} "\"")?
-							("media=\"" {MEDIA_VALUE} "\"")?
-							("name=\"" {TEXTO} "\"")?
-							("rel=\"" {REL_VALUE} "\"")?
-							("rev=\"" {TEXTO} "\"")?
-							("shape=\"" {SHAPE_VALUE} "\"")?
-							("target=\"" {TARGET_VALUE} "\"")?
+A_ATTRIBUTE					("charset=\"" {ENCODING} "\"")?("coords=\"" {NUMERO} "," {NUMERO} "," {NUMERO} "," {NUMERO} "\"")?("href=\"" {URL} "\"")?("hreflang=\"" {LANGUAGE} "\"")?("media=\"" {MEDIA_VALUE} "\"")?("name=\"" {TEXTO} "\"")?("rel=\"" {REL_VALUE} "\"")?("rev=\"" {TEXTO} "\"")?("shape=\"" {SHAPE_VALUE} "\"")?("target=\"" {TARGET_VALUE} "\"")?
 
-REL_VALUE				 	("alternate")?
-							"author" |
-							"bookmark" |
-							"help" |
-							"license" |
-							"next" |
-							"nofollow" |
-							"noreferrer" |
-							"prefetch" |
-							"prev" |
-							"search" |
-							"tag"
+REL_VALUE				 	("alternate")?("author")?("bookmark")?("help")?("license")?("next")?("nofollow")?("noreferrer")?("prefetch")?("prev")?("search")?("tag")?
 
-SHAPE_VALUE					"default" |
-							"rect" |
-							"circle" |
-							"poly" 
+SHAPE_VALUE					("default")?("rect")?("circle")?("poly")?
 
-BLOCKQUOTE_ATTRIBUTE		"cite=\"" {URL} "\""
+BLOCKQUOTE_ATTRIBUTE		("cite=\"" {URL} "\"")?
 
 
-BODY_ATTRIBUTE				"alink=\"" {COLOR} "\"" |
-							"background=\"" {URL_GENERAL} "\"" |
-							"bgcolor=\"" {COLOR} "\"" |
-							"link=\"" {COLOR} "\"" |
-							"vlink=\"" {COLOR} "\""
+BODY_ATTRIBUTE				("alink=\"" {COLOR} "\"")?("background=\"" {URL_GENERAL} "\"")?("bgcolor=\"" {COLOR} "\"")?("link=\"" {COLOR} "\"")?("vlink=\"" {COLOR} "\"")?
 
-URL_GENERAL					{URL} |
-							{LOCAL_URL}			
+URL_GENERAL					{URL}?{LOCAL_URL}?
 
-BUTTOM_ATTRIBUTE			"autofocus" |
-							"disabled" |
-							"formtarget=\"" {TARGET_VALUE} "\"" |
-							"name=\"" {TEXTO} "\"" |
-							"type=\"" {BUTTOM_TYPE_VALUE} "\"" |
-							"value=\"" {TEXTO} "\""
+BUTTOM_ATTRIBUTE			("autofocus")?("disabled")?("formtarget=\"" {TARGET_VALUE} "\"")?("name=\"" {TEXTO} "\"")?("type=\"" {BUTTOM_TYPE_VALUE} "\"")?("value=\"" {TEXTO} "\"")?
 
-BUTTOM_TYPE_VALUE			"button" |
-							"reset" |
-							"submit" 
+BUTTOM_TYPE_VALUE			("button")?("reset")?("submit")?
 
-CAPTION_ATTRIBUTE			"align=\"" {ALIGN_VALUE} "\""
+CAPTION_ATTRIBUTE			("align=\"" {ALIGN_VALUE} "\"")
 
-DIV_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\"" |
+DIV_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\"")?
 							"style=\"" {COLOR} "\""
 
-EMBED_ATTRIBUTE				"height=\"" {NUMERO} "\"" |
-							"src=\"" {URL} "\"" |
-							"type=\"" {LOCAL_URL} "\"" |
+EMBED_ATTRIBUTE				"height=\"" {NUMERO} "\"")?
+							"src=\"" {URL} "\"")?
+							"type=\"" {LOCAL_URL} "\"")?
 							"width=\"" {NUMERO} "\""
 
-FORM_ATTRIBUTE				"accept-charset=\"" {ENCODING} "\"" |
-							"action=\"" {URL} "\"" |
-							"name=\"" {TEXTO} "\"" |
+FORM_ATTRIBUTE				"accept-charset=\"" {ENCODING} "\"")?
+							"action=\"" {URL} "\"")?
+							"name=\"" {TEXTO} "\"")?
 							"target=\"" {TARGET_VALUE} "\""
 
 H1_H6_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\""
 
 HEAD_ATTRIBUTE				"profile=\"" {URL} "\""
 
-HR_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\"" |
-							"noshade" |
-							"size=\"" {NUMERO} "\"" |
+HR_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\"")?
+							"noshade")?
+							"size=\"" {NUMERO} "\"")?
 							"width\"" {NUMERO} "\""
 			
 
-IMG_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\"" |
-							"alt=\"" {TEXTO} "\"" |
-							"border=\"" {NUMERO} "\"" |
-							"height=\"" {NUMERO} "\"" |
-							"ismap" |
-							"longdesc=\"" {URL} "\"" |
-							"src=\"" {URL_GENERAL} "\"" |
-							"width=\"" {NUMERO} "\"" |
+IMG_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\"")?
+							"alt=\"" {TEXTO} "\"")?
+							"border=\"" {NUMERO} "\"")?
+							"height=\"" {NUMERO} "\"")?
+							"ismap")?
+							"longdesc=\"" {URL} "\"")?
+							"src=\"" {URL_GENERAL} "\"")?
+							"width=\"" {NUMERO} "\"")?
 							"usemap=\"#" {TEXTO} "\""
 							 
 
-ALIGN_VALUE					"top" |
-							"bottom" |
-							"middle" |
+ALIGN_VALUE					"top")?
+							"bottom")?
+							"middle")?
 							"left"|
 							"right"
 											
 
-INPUT_ATTRIBUTE				"accept=\"" {ACCEPT_VALUE} "\"" |
-							"align=\"" {ALIGN_VALUE} "\"" |
-							"alt=\"" {TEXTO} "\"" |
-							"checked" |
-							"disabled" |
-							"form=\"" {TEXTO} "\"" |
-							"formtarget=\"" {TARGET_VALUE} "\"" |
-							"height=\"" {NUMERO} "\"" |
-							"max=\"" {NUMERO} "\"" |
-							"maxlength=\"" {NUMERO} "\"" |
-							"min=\"" {NUMERO} "\"" |
-							"name=\"" {TEXTO} "\"" |
-							"pattern=\"" {EXPRESION_REG} "\"" |
-							"placeholder=\"" {TEXTO} "\"" |
-							"readonly" |
-							"required" |
-							"size=\"" {NUMERO} "\"" |
-							"src=\"" {URL} "\"" |
-							"type=\"" {INPUT_TYPE_VALUE} "\"" |
-							"value=\"" {TEXTO} "\"" |
+INPUT_ATTRIBUTE				"accept=\"" {ACCEPT_VALUE} "\"")?
+							"align=\"" {ALIGN_VALUE} "\"")?
+							"alt=\"" {TEXTO} "\"")?
+							"checked")?
+							"disabled")?
+							"form=\"" {TEXTO} "\"")?
+							"formtarget=\"" {TARGET_VALUE} "\"")?
+							"height=\"" {NUMERO} "\"")?
+							"max=\"" {NUMERO} "\"")?
+							"maxlength=\"" {NUMERO} "\"")?
+							"min=\"" {NUMERO} "\"")?
+							"name=\"" {TEXTO} "\"")?
+							"pattern=\"" {EXPRESION_REG} "\"")?
+							"placeholder=\"" {TEXTO} "\"")?
+							"readonly")?
+							"required")?
+							"size=\"" {NUMERO} "\"")?
+							"src=\"" {URL} "\"")?
+							"type=\"" {INPUT_TYPE_VALUE} "\"")?
+							"value=\"" {TEXTO} "\"")?
 							"width=\"" {NUMERO} "\""
 							
 
-INPUT_TYPE_VALUE			"buttn" | 
-							"checkbox" |
-							"color" | 
-							"date" |
-							"datetime" | 
-							"datetime-local" | 
-							"email" |
-							"file" | 
-							"hidden" | 
-							"image" | 
-							"month" |
-							"number" | 
-							"password" | 
-							"radio" | 
-							"range" |
-							"reset" | 
-							"search" | 
-							"submit" | 
-							"text" |
-							"time" | 
-							"url" | 
+INPUT_TYPE_VALUE			"buttn")? 
+							"checkbox")?
+							"color")? 
+							"date")?
+							"datetime")? 
+							"datetime-local")? 
+							"email")?
+							"file")? 
+							"hidden")? 
+							"image")? 
+							"month")?
+							"number")? 
+							"password")? 
+							"radio")? 
+							"range")?
+							"reset")? 
+							"search")? 
+							"submit")? 
+							"text")?
+							"time")? 
+							"url")? 
 							"week"
 														
 
-LI_ATTRIBUTE				"type=\"" {LI_TYPE_VALUE} "\"" |
+LI_ATTRIBUTE				"type=\"" {LI_TYPE_VALUE} "\"")?
 							"value=\"" {NUMERO} "\""
 							
 
-LI_TYPE_VALUE				"1" | 
-							"A" | 
-							"a" | 
-							"I" | 
-							"i" | 
-							"disc" |
-							"square" | 
+LI_TYPE_VALUE				"1")? 
+							"A")? 
+							"a")? 
+							"I")? 
+							"i")? 
+							"disc")?
+							"square")? 
 							"circle"
 							
 
-LINK_ATTRIBUTE				"charset=\"" {ENCODING} "\"" |
-							"href=\"" {URL} "\"" |
-							"hreflang=\"" {LANGUAGE} "\"" |
-							"rel=\"" {REL_VALUE} "\"" |
-							"size=\"" {NUMERO} "x" {NUMERO} "\"" |
-							"target=\"" {TARGET_VALUE} "\"" |
+LINK_ATTRIBUTE				"charset=\"" {ENCODING} "\"")?
+							"href=\"" {URL} "\"")?
+							"hreflang=\"" {LANGUAGE} "\"")?
+							"rel=\"" {REL_VALUE} "\"")?
+							"size=\"" {NUMERO} "x" {NUMERO} "\"")?
+							"target=\"" {TARGET_VALUE} "\"")?
 							"type=\"" {LOCAL_URL} "\""
 							
 
 
-ENCODING					"UTF-8" |
+ENCODING					"UTF-8")?
 							"ISO-8859-1"
 							 
 
-LANGUAGE					"en" | "es"
+LANGUAGE					"en")? "es"
 
-TARGET_VALUE				"_blank" | 
-							"_self" | 
-							"top" | 
-							"parent" | 
+TARGET_VALUE				"_blank")? 
+							"_self")? 
+							"top")? 
+							"parent")? 
 							{TEXTO} 
 							
 
-META_ATTRIBUTE				"charset=\"" {ENCODIGN} "\"" |
-							"content=\"" {TEXT} "\"" |
-							"http-equiv=\"" {META_HTTP_VALUE} "\"" |
-							"name=\"" {META_NAME_VALUE} "\"" |
+META_ATTRIBUTE				"charset=\"" {ENCODIGN} "\"")?
+							"content=\"" {TEXT} "\"")?
+							"http-equiv=\"" {META_HTTP_VALUE} "\"")?
+							"name=\"" {META_NAME_VALUE} "\"")?
 							"scheme=\"" {TEXTO} "/" {TEXTO} "\""
 							
 
-META_HTTP_VALUE				"content_type" |
-							"default-style" |
+META_HTTP_VALUE				"content_type")?
+							"default-style")?
 							"refresh"
 							
 
-META_NAME_VALUE				"application-name" |
-							"author" |
-							"description" |
-							"generator" |
+META_NAME_VALUE				"application-name")?
+							"author")?
+							"description")?
+							"generator")?
 							"keywords"
 													
 
-OBJECT_ATTRIBUTE			"align=\"" {ALIGN_VALUE} "\"" |
-							"archive=\"" {URL} "\"" |
-							"border=\"" {NUMERO} "\"" |
-							"data=\"" {URL} "\"" |
-							"form=\"" {TEXTO} "\"" |
-							"height=\"" {NUMERO} "\"" |
-							"name=\"" {TEXTO} "\"" |
-							"type=\"" {TEXTO} "\"" |
-							"width=\"" {NUMERO} "\"" |
+OBJECT_ATTRIBUTE			"align=\"" {ALIGN_VALUE} "\"")?
+							"archive=\"" {URL} "\"")?
+							"border=\"" {NUMERO} "\"")?
+							"data=\"" {URL} "\"")?
+							"form=\"" {TEXTO} "\"")?
+							"height=\"" {NUMERO} "\"")?
+							"name=\"" {TEXTO} "\"")?
+							"type=\"" {TEXTO} "\"")?
+							"width=\"" {NUMERO} "\"")?
 							"usemap=\"#" {TEXTO} "\""
 														
 
-OL_ATTRIBUTE				"compact" | 
-							"reversed" |
-							"start=\"" {NUMERO} "\"" |
+OL_ATTRIBUTE				"compact")? 
+							"reversed")?
+							"start=\"" {NUMERO} "\"")?
 							"type=\"" {OL_TYPE_VALUE} "\""
 							
 
-OL_TYPE_VALUE				"1" |
-							"A" |
-							"a" |
-							"I" |
+OL_TYPE_VALUE				"1")?
+							"A")?
+							"a")?
+							"I")?
 							"i" 
 							
 
 P_ATTRIBUTE					"align=\"" {P_ALING_VALUE} "\""
 
-P_ALING_VALUE				"left" |
-							"rigth" |
-							"center" |
+P_ALING_VALUE				"left")?
+							"rigth")?
+							"center")?
 							"justify"						
 
-PRE_ATTRIBUTE				"width=\"" {NUMERO} "\"" |
+PRE_ATTRIBUTE				"width=\"" {NUMERO} "\"")?
 							
 
-SCRIPT_ATTRIBUTE			"charset=\"" {ENCODING} "\"" |
-							"defer" |
-							"src=\"" {URL} "\"" |
-							"type=\"" {TEXT} "\"" |
+SCRIPT_ATTRIBUTE			"charset=\"" {ENCODING} "\"")?
+							"defer")?
+							"src=\"" {URL} "\"")?
+							"type=\"" {TEXT} "\"")?
 							"preserve"
 							
 
-SPAN_ATTRIBUTE				"name=\"" {TEXTO} "\"" |
-							"class=\"" {TEXTO} "\"" |
-							"style=\"" {TEXTO} "\"" |
-							"title=\"" {TEXTO} "\"" |
+SPAN_ATTRIBUTE				"name=\"" {TEXTO} "\"")?
+							"class=\"" {TEXTO} "\"")?
+							"style=\"" {TEXTO} "\"")?
+							"title=\"" {TEXTO} "\"")?
 							"dir=\"" {SPAN_DIR_VALUE} "\""
 							
 
-SPAN_DIR_VALUE				"rtl" |
+SPAN_DIR_VALUE				"rtl")?
 							"ltr"
 
-STYLE_ATTRIBUTE				"media=\"" {MEDIA_VALUE} "\"" |
-							"scoped" | 
+STYLE_ATTRIBUTE				"media=\"" {MEDIA_VALUE} "\"")?
+							"scoped")? 
 							"type=\"" {LOCAL_URL} "\""
 							
 
-MEDIA_VALUE					"all" |
-							"aural" |
-							"braile" |
-							"handheld" |
-							"projection" |
-							"print" |
-							"screen" |
-							"tty" |
+MEDIA_VALUE					"all")?
+							"aural")?
+							"braile")?
+							"handheld")?
+							"projection")?
+							"print")?
+							"screen")?
+							"tty")?
 							"tv"
 							
 
-TABLE_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\"" |
-							"bgcolor=\"" {COLOR} "\"" |
-							"border=\"" 1 | "\"" |
-							"cellpadding=\"" {NUMERO} "\"" |
-							"cellspacing=\"" {NUMERO} "\"" |
-							"summary=\"" {TEXTO} "\"" |
+TABLE_ATTRIBUTE				"align=\"" {ALIGN_VALUE} "\"")?
+							"bgcolor=\"" {COLOR} "\"")?
+							"border=\"" 1)? "\"")?
+							"cellpadding=\"" {NUMERO} "\"")?
+							"cellspacing=\"" {NUMERO} "\"")?
+							"summary=\"" {TEXTO} "\"")?
 							"width=\"" {NUMERO} "\""
 							
 
-COLOR						{TEXTO} | 
-							"#" {HEX} | 
+COLOR						{TEXTO})? 
+							"#" {HEX})? 
 							"rgb(" {NUMERO_255} "," {NUMERO_255} "," {NUMERO_255} ")"
 														
 
-TR_ATTRIBUTE				"align=\"" {T_ALIGN_VALUE} "\"" |
-							"bgcolor=\"" {COLOR} "\"" |
-							"char=\"" {LETRA} "\"" |
-							"charoff=\"" {NUMERO} "\"" |
+TR_ATTRIBUTE				"align=\"" {T_ALIGN_VALUE} "\"")?
+							"bgcolor=\"" {COLOR} "\"")?
+							"char=\"" {LETRA} "\"")?
+							"charoff=\"" {NUMERO} "\"")?
 							"valign=\"" {VALIGN_VALUE} "\""
 										
 
-TD_TH_ATTRIBUTE				"abbr=\"" {TEXTO} "\"" |
-							"align=\"" {T_ALIGN_VALUE} "\"" |
-							"axis=\"" {TEXTO} "\"" |
-							"bgcolor=\"" {COLOR} "\"" |
-							"char=\"" {LETRA} "\"" |
-							"charoff=\"" {NUMERO} "\"" |
-							"colspan=\"" {NUMERO} "\"" |
-							"headers=\"" {TEXTO} "\"" |
-							"height=\"" {NUMERO} "\"" |
-							"rowspan=\"" {NUMERO} "\"" |
-							"scope=\"" {TD_TH_SCOPE_VALUE} "\"" |
-							"valign=\"" {VALIGN_VALUE} "\"" |
+TD_TH_ATTRIBUTE				"abbr=\"" {TEXTO} "\"")?
+							"align=\"" {T_ALIGN_VALUE} "\"")?
+							"axis=\"" {TEXTO} "\"")?
+							"bgcolor=\"" {COLOR} "\"")?
+							"char=\"" {LETRA} "\"")?
+							"charoff=\"" {NUMERO} "\"")?
+							"colspan=\"" {NUMERO} "\"")?
+							"headers=\"" {TEXTO} "\"")?
+							"height=\"" {NUMERO} "\"")?
+							"rowspan=\"" {NUMERO} "\"")?
+							"scope=\"" {TD_TH_SCOPE_VALUE} "\"")?
+							"valign=\"" {VALIGN_VALUE} "\"")?
 							"width=\"" {NUMERO} "\""
 							
 
-TD_TH_SCOPE_VALUE			"col" | 
-							"colgroup" | 
-							"row" | 
+TD_TH_SCOPE_VALUE			"col")? 
+							"colgroup")? 
+							"row")? 
 							"rowgroup"
 							
 
-T_ALIGN_VALUE				"rigth" |
-							"left" |
-							"center" |
-							"justify" |
+T_ALIGN_VALUE				"rigth")?
+							"left")?
+							"center")?
+							"justify")?
 							"char"
 							
 
-VALIGN_VALUE				"top" |
-							"middle" |
-							"bottom" |
+VALIGN_VALUE				"top")?
+							"middle")?
+							"bottom")?
 							"baseline"
 			
 
-TEXTAREA_ATTRIBUTE			"autofocus" |
-							"cols=\"" {NUMERO} "\"" |
-							"disabled" |
-							"maxlength=\"" {NUMERO} "\"" |
-							"name=\"" {TEXTO} "\"" |
-							"placeholder=\"" {TEXTO} "\"" |
-							"readonly" |
-							"required" |
-							"rows=\"" {NUMERO} "\"" |
+TEXTAREA_ATTRIBUTE			"autofocus")?
+							"cols=\"" {NUMERO} "\"")?
+							"disabled")?
+							"maxlength=\"" {NUMERO} "\"")?
+							"name=\"" {TEXTO} "\"")?
+							"placeholder=\"" {TEXTO} "\"")?
+							"readonly")?
+							"required")?
+							"rows=\"" {NUMERO} "\"")?
 							"wrap=\"" {H_S} "\""
 							
 
-H_S							"hard" |
+H_S							"hard")?
 							"soft" 
 							
 
-UL_ATTRIUTE					"compact" |
+UL_ATTRIUTE					"compact")?
 							"type=\"" UL_TYPE_VALUE "\""
 							
 
-UL_TYPE_VALUE				"disc" |
-							"square" |
+UL_TYPE_VALUE				"disc")?
+							"square")?
 							"circle"
 							
 
 URL							PROTOCOLO HOST DOMINIO DOMINIO_DE_PRIMER_NIVEL (DIRECTORIO SUBDIRECTORIO RECURSO)?
 
-PROTOCOLO					"http//" | "ftp//" | "gopher//" |
-							"telnet" | "mailto" | "news"
+PROTOCOLO					"http//")? "ftp//")? "gopher//")?
+							"telnet")? "mailto")? "news"
 							
 
-HOST						"www." | 
+HOST						"www.")? 
 							TEXTO"."
 							
 
 DOMINIO						TEXTO
 							
 
-DOMINIO_DE_PRIMER_NIVEL		".com" |
-							".cr" |
-							".es" |
+DOMINIO_DE_PRIMER_NIVEL		".com")?
+							".cr")?
+							".es")?
 							".us"							
 
-DIRECTORIO					"/" TEXTO |
+DIRECTORIO					"/" TEXTO)?
 							"" 
 							
 
-SUBDIRECTORIO				"/" TEXTO |
+SUBDIRECTORIO				"/" TEXTO)?
 							""
 							
 
-RECURSO						"." TEXTO |
+RECURSO						"." TEXTO)?
 							""
 							
 
