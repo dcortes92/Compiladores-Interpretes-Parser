@@ -5,7 +5,7 @@
 LETRA						[a-z]
 
 	
-TEXTO						{LETRA}+
+TEXTO						[a-zA-Z][a-zA-Z0-9]*
 
 
 UNNUMERO 					[0-9]
@@ -207,7 +207,7 @@ PCOMA						[\;]
 
 %%	
 
-[ \n\t]+								{return *yytext;}
+[ \n\t]+								{}
 
 "<a"{A_ATTRIBUTE}+						{yylval.string = yytext; return A;}
 "</a>"									{yylval.string = yytext; return _A;}
@@ -324,6 +324,7 @@ PCOMA						[\;]
 "</ul>"									{yylval.string = yytext; return _UL;}
 ">"										{yylval.string = yytext; return CLOSE;}
 						
+{TEXTO}									{yylval.string = yytext; return TEXTO;}
 {AMP}{HASH}[1-2]?{UNNUMERO}{PCOMA}		{/*ERROR*/}
 {AMP}{HASH}[3][0-1]{PCOMA}				{/*ERROR*/}
 "&#127;"								{/*ERROR*/}

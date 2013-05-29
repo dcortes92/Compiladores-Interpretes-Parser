@@ -281,7 +281,11 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
+<<<<<<< HEAD
 #line 9 "parser.y"
+=======
+#line 10 "parser.y"
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
         char *string;
 

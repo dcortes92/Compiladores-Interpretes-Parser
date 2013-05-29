@@ -70,12 +70,21 @@
 
 	#include <stdio.h>
 	#include <assert.h>
+<<<<<<< HEAD
 	#include "Lista.c"
+=======
+	#include "Nodo.h"
+	#include "NodoPila.h"
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 	void yyerror(char *s);
 
 
 /* Line 268 of yacc.c  */
+<<<<<<< HEAD
 #line 79 "y.tab.c"
+=======
+#line 80 "y.tab.c"
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -346,14 +355,22 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
+<<<<<<< HEAD
 #line 9 "parser.y"
+=======
+#line 10 "parser.y"
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
         char *string;
 
 
 
 /* Line 293 of yacc.c  */
+<<<<<<< HEAD
 #line 357 "y.tab.c"
+=======
+#line 358 "y.tab.c"
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -365,7 +382,11 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
+<<<<<<< HEAD
 #line 369 "y.tab.c"
+=======
+#line 370 "y.tab.c"
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
 #ifdef short
 # undef short
@@ -593,7 +614,11 @@ union yyalloc
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  18
 /* YYNRULES -- Number of states.  */
+<<<<<<< HEAD
 #define YYNSTATES  30
+=======
+#define YYNSTATES  29
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -650,8 +675,13 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
+<<<<<<< HEAD
        0,     0,     3,     8,    10,    13,    15,    18,    22,    24,
       27,    29,    32,    35,    37,    39,    42,    44,    47
+=======
+       0,     0,     3,     8,    10,    13,    15,    18,    21,    23,
+      26,    28,    31,    34,    36,    38,    41,    43,    46
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
@@ -659,15 +689,25 @@ static const yytype_int16 yyrhs[] =
 {
      120,     0,    -1,   121,   123,   129,   122,    -1,    69,    -1,
       70,   118,    -1,    71,    -1,   124,   125,    -1,   124,   126,
+<<<<<<< HEAD
      125,    -1,    61,    -1,    62,   118,    -1,    63,    -1,   127,
      128,    -1,   127,     3,    -1,   112,    -1,   113,    -1,   130,
      131,    -1,    12,    -1,    13,   118,    -1,    14,    -1
+=======
+      -1,    61,    -1,    62,   118,    -1,    63,    -1,   127,   128,
+      -1,   127,     3,    -1,   112,    -1,   113,    -1,   130,   131,
+      -1,    12,    -1,    13,   118,    -1,    14,    -1
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
+<<<<<<< HEAD
        0,   133,   133,   137,   138,   141,   144,   146,   147,   148,
+=======
+       0,   134,   134,   137,   138,   141,   144,   146,   147,   148,
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
      151,   153,   155,   156,   159,   162,   164,   165,   168
 };
 #endif
@@ -727,7 +767,11 @@ static const yytype_uint8 yyr1[] =
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
+<<<<<<< HEAD
        0,     2,     4,     1,     2,     1,     2,     3,     1,     2,
+=======
+       0,     2,     4,     1,     2,     1,     2,     2,     1,     2,
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
        1,     2,     2,     1,     1,     2,     1,     2,     1
 };
 
@@ -737,14 +781,23 @@ static const yytype_uint8 yyr2[] =
 static const yytype_uint8 yydefact[] =
 {
        0,     3,     0,     0,     0,     4,     1,     8,     0,     0,
+<<<<<<< HEAD
        0,     9,    16,     0,     0,     0,    10,    13,     6,     0,
        0,    17,     5,     2,    18,    15,     7,    12,    14,    11
+=======
+       0,     9,    16,     0,     0,     0,    10,    13,     6,     7,
+       0,    17,     5,     2,    18,    15,    12,    14,    11
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
+<<<<<<< HEAD
       -1,     3,     4,    23,     9,    10,    18,    19,    20,    29,
+=======
+      -1,     3,     4,    23,     9,    10,    18,    19,    20,    28,
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
       14,    15,    25
 };
 
@@ -754,14 +807,23 @@ static const yytype_int8 yydefgoto[] =
 static const yytype_int8 yypact[] =
 {
      -67,  -111,  -110,     9,   -57,  -111,  -111,  -111,  -108,    -6,
+<<<<<<< HEAD
      -62,  -111,  -111,  -107,   -59,    -1,  -111,  -111,  -111,   -49,
       -3,  -111,  -111,  -111,  -111,  -111,  -111,  -111,  -111,  -111
+=======
+     -62,  -111,  -111,  -107,   -59,    -1,  -111,  -111,  -111,  -111,
+      -3,  -111,  -111,  -111,  -111,  -111,  -111,  -111,  -111
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
+<<<<<<< HEAD
     -111,  -111,  -111,  -111,  -111,  -111,    -4,  -111,  -111,  -111,
+=======
+    -111,  -111,  -111,  -111,  -111,  -111,  -111,  -111,  -111,  -111,
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
     -111,  -111,  -111
 };
 
@@ -771,8 +833,13 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
+<<<<<<< HEAD
       27,    16,     1,     2,     7,     8,    12,    13,     5,     6,
       11,    21,    22,    24,    16,    26,     0,     0,     0,     0,
+=======
+      26,    16,     1,     2,     7,     8,    12,    13,     5,     6,
+      11,    21,    22,    24,     0,     0,     0,     0,     0,     0,
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
@@ -782,7 +849,11 @@ static const yytype_uint8 yytable[] =
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+<<<<<<< HEAD
       28
+=======
+      27
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 };
 
 #define yypact_value_is_default(yystate) \
@@ -794,7 +865,11 @@ static const yytype_uint8 yytable[] =
 static const yytype_int8 yycheck[] =
 {
        3,    63,    69,    70,    61,    62,    12,    13,   118,     0,
+<<<<<<< HEAD
      118,   118,    71,    14,    63,    19,    -1,    -1,    -1,    -1,
+=======
+     118,   118,    71,    14,    -1,    -1,    -1,    -1,    -1,    -1,
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
       -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
@@ -813,7 +888,11 @@ static const yytype_uint8 yystos[] =
 {
        0,    69,    70,   120,   121,   118,     0,    61,    62,   123,
      124,   118,    12,    13,   129,   130,    63,   112,   125,   126,
+<<<<<<< HEAD
      127,   118,    71,   122,    14,   131,   125,     3,   113,   128
+=======
+     127,   118,    71,   122,    14,   131,     3,   113,   128
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1647,10 +1726,98 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-      
+        case 2:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 1654 "y.tab.c"
+=======
+#line 134 "parser.y"
+    {imprimir();}
+    break;
+
+  case 3:
+
+/* Line 1806 of yacc.c  */
+#line 137 "parser.y"
+    {insertar("html");}
+    break;
+
+  case 5:
+
+/* Line 1806 of yacc.c  */
+#line 141 "parser.y"
+    {insertar("/html");}
+    break;
+
+  case 8:
+
+/* Line 1806 of yacc.c  */
+#line 147 "parser.y"
+    {insertar("head");}
+    break;
+
+  case 9:
+
+/* Line 1806 of yacc.c  */
+#line 148 "parser.y"
+    {insertar("head");}
+    break;
+
+  case 10:
+
+/* Line 1806 of yacc.c  */
+#line 151 "parser.y"
+    {insertar("/head");}
+    break;
+
+  case 12:
+
+/* Line 1806 of yacc.c  */
+#line 155 "parser.y"
+    {insertar("texto");}
+    break;
+
+  case 13:
+
+/* Line 1806 of yacc.c  */
+#line 156 "parser.y"
+    {insertar("title");}
+    break;
+
+  case 14:
+
+/* Line 1806 of yacc.c  */
+#line 159 "parser.y"
+    {insertar("/title");}
+    break;
+
+  case 16:
+
+/* Line 1806 of yacc.c  */
+#line 164 "parser.y"
+    {insertar("body");}
+    break;
+
+  case 17:
+
+/* Line 1806 of yacc.c  */
+#line 165 "parser.y"
+    {insertar("body");}
+    break;
+
+  case 18:
+
+/* Line 1806 of yacc.c  */
+#line 168 "parser.y"
+    {insertar("/body");}
+    break;
+
+
+
+/* Line 1806 of yacc.c  */
+#line 1739 "y.tab.c"
+>>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1884,6 +2051,11 @@ yyreturn:
 #line 172 "parser.y"
 
 
+/*Variables para el árbol de parsing*/
+PTRNODOPILA ptrPila = NULL;
+struct nodoLista *ptr = NULL;
+int cantidadTabsPorTag = 0;
+/*Fin variables para el árbol de parsing*/
 
 void yyerror(char *s)
 {
@@ -1892,4 +2064,174 @@ void yyerror(char *s)
 
 int main() {
 	return yyparse();
+}
+
+
+/**********************************************/
+/**********************************************/
+/* Funciones para generar el árbol de parsing */
+/**********************************************/
+/**********************************************/
+
+/*Si al insertar el nodo no hay nada en la lista, se crea la lista con un único nodo.*/
+struct nodoLista* crearLista(char *tag)
+{
+    /*Asignación de memoria*/
+    struct nodoLista *ptr = (struct nodoLista*)malloc(sizeof(struct nodoLista));
+    if(ptr == NULL) /*No hay memoria suficiente.*/
+    {
+        printf("No se pudo crear el Nodo. No hay suficiente memoria.\n");
+    }
+    else
+    {
+    	ptr->etiqueta = strdup(tag); /*Se establecen los valores de las datos del nodo*/
+    	ptr->padre = "ROOT";
+    	ptr->ptrSiguiente = NULL;
+        ptr->cantidadTabs = cantidadTabsPorTag;
+    	nodoInicial = nodoActual = ptr; /*Se actualiza la referencia al primer nodo*/
+
+        /*Se establece el nuevo padre*/
+        push(&ptrPila, tag);
+        cantidadTabsPorTag++;
+    }
+    return ptr;
+}
+
+/*Inserta un nuevo nodo en la lista enlazada.*/
+struct nodoLista* insertar(char *tag)
+{
+    /*Si la lista está vacía*/
+    if(nodoInicial == NULL)
+    {
+        return (crearLista(tag));
+    }
+
+    /*Asignación de memoria*/
+    struct nodoLista *ptr = (struct nodoLista*)malloc(sizeof(struct nodoLista));
+
+    if(ptr == NULL) /*No hay memoria suficiente*/
+    {
+        printf("No se pudo crear el Nodo. No hay suficiente memoria.\n");
+    }
+    else
+    {
+        char *tagCierre = strdup(ptrPila -> etiqueta);
+        char tagCierreEsperado[] = "/";
+        strcat(tagCierreEsperado, tagCierre);
+        //printf("Cierre esperado %s\n", tagCierreEsperado);
+        /*Si se encuentra la etiqueta de cierre esperada*/
+        if(strcmp(tagCierreEsperado, tag) == 0)
+        {
+            pop(&ptrPila); /*Se elimina la referencia al padre actual*/
+            cantidadTabsPorTag--;
+        }
+        else
+        {
+            ptr->etiqueta = strdup(tag); /*Se establecen los valores de los datos del nodo*/
+            ptr->padre = strdup(ptrPila -> etiqueta);
+            ptr->ptrSiguiente = NULL;
+            ptr->cantidadTabs = cantidadTabsPorTag;
+            nodoActual->ptrSiguiente = ptr; /*Se actualiza la referencia al primer nodo*/
+            nodoActual = ptr;
+            /*Si se inserta texto, no se ocupa en la pila*/
+            if(strcmp(tag, "texto") != 0)
+            {
+                push(&ptrPila, tag);
+                cantidadTabsPorTag++;
+            }
+        }
+    }
+    return ptr;
+}
+
+
+void imprimir(void)
+{
+	printf("\n\n*** Árbol de Parsing ***\n\n");
+    struct nodoLista *ptr = nodoInicial; /*Se crea una copia de la referencia 
+                                        al primer nodo para recorrer la lista*/
+
+    struct nodoLista *ptrTemp;
+
+    int i = 0;
+    int cantidad = 0;
+
+    char *padreActual;
+    char *tagActual;
+
+    while(ptr != NULL) /*Mientras que el puntero no sea NULL*/
+    {
+        ptrTemp = ptr;
+        cantidad = ptr -> cantidadTabs;
+        padreActual = ptr -> etiqueta;
+
+        for(i = 0; i < cantidad; i++)
+        {
+            printf("\t");
+        } 
+
+        printf("%s ", ptr->etiqueta);
+
+        while(ptrTemp != NULL)
+        {
+            tagActual = ptrTemp -> padre;
+            if(strcmp(tagActual, padreActual) == 0)
+            {
+                printf("%s ", ptrTemp -> etiqueta);
+            }
+            ptrTemp = ptrTemp -> ptrSiguiente;
+        }
+
+        printf("\n");
+        ptr = ptr->ptrSiguiente; /*Se pasa al siguiente nodo*/
+    }
+
+    printf("\n");
+}
+
+/*Funciones de la Pila*/
+void push(PTRNODOPILA *top, char * valor)
+{
+    PTRNODOPILA nuevo;
+    nuevo = malloc(sizeof(NODOPILA));
+    if(nuevo != NULL)
+    {
+        nuevo -> etiqueta = strdup(valor);
+        nuevo -> ptrSiguiente = *top;
+        *top = nuevo;
+    }
+    else
+    {
+        printf("El nodo no fue creado. No hay suficiente memoria\n");
+    }
+}
+
+void pop(PTRNODOPILA *top)
+{
+    PTRNODOPILA temp;
+    temp = *top;
+    *top = (*top) -> ptrSiguiente;
+    free(temp);
+}
+
+int estaVacia(PTRNODOPILA top)
+{
+    return top == NULL;
+}
+
+void imprimirPila(PTRNODOPILA top)
+{
+    if(top == NULL)
+    {
+        printf("La pila está vacía\n");
+    }
+    else
+    {
+        while(top != NULL)
+        {
+            printf("%s -> ", top -> etiqueta);
+            top = top -> ptrSiguiente;
+        }
+        printf("NULL\n");
+    }
 }
