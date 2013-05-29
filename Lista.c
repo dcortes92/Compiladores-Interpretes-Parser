@@ -3,12 +3,13 @@
 
 /*Se crea el puntero al primer nodo de la Pila*/
     PTRNODOPILA ptrPila = NULL;
+    int cantidadTabsPorTag = 0;
 
 int main(void)
 {
     /*Se crea el puntero al primer nodo de la lista*/
     struct nodoLista *ptr = NULL;
-    cantidadTabsPorTag = 0;
+    
 
     /*Inserciones*/
     insertar("html");

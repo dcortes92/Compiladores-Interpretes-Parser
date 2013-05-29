@@ -592,7 +592,7 @@ union yyalloc
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  13
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  20
+#define YYNRULES  18
 /* YYNRULES -- Number of states.  */
 #define YYNSTATES  29
 
@@ -651,28 +651,25 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     8,    10,    15,    17,    20,    22,    25,
-      28,    30,    33,    35,    38,    41,    43,    45,    48,    50,
-      53
+       0,     0,     3,     8,    10,    13,    15,    18,    21,    23,
+      26,    28,    31,    34,    36,    38,    41,    43,    46
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int16 yyrhs[] =
 {
      120,     0,    -1,   121,   123,   129,   122,    -1,    69,    -1,
-     121,   123,   129,   122,    -1,    69,    -1,    70,   118,    -1,
-      71,    -1,   124,   125,    -1,   124,   126,    -1,    61,    -1,
-      62,   118,    -1,    63,    -1,   127,   128,    -1,   127,     3,
-      -1,   112,    -1,   113,    -1,   130,   131,    -1,    12,    -1,
-      13,   118,    -1,    14,    -1
+      70,   118,    -1,    71,    -1,   124,   125,    -1,   124,   126,
+      -1,    61,    -1,    62,   118,    -1,    63,    -1,   127,   128,
+      -1,   127,     3,    -1,   112,    -1,   113,    -1,   130,   131,
+      -1,    12,    -1,    13,   118,    -1,    14,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   134,   134,   138,   140,   143,   144,   147,   150,   152,
-     153,   154,   157,   159,   161,   162,   165,   168,   170,   171,
-     174
+       0,   134,   134,   137,   138,   141,   144,   146,   147,   148,
+     151,   153,   155,   156,   159,   162,   164,   165,   168
 };
 #endif
 
@@ -724,17 +721,15 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,   119,   120,   121,   120,   121,   121,   122,   123,   124,
-     124,   124,   125,   126,   127,   127,   128,   129,   130,   130,
-     131
+       0,   119,   120,   121,   121,   122,   123,   124,   124,   124,
+     125,   126,   127,   127,   128,   129,   130,   130,   131
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     4,     1,     4,     1,     2,     1,     2,     2,
-       1,     2,     1,     2,     2,     1,     1,     2,     1,     2,
-       1
+       0,     2,     4,     1,     2,     1,     2,     2,     1,     2,
+       1,     2,     2,     1,     1,     2,     1,     2,     1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
@@ -742,9 +737,9 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     3,     0,     0,     0,     6,     1,    10,     0,     0,
-       0,    11,    18,     0,     0,     0,    12,    15,     8,     9,
-       0,    19,     7,     2,    20,    17,    14,    16,    13
+       0,     3,     0,     0,     0,     4,     1,     8,     0,     0,
+       0,     9,    16,     0,     0,     0,    10,    13,     6,     7,
+       0,    17,     5,     2,    18,    15,    12,    14,    11
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -1653,94 +1648,94 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 4:
+        case 2:
 
 /* Line 1806 of yacc.c  */
-#line 140 "parser.y"
+#line 134 "parser.y"
     {imprimir();}
+    break;
+
+  case 3:
+
+/* Line 1806 of yacc.c  */
+#line 137 "parser.y"
+    {insertar("html");}
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
-#line 143 "parser.y"
-    {insertar("html");}
+#line 141 "parser.y"
+    {insertar("/html");}
     break;
 
-  case 7:
+  case 8:
 
 /* Line 1806 of yacc.c  */
 #line 147 "parser.y"
-    {insertar("/html");}
+    {insertar("head");}
+    break;
+
+  case 9:
+
+/* Line 1806 of yacc.c  */
+#line 148 "parser.y"
+    {insertar("head");}
     break;
 
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 153 "parser.y"
-    {insertar("head");}
-    break;
-
-  case 11:
-
-/* Line 1806 of yacc.c  */
-#line 154 "parser.y"
-    {insertar("head");}
+#line 151 "parser.y"
+    {insertar("/head");}
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 157 "parser.y"
-    {insertar("/head");}
+#line 155 "parser.y"
+    {insertar("texto");}
+    break;
+
+  case 13:
+
+/* Line 1806 of yacc.c  */
+#line 156 "parser.y"
+    {insertar("title");}
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 161 "parser.y"
-    {insertar("texto");}
-    break;
-
-  case 15:
-
-/* Line 1806 of yacc.c  */
-#line 162 "parser.y"
-    {insertar("title");}
+#line 159 "parser.y"
+    {insertar("/title");}
     break;
 
   case 16:
 
 /* Line 1806 of yacc.c  */
+#line 164 "parser.y"
+    {insertar("body");}
+    break;
+
+  case 17:
+
+/* Line 1806 of yacc.c  */
 #line 165 "parser.y"
-    {insertar("/title");}
+    {insertar("body");}
     break;
 
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 170 "parser.y"
-    {insertar("body");}
-    break;
-
-  case 19:
-
-/* Line 1806 of yacc.c  */
-#line 171 "parser.y"
-    {insertar("body");}
-    break;
-
-  case 20:
-
-/* Line 1806 of yacc.c  */
-#line 174 "parser.y"
+#line 168 "parser.y"
     {insertar("/body");}
     break;
 
 
 
 /* Line 1806 of yacc.c  */
-#line 1744 "y.tab.c"
+#line 1739 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1971,7 +1966,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 178 "parser.y"
+#line 172 "parser.y"
 
 
 /*Variables para el árbol de parsing*/
@@ -2007,11 +2002,11 @@ struct nodoLista* crearLista(char *tag)
     }
     else
     {
-    	ptr->etiqueta = strdup(tag); /*Se establecen los valores de las datos del nodo*/
-    	ptr->padre = "ROOT";
-    	ptr->ptrSiguiente = NULL;
+        ptr->etiqueta = strdup(tag); /*Se establecen los valores de las datos del nodo*/
+        ptr->padre = "ROOT";
+        ptr->ptrSiguiente = NULL;
         ptr->cantidadTabs = cantidadTabsPorTag;
-    	nodoInicial = nodoActual = ptr; /*Se actualiza la referencia al primer nodo*/
+        nodoInicial = nodoActual = ptr; /*Se actualiza la referencia al primer nodo*/
 
         /*Se establece el nuevo padre*/
         push(&ptrPila, tag);
@@ -2070,7 +2065,6 @@ struct nodoLista* insertar(char *tag)
 
 void imprimir(void)
 {
-	printf("\n\n*** Árbol de Parsing ***\n\n");
     struct nodoLista *ptr = nodoInicial; /*Se crea una copia de la referencia 
                                         al primer nodo para recorrer la lista*/
 

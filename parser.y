@@ -131,12 +131,6 @@
 
 %%
 
-ARCHIVO							: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG
-								;
-
-
-HTML_OPEN_TAG					: HTML
-
 ARCHIVO							: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG {imprimir();}
 								;
 
@@ -210,11 +204,11 @@ struct nodoLista* crearLista(char *tag)
     }
     else
     {
-    	ptr->etiqueta = strdup(tag); /*Se establecen los valores de las datos del nodo*/
-    	ptr->padre = "ROOT";
-    	ptr->ptrSiguiente = NULL;
+        ptr->etiqueta = strdup(tag); /*Se establecen los valores de las datos del nodo*/
+        ptr->padre = "ROOT";
+        ptr->ptrSiguiente = NULL;
         ptr->cantidadTabs = cantidadTabsPorTag;
-    	nodoInicial = nodoActual = ptr; /*Se actualiza la referencia al primer nodo*/
+        nodoInicial = nodoActual = ptr; /*Se actualiza la referencia al primer nodo*/
 
         /*Se establece el nuevo padre*/
         push(&ptrPila, tag);
@@ -273,7 +267,6 @@ struct nodoLista* insertar(char *tag)
 
 void imprimir(void)
 {
-	printf("\n\n*** Árbol de Parsing ***\n\n");
     struct nodoLista *ptr = nodoInicial; /*Se crea una copia de la referencia 
                                         al primer nodo para recorrer la lista*/
 
