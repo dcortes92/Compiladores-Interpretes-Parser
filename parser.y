@@ -1,6 +1,7 @@
 %{
 	#include <stdio.h>
 	#include <assert.h>
+	#include "Lista.c"
 	void yyerror(char *s);
 %}
 
@@ -129,12 +130,9 @@
 
 %%
 
-ARCHIVO							: DOCTYPE_DECLARATION HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG
+ARCHIVO							: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG
 								;
 
-DOCTYPE_DECLARATION				: DOCTYPE_DECLARATION CLOSE
-								| DOCTYPE
-								;
 
 HTML_OPEN_TAG					: HTML
 								| HTML_ CLOSE
@@ -172,6 +170,7 @@ CUERPO_CLOSE					: _BODY
 
 
 %%
+
 
 void yyerror(char *s)
 {
