@@ -1,4 +1,4 @@
-Terminales no usados en gramática
+Terminals unused in grammar
 
    DOCTYPE
    A
@@ -105,52 +105,60 @@ Terminales no usados en gramática
    _UL
 
 
-Gramática
+Rules useless in parser due to conflicts
+
+    3 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG
+
+    4 HTML_OPEN_TAG: HTML
+
+
+State 1 conflicts: 2 reduce/reduce
+State 23 conflicts: 1 reduce/reduce
+
+
+Grammar
 
     0 $accept: ARCHIVO $end
 
     1 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG
 
     2 HTML_OPEN_TAG: HTML
-    3              | HTML_ CLOSE
 
-    4 HTML_CLOSE_TAG: _HTML
+    3 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG
 
-    5 CABEZA: CABEZA_OPEN CABEZA_CLOSE
+    4 HTML_OPEN_TAG: HTML
+    5              | HTML_ CLOSE
 
-<<<<<<< HEAD
-    6 CABEZA_OPEN: CABEZA_OPEN TITULO CABEZA_CLOSE
-=======
-    6 CABEZA_OPEN: CABEZA_OPEN TITULO
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-    7            | HEAD
-    8            | HEAD_ CLOSE
+    6 HTML_CLOSE_TAG: _HTML
 
-    9 CABEZA_CLOSE: _HEAD
+    7 CABEZA: CABEZA_OPEN CABEZA_CLOSE
 
-   10 TITULO: TITULO_OPEN TITULO_CLOSE
+    8 CABEZA_OPEN: CABEZA_OPEN TITULO
+    9            | HEAD
+   10            | HEAD_ CLOSE
 
-   11 TITULO_OPEN: TITULO_OPEN TEXTO
-   12            | TITLE
+   11 CABEZA_CLOSE: _HEAD
 
-   13 TITULO_CLOSE: _TITLE
+   12 TITULO: TITULO_OPEN TITULO_CLOSE
 
-   14 CUERPO: CUERPO_OPEN CUERPO_CLOSE
+   13 TITULO_OPEN: TITULO_OPEN TEXTO
+   14            | TITLE
 
-   15 CUERPO_OPEN: BODY
-   16            | BODY_ CLOSE
+   15 TITULO_CLOSE: _TITLE
 
-   17 CUERPO_CLOSE: _BODY
-<<<<<<< HEAD
-=======
+   16 CUERPO: CUERPO_OPEN CUERPO_CLOSE
 
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+   17 CUERPO_OPEN: BODY
+   18            | BODY_ CLOSE
 
-Terminales con las reglas donde aparecen
+   19 CUERPO_CLOSE: _BODY
+
+
+Terminals, with rules where they appear
 
 $end (0) 0
 error (256)
-TEXTO (258) 11
+TEXTO (258) 13
 DOCTYPE (259)
 A (260)
 _A (261)
@@ -159,9 +167,9 @@ _B (263)
 BLOCKQUOTE (264)
 BLOCKQUOTE_ (265)
 _BLOCKQUOTE (266)
-BODY (267) 15
-BODY_ (268) 16
-_BODY (269) 17
+BODY (267) 17
+BODY_ (268) 18
+_BODY (269) 19
 BR (270)
 _BR (271)
 BUTTON (272)
@@ -208,17 +216,17 @@ _H5 (312)
 H6 (313)
 H6_ (314)
 _H6 (315)
-HEAD (316) 7
-HEAD_ (317) 8
-_HEAD (318) 9
+HEAD (316) 9
+HEAD_ (317) 10
+_HEAD (318) 11
 HEADER (319)
 _HEADER (320)
 HR (321)
 HR_ (322)
 _HR (323)
-HTML (324) 2
-HTML_ (325) 3
-_HTML (326) 4
+HTML (324) 2 4
+HTML_ (325) 5
+_HTML (326) 6
 IMG (327)
 _IMG (328)
 INPUT (329)
@@ -259,44 +267,43 @@ TEXTAREA_ (363)
 _TEXTAREA (364)
 TH (365)
 _TH (366)
-TITLE (367) 12
-_TITLE (368) 13
+TITLE (367) 14
+_TITLE (368) 15
 TR (369)
 _TR (370)
 UL (371)
 _UL (372)
-CLOSE (373) 3 8 16
+CLOSE (373) 5 10 18
 
 
-No terminales con las reglas donde aparecen
+Nonterminals, with rules where they appear
 
 $accept (119)
-    en la izquierda: 0
+    on left: 0
 ARCHIVO (120)
-<<<<<<< HEAD
-    on left: 1, on right: 0
+    on left: 1 3, on right: 0
 HTML_OPEN_TAG (121)
-    on left: 2 3, on right: 1
+    on left: 2 4 5, on right: 1 3
 HTML_CLOSE_TAG (122)
-    on left: 4, on right: 1
+    on left: 6, on right: 1 3
 CABEZA (123)
-    on left: 5, on right: 1
+    on left: 7, on right: 1 3
 CABEZA_OPEN (124)
-    on left: 6 7 8, on right: 5 6
+    on left: 8 9 10, on right: 7 8
 CABEZA_CLOSE (125)
-    on left: 9, on right: 5 6
+    on left: 11, on right: 7
 TITULO (126)
-    on left: 10, on right: 6
+    on left: 12, on right: 8
 TITULO_OPEN (127)
-    on left: 11 12, on right: 10 11
+    on left: 13 14, on right: 12 13
 TITULO_CLOSE (128)
-    on left: 13, on right: 10
+    on left: 15, on right: 12
 CUERPO (129)
-    on left: 14, on right: 1
+    on left: 16, on right: 1 3
 CUERPO_OPEN (130)
-    on left: 15 16, on right: 14
+    on left: 17 18, on right: 16
 CUERPO_CLOSE (131)
-    on left: 17, on right: 14
+    on left: 19, on right: 16
 
 
 state 0
@@ -313,92 +320,46 @@ state 0
 state 1
 
     2 HTML_OPEN_TAG: HTML .
+    4              | HTML .
 
+    HEAD      reduce using rule 2 (HTML_OPEN_TAG)
+    HEAD      [reduce using rule 4 (HTML_OPEN_TAG)]
+    HEAD_     reduce using rule 2 (HTML_OPEN_TAG)
+    HEAD_     [reduce using rule 4 (HTML_OPEN_TAG)]
     $default  reduce using rule 2 (HTML_OPEN_TAG)
-=======
-    en la izquierda: 1, en la derecha: 0
-HTML_OPEN_TAG (121)
-    en la izquierda: 2 3, en la derecha: 1
-HTML_CLOSE_TAG (122)
-    en la izquierda: 4, en la derecha: 1
-CABEZA (123)
-    en la izquierda: 5, en la derecha: 1
-CABEZA_OPEN (124)
-    en la izquierda: 6 7 8, en la derecha: 5 6
-CABEZA_CLOSE (125)
-    en la izquierda: 9, en la derecha: 5
-TITULO (126)
-    en la izquierda: 10, en la derecha: 6
-TITULO_OPEN (127)
-    en la izquierda: 11 12, en la derecha: 10 11
-TITULO_CLOSE (128)
-    en la izquierda: 13, en la derecha: 10
-CUERPO (129)
-    en la izquierda: 14, en la derecha: 1
-CUERPO_OPEN (130)
-    en la izquierda: 15 16, en la derecha: 14
-CUERPO_CLOSE (131)
-    en la izquierda: 17, en la derecha: 14
 
 
-estado 0
-
-    0 $accept: . ARCHIVO $end
-
-    HTML   desplazar e ir al estado 1
-    HTML_  desplazar e ir al estado 2
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    ARCHIVO        ir al estado 3
-    HTML_OPEN_TAG  ir al estado 4
-
-<<<<<<< HEAD
 state 2
 
-    3 HTML_OPEN_TAG: HTML_ . CLOSE
+    5 HTML_OPEN_TAG: HTML_ . CLOSE
 
     CLOSE  shift, and go to state 5
-=======
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
-estado 1
 
-    2 HTML_OPEN_TAG: HTML .
+state 3
 
-<<<<<<< HEAD
     0 $accept: ARCHIVO . $end
 
     $end  shift, and go to state 6
-=======
-    $default  reduce usando la regla 2 (HTML_OPEN_TAG)
 
 
-estado 2
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    3 HTML_OPEN_TAG: HTML_ . CLOSE
-
-<<<<<<< HEAD
 state 4
 
     1 ARCHIVO: HTML_OPEN_TAG . CABEZA CUERPO HTML_CLOSE_TAG
+    3        | HTML_OPEN_TAG . CABEZA CUERPO HTML_CLOSE_TAG
 
     HEAD   shift, and go to state 7
     HEAD_  shift, and go to state 8
 
     CABEZA       go to state 9
     CABEZA_OPEN  go to state 10
-=======
-    CLOSE  desplazar e ir al estado 5
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
 
-estado 3
+state 5
 
-<<<<<<< HEAD
-    3 HTML_OPEN_TAG: HTML_ CLOSE .
+    5 HTML_OPEN_TAG: HTML_ CLOSE .
 
-    $default  reduce using rule 3 (HTML_OPEN_TAG)
+    $default  reduce using rule 5 (HTML_OPEN_TAG)
 
 
 state 6
@@ -410,53 +371,34 @@ state 6
 
 state 7
 
-    7 CABEZA_OPEN: HEAD .
+    9 CABEZA_OPEN: HEAD .
 
-    $default  reduce using rule 7 (CABEZA_OPEN)
-=======
-    0 $accept: ARCHIVO . $end
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    $end  desplazar e ir al estado 6
+    $default  reduce using rule 9 (CABEZA_OPEN)
 
 
-<<<<<<< HEAD
-    8 CABEZA_OPEN: HEAD_ . CLOSE
+state 8
+
+   10 CABEZA_OPEN: HEAD_ . CLOSE
 
     CLOSE  shift, and go to state 11
-=======
-estado 4
-
-    1 ARCHIVO: HTML_OPEN_TAG . CABEZA CUERPO HTML_CLOSE_TAG
-
-    HEAD   desplazar e ir al estado 7
-    HEAD_  desplazar e ir al estado 8
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    CABEZA       ir al estado 9
-    CABEZA_OPEN  ir al estado 10
 
 
-<<<<<<< HEAD
+state 9
+
     1 ARCHIVO: HTML_OPEN_TAG CABEZA . CUERPO HTML_CLOSE_TAG
+    3        | HTML_OPEN_TAG CABEZA . CUERPO HTML_CLOSE_TAG
 
     BODY   shift, and go to state 12
     BODY_  shift, and go to state 13
 
     CUERPO       go to state 14
     CUERPO_OPEN  go to state 15
-=======
-estado 5
-
-    3 HTML_OPEN_TAG: HTML_ CLOSE .
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    $default  reduce usando la regla 3 (HTML_OPEN_TAG)
 
 
-<<<<<<< HEAD
-    5 CABEZA: CABEZA_OPEN . CABEZA_CLOSE
-    6 CABEZA_OPEN: CABEZA_OPEN . TITULO CABEZA_CLOSE
+state 10
+
+    7 CABEZA: CABEZA_OPEN . CABEZA_CLOSE
+    8 CABEZA_OPEN: CABEZA_OPEN . TITULO
 
     _HEAD  shift, and go to state 16
     TITLE  shift, and go to state 17
@@ -464,306 +406,141 @@ estado 5
     CABEZA_CLOSE  go to state 18
     TITULO        go to state 19
     TITULO_OPEN   go to state 20
-=======
-estado 6
-
-    0 $accept: ARCHIVO $end .
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    $default  aceptar
 
 
-<<<<<<< HEAD
-    8 CABEZA_OPEN: HEAD_ CLOSE .
+state 11
 
-    $default  reduce using rule 8 (CABEZA_OPEN)
-=======
-estado 7
+   10 CABEZA_OPEN: HEAD_ CLOSE .
 
-    7 CABEZA_OPEN: HEAD .
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    $default  reduce usando la regla 7 (CABEZA_OPEN)
+    $default  reduce using rule 10 (CABEZA_OPEN)
 
 
-<<<<<<< HEAD
-   15 CUERPO_OPEN: BODY .
+state 12
 
-    $default  reduce using rule 15 (CUERPO_OPEN)
-=======
-estado 8
+   17 CUERPO_OPEN: BODY .
 
-    8 CABEZA_OPEN: HEAD_ . CLOSE
-
-    CLOSE  desplazar e ir al estado 11
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 17 (CUERPO_OPEN)
 
 
-estado 9
+state 13
 
-<<<<<<< HEAD
-   16 CUERPO_OPEN: BODY_ . CLOSE
+   18 CUERPO_OPEN: BODY_ . CLOSE
 
     CLOSE  shift, and go to state 21
-=======
-    1 ARCHIVO: HTML_OPEN_TAG CABEZA . CUERPO HTML_CLOSE_TAG
-
-    BODY   desplazar e ir al estado 12
-    BODY_  desplazar e ir al estado 13
-
-    CUERPO       ir al estado 14
-    CUERPO_OPEN  ir al estado 15
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
 
-estado 10
+state 14
 
-<<<<<<< HEAD
     1 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO . HTML_CLOSE_TAG
+    3        | HTML_OPEN_TAG CABEZA CUERPO . HTML_CLOSE_TAG
 
     _HTML  shift, and go to state 22
 
     HTML_CLOSE_TAG  go to state 23
-=======
-    5 CABEZA: CABEZA_OPEN . CABEZA_CLOSE
-    6 CABEZA_OPEN: CABEZA_OPEN . TITULO
-
-    _HEAD  desplazar e ir al estado 16
-    TITLE  desplazar e ir al estado 17
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    CABEZA_CLOSE  ir al estado 18
-    TITULO        ir al estado 19
-    TITULO_OPEN   ir al estado 20
 
 
-<<<<<<< HEAD
-   14 CUERPO: CUERPO_OPEN . CUERPO_CLOSE
+state 15
+
+   16 CUERPO: CUERPO_OPEN . CUERPO_CLOSE
 
     _BODY  shift, and go to state 24
 
     CUERPO_CLOSE  go to state 25
-=======
-estado 11
-
-    8 CABEZA_OPEN: HEAD_ CLOSE .
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    $default  reduce usando la regla 8 (CABEZA_OPEN)
 
 
-<<<<<<< HEAD
-    9 CABEZA_CLOSE: _HEAD .
+state 16
 
-    $default  reduce using rule 9 (CABEZA_CLOSE)
-=======
-estado 12
+   11 CABEZA_CLOSE: _HEAD .
 
-   15 CUERPO_OPEN: BODY .
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    $default  reduce usando la regla 15 (CUERPO_OPEN)
+    $default  reduce using rule 11 (CABEZA_CLOSE)
 
 
-<<<<<<< HEAD
-   12 TITULO_OPEN: TITLE .
+state 17
 
-    $default  reduce using rule 12 (TITULO_OPEN)
-=======
-estado 13
+   14 TITULO_OPEN: TITLE .
 
-   16 CUERPO_OPEN: BODY_ . CLOSE
-
-    CLOSE  desplazar e ir al estado 21
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 14 (TITULO_OPEN)
 
 
-estado 14
+state 18
 
-<<<<<<< HEAD
-    5 CABEZA: CABEZA_OPEN CABEZA_CLOSE .
+    7 CABEZA: CABEZA_OPEN CABEZA_CLOSE .
 
-    $default  reduce using rule 5 (CABEZA)
-=======
-    1 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO . HTML_CLOSE_TAG
-
-    _HTML  desplazar e ir al estado 22
-
-    HTML_CLOSE_TAG  ir al estado 23
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 7 (CABEZA)
 
 
-estado 15
+state 19
 
-<<<<<<< HEAD
-    6 CABEZA_OPEN: CABEZA_OPEN TITULO . CABEZA_CLOSE
+    8 CABEZA_OPEN: CABEZA_OPEN TITULO .
 
-    _HEAD  shift, and go to state 16
-
-    CABEZA_CLOSE  go to state 26
-=======
-   14 CUERPO: CUERPO_OPEN . CUERPO_CLOSE
-
-    _BODY  desplazar e ir al estado 24
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    CUERPO_CLOSE  ir al estado 25
+    $default  reduce using rule 8 (CABEZA_OPEN)
 
 
-<<<<<<< HEAD
-   10 TITULO: TITULO_OPEN . TITULO_CLOSE
-   11 TITULO_OPEN: TITULO_OPEN . TEXTO
+state 20
 
-    TEXTO   shift, and go to state 27
-    _TITLE  shift, and go to state 28
+   12 TITULO: TITULO_OPEN . TITULO_CLOSE
+   13 TITULO_OPEN: TITULO_OPEN . TEXTO
 
-    TITULO_CLOSE  go to state 29
-=======
-estado 16
+    TEXTO   shift, and go to state 26
+    _TITLE  shift, and go to state 27
 
-    9 CABEZA_CLOSE: _HEAD .
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    $default  reduce usando la regla 9 (CABEZA_CLOSE)
+    TITULO_CLOSE  go to state 28
 
 
-<<<<<<< HEAD
-   16 CUERPO_OPEN: BODY_ CLOSE .
+state 21
 
-    $default  reduce using rule 16 (CUERPO_OPEN)
-=======
-estado 17
+   18 CUERPO_OPEN: BODY_ CLOSE .
 
-   12 TITULO_OPEN: TITLE .
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-    $default  reduce usando la regla 12 (TITULO_OPEN)
+    $default  reduce using rule 18 (CUERPO_OPEN)
 
 
-<<<<<<< HEAD
-    4 HTML_CLOSE_TAG: _HTML .
+state 22
 
-    $default  reduce using rule 4 (HTML_CLOSE_TAG)
-=======
-estado 18
+    6 HTML_CLOSE_TAG: _HTML .
 
-    5 CABEZA: CABEZA_OPEN CABEZA_CLOSE .
-
-    $default  reduce usando la regla 5 (CABEZA)
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 6 (HTML_CLOSE_TAG)
 
 
-estado 19
+state 23
 
-<<<<<<< HEAD
     1 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG .
+    3        | HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG .
 
+    $end      reduce using rule 1 (ARCHIVO)
+    $end      [reduce using rule 3 (ARCHIVO)]
     $default  reduce using rule 1 (ARCHIVO)
-=======
-    6 CABEZA_OPEN: CABEZA_OPEN TITULO .
-
-    $default  reduce usando la regla 6 (CABEZA_OPEN)
-
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
-
-estado 20
-
-   10 TITULO: TITULO_OPEN . TITULO_CLOSE
-   11 TITULO_OPEN: TITULO_OPEN . TEXTO
-
-<<<<<<< HEAD
-   17 CUERPO_CLOSE: _BODY .
-
-    $default  reduce using rule 17 (CUERPO_CLOSE)
-=======
-    TEXTO   desplazar e ir al estado 26
-    _TITLE  desplazar e ir al estado 27
-
-    TITULO_CLOSE  ir al estado 28
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
 
-estado 21
+state 24
 
-<<<<<<< HEAD
-   14 CUERPO: CUERPO_OPEN CUERPO_CLOSE .
+   19 CUERPO_CLOSE: _BODY .
 
-    $default  reduce using rule 14 (CUERPO)
-=======
-   16 CUERPO_OPEN: BODY_ CLOSE .
-
-    $default  reduce usando la regla 16 (CUERPO_OPEN)
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 19 (CUERPO_CLOSE)
 
 
-estado 22
+state 25
 
-<<<<<<< HEAD
-    6 CABEZA_OPEN: CABEZA_OPEN TITULO CABEZA_CLOSE .
+   16 CUERPO: CUERPO_OPEN CUERPO_CLOSE .
 
-    $default  reduce using rule 6 (CABEZA_OPEN)
-=======
-    4 HTML_CLOSE_TAG: _HTML .
-
-    $default  reduce usando la regla 4 (HTML_CLOSE_TAG)
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 16 (CUERPO)
 
 
-estado 23
+state 26
 
-<<<<<<< HEAD
-   11 TITULO_OPEN: TITULO_OPEN TEXTO .
+   13 TITULO_OPEN: TITULO_OPEN TEXTO .
 
-    $default  reduce using rule 11 (TITULO_OPEN)
-=======
-    1 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG .
-
-    $default  reduce usando la regla 1 (ARCHIVO)
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 13 (TITULO_OPEN)
 
 
-estado 24
+state 27
 
-<<<<<<< HEAD
-   13 TITULO_CLOSE: _TITLE .
+   15 TITULO_CLOSE: _TITLE .
 
-    $default  reduce using rule 13 (TITULO_CLOSE)
-=======
-   17 CUERPO_CLOSE: _BODY .
-
-    $default  reduce usando la regla 17 (CUERPO_CLOSE)
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 15 (TITULO_CLOSE)
 
 
-estado 25
+state 28
 
-<<<<<<< HEAD
-   10 TITULO: TITULO_OPEN TITULO_CLOSE .
+   12 TITULO: TITULO_OPEN TITULO_CLOSE .
 
-    $default  reduce using rule 10 (TITULO)
-=======
-   14 CUERPO: CUERPO_OPEN CUERPO_CLOSE .
-
-    $default  reduce usando la regla 14 (CUERPO)
-
-
-estado 26
-
-   11 TITULO_OPEN: TITULO_OPEN TEXTO .
-
-    $default  reduce usando la regla 11 (TITULO_OPEN)
-
-
-estado 27
-
-   13 TITULO_CLOSE: _TITLE .
-
-    $default  reduce usando la regla 13 (TITULO_CLOSE)
-
-
-estado 28
-
-   10 TITULO: TITULO_OPEN TITULO_CLOSE .
-
-    $default  reduce usando la regla 10 (TITULO)
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
+    $default  reduce using rule 12 (TITULO)

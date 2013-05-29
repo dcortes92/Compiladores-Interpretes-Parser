@@ -1,12 +1,8 @@
 %{
 	#include <stdio.h>
 	#include <assert.h>
-<<<<<<< HEAD
-	#include "Lista.c"
-=======
 	#include "Nodo.h"
 	#include "NodoPila.h"
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 	void yyerror(char *s);
 %}
 
@@ -135,18 +131,16 @@
 
 %%
 
-<<<<<<< HEAD
 ARCHIVO							: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG
 								;
 
 
 HTML_OPEN_TAG					: HTML
-=======
+
 ARCHIVO							: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG {imprimir();}
 								;
 
 HTML_OPEN_TAG					: HTML {insertar("html");}
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 								| HTML_ CLOSE
 								;
 
@@ -183,14 +177,11 @@ CUERPO_CLOSE					: _BODY {insertar("/body");}
 
 %%
 
-<<<<<<< HEAD
-=======
 /*Variables para el árbol de parsing*/
 PTRNODOPILA ptrPila = NULL;
 struct nodoLista *ptr = NULL;
 int cantidadTabsPorTag = 0;
 /*Fin variables para el árbol de parsing*/
->>>>>>> e7628f453dc292b0610ba064ccf2f0719d6229c5
 
 void yyerror(char *s)
 {
