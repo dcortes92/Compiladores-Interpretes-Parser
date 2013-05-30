@@ -1,108 +1,15 @@
 Terminals unused in grammar
 
    DOCTYPE
-   A
-   _A
-   B
-   _B
-   BLOCKQUOTE
-   BLOCKQUOTE_
-   _BLOCKQUOTE
-   BR
-   _BR
-   BUTTON
-   BUTTON_
-   _BUTTON
-   CAPTION
-   CAPTION_
-   _CAPTION
-   CODE
-   _CODE
-   DIV
-   DIV_
-   _DIV
-   DL
-   _DL
-   DT
-   _DT
-   DD
-   _DD
-   EM
-   _EM
-   EMBED
-   _EMBED
-   FOOTER
-   _FOOTER
-   FORM
-   FORM_
-   _FORM
-   H1
-   H1_
-   _H1
-   H2
-   H2_
-   _H2
-   H3
-   H3_
-   _H3
-   H4
-   H4_
-   _H4
-   H5
-   H5_
-   _H5
-   H6
-   H6_
-   _H6
    HEADER
    _HEADER
-   HR
-   HR_
-   _HR
-   IMG
-   _IMG
-   INPUT
-   _INPUT
-   LI
-   LI_
-   _LI
-   LINK
-   _LINK
-   META
-   _META
    OBJECT
    _OBJECT
-   OL
-   OL_
-   _OL
-   P
-   P_
-   _P
-   PRE
-   PRE_
-   _PRE
-   SCRIPT
-   SCRIPT_
-   _SCRIPT
-   SPAN
-   _SPAN
-   STRONG
-   _STRONG
-   STYLE
-   _STYLE
-   TABLE
-   _TABLE
-   TD
-   _TD
-   TEXTAREA
    TEXTAREA_
-   _TEXTAREA
-   TH
-   _TH
-   TR
-   _TR
-   UL
    _UL
+
+
+State 122 conflicts: 1 shift/reduce
 
 
 Grammar
@@ -119,176 +26,400 @@ Grammar
     5 CABEZA: CABEZA_OPEN CABEZA_CLOSE
 
     6 CABEZA_OPEN: CABEZA_OPEN TITULO
-    7            | HEAD
-    8            | HEAD_ CLOSE
+    7            | CABEZA_OPEN STYLE_TAG
+    8            | CABEZA_OPEN LINK_TAG
+    9            | CABEZA_OPEN META_TAG
+   10            | CABEZA_OPEN SCRIPT_TAG
+   11            | HEAD
+   12            | HEAD_ CLOSE
 
-    9 CABEZA_CLOSE: _HEAD
+   13 CABEZA_CLOSE: _HEAD
 
-   10 TITULO: TITULO_OPEN TITULO_CLOSE
+   14 TITULO: TITULO_OPEN TITULO_CLOSE
 
-   11 TITULO_OPEN: TITULO_OPEN TEXTO
-   12            | TITLE
+   15 TITULO_OPEN: TITULO_OPEN TEXTUAL
+   16            | TITLE
 
-   13 TITULO_CLOSE: _TITLE
+   17 TITULO_CLOSE: _TITLE
 
-   14 CUERPO: CUERPO_OPEN CUERPO_CLOSE
+   18 CUERPO: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE
 
-   15 CUERPO_OPEN: BODY
-   16            | BODY_ CLOSE
+   19 CUERPO_OPEN: BODY
+   20            | BODY_ CLOSE
 
-   17 CUERPO_CLOSE: _BODY
+   21 CUERPO_CLOSE: _BODY
+
+   22 CONTENIDO_BODY: A_TAG
+   23               | B_TAG
+   24               | BLOCKQUOTE_TAG
+   25               | BR_TAG
+   26               | BUTTON_TAG
+   27               | CODE_TAG
+   28               | DIV_TAG
+   29               | DL_TAG
+   30               | EMBED_TAG
+   31               | FORM_TAG
+   32               | H1_H6_TAG
+   33               | HR_TAG
+   34               | IMG_TAG
+   35               | INPUT_TAG
+   36               | LINK_TAG
+   37               | OL_TAG
+   38               | PRE_TAG
+   39               | SCRIPT_TAG
+   40               | TABLE_TAG
+   41               | TEXTAREA_TAG
+   42               | UL_TAG
+   43               | TEXTUAL
+
+   44 A_TAG: A _A
+
+   45 B_TAG: B _B
+
+   46 BLOCKQUOTE_TAG: BLOCKQUOTE_TAG_OPEN P_TAG BLOCKQUOTE_TAG_CLOSE
+   47               | BLOCKQUOTE_TAG_OPEN TEXTUAL BLOCKQUOTE_TAG_CLOSE
+
+   48 BLOCKQUOTE_TAG_OPEN: BLOCKQUOTE
+   49                    | BLOCKQUOTE_
+
+   50 BLOCKQUOTE_TAG_CLOSE: _BLOCKQUOTE
+
+   51 BR_TAG: BR _BR
+
+   52 BUTTON_TAG: BUTTON_TAG_OPEN IMG_TAG BUTTON_TAG_CLOSE
+   53           | BUTTON_TAG_OPEN TEXTUAL BUTTON_TAG_CLOSE
+
+   54 BUTTON_TAG_OPEN: BUTTON
+   55                | BUTTON_
+
+   56 BUTTON_TAG_CLOSE: _BUTTON
+
+   57 CODE_TAG: CODE TEXTUAL _CODE
+
+   58 DIV_TAG: DIV_TAG CONTENIDO_BODY _DIV
+   59        | DIV
+   60        | DIV_
+
+   61 DL_TAG: DL DD_TAG _DL
+   62       | DL DT_TAG _DL
+
+   63 DD_TAG: DD_TAG TEXTUAL _DD
+   64       | DD
+
+   65 DT_TAG: DT_TAG TEXTUAL _DT
+   66       | DT
+
+   67 EM_TAG: EM TEXTUAL _EM
+
+   68 EMBED_TAG: EMBED _EMBED
+
+   69 FORM_TAG: FORM_TAG INPUT_TAG _FORM
+   70         | FORM_TAG TEXTAREA_TAG _FORM
+   71         | FORM_TAG BUTTON_TAG _FORM
+   72         | FORM
+   73         | FORM_
+
+   74 H1_H6_TAG: H1_H6_TAG TEXTUAL _H1_H6
+   75          | H1_H6
+   76          | H1_H6_
+
+   77 HR_TAG: HR_TAG _HR
+   78       | HR
+   79       | HR_
+
+   80 IMG_TAG: IMG _IMG
+
+   81 INPUT_TAG: INPUT _INPUT
+
+   82 OL_TAG: OL_TAG LI_TAG _OL
+   83       | OL
+   84       | OL_
+
+   85 UL_TAG: UL_TAG LI_TAG _OL
+   86       | UL
+
+   87 LI_TAG: LI_TAG TEXTUAL _LI
+   88       | LI
+   89       | LI_
+
+   90 LINK_TAG: LINK _LINK
+
+   91 META_TAG: META _META
+
+   92 P_TAG: P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P
+
+   93 P_TAG_OPEN: P
+   94           | P_
+
+   95 PRE_TAG: PRE_TAG TEXTUAL _PRE
+   96        | PRE
+   97        | PRE_
+
+   98 SCRIPT_TAG: SCRIPT_TAG TEXTUAL _SCRIPT
+   99           | SCRIPT
+  100           | SCRIPT_
+
+  101 SPAN_TAG: SPAN TEXTUAL _SPAN
+  102         | /* empty */
+
+  103 STRONG_TAG: STRONG TEXTUAL _STRONG
+
+  104 STYLE_TAG: STYLE TEXTUAL _STYLE
+
+  105 TABLE_TAG: TABLE CAPTION_TAG TR_TAG _TABLE
+
+  106 CAPTION_TAG: CAPTION_TAG_OPEN TEXTUAL CAPTION_TAG_CLOSE
+  107            | /* empty */
+
+  108 CAPTION_TAG_OPEN: CAPTION
+  109                 | CAPTION_
+
+  110 CAPTION_TAG_CLOSE: _CAPTION
+
+  111 TR_TAG: TR_TAG TH_TD_TAG _TR
+  112       | TR
+
+  113 TH_TD_TAG: TH_TAG
+  114          | TD_TAG
+
+  115 TH_TAG: TH_TAG TEXTUAL _TH
+  116       | TH
+
+  117 TD_TAG: TD_TAG TEXTUAL _TD
+  118       | TD
+
+  119 TEXTAREA_TAG: TEXTAREA _TEXTAREA
+  120             | TEXTAREA TEXTUAL _TEXTAREA
+
+  121 TEXTUAL: P_TAG
+  122        | STRONG_TAG
+  123        | EM_TAG
+  124        | TEXTO
 
 
 Terminals, with rules where they appear
 
 $end (0) 0
 error (256)
-TEXTO (258) 11
+TEXTO (258) 124
 DOCTYPE (259)
-A (260)
-_A (261)
-B (262)
-_B (263)
-BLOCKQUOTE (264)
-BLOCKQUOTE_ (265)
-_BLOCKQUOTE (266)
-BODY (267) 15
-BODY_ (268) 16
-_BODY (269) 17
-BR (270)
-_BR (271)
-BUTTON (272)
-BUTTON_ (273)
-_BUTTON (274)
-CAPTION (275)
-CAPTION_ (276)
-_CAPTION (277)
-CODE (278)
-_CODE (279)
-DIV (280)
-DIV_ (281)
-_DIV (282)
-DL (283)
-_DL (284)
-DT (285)
-_DT (286)
-DD (287)
-_DD (288)
-EM (289)
-_EM (290)
-EMBED (291)
-_EMBED (292)
-FOOTER (293)
-_FOOTER (294)
-FORM (295)
-FORM_ (296)
-_FORM (297)
-H1 (298)
-H1_ (299)
-_H1 (300)
-H2 (301)
-H2_ (302)
-_H2 (303)
-H3 (304)
-H3_ (305)
-_H3 (306)
-H4 (307)
-H4_ (308)
-_H4 (309)
-H5 (310)
-H5_ (311)
-_H5 (312)
-H6 (313)
-H6_ (314)
-_H6 (315)
-HEAD (316) 7
-HEAD_ (317) 8
-_HEAD (318) 9
-HEADER (319)
-_HEADER (320)
-HR (321)
-HR_ (322)
-_HR (323)
-HTML (324) 2
-HTML_ (325) 3
-_HTML (326) 4
-IMG (327)
-_IMG (328)
-INPUT (329)
-_INPUT (330)
-LI (331)
-LI_ (332)
-_LI (333)
-LINK (334)
-_LINK (335)
-META (336)
-_META (337)
-OBJECT (338)
-_OBJECT (339)
-OL (340)
-OL_ (341)
-_OL (342)
-P (343)
-P_ (344)
-_P (345)
-PRE (346)
-PRE_ (347)
-_PRE (348)
-SCRIPT (349)
-SCRIPT_ (350)
-_SCRIPT (351)
-SPAN (352)
-_SPAN (353)
-STRONG (354)
-_STRONG (355)
-STYLE (356)
-_STYLE (357)
-TABLE (358)
-_TABLE (359)
-TD (360)
-_TD (361)
-TEXTAREA (362)
-TEXTAREA_ (363)
-_TEXTAREA (364)
-TH (365)
-_TH (366)
-TITLE (367) 12
-_TITLE (368) 13
-TR (369)
-_TR (370)
-UL (371)
-_UL (372)
-CLOSE (373) 3 8 16
+A (260) 44
+_A (261) 44
+B (262) 45
+_B (263) 45
+BLOCKQUOTE (264) 48
+BLOCKQUOTE_ (265) 49
+_BLOCKQUOTE (266) 50
+BODY (267) 19
+BODY_ (268) 20
+_BODY (269) 21
+BR (270) 51
+_BR (271) 51
+BUTTON (272) 54
+BUTTON_ (273) 55
+_BUTTON (274) 56
+CAPTION (275) 108
+CAPTION_ (276) 109
+_CAPTION (277) 110
+CODE (278) 57
+_CODE (279) 57
+DIV (280) 59
+DIV_ (281) 60
+_DIV (282) 58
+DL (283) 61 62
+_DL (284) 61 62
+DT (285) 66
+_DT (286) 65
+DD (287) 64
+_DD (288) 63
+EM (289) 67
+_EM (290) 67
+EMBED (291) 68
+_EMBED (292) 68
+FORM (293) 72
+FORM_ (294) 73
+_FORM (295) 69 70 71
+H1_H6_ (296) 76
+H1_H6 (297) 75
+_H1_H6 (298) 74
+HEAD (299) 11
+HEAD_ (300) 12
+_HEAD (301) 13
+HEADER (302)
+_HEADER (303)
+HR (304) 78
+HR_ (305) 79
+_HR (306) 77
+HTML (307) 2
+HTML_ (308) 3
+_HTML (309) 4
+IMG (310) 80
+_IMG (311) 80
+INPUT (312) 81
+_INPUT (313) 81
+LI (314) 88
+LI_ (315) 89
+_LI (316) 87
+LINK (317) 90
+_LINK (318) 90
+META (319) 91
+_META (320) 91
+OBJECT (321)
+_OBJECT (322)
+OL (323) 83
+OL_ (324) 84
+_OL (325) 82 85
+P (326) 93
+P_ (327) 94
+_P (328) 92
+PRE (329) 96
+PRE_ (330) 97
+_PRE (331) 95
+SCRIPT (332) 99
+SCRIPT_ (333) 100
+_SCRIPT (334) 98
+SPAN (335) 101
+_SPAN (336) 101
+STRONG (337) 103
+_STRONG (338) 103
+STYLE (339) 104
+_STYLE (340) 104
+TABLE (341) 105
+_TABLE (342) 105
+TD (343) 118
+_TD (344) 117
+TEXTAREA (345) 119 120
+TEXTAREA_ (346)
+_TEXTAREA (347) 119 120
+TH (348) 116
+_TH (349) 115
+TITLE (350) 16
+_TITLE (351) 17
+TR (352) 112
+_TR (353) 111
+UL (354) 86
+_UL (355)
+CLOSE (356) 3 12 20
 
 
 Nonterminals, with rules where they appear
 
-$accept (119)
+$accept (102)
     on left: 0
-ARCHIVO (120)
+ARCHIVO (103)
     on left: 1, on right: 0
-HTML_OPEN_TAG (121)
+HTML_OPEN_TAG (104)
     on left: 2 3, on right: 1
-HTML_CLOSE_TAG (122)
+HTML_CLOSE_TAG (105)
     on left: 4, on right: 1
-CABEZA (123)
+CABEZA (106)
     on left: 5, on right: 1
-CABEZA_OPEN (124)
-    on left: 6 7 8, on right: 5 6
-CABEZA_CLOSE (125)
-    on left: 9, on right: 5
-TITULO (126)
-    on left: 10, on right: 6
-TITULO_OPEN (127)
-    on left: 11 12, on right: 10 11
-TITULO_CLOSE (128)
-    on left: 13, on right: 10
-CUERPO (129)
-    on left: 14, on right: 1
-CUERPO_OPEN (130)
-    on left: 15 16, on right: 14
-CUERPO_CLOSE (131)
+CABEZA_OPEN (107)
+    on left: 6 7 8 9 10 11 12, on right: 5 6 7 8 9 10
+CABEZA_CLOSE (108)
+    on left: 13, on right: 5
+TITULO (109)
+    on left: 14, on right: 6
+TITULO_OPEN (110)
+    on left: 15 16, on right: 14 15
+TITULO_CLOSE (111)
     on left: 17, on right: 14
+CUERPO (112)
+    on left: 18, on right: 1
+CUERPO_OPEN (113)
+    on left: 19 20, on right: 18
+CUERPO_CLOSE (114)
+    on left: 21, on right: 18
+CONTENIDO_BODY (115)
+    on left: 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39
+    40 41 42 43, on right: 18 58
+A_TAG (116)
+    on left: 44, on right: 22
+B_TAG (117)
+    on left: 45, on right: 23
+BLOCKQUOTE_TAG (118)
+    on left: 46 47, on right: 24
+BLOCKQUOTE_TAG_OPEN (119)
+    on left: 48 49, on right: 46 47
+BLOCKQUOTE_TAG_CLOSE (120)
+    on left: 50, on right: 46 47
+BR_TAG (121)
+    on left: 51, on right: 25
+BUTTON_TAG (122)
+    on left: 52 53, on right: 26 71
+BUTTON_TAG_OPEN (123)
+    on left: 54 55, on right: 52 53
+BUTTON_TAG_CLOSE (124)
+    on left: 56, on right: 52 53
+CODE_TAG (125)
+    on left: 57, on right: 27
+DIV_TAG (126)
+    on left: 58 59 60, on right: 28 58
+DL_TAG (127)
+    on left: 61 62, on right: 29
+DD_TAG (128)
+    on left: 63 64, on right: 61 63
+DT_TAG (129)
+    on left: 65 66, on right: 62 65
+EM_TAG (130)
+    on left: 67, on right: 123
+EMBED_TAG (131)
+    on left: 68, on right: 30
+FORM_TAG (132)
+    on left: 69 70 71 72 73, on right: 31 69 70 71
+H1_H6_TAG (133)
+    on left: 74 75 76, on right: 32 74
+HR_TAG (134)
+    on left: 77 78 79, on right: 33 77
+IMG_TAG (135)
+    on left: 80, on right: 34 52
+INPUT_TAG (136)
+    on left: 81, on right: 35 69
+OL_TAG (137)
+    on left: 82 83 84, on right: 37 82
+UL_TAG (138)
+    on left: 85 86, on right: 42 85
+LI_TAG (139)
+    on left: 87 88 89, on right: 82 85 87
+LINK_TAG (140)
+    on left: 90, on right: 8 36
+META_TAG (141)
+    on left: 91, on right: 9
+P_TAG (142)
+    on left: 92, on right: 46 121
+P_TAG_OPEN (143)
+    on left: 93 94, on right: 92
+PRE_TAG (144)
+    on left: 95 96 97, on right: 38 95
+SCRIPT_TAG (145)
+    on left: 98 99 100, on right: 10 39 98
+SPAN_TAG (146)
+    on left: 101 102, on right: 92
+STRONG_TAG (147)
+    on left: 103, on right: 122
+STYLE_TAG (148)
+    on left: 104, on right: 7
+TABLE_TAG (149)
+    on left: 105, on right: 40
+CAPTION_TAG (150)
+    on left: 106 107, on right: 105
+CAPTION_TAG_OPEN (151)
+    on left: 108 109, on right: 106
+CAPTION_TAG_CLOSE (152)
+    on left: 110, on right: 106
+TR_TAG (153)
+    on left: 111 112, on right: 105 111
+TH_TD_TAG (154)
+    on left: 113 114, on right: 111
+TH_TAG (155)
+    on left: 115 116, on right: 113 115
+TD_TAG (156)
+    on left: 117 118, on right: 114 117
+TEXTAREA_TAG (157)
+    on left: 119 120, on right: 41 70
+TEXTUAL (158)
+    on left: 121 122 123 124, on right: 15 43 47 53 57 63 65 67 74
+    87 92 95 98 101 103 104 106 115 117 120
 
 
 state 0
@@ -350,14 +481,14 @@ state 6
 
 state 7
 
-    7 CABEZA_OPEN: HEAD .
+   11 CABEZA_OPEN: HEAD .
 
-    $default  reduce using rule 7 (CABEZA_OPEN)
+    $default  reduce using rule 11 (CABEZA_OPEN)
 
 
 state 8
 
-    8 CABEZA_OPEN: HEAD_ . CLOSE
+   12 CABEZA_OPEN: HEAD_ . CLOSE
 
     CLOSE  shift, and go to state 11
 
@@ -377,144 +508,1711 @@ state 10
 
     5 CABEZA: CABEZA_OPEN . CABEZA_CLOSE
     6 CABEZA_OPEN: CABEZA_OPEN . TITULO
+    7            | CABEZA_OPEN . STYLE_TAG
+    8            | CABEZA_OPEN . LINK_TAG
+    9            | CABEZA_OPEN . META_TAG
+   10            | CABEZA_OPEN . SCRIPT_TAG
 
-    _HEAD  shift, and go to state 16
-    TITLE  shift, and go to state 17
+    _HEAD    shift, and go to state 16
+    LINK     shift, and go to state 17
+    META     shift, and go to state 18
+    SCRIPT   shift, and go to state 19
+    SCRIPT_  shift, and go to state 20
+    STYLE    shift, and go to state 21
+    TITLE    shift, and go to state 22
 
-    CABEZA_CLOSE  go to state 18
-    TITULO        go to state 19
-    TITULO_OPEN   go to state 20
+    CABEZA_CLOSE  go to state 23
+    TITULO        go to state 24
+    TITULO_OPEN   go to state 25
+    LINK_TAG      go to state 26
+    META_TAG      go to state 27
+    SCRIPT_TAG    go to state 28
+    STYLE_TAG     go to state 29
 
 
 state 11
 
-    8 CABEZA_OPEN: HEAD_ CLOSE .
+   12 CABEZA_OPEN: HEAD_ CLOSE .
 
-    $default  reduce using rule 8 (CABEZA_OPEN)
+    $default  reduce using rule 12 (CABEZA_OPEN)
 
 
 state 12
 
-   15 CUERPO_OPEN: BODY .
+   19 CUERPO_OPEN: BODY .
 
-    $default  reduce using rule 15 (CUERPO_OPEN)
+    $default  reduce using rule 19 (CUERPO_OPEN)
 
 
 state 13
 
-   16 CUERPO_OPEN: BODY_ . CLOSE
+   20 CUERPO_OPEN: BODY_ . CLOSE
 
-    CLOSE  shift, and go to state 21
+    CLOSE  shift, and go to state 30
 
 
 state 14
 
     1 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO . HTML_CLOSE_TAG
 
-    _HTML  shift, and go to state 22
+    _HTML  shift, and go to state 31
 
-    HTML_CLOSE_TAG  go to state 23
+    HTML_CLOSE_TAG  go to state 32
 
 
 state 15
 
-   14 CUERPO: CUERPO_OPEN . CUERPO_CLOSE
+   18 CUERPO: CUERPO_OPEN . CONTENIDO_BODY CUERPO_CLOSE
 
-    _BODY  shift, and go to state 24
+    TEXTO        shift, and go to state 33
+    A            shift, and go to state 34
+    B            shift, and go to state 35
+    BLOCKQUOTE   shift, and go to state 36
+    BLOCKQUOTE_  shift, and go to state 37
+    BR           shift, and go to state 38
+    BUTTON       shift, and go to state 39
+    BUTTON_      shift, and go to state 40
+    CODE         shift, and go to state 41
+    DIV          shift, and go to state 42
+    DIV_         shift, and go to state 43
+    DL           shift, and go to state 44
+    EM           shift, and go to state 45
+    EMBED        shift, and go to state 46
+    FORM         shift, and go to state 47
+    FORM_        shift, and go to state 48
+    H1_H6_       shift, and go to state 49
+    H1_H6        shift, and go to state 50
+    HR           shift, and go to state 51
+    HR_          shift, and go to state 52
+    IMG          shift, and go to state 53
+    INPUT        shift, and go to state 54
+    LINK         shift, and go to state 17
+    OL           shift, and go to state 55
+    OL_          shift, and go to state 56
+    P            shift, and go to state 57
+    P_           shift, and go to state 58
+    PRE          shift, and go to state 59
+    PRE_         shift, and go to state 60
+    SCRIPT       shift, and go to state 19
+    SCRIPT_      shift, and go to state 20
+    STRONG       shift, and go to state 61
+    TABLE        shift, and go to state 62
+    TEXTAREA     shift, and go to state 63
+    UL           shift, and go to state 64
 
-    CUERPO_CLOSE  go to state 25
+    CONTENIDO_BODY       go to state 65
+    A_TAG                go to state 66
+    B_TAG                go to state 67
+    BLOCKQUOTE_TAG       go to state 68
+    BLOCKQUOTE_TAG_OPEN  go to state 69
+    BR_TAG               go to state 70
+    BUTTON_TAG           go to state 71
+    BUTTON_TAG_OPEN      go to state 72
+    CODE_TAG             go to state 73
+    DIV_TAG              go to state 74
+    DL_TAG               go to state 75
+    EM_TAG               go to state 76
+    EMBED_TAG            go to state 77
+    FORM_TAG             go to state 78
+    H1_H6_TAG            go to state 79
+    HR_TAG               go to state 80
+    IMG_TAG              go to state 81
+    INPUT_TAG            go to state 82
+    OL_TAG               go to state 83
+    UL_TAG               go to state 84
+    LINK_TAG             go to state 85
+    P_TAG                go to state 86
+    P_TAG_OPEN           go to state 87
+    PRE_TAG              go to state 88
+    SCRIPT_TAG           go to state 89
+    STRONG_TAG           go to state 90
+    TABLE_TAG            go to state 91
+    TEXTAREA_TAG         go to state 92
+    TEXTUAL              go to state 93
 
 
 state 16
 
-    9 CABEZA_CLOSE: _HEAD .
+   13 CABEZA_CLOSE: _HEAD .
 
-    $default  reduce using rule 9 (CABEZA_CLOSE)
+    $default  reduce using rule 13 (CABEZA_CLOSE)
 
 
 state 17
 
-   12 TITULO_OPEN: TITLE .
+   90 LINK_TAG: LINK . _LINK
 
-    $default  reduce using rule 12 (TITULO_OPEN)
+    _LINK  shift, and go to state 94
 
 
 state 18
+
+   91 META_TAG: META . _META
+
+    _META  shift, and go to state 95
+
+
+state 19
+
+   99 SCRIPT_TAG: SCRIPT .
+
+    $default  reduce using rule 99 (SCRIPT_TAG)
+
+
+state 20
+
+  100 SCRIPT_TAG: SCRIPT_ .
+
+    $default  reduce using rule 100 (SCRIPT_TAG)
+
+
+state 21
+
+  104 STYLE_TAG: STYLE . TEXTUAL _STYLE
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 96
+
+
+state 22
+
+   16 TITULO_OPEN: TITLE .
+
+    $default  reduce using rule 16 (TITULO_OPEN)
+
+
+state 23
 
     5 CABEZA: CABEZA_OPEN CABEZA_CLOSE .
 
     $default  reduce using rule 5 (CABEZA)
 
 
-state 19
+state 24
 
     6 CABEZA_OPEN: CABEZA_OPEN TITULO .
 
     $default  reduce using rule 6 (CABEZA_OPEN)
 
 
-state 20
+state 25
 
-   10 TITULO: TITULO_OPEN . TITULO_CLOSE
-   11 TITULO_OPEN: TITULO_OPEN . TEXTO
+   14 TITULO: TITULO_OPEN . TITULO_CLOSE
+   15 TITULO_OPEN: TITULO_OPEN . TEXTUAL
 
-    TEXTO   shift, and go to state 26
-    _TITLE  shift, and go to state 27
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+    _TITLE  shift, and go to state 97
 
-    TITULO_CLOSE  go to state 28
+    TITULO_CLOSE  go to state 98
+    EM_TAG        go to state 76
+    P_TAG         go to state 86
+    P_TAG_OPEN    go to state 87
+    STRONG_TAG    go to state 90
+    TEXTUAL       go to state 99
 
 
-state 21
+state 26
 
-   16 CUERPO_OPEN: BODY_ CLOSE .
+    8 CABEZA_OPEN: CABEZA_OPEN LINK_TAG .
 
-    $default  reduce using rule 16 (CUERPO_OPEN)
+    $default  reduce using rule 8 (CABEZA_OPEN)
 
 
-state 22
+state 27
+
+    9 CABEZA_OPEN: CABEZA_OPEN META_TAG .
+
+    $default  reduce using rule 9 (CABEZA_OPEN)
+
+
+state 28
+
+   10 CABEZA_OPEN: CABEZA_OPEN SCRIPT_TAG .
+   98 SCRIPT_TAG: SCRIPT_TAG . TEXTUAL _SCRIPT
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    $default  reduce using rule 10 (CABEZA_OPEN)
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 100
+
+
+state 29
+
+    7 CABEZA_OPEN: CABEZA_OPEN STYLE_TAG .
+
+    $default  reduce using rule 7 (CABEZA_OPEN)
+
+
+state 30
+
+   20 CUERPO_OPEN: BODY_ CLOSE .
+
+    $default  reduce using rule 20 (CUERPO_OPEN)
+
+
+state 31
 
     4 HTML_CLOSE_TAG: _HTML .
 
     $default  reduce using rule 4 (HTML_CLOSE_TAG)
 
 
-state 23
+state 32
 
     1 ARCHIVO: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG .
 
     $default  reduce using rule 1 (ARCHIVO)
 
 
-state 24
+state 33
 
-   17 CUERPO_CLOSE: _BODY .
+  124 TEXTUAL: TEXTO .
 
-    $default  reduce using rule 17 (CUERPO_CLOSE)
-
-
-state 25
-
-   14 CUERPO: CUERPO_OPEN CUERPO_CLOSE .
-
-    $default  reduce using rule 14 (CUERPO)
+    $default  reduce using rule 124 (TEXTUAL)
 
 
-state 26
+state 34
 
-   11 TITULO_OPEN: TITULO_OPEN TEXTO .
+   44 A_TAG: A . _A
 
-    $default  reduce using rule 11 (TITULO_OPEN)
-
-
-state 27
-
-   13 TITULO_CLOSE: _TITLE .
-
-    $default  reduce using rule 13 (TITULO_CLOSE)
+    _A  shift, and go to state 101
 
 
-state 28
+state 35
 
-   10 TITULO: TITULO_OPEN TITULO_CLOSE .
+   45 B_TAG: B . _B
 
-    $default  reduce using rule 10 (TITULO)
+    _B  shift, and go to state 102
+
+
+state 36
+
+   48 BLOCKQUOTE_TAG_OPEN: BLOCKQUOTE .
+
+    $default  reduce using rule 48 (BLOCKQUOTE_TAG_OPEN)
+
+
+state 37
+
+   49 BLOCKQUOTE_TAG_OPEN: BLOCKQUOTE_ .
+
+    $default  reduce using rule 49 (BLOCKQUOTE_TAG_OPEN)
+
+
+state 38
+
+   51 BR_TAG: BR . _BR
+
+    _BR  shift, and go to state 103
+
+
+state 39
+
+   54 BUTTON_TAG_OPEN: BUTTON .
+
+    $default  reduce using rule 54 (BUTTON_TAG_OPEN)
+
+
+state 40
+
+   55 BUTTON_TAG_OPEN: BUTTON_ .
+
+    $default  reduce using rule 55 (BUTTON_TAG_OPEN)
+
+
+state 41
+
+   57 CODE_TAG: CODE . TEXTUAL _CODE
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 104
+
+
+state 42
+
+   59 DIV_TAG: DIV .
+
+    $default  reduce using rule 59 (DIV_TAG)
+
+
+state 43
+
+   60 DIV_TAG: DIV_ .
+
+    $default  reduce using rule 60 (DIV_TAG)
+
+
+state 44
+
+   61 DL_TAG: DL . DD_TAG _DL
+   62       | DL . DT_TAG _DL
+
+    DT  shift, and go to state 105
+    DD  shift, and go to state 106
+
+    DD_TAG  go to state 107
+    DT_TAG  go to state 108
+
+
+state 45
+
+   67 EM_TAG: EM . TEXTUAL _EM
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 109
+
+
+state 46
+
+   68 EMBED_TAG: EMBED . _EMBED
+
+    _EMBED  shift, and go to state 110
+
+
+state 47
+
+   72 FORM_TAG: FORM .
+
+    $default  reduce using rule 72 (FORM_TAG)
+
+
+state 48
+
+   73 FORM_TAG: FORM_ .
+
+    $default  reduce using rule 73 (FORM_TAG)
+
+
+state 49
+
+   76 H1_H6_TAG: H1_H6_ .
+
+    $default  reduce using rule 76 (H1_H6_TAG)
+
+
+state 50
+
+   75 H1_H6_TAG: H1_H6 .
+
+    $default  reduce using rule 75 (H1_H6_TAG)
+
+
+state 51
+
+   78 HR_TAG: HR .
+
+    $default  reduce using rule 78 (HR_TAG)
+
+
+state 52
+
+   79 HR_TAG: HR_ .
+
+    $default  reduce using rule 79 (HR_TAG)
+
+
+state 53
+
+   80 IMG_TAG: IMG . _IMG
+
+    _IMG  shift, and go to state 111
+
+
+state 54
+
+   81 INPUT_TAG: INPUT . _INPUT
+
+    _INPUT  shift, and go to state 112
+
+
+state 55
+
+   83 OL_TAG: OL .
+
+    $default  reduce using rule 83 (OL_TAG)
+
+
+state 56
+
+   84 OL_TAG: OL_ .
+
+    $default  reduce using rule 84 (OL_TAG)
+
+
+state 57
+
+   93 P_TAG_OPEN: P .
+
+    $default  reduce using rule 93 (P_TAG_OPEN)
+
+
+state 58
+
+   94 P_TAG_OPEN: P_ .
+
+    $default  reduce using rule 94 (P_TAG_OPEN)
+
+
+state 59
+
+   96 PRE_TAG: PRE .
+
+    $default  reduce using rule 96 (PRE_TAG)
+
+
+state 60
+
+   97 PRE_TAG: PRE_ .
+
+    $default  reduce using rule 97 (PRE_TAG)
+
+
+state 61
+
+  103 STRONG_TAG: STRONG . TEXTUAL _STRONG
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 113
+
+
+state 62
+
+  105 TABLE_TAG: TABLE . CAPTION_TAG TR_TAG _TABLE
+
+    CAPTION   shift, and go to state 114
+    CAPTION_  shift, and go to state 115
+
+    $default  reduce using rule 107 (CAPTION_TAG)
+
+    CAPTION_TAG       go to state 116
+    CAPTION_TAG_OPEN  go to state 117
+
+
+state 63
+
+  119 TEXTAREA_TAG: TEXTAREA . _TEXTAREA
+  120             | TEXTAREA . TEXTUAL _TEXTAREA
+
+    TEXTO      shift, and go to state 33
+    EM         shift, and go to state 45
+    P          shift, and go to state 57
+    P_         shift, and go to state 58
+    STRONG     shift, and go to state 61
+    _TEXTAREA  shift, and go to state 118
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 119
+
+
+state 64
+
+   86 UL_TAG: UL .
+
+    $default  reduce using rule 86 (UL_TAG)
+
+
+state 65
+
+   18 CUERPO: CUERPO_OPEN CONTENIDO_BODY . CUERPO_CLOSE
+
+    _BODY  shift, and go to state 120
+
+    CUERPO_CLOSE  go to state 121
+
+
+state 66
+
+   22 CONTENIDO_BODY: A_TAG .
+
+    $default  reduce using rule 22 (CONTENIDO_BODY)
+
+
+state 67
+
+   23 CONTENIDO_BODY: B_TAG .
+
+    $default  reduce using rule 23 (CONTENIDO_BODY)
+
+
+state 68
+
+   24 CONTENIDO_BODY: BLOCKQUOTE_TAG .
+
+    $default  reduce using rule 24 (CONTENIDO_BODY)
+
+
+state 69
+
+   46 BLOCKQUOTE_TAG: BLOCKQUOTE_TAG_OPEN . P_TAG BLOCKQUOTE_TAG_CLOSE
+   47               | BLOCKQUOTE_TAG_OPEN . TEXTUAL BLOCKQUOTE_TAG_CLOSE
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 122
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 123
+
+
+state 70
+
+   25 CONTENIDO_BODY: BR_TAG .
+
+    $default  reduce using rule 25 (CONTENIDO_BODY)
+
+
+state 71
+
+   26 CONTENIDO_BODY: BUTTON_TAG .
+
+    $default  reduce using rule 26 (CONTENIDO_BODY)
+
+
+state 72
+
+   52 BUTTON_TAG: BUTTON_TAG_OPEN . IMG_TAG BUTTON_TAG_CLOSE
+   53           | BUTTON_TAG_OPEN . TEXTUAL BUTTON_TAG_CLOSE
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    IMG     shift, and go to state 53
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    IMG_TAG     go to state 124
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 125
+
+
+state 73
+
+   27 CONTENIDO_BODY: CODE_TAG .
+
+    $default  reduce using rule 27 (CONTENIDO_BODY)
+
+
+state 74
+
+   28 CONTENIDO_BODY: DIV_TAG .
+   58 DIV_TAG: DIV_TAG . CONTENIDO_BODY _DIV
+
+    TEXTO        shift, and go to state 33
+    A            shift, and go to state 34
+    B            shift, and go to state 35
+    BLOCKQUOTE   shift, and go to state 36
+    BLOCKQUOTE_  shift, and go to state 37
+    BR           shift, and go to state 38
+    BUTTON       shift, and go to state 39
+    BUTTON_      shift, and go to state 40
+    CODE         shift, and go to state 41
+    DIV          shift, and go to state 42
+    DIV_         shift, and go to state 43
+    DL           shift, and go to state 44
+    EM           shift, and go to state 45
+    EMBED        shift, and go to state 46
+    FORM         shift, and go to state 47
+    FORM_        shift, and go to state 48
+    H1_H6_       shift, and go to state 49
+    H1_H6        shift, and go to state 50
+    HR           shift, and go to state 51
+    HR_          shift, and go to state 52
+    IMG          shift, and go to state 53
+    INPUT        shift, and go to state 54
+    LINK         shift, and go to state 17
+    OL           shift, and go to state 55
+    OL_          shift, and go to state 56
+    P            shift, and go to state 57
+    P_           shift, and go to state 58
+    PRE          shift, and go to state 59
+    PRE_         shift, and go to state 60
+    SCRIPT       shift, and go to state 19
+    SCRIPT_      shift, and go to state 20
+    STRONG       shift, and go to state 61
+    TABLE        shift, and go to state 62
+    TEXTAREA     shift, and go to state 63
+    UL           shift, and go to state 64
+
+    $default  reduce using rule 28 (CONTENIDO_BODY)
+
+    CONTENIDO_BODY       go to state 126
+    A_TAG                go to state 66
+    B_TAG                go to state 67
+    BLOCKQUOTE_TAG       go to state 68
+    BLOCKQUOTE_TAG_OPEN  go to state 69
+    BR_TAG               go to state 70
+    BUTTON_TAG           go to state 71
+    BUTTON_TAG_OPEN      go to state 72
+    CODE_TAG             go to state 73
+    DIV_TAG              go to state 74
+    DL_TAG               go to state 75
+    EM_TAG               go to state 76
+    EMBED_TAG            go to state 77
+    FORM_TAG             go to state 78
+    H1_H6_TAG            go to state 79
+    HR_TAG               go to state 80
+    IMG_TAG              go to state 81
+    INPUT_TAG            go to state 82
+    OL_TAG               go to state 83
+    UL_TAG               go to state 84
+    LINK_TAG             go to state 85
+    P_TAG                go to state 86
+    P_TAG_OPEN           go to state 87
+    PRE_TAG              go to state 88
+    SCRIPT_TAG           go to state 89
+    STRONG_TAG           go to state 90
+    TABLE_TAG            go to state 91
+    TEXTAREA_TAG         go to state 92
+    TEXTUAL              go to state 93
+
+
+state 75
+
+   29 CONTENIDO_BODY: DL_TAG .
+
+    $default  reduce using rule 29 (CONTENIDO_BODY)
+
+
+state 76
+
+  123 TEXTUAL: EM_TAG .
+
+    $default  reduce using rule 123 (TEXTUAL)
+
+
+state 77
+
+   30 CONTENIDO_BODY: EMBED_TAG .
+
+    $default  reduce using rule 30 (CONTENIDO_BODY)
+
+
+state 78
+
+   31 CONTENIDO_BODY: FORM_TAG .
+   69 FORM_TAG: FORM_TAG . INPUT_TAG _FORM
+   70         | FORM_TAG . TEXTAREA_TAG _FORM
+   71         | FORM_TAG . BUTTON_TAG _FORM
+
+    BUTTON    shift, and go to state 39
+    BUTTON_   shift, and go to state 40
+    INPUT     shift, and go to state 54
+    TEXTAREA  shift, and go to state 63
+
+    $default  reduce using rule 31 (CONTENIDO_BODY)
+
+    BUTTON_TAG       go to state 127
+    BUTTON_TAG_OPEN  go to state 72
+    INPUT_TAG        go to state 128
+    TEXTAREA_TAG     go to state 129
+
+
+state 79
+
+   32 CONTENIDO_BODY: H1_H6_TAG .
+   74 H1_H6_TAG: H1_H6_TAG . TEXTUAL _H1_H6
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    $default  reduce using rule 32 (CONTENIDO_BODY)
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 130
+
+
+state 80
+
+   33 CONTENIDO_BODY: HR_TAG .
+   77 HR_TAG: HR_TAG . _HR
+
+    _HR  shift, and go to state 131
+
+    $default  reduce using rule 33 (CONTENIDO_BODY)
+
+
+state 81
+
+   34 CONTENIDO_BODY: IMG_TAG .
+
+    $default  reduce using rule 34 (CONTENIDO_BODY)
+
+
+state 82
+
+   35 CONTENIDO_BODY: INPUT_TAG .
+
+    $default  reduce using rule 35 (CONTENIDO_BODY)
+
+
+state 83
+
+   37 CONTENIDO_BODY: OL_TAG .
+   82 OL_TAG: OL_TAG . LI_TAG _OL
+
+    LI   shift, and go to state 132
+    LI_  shift, and go to state 133
+
+    $default  reduce using rule 37 (CONTENIDO_BODY)
+
+    LI_TAG  go to state 134
+
+
+state 84
+
+   42 CONTENIDO_BODY: UL_TAG .
+   85 UL_TAG: UL_TAG . LI_TAG _OL
+
+    LI   shift, and go to state 132
+    LI_  shift, and go to state 133
+
+    $default  reduce using rule 42 (CONTENIDO_BODY)
+
+    LI_TAG  go to state 135
+
+
+state 85
+
+   36 CONTENIDO_BODY: LINK_TAG .
+
+    $default  reduce using rule 36 (CONTENIDO_BODY)
+
+
+state 86
+
+  121 TEXTUAL: P_TAG .
+
+    $default  reduce using rule 121 (TEXTUAL)
+
+
+state 87
+
+   92 P_TAG: P_TAG_OPEN . SPAN_TAG TEXTUAL SPAN_TAG _P
+
+    SPAN  shift, and go to state 136
+
+    $default  reduce using rule 102 (SPAN_TAG)
+
+    SPAN_TAG  go to state 137
+
+
+state 88
+
+   38 CONTENIDO_BODY: PRE_TAG .
+   95 PRE_TAG: PRE_TAG . TEXTUAL _PRE
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    $default  reduce using rule 38 (CONTENIDO_BODY)
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 138
+
+
+state 89
+
+   39 CONTENIDO_BODY: SCRIPT_TAG .
+   98 SCRIPT_TAG: SCRIPT_TAG . TEXTUAL _SCRIPT
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    $default  reduce using rule 39 (CONTENIDO_BODY)
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 100
+
+
+state 90
+
+  122 TEXTUAL: STRONG_TAG .
+
+    $default  reduce using rule 122 (TEXTUAL)
+
+
+state 91
+
+   40 CONTENIDO_BODY: TABLE_TAG .
+
+    $default  reduce using rule 40 (CONTENIDO_BODY)
+
+
+state 92
+
+   41 CONTENIDO_BODY: TEXTAREA_TAG .
+
+    $default  reduce using rule 41 (CONTENIDO_BODY)
+
+
+state 93
+
+   43 CONTENIDO_BODY: TEXTUAL .
+
+    $default  reduce using rule 43 (CONTENIDO_BODY)
+
+
+state 94
+
+   90 LINK_TAG: LINK _LINK .
+
+    $default  reduce using rule 90 (LINK_TAG)
+
+
+state 95
+
+   91 META_TAG: META _META .
+
+    $default  reduce using rule 91 (META_TAG)
+
+
+state 96
+
+  104 STYLE_TAG: STYLE TEXTUAL . _STYLE
+
+    _STYLE  shift, and go to state 139
+
+
+state 97
+
+   17 TITULO_CLOSE: _TITLE .
+
+    $default  reduce using rule 17 (TITULO_CLOSE)
+
+
+state 98
+
+   14 TITULO: TITULO_OPEN TITULO_CLOSE .
+
+    $default  reduce using rule 14 (TITULO)
+
+
+state 99
+
+   15 TITULO_OPEN: TITULO_OPEN TEXTUAL .
+
+    $default  reduce using rule 15 (TITULO_OPEN)
+
+
+state 100
+
+   98 SCRIPT_TAG: SCRIPT_TAG TEXTUAL . _SCRIPT
+
+    _SCRIPT  shift, and go to state 140
+
+
+state 101
+
+   44 A_TAG: A _A .
+
+    $default  reduce using rule 44 (A_TAG)
+
+
+state 102
+
+   45 B_TAG: B _B .
+
+    $default  reduce using rule 45 (B_TAG)
+
+
+state 103
+
+   51 BR_TAG: BR _BR .
+
+    $default  reduce using rule 51 (BR_TAG)
+
+
+state 104
+
+   57 CODE_TAG: CODE TEXTUAL . _CODE
+
+    _CODE  shift, and go to state 141
+
+
+state 105
+
+   66 DT_TAG: DT .
+
+    $default  reduce using rule 66 (DT_TAG)
+
+
+state 106
+
+   64 DD_TAG: DD .
+
+    $default  reduce using rule 64 (DD_TAG)
+
+
+state 107
+
+   61 DL_TAG: DL DD_TAG . _DL
+   63 DD_TAG: DD_TAG . TEXTUAL _DD
+
+    TEXTO   shift, and go to state 33
+    _DL     shift, and go to state 142
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 143
+
+
+state 108
+
+   62 DL_TAG: DL DT_TAG . _DL
+   65 DT_TAG: DT_TAG . TEXTUAL _DT
+
+    TEXTO   shift, and go to state 33
+    _DL     shift, and go to state 144
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 145
+
+
+state 109
+
+   67 EM_TAG: EM TEXTUAL . _EM
+
+    _EM  shift, and go to state 146
+
+
+state 110
+
+   68 EMBED_TAG: EMBED _EMBED .
+
+    $default  reduce using rule 68 (EMBED_TAG)
+
+
+state 111
+
+   80 IMG_TAG: IMG _IMG .
+
+    $default  reduce using rule 80 (IMG_TAG)
+
+
+state 112
+
+   81 INPUT_TAG: INPUT _INPUT .
+
+    $default  reduce using rule 81 (INPUT_TAG)
+
+
+state 113
+
+  103 STRONG_TAG: STRONG TEXTUAL . _STRONG
+
+    _STRONG  shift, and go to state 147
+
+
+state 114
+
+  108 CAPTION_TAG_OPEN: CAPTION .
+
+    $default  reduce using rule 108 (CAPTION_TAG_OPEN)
+
+
+state 115
+
+  109 CAPTION_TAG_OPEN: CAPTION_ .
+
+    $default  reduce using rule 109 (CAPTION_TAG_OPEN)
+
+
+state 116
+
+  105 TABLE_TAG: TABLE CAPTION_TAG . TR_TAG _TABLE
+
+    TR  shift, and go to state 148
+
+    TR_TAG  go to state 149
+
+
+state 117
+
+  106 CAPTION_TAG: CAPTION_TAG_OPEN . TEXTUAL CAPTION_TAG_CLOSE
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 150
+
+
+state 118
+
+  119 TEXTAREA_TAG: TEXTAREA _TEXTAREA .
+
+    $default  reduce using rule 119 (TEXTAREA_TAG)
+
+
+state 119
+
+  120 TEXTAREA_TAG: TEXTAREA TEXTUAL . _TEXTAREA
+
+    _TEXTAREA  shift, and go to state 151
+
+
+state 120
+
+   21 CUERPO_CLOSE: _BODY .
+
+    $default  reduce using rule 21 (CUERPO_CLOSE)
+
+
+state 121
+
+   18 CUERPO: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE .
+
+    $default  reduce using rule 18 (CUERPO)
+
+
+state 122
+
+   46 BLOCKQUOTE_TAG: BLOCKQUOTE_TAG_OPEN P_TAG . BLOCKQUOTE_TAG_CLOSE
+  121 TEXTUAL: P_TAG .
+
+    _BLOCKQUOTE  shift, and go to state 152
+
+    _BLOCKQUOTE  [reduce using rule 121 (TEXTUAL)]
+
+    BLOCKQUOTE_TAG_CLOSE  go to state 153
+
+
+state 123
+
+   47 BLOCKQUOTE_TAG: BLOCKQUOTE_TAG_OPEN TEXTUAL . BLOCKQUOTE_TAG_CLOSE
+
+    _BLOCKQUOTE  shift, and go to state 152
+
+    BLOCKQUOTE_TAG_CLOSE  go to state 154
+
+
+state 124
+
+   52 BUTTON_TAG: BUTTON_TAG_OPEN IMG_TAG . BUTTON_TAG_CLOSE
+
+    _BUTTON  shift, and go to state 155
+
+    BUTTON_TAG_CLOSE  go to state 156
+
+
+state 125
+
+   53 BUTTON_TAG: BUTTON_TAG_OPEN TEXTUAL . BUTTON_TAG_CLOSE
+
+    _BUTTON  shift, and go to state 155
+
+    BUTTON_TAG_CLOSE  go to state 157
+
+
+state 126
+
+   58 DIV_TAG: DIV_TAG CONTENIDO_BODY . _DIV
+
+    _DIV  shift, and go to state 158
+
+
+state 127
+
+   71 FORM_TAG: FORM_TAG BUTTON_TAG . _FORM
+
+    _FORM  shift, and go to state 159
+
+
+state 128
+
+   69 FORM_TAG: FORM_TAG INPUT_TAG . _FORM
+
+    _FORM  shift, and go to state 160
+
+
+state 129
+
+   70 FORM_TAG: FORM_TAG TEXTAREA_TAG . _FORM
+
+    _FORM  shift, and go to state 161
+
+
+state 130
+
+   74 H1_H6_TAG: H1_H6_TAG TEXTUAL . _H1_H6
+
+    _H1_H6  shift, and go to state 162
+
+
+state 131
+
+   77 HR_TAG: HR_TAG _HR .
+
+    $default  reduce using rule 77 (HR_TAG)
+
+
+state 132
+
+   88 LI_TAG: LI .
+
+    $default  reduce using rule 88 (LI_TAG)
+
+
+state 133
+
+   89 LI_TAG: LI_ .
+
+    $default  reduce using rule 89 (LI_TAG)
+
+
+state 134
+
+   82 OL_TAG: OL_TAG LI_TAG . _OL
+   87 LI_TAG: LI_TAG . TEXTUAL _LI
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    _OL     shift, and go to state 163
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 164
+
+
+state 135
+
+   85 UL_TAG: UL_TAG LI_TAG . _OL
+   87 LI_TAG: LI_TAG . TEXTUAL _LI
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    _OL     shift, and go to state 165
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 164
+
+
+state 136
+
+  101 SPAN_TAG: SPAN . TEXTUAL _SPAN
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 166
+
+
+state 137
+
+   92 P_TAG: P_TAG_OPEN SPAN_TAG . TEXTUAL SPAN_TAG _P
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 167
+
+
+state 138
+
+   95 PRE_TAG: PRE_TAG TEXTUAL . _PRE
+
+    _PRE  shift, and go to state 168
+
+
+state 139
+
+  104 STYLE_TAG: STYLE TEXTUAL _STYLE .
+
+    $default  reduce using rule 104 (STYLE_TAG)
+
+
+state 140
+
+   98 SCRIPT_TAG: SCRIPT_TAG TEXTUAL _SCRIPT .
+
+    $default  reduce using rule 98 (SCRIPT_TAG)
+
+
+state 141
+
+   57 CODE_TAG: CODE TEXTUAL _CODE .
+
+    $default  reduce using rule 57 (CODE_TAG)
+
+
+state 142
+
+   61 DL_TAG: DL DD_TAG _DL .
+
+    $default  reduce using rule 61 (DL_TAG)
+
+
+state 143
+
+   63 DD_TAG: DD_TAG TEXTUAL . _DD
+
+    _DD  shift, and go to state 169
+
+
+state 144
+
+   62 DL_TAG: DL DT_TAG _DL .
+
+    $default  reduce using rule 62 (DL_TAG)
+
+
+state 145
+
+   65 DT_TAG: DT_TAG TEXTUAL . _DT
+
+    _DT  shift, and go to state 170
+
+
+state 146
+
+   67 EM_TAG: EM TEXTUAL _EM .
+
+    $default  reduce using rule 67 (EM_TAG)
+
+
+state 147
+
+  103 STRONG_TAG: STRONG TEXTUAL _STRONG .
+
+    $default  reduce using rule 103 (STRONG_TAG)
+
+
+state 148
+
+  112 TR_TAG: TR .
+
+    $default  reduce using rule 112 (TR_TAG)
+
+
+state 149
+
+  105 TABLE_TAG: TABLE CAPTION_TAG TR_TAG . _TABLE
+  111 TR_TAG: TR_TAG . TH_TD_TAG _TR
+
+    _TABLE  shift, and go to state 171
+    TD      shift, and go to state 172
+    TH      shift, and go to state 173
+
+    TH_TD_TAG  go to state 174
+    TH_TAG     go to state 175
+    TD_TAG     go to state 176
+
+
+state 150
+
+  106 CAPTION_TAG: CAPTION_TAG_OPEN TEXTUAL . CAPTION_TAG_CLOSE
+
+    _CAPTION  shift, and go to state 177
+
+    CAPTION_TAG_CLOSE  go to state 178
+
+
+state 151
+
+  120 TEXTAREA_TAG: TEXTAREA TEXTUAL _TEXTAREA .
+
+    $default  reduce using rule 120 (TEXTAREA_TAG)
+
+
+state 152
+
+   50 BLOCKQUOTE_TAG_CLOSE: _BLOCKQUOTE .
+
+    $default  reduce using rule 50 (BLOCKQUOTE_TAG_CLOSE)
+
+
+state 153
+
+   46 BLOCKQUOTE_TAG: BLOCKQUOTE_TAG_OPEN P_TAG BLOCKQUOTE_TAG_CLOSE .
+
+    $default  reduce using rule 46 (BLOCKQUOTE_TAG)
+
+
+state 154
+
+   47 BLOCKQUOTE_TAG: BLOCKQUOTE_TAG_OPEN TEXTUAL BLOCKQUOTE_TAG_CLOSE .
+
+    $default  reduce using rule 47 (BLOCKQUOTE_TAG)
+
+
+state 155
+
+   56 BUTTON_TAG_CLOSE: _BUTTON .
+
+    $default  reduce using rule 56 (BUTTON_TAG_CLOSE)
+
+
+state 156
+
+   52 BUTTON_TAG: BUTTON_TAG_OPEN IMG_TAG BUTTON_TAG_CLOSE .
+
+    $default  reduce using rule 52 (BUTTON_TAG)
+
+
+state 157
+
+   53 BUTTON_TAG: BUTTON_TAG_OPEN TEXTUAL BUTTON_TAG_CLOSE .
+
+    $default  reduce using rule 53 (BUTTON_TAG)
+
+
+state 158
+
+   58 DIV_TAG: DIV_TAG CONTENIDO_BODY _DIV .
+
+    $default  reduce using rule 58 (DIV_TAG)
+
+
+state 159
+
+   71 FORM_TAG: FORM_TAG BUTTON_TAG _FORM .
+
+    $default  reduce using rule 71 (FORM_TAG)
+
+
+state 160
+
+   69 FORM_TAG: FORM_TAG INPUT_TAG _FORM .
+
+    $default  reduce using rule 69 (FORM_TAG)
+
+
+state 161
+
+   70 FORM_TAG: FORM_TAG TEXTAREA_TAG _FORM .
+
+    $default  reduce using rule 70 (FORM_TAG)
+
+
+state 162
+
+   74 H1_H6_TAG: H1_H6_TAG TEXTUAL _H1_H6 .
+
+    $default  reduce using rule 74 (H1_H6_TAG)
+
+
+state 163
+
+   82 OL_TAG: OL_TAG LI_TAG _OL .
+
+    $default  reduce using rule 82 (OL_TAG)
+
+
+state 164
+
+   87 LI_TAG: LI_TAG TEXTUAL . _LI
+
+    _LI  shift, and go to state 179
+
+
+state 165
+
+   85 UL_TAG: UL_TAG LI_TAG _OL .
+
+    $default  reduce using rule 85 (UL_TAG)
+
+
+state 166
+
+  101 SPAN_TAG: SPAN TEXTUAL . _SPAN
+
+    _SPAN  shift, and go to state 180
+
+
+state 167
+
+   92 P_TAG: P_TAG_OPEN SPAN_TAG TEXTUAL . SPAN_TAG _P
+
+    SPAN  shift, and go to state 136
+
+    $default  reduce using rule 102 (SPAN_TAG)
+
+    SPAN_TAG  go to state 181
+
+
+state 168
+
+   95 PRE_TAG: PRE_TAG TEXTUAL _PRE .
+
+    $default  reduce using rule 95 (PRE_TAG)
+
+
+state 169
+
+   63 DD_TAG: DD_TAG TEXTUAL _DD .
+
+    $default  reduce using rule 63 (DD_TAG)
+
+
+state 170
+
+   65 DT_TAG: DT_TAG TEXTUAL _DT .
+
+    $default  reduce using rule 65 (DT_TAG)
+
+
+state 171
+
+  105 TABLE_TAG: TABLE CAPTION_TAG TR_TAG _TABLE .
+
+    $default  reduce using rule 105 (TABLE_TAG)
+
+
+state 172
+
+  118 TD_TAG: TD .
+
+    $default  reduce using rule 118 (TD_TAG)
+
+
+state 173
+
+  116 TH_TAG: TH .
+
+    $default  reduce using rule 116 (TH_TAG)
+
+
+state 174
+
+  111 TR_TAG: TR_TAG TH_TD_TAG . _TR
+
+    _TR  shift, and go to state 182
+
+
+state 175
+
+  113 TH_TD_TAG: TH_TAG .
+  115 TH_TAG: TH_TAG . TEXTUAL _TH
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    $default  reduce using rule 113 (TH_TD_TAG)
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 183
+
+
+state 176
+
+  114 TH_TD_TAG: TD_TAG .
+  117 TD_TAG: TD_TAG . TEXTUAL _TD
+
+    TEXTO   shift, and go to state 33
+    EM      shift, and go to state 45
+    P       shift, and go to state 57
+    P_      shift, and go to state 58
+    STRONG  shift, and go to state 61
+
+    $default  reduce using rule 114 (TH_TD_TAG)
+
+    EM_TAG      go to state 76
+    P_TAG       go to state 86
+    P_TAG_OPEN  go to state 87
+    STRONG_TAG  go to state 90
+    TEXTUAL     go to state 184
+
+
+state 177
+
+  110 CAPTION_TAG_CLOSE: _CAPTION .
+
+    $default  reduce using rule 110 (CAPTION_TAG_CLOSE)
+
+
+state 178
+
+  106 CAPTION_TAG: CAPTION_TAG_OPEN TEXTUAL CAPTION_TAG_CLOSE .
+
+    $default  reduce using rule 106 (CAPTION_TAG)
+
+
+state 179
+
+   87 LI_TAG: LI_TAG TEXTUAL _LI .
+
+    $default  reduce using rule 87 (LI_TAG)
+
+
+state 180
+
+  101 SPAN_TAG: SPAN TEXTUAL _SPAN .
+
+    $default  reduce using rule 101 (SPAN_TAG)
+
+
+state 181
+
+   92 P_TAG: P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG . _P
+
+    _P  shift, and go to state 185
+
+
+state 182
+
+  111 TR_TAG: TR_TAG TH_TD_TAG _TR .
+
+    $default  reduce using rule 111 (TR_TAG)
+
+
+state 183
+
+  115 TH_TAG: TH_TAG TEXTUAL . _TH
+
+    _TH  shift, and go to state 186
+
+
+state 184
+
+  117 TD_TAG: TD_TAG TEXTUAL . _TD
+
+    _TD  shift, and go to state 187
+
+
+state 185
+
+   92 P_TAG: P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P .
+
+    $default  reduce using rule 92 (P_TAG)
+
+
+state 186
+
+  115 TH_TAG: TH_TAG TEXTUAL _TH .
+
+    $default  reduce using rule 115 (TH_TAG)
+
+
+state 187
+
+  117 TD_TAG: TD_TAG TEXTUAL _TD .
+
+    $default  reduce using rule 117 (TD_TAG)
