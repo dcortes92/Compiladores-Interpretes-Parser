@@ -20,172 +20,172 @@ NUMERO_255					[0-255]
 HEX							[0-9A-Fa-f]+
 
 
-HTML_ATTRIBUTE				(" xmlns=\""{URL}"\"")?
+HTML_ATTRIBUTE				(" xmlns=\""{URL}"\"")
 
 
-A_ATTRIBUTE					(" charset=\""{ENCODING}"\"")?(" coords=\""{NUMERO}","{NUMERO}","{NUMERO}","{NUMERO}"\"")?(" href=\""{URL}"\"")?(" hreflang=\""{LANGUAGE}"\"")?(" media=\""{MEDIA_VALUE}"\"")?(" name=\""{TEXTO}"\"")?(" rel=\""{REL_VALUE}"\"")?(" rev=\""{TEXTO}"\"")?(" shape=\""{SHAPE_VALUE}"\"")?(" target=\""{TARGET_VALUE}"\"")?
+A_ATTRIBUTE					(" charset=\""{ENCODING}"\"")|(" coords=\""{NUMERO}","{NUMERO}","{NUMERO}","{NUMERO}"\"")|(" href=\""{URL}"\"")|(" hreflang=\""{LANGUAGE}"\"")|(" media=\""{MEDIA_VALUE}"\"")|(" name=\""{TEXTO}"\"")|(" rel=\""{REL_VALUE}"\"")|(" rev=\""{TEXTO}"\"")|(" shape=\""{SHAPE_VALUE}"\"")|(" target=\""{TARGET_VALUE}"\"")
 
 
-REL_VALUE				 	("alternate")?("author")?("bookmark")?("help")?("license")?("next")?("nofollow")?("noreferrer")?("prefetch")?("prev")?("search")?("tag")?
+REL_VALUE				 	("alternate")|("author")|("bookmark")|("help")|("license")|("next")|("nofollow")|("noreferrer")|("prefetch")|("prev")|("search")|("tag")
 
 
-SHAPE_VALUE					("default")?("rect")?("circle")?("poly")?
+SHAPE_VALUE					("default")|("rect")|("circle")|("poly")
 
 
-BLOCKQUOTE_ATTRIBUTE		(" cite=\""{URL}"\"")?
+BLOCKQUOTE_ATTRIBUTE		(" cite=\""{URL}"\"")
 
 
-BODY_ATTRIBUTE				(" alink=\""{COLOR}"\"")?(" background=\""{URL_GENERAL}"\"")?(" bgcolor=\""{COLOR}"\"")?(" link=\""{COLOR}"\"")?(" vlink=\""{COLOR}"\"")?
+BODY_ATTRIBUTE				(" alink=\""{COLOR}"\"")|(" background=\""{URL_GENERAL}"\"")|(" bgcolor=\""{COLOR}"\"")|(" link=\""{COLOR}"\"")|(" vlink=\""{COLOR}"\"")
 
 
 URL_GENERAL					{URL}?{LOCAL_URL}?
 
 
-BUTTOM_ATTRIBUTE			(" autofocus")?(" disabled")?(" formtarget=\""{TARGET_VALUE}"\"")?(" name=\""{TEXTO}"\"")?(" type=\""{BUTTOM_TYPE_VALUE}"\"")?(" value=\""{TEXTO}"\"")?
+BUTTOM_ATTRIBUTE			(" autofocus")|(" disabled")|(" formtarget=\""{TARGET_VALUE}"\"")|(" name=\""{TEXTO}"\"")|(" type=\""{BUTTOM_TYPE_VALUE}"\"")|(" value=\""{TEXTO}"\"")
 
 
-BUTTOM_TYPE_VALUE			("button")?("reset")?("submit")?
+BUTTOM_TYPE_VALUE			("button")|("reset")|("submit")
 
 
 CAPTION_ATTRIBUTE			(" align=\""{ALIGN_VALUE}"\"")
 
 
-DIV_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")?(" style=\""{COLOR}"\"")?
+DIV_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|(" style=\""{COLOR}"\"")
 
 
-EMBED_ATTRIBUTE				(" height=\""{NUMERO}"\"")?(" src=\""{URL}"\"")?(" type=\""{LOCAL_URL}"\"")?(" width=\""{NUMERO}"\"")?
+EMBED_ATTRIBUTE				(" height=\""{NUMERO}"\"")|(" src=\""{URL}"\"")|(" type=\""{LOCAL_URL}"\"")|(" width=\""{NUMERO}"\"")
 
 
-FORM_ATTRIBUTE				("accept-charset=\""{ENCODING}"\"")?(" action=\""{URL}"\"")?(" name=\""{TEXTO}"\"")?(" target=\""{TARGET_VALUE}"\"")?
+FORM_ATTRIBUTE				("accept-charset=\""{ENCODING}"\"")|(" action=\""{URL}"\"")|(" name=\""{TEXTO}"\"")|(" target=\""{TARGET_VALUE}"\"")
 
 
-H1_H6_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")?
+H1_H6_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")
 
 
-HEAD_ATTRIBUTE				(" profile=\""{URL}"\"")?
+HEAD_ATTRIBUTE				(" profile=\""{URL}"\"")
 
 
-HR_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")?("noshade")?(" size=\""{NUMERO}"\"")?("width\""{NUMERO}"\"")?
+HR_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|("noshade")|(" size=\""{NUMERO}"\"")|("width\""{NUMERO}"\"")
 			
 
-IMG_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")?(" alt=\""{TEXTO}"\"")?(" border=\""{NUMERO}"\"")?(" height=\""{NUMERO}"\"")?("ismap")?(" longdesc=\""{URL}"\"")?(" src=\""{URL_GENERAL}"\"")?(" width=\""{NUMERO}"\"")?(" usemap=\"#"{TEXTO}"\"")?
+IMG_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|(" alt=\""{TEXTO}"\"")|(" border=\""{NUMERO}"\"")|(" height=\""{NUMERO}"\"")|("ismap")|(" longdesc=\""{URL}"\"")|(" src=\""{URL_GENERAL}"\"")|(" width=\""{NUMERO}"\"")|(" usemap=\"#"{TEXTO}"\"")
 							 
 
-ALIGN_VALUE					("top")?("bottom")?("middle")?("left")?("right")?
+ALIGN_VALUE					("top")|("bottom")|("middle")|("left")|("right")
 											
 
-INPUT_ATTRIBUTE				(" accept=\""{TEXTO}"\"")?(" align=\""{ALIGN_VALUE}"\"")?(" alt=\""{TEXTO}"\"")?("checked")?("disabled")?(" form=\""{TEXTO}"\"")?(" formtarget=\""{TARGET_VALUE}"\"")?(" height=\""{NUMERO}"\"")?(" max=\""{NUMERO}"\"")?(" maxlength=\""{NUMERO}"\"")?(" min=\""{NUMERO}"\"")?(" name=\""{TEXTO}"\"")?(" pattern=\""{TEXTO}"\"")?(" placeholder=\""{TEXTO}"\"")?("readonly")?("required")?(" size=\""{NUMERO}"\"")?(" src=\""{URL}"\"")?(" type=\""{INPUT_TYPE_VALUE}"\"")?(" value=\""{TEXTO}"\"")?(" width=\""{NUMERO}"\"")?
+INPUT_ATTRIBUTE				(" accept=\""{TEXTO}"\"")|(" align=\""{ALIGN_VALUE}"\"")|(" alt=\""{TEXTO}"\"")|("checked")|("disabled")|(" form=\""{TEXTO}"\"")|(" formtarget=\""{TARGET_VALUE}"\"")|(" height=\""{NUMERO}"\"")|(" max=\""{NUMERO}"\"")|(" maxlength=\""{NUMERO}"\"")|(" min=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" pattern=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" size=\""{NUMERO}"\"")|(" src=\""{URL}"\"")|(" type=\""{INPUT_TYPE_VALUE}"\"")|(" value=\""{TEXTO}"\"")|(" width=\""{NUMERO}"\"")
 							
 
-INPUT_TYPE_VALUE			("buttn")?("checkbox")?("color")?("date")?("datetime")?("datetime-local")?("email")?("file")?("hidden")?("image")?("month")?("number")?("password")?("radio")?("range")?("reset")?("search")?("submit")?("text")?("time")?("url")?("week")?
+INPUT_TYPE_VALUE			("buttn")|("checkbox")|("color")|("date")|("datetime")|("datetime-local")|("email")|("file")|("hidden")|("image")|("month")|("number")|("password")|("radio")|("range")|("reset")|("search")|("submit")|("text")|("time")|("url")|("week")
 														
 
-LI_ATTRIBUTE				(" type=\""{LI_TYPE_VALUE}"\"")?(" value=\""{NUMERO}"\"")?
+LI_ATTRIBUTE				(" type=\""{LI_TYPE_VALUE}"\"")|(" value=\""{NUMERO}"\"")
 							
 
-LI_TYPE_VALUE				("1")?("a")?("i")?("disc")?("square")?("circle")?
+LI_TYPE_VALUE				("1")|("a")|("i")|("disc")|("square")|("circle")
 							
 
-LINK_ATTRIBUTE				(" charset=\""{ENCODING}"\"")?(" href=\""{URL}"\"")?(" hreflang=\""{LANGUAGE}"\"")?(" rel=\""{REL_VALUE}"\"")?(" size=\""{NUMERO}"x"{NUMERO}"\"")?(" target=\""{TARGET_VALUE}"\"")?(" type=\""{LOCAL_URL}"\"")?
+LINK_ATTRIBUTE				(" charset=\""{ENCODING}"\"")|(" href=\""{URL}"\"")|(" hreflang=\""{LANGUAGE}"\"")|(" rel=\""{REL_VALUE}"\"")|(" size=\""{NUMERO}"x"{NUMERO}"\"")|(" target=\""{TARGET_VALUE}"\"")|(" type=\""{LOCAL_URL}"\"")
 							
 
-ENCODING					("UTF-8")?("ISO-8859-1")?
+ENCODING					("UTF-8")|("ISO-8859-1")
 							 
 
-LANGUAGE					("en")?("es")?
+LANGUAGE					("en")|("es")
 
 
-TARGET_VALUE				("_blank")?("_self")?("top")?("parent")?({TEXTO})? 
+TARGET_VALUE				("_blank")|("_self")|("top")|("parent")|({TEXTO})
 							
 
-META_ATTRIBUTE				(" charset=\""{ENCODING}"\"")?(" content=\""{TEXTO}"\"")?("http-equiv=\""{META_HTTP_VALUE}"\"")?(" name=\""{META_NAME_VALUE}"\"")?(" scheme=\""{TEXTO}"/"{TEXTO}"\"")?
+META_ATTRIBUTE				(" charset=\""{ENCODING}"\"")|(" content=\""{TEXTO}"\"")|("http-equiv=\""{META_HTTP_VALUE}"\"")|(" name=\""{META_NAME_VALUE}"\"")|(" scheme=\""{TEXTO}"/"{TEXTO}"\"")
 							
 
-META_HTTP_VALUE				("content_type")?("default-style")?("refresh")?
+META_HTTP_VALUE				("content_type")|("default-style")|("refresh")
 							
 
-META_NAME_VALUE				("application-name")?("author")?("description")?("generator")?("keywords")?
+META_NAME_VALUE				("application-name")|("author")|("description")|("generator")|("keywords")
 													
 
-OBJECT_ATTRIBUTE			(" align=\""{ALIGN_VALUE}"\"")?(" archive=\""{URL}"\"")?(" border=\""{NUMERO}"\"")?(" data=\""{URL}"\"")?(" form=\""{TEXTO}"\"")?(" height=\""{NUMERO}"\"")?(" name=\""{TEXTO}"\"")?(" type=\""{TEXTO}"\"")?(" width=\""{NUMERO}"\"")?(" usemap=\"#"{TEXTO}"\"")?
+OBJECT_ATTRIBUTE			(" align=\""{ALIGN_VALUE}"\"")|(" archive=\""{URL}"\"")|(" border=\""{NUMERO}"\"")|(" data=\""{URL}"\"")|(" form=\""{TEXTO}"\"")|(" height=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" type=\""{TEXTO}"\"")|(" width=\""{NUMERO}"\"")|(" usemap=\"#"{TEXTO}"\"")
 														
 
-OL_ATTRIBUTE				("compact")?("reversed")?(" start=\""{NUMERO}"\"")?(" type=\""{OL_TYPE_VALUE}"\"")?
+OL_ATTRIBUTE				("compact")|("reversed")|(" start=\""{NUMERO}"\"")|(" type=\""{OL_TYPE_VALUE}"\"")
 							
 
-OL_TYPE_VALUE				("1")?("a")?("i")? 
+OL_TYPE_VALUE				("1")|("a")|("i")
 							
 
-P_ATTRIBUTE					(" align=\""{P_ALING_VALUE}"\"")?
+P_ATTRIBUTE					(" align=\""{P_ALING_VALUE}"\"")
 
 
-P_ALING_VALUE				("left")?("rigth")?("center")?("justify")?						
+P_ALING_VALUE				("left")|("rigth")|("center")|("justify")				
 
 
-PRE_ATTRIBUTE				(" width=\""{NUMERO}"\"")?
+PRE_ATTRIBUTE				(" width=\""{NUMERO}"\"")
 							
 
-SCRIPT_ATTRIBUTE			(" charset=\""{ENCODING}"\"")?(" defer")?(" src=\""{URL}"\"")?(" type=\""{TEXTO}"\"")?(" preserve")?
+SCRIPT_ATTRIBUTE			(" charset=\""{ENCODING}"\"")|(" defer")|(" src=\""{URL}"\"")|(" type=\""{TEXTO}"\"")|(" preserve")
 							
 
-SPAN_ATTRIBUTE				(" name=\""{TEXTO}"\"")?(" class=\""{TEXTO}"\"")?(" style=\""{TEXTO}"\"")?(" title=\""{TEXTO}"\"")?(" dir=\""{SPAN_DIR_VALUE}"\"")?							
+SPAN_ATTRIBUTE				(" name=\""{TEXTO}"\"")|(" class=\""{TEXTO}"\"")|(" style=\""{TEXTO}"\"")|(" title=\""{TEXTO}"\"")|(" dir=\""{SPAN_DIR_VALUE}"\"")						
 
 
-SPAN_DIR_VALUE				("rtl")?("ltr")?
+SPAN_DIR_VALUE				("rtl")|("ltr")
 
 
-STYLE_ATTRIBUTE				(" media=\""{MEDIA_VALUE}"\"")?("scoped")?(" type=\""{LOCAL_URL}"\"")?
+STYLE_ATTRIBUTE				(" media=\""{MEDIA_VALUE}"\"")|("scoped")|(" type=\""{LOCAL_URL}"\"")
 							
 
-MEDIA_VALUE					("all")?("aural")?("braile")?("handheld")?("projection")?("print")?("screen")?("tty")?("tv")?
+MEDIA_VALUE					("all")|("aural")|("braile")|("handheld")|("projection")|("print")|("screen")|("tty")|("tv")
 							
 
-TABLE_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")?(" bgcolor=\""{COLOR}"\"")?(" border=\"1\"")?(" cellpadding=\""{NUMERO}"\"")?(" cellspacing=\""{NUMERO}"\"")?(" summary=\""{TEXTO}"\"")?(" width=\""{NUMERO}"\"")?
+TABLE_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|(" bgcolor=\""{COLOR}"\"")|(" border=\"1\"")|(" cellpadding=\""{NUMERO}"\"")|(" cellspacing=\""{NUMERO}"\"")|(" summary=\""{TEXTO}"\"")|(" width=\""{NUMERO}"\"")
 							
 
-COLOR						({TEXTO})?("#"{HEX})?("rgb("{NUMERO_255}","{NUMERO_255}","{NUMERO_255}")")?
+COLOR						({TEXTO})|("#"{HEX})|("rgb("{NUMERO_255}","{NUMERO_255}","{NUMERO_255}")")
 														
 
-TR_ATTRIBUTE				(" align=\""{T_ALIGN_VALUE}"\"")?(" bgcolor=\""{COLOR}"\"")?(" char=\""{LETRA}"\"")?(" charoff=\""{NUMERO}"\"")?(" valign=\""{VALIGN_VALUE}"\"")?
+TR_ATTRIBUTE				(" align=\""{T_ALIGN_VALUE}"\"")|(" bgcolor=\""{COLOR}"\"")|(" char=\""{LETRA}"\"")|(" charoff=\""{NUMERO}"\"")|(" valign=\""{VALIGN_VALUE}"\"")
 										
 
-TD_TH_ATTRIBUTE				(" abbr=\""{TEXTO}"\"")?(" align=\""{T_ALIGN_VALUE}"\"")?(" axis=\""{TEXTO}"\"")?(" bgcolor=\""{COLOR}"\"")?(" char=\""{LETRA}"\"")?(" charoff=\""{NUMERO}"\"")?(" colspan=\""{NUMERO}"\"")?(" headers=\""{TEXTO}"\"")?(" height=\""{NUMERO}"\"")?(" rowspan=\""{NUMERO}"\"")?(" scope=\""{TD_TH_SCOPE_VALUE}"\"")?(" valign=\""{VALIGN_VALUE}"\"")?(" width=\""{NUMERO}"\"")?
+TD_TH_ATTRIBUTE				(" abbr=\""{TEXTO}"\"")|(" align=\""{T_ALIGN_VALUE}"\"")|(" axis=\""{TEXTO}"\"")|(" bgcolor=\""{COLOR}"\"")|(" char=\""{LETRA}"\"")|(" charoff=\""{NUMERO}"\"")|(" colspan=\""{NUMERO}"\"")|(" headers=\""{TEXTO}"\"")|(" height=\""{NUMERO}"\"")|(" rowspan=\""{NUMERO}"\"")|(" scope=\""{TD_TH_SCOPE_VALUE}"\"")|(" valign=\""{VALIGN_VALUE}"\"")|(" width=\""{NUMERO}"\"")
 							
 
-TD_TH_SCOPE_VALUE			("col")?("colgroup")?("row")?("rowgroup")?
+TD_TH_SCOPE_VALUE			("col")|("colgroup")|("row")|("rowgroup")
 							
 
-T_ALIGN_VALUE				("rigth")?("left")?("center")?("justify")?("char")?
+T_ALIGN_VALUE				("rigth")|("left")|("center")|("justify")|("char")
 							
 
-VALIGN_VALUE				("top")?("middle")?("bottom")?("baseline")?
+VALIGN_VALUE				("top")|("middle")|("bottom")|("baseline")
 			
 
-TEXTAREA_ATTRIBUTE			("autofocus")?(" cols=\""{NUMERO}"\"")?("disabled")?(" maxlength=\""{NUMERO}"\"")?(" name=\""{TEXTO}"\"")?(" placeholder=\""{TEXTO}"\"")?("readonly")?("required")?(" rows=\""{NUMERO}"\"")?(" wrap=\""{H_S}"\"")?
+TEXTAREA_ATTRIBUTE			("autofocus")|(" cols=\""{NUMERO}"\"")|("disabled")|(" maxlength=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" rows=\""{NUMERO}"\"")|(" wrap=\""{H_S}"\"")
 							
 
-H_S							("hard")?("soft")? 
+H_S							("hard")|("soft")
 							
 
-UL_ATTRIUTE					("compact")?(" type=\""{UL_TYPE_VALUE}"\"")?
+UL_ATTRIUTE					("compact")|(" type=\""{UL_TYPE_VALUE}"\"")
 							
 
-UL_TYPE_VALUE				("disc")?("square")?("circle")?
+UL_TYPE_VALUE				("disc")|("square")|("circle")
 							
 
-URL							{PROTOCOLO}{HOST}{DOMINIO}{DOMINIO_DE_PRIMER_NIVEL}({DIRECTORIO}{SUBDIRECTORIO}{RECURSO})?
+URL							{PROTOCOLO}{HOST}{DOMINIO}{DOMINIO_DE_PRIMER_NIVEL}({DIRECTORIO}{SUBDIRECTORIO}{RECURSO})
 
 
-PROTOCOLO					("http//")?("ftp//")?("gopher//")?("telnet")?("mailto")?("news")?
+PROTOCOLO					("http//")|("ftp//")|("gopher//")|("telnet")|("mailto")|("news")
 							
 
-HOST						("www.")?({TEXTO}".")?
+HOST						("www.")|({TEXTO}".")
 							
 
 DOMINIO						{TEXTO}
 							
 
-DOMINIO_DE_PRIMER_NIVEL		(".com")?(".cr")?(".es")?(".us")?	
+DOMINIO_DE_PRIMER_NIVEL		(".com")|(".cr")|(".es")|(".us")
 
 
 DIRECTORIO					("/"{TEXTO})+
@@ -242,13 +242,11 @@ PCOMA						[\;]
 "</em>"									{yylval.string = yytext; return _EM;}
 "<embed"{EMBED_ATTRIBUTE}+				{yylval.string = yytext; return EMBED;}
 "</embed>"								{yylval.string = yytext; return _EMBED;}
-"<footer>"								{yylval.string = yytext; return FOOTER;}
-"</footer>"								{yylval.string = yytext; return _FOOTER;}
 "<form>"								{yylval.string = yytext; return FORM;}
 "<form"{FORM_ATTRIBUTE}+				{yylval.string = yytext; return FORM_;}
 "</form>"								{yylval.string = yytext; return _FORM;}
 "<h1>"									{yylval.string = yytext; return H1;}
-"<h1"{H1_H6_ATTRIBUTE}+				{yylval.string = yytext; return H1_;}
+"<h1"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H1_;}
 "</h1>"									{yylval.string = yytext; return _H1;}
 "<h2>"									{yylval.string = yytext; return H2;}
 "<h2"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H2_;}
@@ -263,18 +261,16 @@ PCOMA						[\;]
 "<h5"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H5_;}
 "</h5>"									{yylval.string = yytext; return _H5;}
 "<h6>"									{yylval.string = yytext; return H6;}
-"<h6"{H1_H6_ATTRIBUTE}+				{yylval.string = yytext; return H6_;}
+"<h6"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H6_;}
 "</h6>"									{yylval.string = yytext; return _H6;}
 "<head>"								{yylval.string = yytext; return HEAD;}
 "<head"{HEAD_ATTRIBUTE}+				{yylval.string = yytext; return HEAD_;}
 "</head>"								{yylval.string = yytext; return _HEAD;}
-"<header>"								{yylval.string = yytext; return HEADER;}
-"</header>"								{yylval.string = yytext; return _HEADER;}
 "<hr>"									{yylval.string = yytext; return HR;}
 "<hr"{HR_ATTRIBUTE}+					{yylval.string = yytext; return HR_;}
 "</hr>"									{yylval.string = yytext; return _HR;}
 "<html>"								{yylval.string = yytext; return HTML;}
-"<html"{HTML_ATTRIBUTE}				{yylval.string = yytext; return HTML_;}
+"<html"{HTML_ATTRIBUTE}					{yylval.string = yytext; return HTML_;}
 "</html>"								{yylval.string = yytext; return _HTML;}
 "<img"{IMG_ATTRIBUTE}+					{yylval.string = yytext; return IMG;}
 "</img>"								{yylval.string = yytext; return _IMG;}
@@ -287,8 +283,6 @@ PCOMA						[\;]
 "</link>"								{yylval.string = yytext; return _LINK;}
 "<meta"{META_ATTRIBUTE}+				{yylval.string = yytext; return META;}
 "</meta>"								{yylval.string = yytext; return _META;}
-"<object"{OBJECT_ATTRIBUTE}+			{yylval.string = yytext; return OBJECT;}
-"</object>"								{yylval.string = yytext; return _OBJECT;}
 "<ol>"									{yylval.string = yytext; return OL;}
 "<ol"{OL_ATTRIBUTE}+					{yylval.string = yytext; return OL_;}
 "</ol>"									{yylval.string = yytext; return _OL;}
@@ -309,18 +303,18 @@ PCOMA						[\;]
 "</style>"								{yylval.string = yytext; return _STYLE;}
 "<table"{TABLE_ATTRIBUTE}+				{yylval.string = yytext; return TABLE;}
 "</table>"								{yylval.string = yytext; return _TABLE;}
-"<td"{TD_TH_ATTRIBUTE}+				{yylval.string = yytext; return TD;}
+"<td"{TD_TH_ATTRIBUTE}+					{yylval.string = yytext; return TD;}
 "</td>"									{yylval.string = yytext; return _TD;}
 "<textarea>"							{yylval.string = yytext; return TEXTAREA;}
 "<textarea"{TEXTAREA_ATTRIBUTE}+		{yylval.string = yytext; return TEXTAREA_;}
 "</textarea>"							{yylval.string = yytext; return _TEXTAREA;}
-"<th"{TD_TH_ATTRIBUTE}+				{yylval.string = yytext; return TH;}
+"<th"{TD_TH_ATTRIBUTE}+					{yylval.string = yytext; return TH;}
 "</th>"									{yylval.string = yytext; return _TH;}
 "<title>"								{yylval.string = yytext; return TITLE;}
 "</title>"								{yylval.string = yytext; return _TITLE;}
 "<tr"{TR_ATTRIBUTE}+					{yylval.string = yytext; return TR;}
 "</tr>"									{yylval.string = yytext; return _TR;}
-"<ul"{UL_ATTRIUTE}+					{yylval.string = yytext; return UL;}
+"<ul"{UL_ATTRIUTE}+						{yylval.string = yytext; return UL;}
 "</ul>"									{yylval.string = yytext; return _UL;}
 ">"										{yylval.string = yytext; return CLOSE;}
 						

@@ -47,8 +47,6 @@
 %token _EM
 %token EMBED
 %token _EMBED
-%token FOOTER
-%token _FOOTER
 %token FORM
 %token FORM_
 %token _FORM
