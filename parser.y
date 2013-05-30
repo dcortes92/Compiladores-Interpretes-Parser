@@ -129,41 +129,112 @@
 
 %%
 
-ARCHIVO							: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG {imprimir();}
+ARCHIVO							: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {imprimir();}
 								;
 
-HTML_OPEN_TAG					: HTML {insertar("html");}
-								| HTML_ CLOSE
+HTML_OPEN_TAG					: HTML                                                     {insertar("html");}
+								| HTML_ CLOSE                                              {insertar("html");}
 								;
 
-HTML_CLOSE_TAG					: _HTML {insertar("/html");}
+HTML_CLOSE_TAG					: _HTML                                                    {insertar("/html");}
 								;
 
 CABEZA 							: CABEZA_OPEN CABEZA_CLOSE
 
 CABEZA_OPEN						: CABEZA_OPEN TITULO
-								| HEAD {insertar("head");}
-								| HEAD_ CLOSE {insertar("head");}
+								| HEAD                                                     {insertar("head");}
+								| HEAD_ CLOSE                                              {insertar("head");}
 								;
 
-CABEZA_CLOSE					: _HEAD {insertar("/head");}
+CABEZA_CLOSE					: _HEAD                                                    {insertar("/head");}
 
 TITULO 							: TITULO_OPEN TITULO_CLOSE
 
-TITULO_OPEN						: TITULO_OPEN TEXTO {insertar("texto");}
-								| TITLE {insertar("title");}
+TITULO_OPEN						: TITULO_OPEN TEXTO                                        {insertar("texto");}
+								| TITLE                                                    {insertar("title");}
 								;
 
-TITULO_CLOSE					: _TITLE {insertar("/title");}
+TITULO_CLOSE					: _TITLE                                                   {insertar("/title");}
 								;
 
-CUERPO 							: CUERPO_OPEN CUERPO_CLOSE 
+CUERPO 							: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE 
 
-CUERPO_OPEN						: BODY {insertar("body");}
-								| BODY_ CLOSE {insertar("body");}
+CUERPO_OPEN						: BODY                                                     {insertar("body");}
+								| BODY_ CLOSE                                              {insertar("body");}
 								;
 
-CUERPO_CLOSE					: _BODY {insertar("/body");}
+CUERPO_CLOSE					: _BODY                                                    {insertar("/body");}
+
+CONTENIDO_BODY                  : A_TAG
+                                | B_TAG
+                                | BLOCKQUOTE_TAG
+                                | BR_TAG
+                                | BUTTON_TAG
+                                | CODE_TAG
+                                | DIV_TAG
+                                | DL_TAG
+                                | EM_TAG
+                                | EMBED_TAG
+                                | FORM_TAG
+                                | H1_TAG
+                                | H2_TAG
+                                | H3_TAG
+                                | H4_TAG
+                                | H5_TAG
+                                | H6_TAG
+                                | HR_TAG
+                                | IMG_TAG
+                                | INPUT_TAG
+                                | LINK_TAG
+                                | OL_TAG
+                                | P_TAG
+                                | PRE_TAG
+                                | SCRIPT_TAG
+                                | SPAN_TAG
+                                | STRONG_TAG
+                                | TABLE_TAG
+                                | TEXTAREA_TAG
+                                | UL_TAG
+
+A_TAG                           : A _A
+                                ;
+
+B_TAG                           : B _B
+                                ;
+
+BLOCKQUOTE_TAG                  : BLOCKQUOTE_TAG_OPEN P_TAG BLOCKQUOTE_TAG_CLOSE
+                                | BLOCKQUOTE_TAG_OPEN TEXTO BLOCKQUOTE_TAG_CLOSE
+                                ;
+
+BLOCKQUOTE_TAG_OPEN             : BLOCKQUOTE
+                                | BLOCKQUOTE_
+                                ;
+
+BLOCKQUOTE_TAG_CLOSE            : _BLOCKQUOTE
+
+BR_TAG                          : BR _BR
+                                ;
+
+BUTTON_TAG                      : BUTTON_TAG_OPEN IMG_TAG BUTTON_TAG_CLOSE
+                                | BUTTON_TAG_OPEN TEXTO BUTTON_TAG_CLOSE
+                                ;
+
+
+BUTTON_TAG_OPEN                 : BUTTON
+                                | BUTTON_
+                                ;
+
+BUTTON_TAG_CLOSE                : _BUTTON
+                                ;
+
+CAPTION_TAG                     : CAPTION_TAG_OPEN TEXTO CAPTION_TAG_CLOSE 
+
+CAPTION_TAG_OPEN                : CAPTION
+                                | CAPTION_
+                                ;
+
+CAPTION_TAG_CLOSE               : _CAPTION
+                                ;
 
 
 
