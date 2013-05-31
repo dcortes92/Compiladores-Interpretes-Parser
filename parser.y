@@ -559,7 +559,7 @@ struct nodoLista* insertar(char *tag)
 
 void imprimir(void)
 {
-    printf("\n*** Árbol de Parsing ***\n");
+    printf("\n*** Árbol de Parsing ***\n\n");
     struct nodoLista *ptr = nodoInicial; /*Se crea una copia de la referencia 
                                         al primer nodo para recorrer la lista*/
 
@@ -570,17 +570,38 @@ void imprimir(void)
 
     char *padreActual;
     char *tagActual;
-
+    char *padreSiguiente;
     while(ptr != NULL) /*Mientras que el puntero no sea NULL*/
     {
         ptrTemp = ptr;
         cantidad = ptr -> cantidadTabs;
-        padreActual = ptr -> etiqueta;
+        padreActual = ptr -> padre;
 
-        for(i = 0; i < cantidad; i++)
+        if(strcmp((ptr -> padre), "ROOT") != 0)
         {
-            printf("\t");
+            printf("|");
+        }
+
+
+        for(i = 0; i < cantidad - 1; i++)
+        {
+            tagActual = ptrTemp -> etiqueta;
+            padreSiguiente = strdup(ptrTemp -> ptrSiguiente -> padre);
+            //printf("Padre actual: %s Padre siguiente: %s\n", padreActual, padreSiguiente);
+            if(strcmp(padreActual, padreActual) == 0)
+            {
+                printf("\t|");
+            }
+            else
+            {
+                printf("\t");
+            }
         } 
+
+        for(i; i < cantidad; i++)
+        {
+            printf("____");
+        }
 
         printf("%s\n", ptr->etiqueta);
 
