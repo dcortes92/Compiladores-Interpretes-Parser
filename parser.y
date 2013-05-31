@@ -9,6 +9,9 @@
 %union 
 {
         char *string;
+        int columna;
+        int linea;
+        int largo;
 }
 
 %token TEXTO
@@ -49,9 +52,24 @@
 %token FORM
 %token FORM_
 %token _FORM
-%token H1_H6_
-%token H1_H6
-%token _H1_H6
+%token H1
+%token H1_
+%token _H1
+%token H2
+%token H2_
+%token _H2
+%token H3
+%token H3_
+%token _H3
+%token H4
+%token H4_
+%token _H4
+%token H5
+%token H5_
+%token _H5
+%token H6
+%token H6_
+%token _H6
 %token HEAD
 %token HEAD_
 %token _HEAD
@@ -110,6 +128,7 @@
 %token UL
 %token _UL
 %token CLOSE
+%token E
 
 %%
 
@@ -303,13 +322,13 @@ H4_TAG                          : H4_TAG TEXTUAL _H4                            
                                 ;
 
 
-H5_TAG                          : H1_H6_TAG TEXTUAL _H5                                 {insertar("/h5");}
-                                | H1_H6                                                 {insertar("h5");}
-                                | H1_H6_ CLOSE                                          {insertar("h5");}
+H5_TAG                          : H5_TAG TEXTUAL _H5                                    {insertar("/h5");}
+                                | H5                                                    {insertar("h5");}
+                                | H5_ CLOSE                                             {insertar("h5");}
                                 ;
 
 
-H6_TAG                          : H6_TAG TEXTUAL _H1_H6                                 {insertar("/h6");}
+H6_TAG                          : H6_TAG TEXTUAL _H6                                    {insertar("/h6");}
                                 | H6                                                    {insertar("h6");}
                                 | H6_ CLOSE                                             {insertar("h6");}
                                 ;
@@ -435,6 +454,10 @@ TEXTUAL                         : P_TAG
                                 | STRONG_TAG
                                 | EM_TAG
                                 | TEXTO                                                 {insertar("texto");}
+                                ;
+
+
+ERROR_CAPTURADO                 : ERROR                                                 {insertar("ERROR");}
                                 ;
 
 

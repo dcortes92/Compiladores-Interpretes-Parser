@@ -1,5 +1,10 @@
 %{
+	#include <stdio.h>
 	#include "y.tab.h"
+	
+	int linea = 1, columna = 1;
+	void contar(void);
+	void comentario(void);
 %}
 
 LETRA						[a-z]
@@ -245,24 +250,24 @@ PCOMA						[\;]
 "<form>"								{yylval.string = yytext; return FORM;}
 "<form"{FORM_ATTRIBUTE}+				{yylval.string = yytext; return FORM_;}
 "</form>"								{yylval.string = yytext; return _FORM;}
-"<h1>"									{yylval.string = yytext; return H1_H6;}
-"<h1"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H1_H6_;}
-"</h1>"									{yylval.string = yytext; return _H1_H6;}
-"<h2>"									{yylval.string = yytext; return H1_H6;}
-"<h2"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H1_H6_;}
-"</h2>"									{yylval.string = yytext; return _H1_H6;}
-"<h3>"									{yylval.string = yytext; return H1_H6;}
-"<h3"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H1_H6_;}
-"</h3>"									{yylval.string = yytext; return _H1_H6;}
-"<h4>"									{yylval.string = yytext; return H1_H6;}
-"<h4"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H1_H6_;}
-"</h4>"									{yylval.string = yytext; return _H1_H6;}
-"<h5>"									{yylval.string = yytext; return H1_H6;}
-"<h5"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H1_H6_;}
-"</h5>"									{yylval.string = yytext; return _H1_H6;}
-"<h6>"									{yylval.string = yytext; return H1_H6;}
-"<h6"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H1_H6_;}
-"</h6>"									{yylval.string = yytext; return _H1_H6;}
+"<h1>"									{yylval.string = yytext; return H1;}
+"<h1"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H1_;}
+"</h1>"									{yylval.string = yytext; return _H1;}
+"<h2>"									{yylval.string = yytext; return H2;}
+"<h2"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H2_;}
+"</h2>"									{yylval.string = yytext; return _H2;}
+"<h3>"									{yylval.string = yytext; return H3;}
+"<h3"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H3_;}
+"</h3>"									{yylval.string = yytext; return _H3;}
+"<h4>"									{yylval.string = yytext; return H4;}
+"<h4"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H4_;}
+"</h4>"									{yylval.string = yytext; return _H4;}
+"<h5>"									{yylval.string = yytext; return H5;}
+"<h5"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H5_;}
+"</h5>"									{yylval.string = yytext; return _H5;}
+"<h6>"									{yylval.string = yytext; return H6;}
+"<h6"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H6_;}
+"</h6>"									{yylval.string = yytext; return _H6;}
 "<head>"								{yylval.string = yytext; return HEAD;}
 "<head"{HEAD_ATTRIBUTE}+				{yylval.string = yytext; return HEAD_;}
 "</head>"								{yylval.string = yytext; return _HEAD;}
@@ -316,14 +321,66 @@ PCOMA						[\;]
 "</tr>"									{yylval.string = yytext; return _TR;}
 "<ul"{UL_ATTRIUTE}+						{yylval.string = yytext; return UL;}
 "</ul>"									{yylval.string = yytext; return _UL;}
-">"										{yylval.string = yytext; return CLOSE;}
-						
+">"										{yylval.string = yytext; return CLOSE;}						
 {TEXTO}									{yylval.string = yytext; return TEXTO;}
-{AMP}{HASH}[1-2]?{UNNUMERO}{PCOMA}		{/*ERROR*/}
-{AMP}{HASH}[3][0-1]{PCOMA}				{/*ERROR*/}
-"&#127;"								{/*ERROR*/}
-"<>"									{/*ERROR*/}
-"</>"									{/*ERROR*/}
 
-{AMP}{HASH}{TEXTO}{PCOMA}				{}
-{AMP}{TEXTO}{PCOMA}						{}
+{AMP}{HASH}[1-2]?{UNNUMERO}{PCOMA}		{error();}
+{AMP}{HASH}[3][0-1]{PCOMA}				{error();}
+"&#127;"								{error();}
+"<>"									{error();}
+"</>"									{error();}
+{AMP}{HASH}{TEXTO}{PCOMA}				{return TEXTO;}
+{AMP}{TEXTO}{PCOMA}						{return TEXTO;}
+
+.										{return ERROR; }
+
+
+%%
+
+
+void comentario()
+{
+	char c, ante1 = 0, ante2 = 0;
+    
+	while ((c = input()) != EOF)
+	{
+		if (c == '>' && ante1 == '-' && ante2 == '-'){
+			/*printf("correcto\n");*/
+			return;
+		}
+		else if(c == '\n')
+		{
+			linea++;
+		}
+		ante2 = ante1;
+		ante1 = c;
+	}
+	fprintf(stderr,"Error en linea %d, columna %d : comentario sin terminar\n", linea, columna);
+}
+
+void contar()
+{
+	int i;		
+	for (i = 0; yytext[i] != '\0'; i++)
+	{			
+		if (yytext[i] == '\n')
+		{
+			linea++;
+			columna = 1;
+		}
+		else if (yytext[i] == '\t')
+		{
+			columna += 8 - (columna % 8);
+		}
+		else
+		{
+			columna++;
+		}
+	}
+}
+
+void error()
+{	
+	fprintf(stderr,"Caracter inválido en linea: %d columna: %d caracter: %s\n", linea, columna, yytext);
+	columna += yyleng;
+}
