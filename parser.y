@@ -254,7 +254,7 @@ DT_TAG                          : DT_TAG TEXTUAL _DT                            
                                 ;
 
 
-EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("texto") insertar("/em");}
+EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("texto"); insertar("/em");}
                                 ;
 
 
@@ -497,6 +497,7 @@ struct nodoLista* insertar(char *tag)
 
 void imprimir(void)
 {
+    printf("\n*** Árbol de Parsing ***\n");
     struct nodoLista *ptr = nodoInicial; /*Se crea una copia de la referencia 
                                         al primer nodo para recorrer la lista*/
 
@@ -519,9 +520,9 @@ void imprimir(void)
             printf("\t");
         } 
 
-        printf("%s ", ptr->etiqueta);
+        printf("%s\n", ptr->etiqueta);
 
-        while(ptrTemp != NULL)
+        /*while(ptrTemp != NULL)
         {
             tagActual = ptrTemp -> padre;
             if(strcmp(tagActual, padreActual) == 0)
@@ -531,11 +532,10 @@ void imprimir(void)
             ptrTemp = ptrTemp -> ptrSiguiente;
         }
 
-        printf("\n");
+        printf("\n");*/
         ptr = ptr->ptrSiguiente; /*Se pasa al siguiente nodo*/
     }
-
-    printf("\n");
+    printf("\n*** Fin del Árbol de Parsing\n\n");
 }
 
 /*Funciones de la Pila*/

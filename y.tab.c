@@ -1856,10 +1856,192 @@ yyreduce:
     {insertar("/body");}
     break;
 
+  case 45:
+
+/* Line 1806 of yacc.c  */
+#line 193 "parser.y"
+    {insertar("a"); insertar("/a");}
+    break;
+
+  case 46:
+
+/* Line 1806 of yacc.c  */
+#line 197 "parser.y"
+    {insertar("b"); insertar("/b");}
+    break;
+
+  case 49:
+
+/* Line 1806 of yacc.c  */
+#line 206 "parser.y"
+    {insertar("blockquote");}
+    break;
+
+  case 50:
+
+/* Line 1806 of yacc.c  */
+#line 207 "parser.y"
+    {insertar("blockquote");}
+    break;
+
+  case 51:
+
+/* Line 1806 of yacc.c  */
+#line 211 "parser.y"
+    {insertar("/blockquote");}
+    break;
+
+  case 52:
+
+/* Line 1806 of yacc.c  */
+#line 214 "parser.y"
+    {insertar("br"); insertar("/br");}
+    break;
+
+  case 55:
+
+/* Line 1806 of yacc.c  */
+#line 223 "parser.y"
+    {insertar("button");}
+    break;
+
+  case 56:
+
+/* Line 1806 of yacc.c  */
+#line 224 "parser.y"
+    {insertar("button");}
+    break;
+
+  case 57:
+
+/* Line 1806 of yacc.c  */
+#line 228 "parser.y"
+    {insertar("/button");}
+    break;
+
+  case 58:
+
+/* Line 1806 of yacc.c  */
+#line 232 "parser.y"
+    {insertar("code"); insertar("texto"); insertar("/code");}
+    break;
+
+  case 60:
+
+/* Line 1806 of yacc.c  */
+#line 237 "parser.y"
+    {insertar("div");}
+    break;
+
+  case 61:
+
+/* Line 1806 of yacc.c  */
+#line 238 "parser.y"
+    {insertar("/div");}
+    break;
+
+  case 62:
+
+/* Line 1806 of yacc.c  */
+#line 242 "parser.y"
+    {insertar("dl"); insertar("dl");}
+    break;
+
+  case 64:
+
+/* Line 1806 of yacc.c  */
+#line 247 "parser.y"
+    {insertar("texto"); insertar("/dd");}
+    break;
+
+  case 65:
+
+/* Line 1806 of yacc.c  */
+#line 248 "parser.y"
+    {insertar("dd");}
+    break;
+
+  case 66:
+
+/* Line 1806 of yacc.c  */
+#line 252 "parser.y"
+    {insertar("texto"); insertar("/dt");}
+    break;
+
+  case 67:
+
+/* Line 1806 of yacc.c  */
+#line 253 "parser.y"
+    {insertar("dt");}
+    break;
+
+  case 68:
+
+/* Line 1806 of yacc.c  */
+#line 257 "parser.y"
+    {insertar("em"); insertar("texto"); insertar("/em");}
+    break;
+
+  case 69:
+
+/* Line 1806 of yacc.c  */
+#line 261 "parser.y"
+    {insertar("embed"); insertar("/embed");}
+    break;
+
+  case 70:
+
+/* Line 1806 of yacc.c  */
+#line 265 "parser.y"
+    {insertar("/form");}
+    break;
+
+  case 71:
+
+/* Line 1806 of yacc.c  */
+#line 266 "parser.y"
+    {insertar("/form");}
+    break;
+
+  case 72:
+
+/* Line 1806 of yacc.c  */
+#line 267 "parser.y"
+    {insertar("/form");}
+    break;
+
+  case 73:
+
+/* Line 1806 of yacc.c  */
+#line 268 "parser.y"
+    {insertar("form");}
+    break;
+
+  case 74:
+
+/* Line 1806 of yacc.c  */
+#line 269 "parser.y"
+    {insertar("form");}
+    break;
+
+  case 76:
+
+/* Line 1806 of yacc.c  */
+#line 274 "parser.y"
+    {insertar("a");}
+    break;
+
+  case 82:
+
+/* Line 1806 of yacc.c  */
+#line 289 "parser.y"
+    {insertar("input"); insertar("/input");}
+    break;
+
 
 
 /* Line 1806 of yacc.c  */
-#line 1863 "y.tab.c"
+#line 2045 "y.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2189,6 +2371,7 @@ struct nodoLista* insertar(char *tag)
 
 void imprimir(void)
 {
+    printf("\n*** Árbol de Parsing ***\n");
     struct nodoLista *ptr = nodoInicial; /*Se crea una copia de la referencia 
                                         al primer nodo para recorrer la lista*/
 
@@ -2211,9 +2394,9 @@ void imprimir(void)
             printf("\t");
         } 
 
-        printf("%s ", ptr->etiqueta);
+        printf("%s\n", ptr->etiqueta);
 
-        while(ptrTemp != NULL)
+        /*while(ptrTemp != NULL)
         {
             tagActual = ptrTemp -> padre;
             if(strcmp(tagActual, padreActual) == 0)
@@ -2223,11 +2406,10 @@ void imprimir(void)
             ptrTemp = ptrTemp -> ptrSiguiente;
         }
 
-        printf("\n");
+        printf("\n");*/
         ptr = ptr->ptrSiguiente; /*Se pasa al siguiente nodo*/
     }
-
-    printf("\n");
+    printf("\n*** Fin del Árbol de Parsing\n\n");
 }
 
 /*Funciones de la Pila*/
