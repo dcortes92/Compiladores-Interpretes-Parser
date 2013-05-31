@@ -75,67 +75,82 @@
      FORM = 293,
      FORM_ = 294,
      _FORM = 295,
-     H1_H6_ = 296,
-     H1_H6 = 297,
-     _H1_H6 = 298,
-     HEAD = 299,
-     HEAD_ = 300,
-     _HEAD = 301,
-     HEADER = 302,
-     _HEADER = 303,
-     HR = 304,
-     HR_ = 305,
-     _HR = 306,
-     HTML = 307,
-     HTML_ = 308,
-     _HTML = 309,
-     IMG = 310,
-     _IMG = 311,
-     INPUT = 312,
-     _INPUT = 313,
-     LI = 314,
-     LI_ = 315,
-     _LI = 316,
-     LINK = 317,
-     _LINK = 318,
-     META = 319,
-     _META = 320,
-     OBJECT = 321,
-     _OBJECT = 322,
-     OL = 323,
-     OL_ = 324,
-     _OL = 325,
-     P = 326,
-     P_ = 327,
-     _P = 328,
-     PRE = 329,
-     PRE_ = 330,
-     _PRE = 331,
-     SCRIPT = 332,
-     SCRIPT_ = 333,
-     _SCRIPT = 334,
-     SPAN = 335,
-     _SPAN = 336,
-     STRONG = 337,
-     _STRONG = 338,
-     STYLE = 339,
-     _STYLE = 340,
-     TABLE = 341,
-     _TABLE = 342,
-     TD = 343,
-     _TD = 344,
-     TEXTAREA = 345,
-     TEXTAREA_ = 346,
-     _TEXTAREA = 347,
-     TH = 348,
-     _TH = 349,
-     TITLE = 350,
-     _TITLE = 351,
-     TR = 352,
-     _TR = 353,
-     UL = 354,
-     _UL = 355,
-     CLOSE = 356
+     H1 = 296,
+     H1_ = 297,
+     _H1 = 298,
+     H2 = 299,
+     H2_ = 300,
+     _H2 = 301,
+     H3 = 302,
+     H3_ = 303,
+     _H3 = 304,
+     H4 = 305,
+     H4_ = 306,
+     _H4 = 307,
+     H5 = 308,
+     H5_ = 309,
+     _H5 = 310,
+     H6 = 311,
+     H6_ = 312,
+     _H6 = 313,
+     HEAD = 314,
+     HEAD_ = 315,
+     _HEAD = 316,
+     HEADER = 317,
+     _HEADER = 318,
+     HR = 319,
+     HR_ = 320,
+     _HR = 321,
+     HTML = 322,
+     HTML_ = 323,
+     _HTML = 324,
+     IMG = 325,
+     _IMG = 326,
+     INPUT = 327,
+     _INPUT = 328,
+     LI = 329,
+     LI_ = 330,
+     _LI = 331,
+     LINK = 332,
+     _LINK = 333,
+     META = 334,
+     _META = 335,
+     OBJECT = 336,
+     _OBJECT = 337,
+     OL = 338,
+     OL_ = 339,
+     _OL = 340,
+     P = 341,
+     P_ = 342,
+     _P = 343,
+     PRE = 344,
+     PRE_ = 345,
+     _PRE = 346,
+     SCRIPT = 347,
+     SCRIPT_ = 348,
+     _SCRIPT = 349,
+     SPAN = 350,
+     _SPAN = 351,
+     STRONG = 352,
+     _STRONG = 353,
+     STYLE = 354,
+     _STYLE = 355,
+     TABLE = 356,
+     _TABLE = 357,
+     TD = 358,
+     _TD = 359,
+     TEXTAREA = 360,
+     TEXTAREA_ = 361,
+     _TEXTAREA = 362,
+     TH = 363,
+     _TH = 364,
+     TITLE = 365,
+     _TITLE = 366,
+     TR = 367,
+     _TR = 368,
+     UL = 369,
+     _UL = 370,
+     CLOSE = 371
    };
 #endif
 /* Tokens.  */
@@ -177,67 +192,82 @@
 #define FORM 293
 #define FORM_ 294
 #define _FORM 295
-#define H1_H6_ 296
-#define H1_H6 297
-#define _H1_H6 298
-#define HEAD 299
-#define HEAD_ 300
-#define _HEAD 301
-#define HEADER 302
-#define _HEADER 303
-#define HR 304
-#define HR_ 305
-#define _HR 306
-#define HTML 307
-#define HTML_ 308
-#define _HTML 309
-#define IMG 310
-#define _IMG 311
-#define INPUT 312
-#define _INPUT 313
-#define LI 314
-#define LI_ 315
-#define _LI 316
-#define LINK 317
-#define _LINK 318
-#define META 319
-#define _META 320
-#define OBJECT 321
-#define _OBJECT 322
-#define OL 323
-#define OL_ 324
-#define _OL 325
-#define P 326
-#define P_ 327
-#define _P 328
-#define PRE 329
-#define PRE_ 330
-#define _PRE 331
-#define SCRIPT 332
-#define SCRIPT_ 333
-#define _SCRIPT 334
-#define SPAN 335
-#define _SPAN 336
-#define STRONG 337
-#define _STRONG 338
-#define STYLE 339
-#define _STYLE 340
-#define TABLE 341
-#define _TABLE 342
-#define TD 343
-#define _TD 344
-#define TEXTAREA 345
-#define TEXTAREA_ 346
-#define _TEXTAREA 347
-#define TH 348
-#define _TH 349
-#define TITLE 350
-#define _TITLE 351
-#define TR 352
-#define _TR 353
-#define UL 354
-#define _UL 355
-#define CLOSE 356
+#define H1 296
+#define H1_ 297
+#define _H1 298
+#define H2 299
+#define H2_ 300
+#define _H2 301
+#define H3 302
+#define H3_ 303
+#define _H3 304
+#define H4 305
+#define H4_ 306
+#define _H4 307
+#define H5 308
+#define H5_ 309
+#define _H5 310
+#define H6 311
+#define H6_ 312
+#define _H6 313
+#define HEAD 314
+#define HEAD_ 315
+#define _HEAD 316
+#define HEADER 317
+#define _HEADER 318
+#define HR 319
+#define HR_ 320
+#define _HR 321
+#define HTML 322
+#define HTML_ 323
+#define _HTML 324
+#define IMG 325
+#define _IMG 326
+#define INPUT 327
+#define _INPUT 328
+#define LI 329
+#define LI_ 330
+#define _LI 331
+#define LINK 332
+#define _LINK 333
+#define META 334
+#define _META 335
+#define OBJECT 336
+#define _OBJECT 337
+#define OL 338
+#define OL_ 339
+#define _OL 340
+#define P 341
+#define P_ 342
+#define _P 343
+#define PRE 344
+#define PRE_ 345
+#define _PRE 346
+#define SCRIPT 347
+#define SCRIPT_ 348
+#define _SCRIPT 349
+#define SPAN 350
+#define _SPAN 351
+#define STRONG 352
+#define _STRONG 353
+#define STYLE 354
+#define _STYLE 355
+#define TABLE 356
+#define _TABLE 357
+#define TD 358
+#define _TD 359
+#define TEXTAREA 360
+#define TEXTAREA_ 361
+#define _TEXTAREA 362
+#define TH 363
+#define _TH 364
+#define TITLE 365
+#define _TITLE 366
+#define TR 367
+#define _TR 368
+#define UL 369
+#define _UL 370
+#define CLOSE 371
 
 
 
@@ -254,7 +284,7 @@ typedef union YYSTYPE
 
 
 /* Line 2068 of yacc.c  */
-#line 258 "y.tab.h"
+#line 288 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */

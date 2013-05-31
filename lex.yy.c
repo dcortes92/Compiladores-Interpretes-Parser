@@ -3641,92 +3641,92 @@ YY_RULE_SETUP
 case 38:
 YY_RULE_SETUP
 #line 248 "analizador.l"
-{yylval.string = yytext; return H1_H6;}
+{yylval.string = yytext; return H1;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 249 "analizador.l"
-{yylval.string = yytext; return H1_H6_;}
+{yylval.string = yytext; return H1_;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 250 "analizador.l"
-{yylval.string = yytext; return _H1_H6;}
+{yylval.string = yytext; return _H1;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
 #line 251 "analizador.l"
-{yylval.string = yytext; return H1_H6;}
+{yylval.string = yytext; return H2;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
 #line 252 "analizador.l"
-{yylval.string = yytext; return H1_H6_;}
+{yylval.string = yytext; return H2_;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
 #line 253 "analizador.l"
-{yylval.string = yytext; return _H1_H6;}
+{yylval.string = yytext; return _H2;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
 #line 254 "analizador.l"
-{yylval.string = yytext; return H1_H6;}
+{yylval.string = yytext; return H3;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
 #line 255 "analizador.l"
-{yylval.string = yytext; return H1_H6_;}
+{yylval.string = yytext; return H3_;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
 #line 256 "analizador.l"
-{yylval.string = yytext; return _H1_H6;}
+{yylval.string = yytext; return _H3;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
 #line 257 "analizador.l"
-{yylval.string = yytext; return H1_H6;}
+{yylval.string = yytext; return H4;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
 #line 258 "analizador.l"
-{yylval.string = yytext; return H1_H6_;}
+{yylval.string = yytext; return H4_;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
 #line 259 "analizador.l"
-{yylval.string = yytext; return _H1_H6;}
+{yylval.string = yytext; return _H4;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
 #line 260 "analizador.l"
-{yylval.string = yytext; return H1_H6;}
+{yylval.string = yytext; return H5;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
 #line 261 "analizador.l"
-{yylval.string = yytext; return H1_H6_;}
+{yylval.string = yytext; return H5_;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
 #line 262 "analizador.l"
-{yylval.string = yytext; return _H1_H6;}
+{yylval.string = yytext; return _H5;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
 #line 263 "analizador.l"
-{yylval.string = yytext; return H1_H6;}
+{yylval.string = yytext; return H6;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
 #line 264 "analizador.l"
-{yylval.string = yytext; return H1_H6_;}
+{yylval.string = yytext; return H6_;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
 #line 265 "analizador.l"
-{yylval.string = yytext; return _H1_H6;}
+{yylval.string = yytext; return _H6;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
