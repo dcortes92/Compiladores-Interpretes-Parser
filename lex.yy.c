@@ -4016,27 +4016,47 @@ YY_RULE_SETUP
 case 111:
 YY_RULE_SETUP
 #line 328 "analizador.l"
+<<<<<<< HEAD
 {error;}
+=======
+{error();}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
 #line 329 "analizador.l"
+<<<<<<< HEAD
 {error;}
+=======
+{error();}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
 #line 330 "analizador.l"
+<<<<<<< HEAD
 {error;}
+=======
+{error();}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
 #line 331 "analizador.l"
+<<<<<<< HEAD
 {error;}
+=======
+{error();}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
 #line 332 "analizador.l"
+<<<<<<< HEAD
 {error;}
+=======
+{error();}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
 	YY_BREAK
 case 116:
 YY_RULE_SETUP

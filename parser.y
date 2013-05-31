@@ -132,80 +132,91 @@
 
 %%
 
-ARCHIVO							: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {imprimir();}
-								;
+
+ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {printf("CORRECTO\n");}
+                                | ERROR_CAPTURADO                                          {printf("ERROR\n");}
+				;
 
 
-HTML_OPEN_TAG					: HTML                                                     {insertar("html");}
-								| HTML_ CLOSE                                              {insertar("html");}
-								;
+HTML_OPEN_TAG			: HTML                                                     {insertar("html");}
+				| HTML_ CLOSE                                              {insertar("html");}
+				;
 
 
-HTML_CLOSE_TAG					: _HTML                                                    {insertar("/html");}
-								;
+HTML_CLOSE_TAG			: _HTML                                                    {insertar("/html");}
+				;
 
 
-CABEZA 							: CABEZA_OPEN CABEZA_CLOSE
+CABEZA 				: CABEZA_OPEN CABEZA_CLOSE
 
 
-CABEZA_OPEN						: CABEZA_OPEN TITULO
+CABEZA_OPEN			: CABEZA_OPEN TITULO
                                 | CABEZA_OPEN STYLE_TAG
                                 | CABEZA_OPEN LINK_TAG
                                 | CABEZA_OPEN META_TAG
                                 | CABEZA_OPEN SCRIPT_TAG
-								| HEAD                                                     {insertar("head");}
-								| HEAD_ CLOSE                                              {insertar("head");}
-								;
+				| HEAD                                                     {insertar("head");}
+				| HEAD_ CLOSE                                              {insertar("head");}
+				;
 
 
-CABEZA_CLOSE					: _HEAD                                                    {insertar("/head");}
+CABEZA_CLOSE			: _HEAD                                                    {insertar("/head");}
 
 
-TITULO 							: TITULO_OPEN TITULO_CLOSE
+TITULO 				: TITULO_OPEN TITULO_CLOSE
+                                ;
 
-
+<<<<<<< HEAD
 TITULO_OPEN						: TITULO_OPEN TEXTUAL                                      {}
 								| TITLE                                                    {insertar("title");}
 								;
+=======
+TITULO_OPEN			: TITULO_OPEN TEXTUAL                                      
+				| TITLE                                                    {insertar("title");}
+				;
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
 
 
-TITULO_CLOSE					: _TITLE                                                   {insertar("/title");}
-								;
+TITULO_CLOSE			: _TITLE                                                   {insertar("/title");}
+				;
 
 
-CUERPO 							: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE 
+CUERPO 				: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE
+                                | ERROR_CAPTURADO                                          {printf("ERROR\n");}
+                                ;
 
 
-CUERPO_OPEN						: BODY                                                     {insertar("body");}
-								| BODY_ CLOSE                                              {insertar("body");}
-								;
+CUERPO_OPEN			: BODY                                                     {insertar("body");}
+				| BODY_ CLOSE                                              {insertar("body");}
+				;
 
 
-CUERPO_CLOSE					: _BODY                                                    {insertar("/body");}
+CUERPO_CLOSE			: _BODY                                                    {insertar("/body");}
 
 
-CONTENIDO_BODY                  : A_TAG
-                                | B_TAG
-                                | BLOCKQUOTE_TAG
-                                | BR_TAG
-                                | BUTTON_TAG
-                                | CODE_TAG
-                                | DIV_TAG
-                                | DL_TAG
-                                | EMBED_TAG
-                                | FORM_TAG
-                                | H1_H6_TAG
-                                | HR_TAG
-                                | IMG_TAG
-                                | INPUT_TAG
-                                | LINK_TAG
-                                | OL_TAG
-                                | PRE_TAG
-                                | SCRIPT_TAG
-                                | TABLE_TAG
-                                | TEXTAREA_TAG
-                                | UL_TAG
-                                | TEXTUAL
+CONTENIDO_BODY                  : A_TAG CONTENIDO_BODY
+                                | B_TAG CONTENIDO_BODY
+                                | BLOCKQUOTE_TAG CONTENIDO_BODY
+                                | BR_TAG CONTENIDO_BODY
+                                | BUTTON_TAG CONTENIDO_BODY
+                                | CODE_TAG CONTENIDO_BODY
+                                | DIV_TAG CONTENIDO_BODY
+                                | DL_TAG CONTENIDO_BODY
+                                | EMBED_TAG CONTENIDO_BODY
+                                | FORM_TAG CONTENIDO_BODY
+                                | H1_H6_TAG CONTENIDO_BODY
+                                | HR_TAG CONTENIDO_BODY
+                                | IMG_TAG CONTENIDO_BODY
+                                | INPUT_TAG CONTENIDO_BODY
+                                | LINK_TAG CONTENIDO_BODY
+                                | OL_TAG CONTENIDO_BODY
+                                | PRE_TAG CONTENIDO_BODY
+                                | SCRIPT_TAG CONTENIDO_BODY
+                                | TABLE_TAG CONTENIDO_BODY
+                                | TEXTAREA_TAG CONTENIDO_BODY
+                                | UL_TAG CONTENIDO_BODY
+                                | TEXTUAL CONTENIDO_BODY
+                                |
                                 ;
 
 
@@ -378,7 +389,7 @@ P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P       
 
 
 P_TAG_OPEN                      : P                                                     {insertar("p");}
-                                | P_ CLOSE                                              {insertar("/p");}
+                                | P_ CLOSE                                              {insertar("p");}
                                 ;
 
 
@@ -453,13 +464,12 @@ TEXTAREA_TAG                    : TEXTAREA _TEXTAREA                            
 TEXTUAL                         : P_TAG
                                 | STRONG_TAG
                                 | EM_TAG
-                                | TEXTO                                                 {insertar("texto");}
+                                | TEXTO                                                 { insertar("texto");}
                                 ;
 
 
-ERROR_CAPTURADO                 : ERROR                                                 {insertar("ERROR");}
+ERROR_CAPTURADO                 : ERROR
                                 ;
-
 
 %%
 
