@@ -5,6 +5,7 @@
 	int linea = 1, columna = 1;
 	void contar(void);
 	void comentario(void);
+	void error();
 %}
 
 LETRA						[a-z]
