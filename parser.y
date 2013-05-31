@@ -145,7 +145,7 @@ CABEZA_CLOSE					: _HEAD                                                    {ins
 TITULO 							: TITULO_OPEN TITULO_CLOSE
 
 
-TITULO_OPEN						: TITULO_OPEN TEXTUAL                            {insertar("texto");}
+TITULO_OPEN						: TITULO_OPEN TEXTUAL                                      {insertar("texto");}
 								| TITLE                                                    {insertar("title");}
 								;
 
@@ -204,7 +204,7 @@ BLOCKQUOTE_TAG                  : BLOCKQUOTE_TAG_OPEN P_TAG BLOCKQUOTE_TAG_CLOSE
 
 
 BLOCKQUOTE_TAG_OPEN             : BLOCKQUOTE                                            {insertar("blockquote");}
-                                | BLOCKQUOTE_                                           {insertar("blockquote");}
+                                | BLOCKQUOTE_ CLOSE                                     {insertar("blockquote");}
                                 ;
 
 
@@ -221,7 +221,7 @@ BUTTON_TAG                      : BUTTON_TAG_OPEN IMG_TAG BUTTON_TAG_CLOSE
 
 
 BUTTON_TAG_OPEN                 : BUTTON                                                {insertar("button");}
-                                | BUTTON_                                               {insertar("button");}
+                                | BUTTON_ CLOSE                                         {insertar("button");}
                                 ;
 
 
@@ -235,7 +235,7 @@ CODE_TAG                        : CODE TEXTUAL _CODE                            
 
 DIV_TAG                         : DIV_TAG CONTENIDO_BODY _DIV
                                 | DIV                                                   {insertar("div");}
-                                | DIV_                                                  {insertar("/div");}
+                                | DIV_ CLOSE                                            {insertar("/div");}
                                 ;
 
 
@@ -266,23 +266,62 @@ FORM_TAG                        : FORM_TAG INPUT_TAG _FORM                      
                                 | FORM_TAG TEXTAREA_TAG _FORM                           {insertar("/form");}
                                 | FORM_TAG BUTTON_TAG _FORM                             {insertar("/form");}
                                 | FORM                                                  {insertar("form");}
-                                | FORM_                                                 {insertar("form");}
+                                | FORM_ CLOSE                                           {insertar("form");}
                                 ;
 
 
-H1_H6_TAG                       : H1_H6_TAG TEXTUAL _H1_H6
-                                | H1_H6                                                 {insertar("a");}
-                                | H1_H6_
+H1_H6_TAG                       : H1_TAG
+                                | H2_TAG
+                                | H3_TAG
+                                | H4_TAG
+                                | H5_TAG
+                                | H6_TAG
                                 ;
 
 
-HR_TAG                          : HR_TAG _HR
-                                | HR
-                                | HR_
+H1_TAG                          : H1_TAG TEXTUAL _H1                                    {insertar("/h1");}
+                                | H1                                                    {insertar("h1");}
+                                | H1_ CLOSE                                             {insertar("h1");}
                                 ;
 
 
-IMG_TAG                         : IMG _IMG
+H2_TAG                          : H2_TAG TEXTUAL _H2                                    {insertar("/h2");}
+                                | H2                                                    {insertar("h2");}
+                                | H2_ CLOSE                                             {insertar("h2");}
+                                ;
+
+
+H3_TAG                          : H3_TAG TEXTUAL _H3                                    {insertar("/h3");}
+                                | H3                                                    {insertar("h3");}
+                                | H3_ CLOSE                                             {insertar("h3");}
+                                ;
+
+
+H4_TAG                          : H4_TAG TEXTUAL _H4                                    {insertar("/h4");}
+                                | H4                                                    {insertar("h4");}
+                                | H4_ CLOSE                                             {insertar("h4");}
+                                ;
+
+
+H5_TAG                          : H1_H6_TAG TEXTUAL _H5                                 {insertar("/h5");}
+                                | H1_H6                                                 {insertar("h5");}
+                                | H1_H6_ CLOSE                                          {insertar("h5");}
+                                ;
+
+
+H6_TAG                          : H6_TAG TEXTUAL _H1_H6                                 {insertar("/h6");}
+                                | H6                                                    {insertar("h6");}
+                                | H6_ CLOSE                                             {insertar("h6");}
+                                ;
+
+
+HR_TAG                          : HR_TAG _HR                                            {insertar("/hr");}
+                                | HR                                                    {insertar("hr");}
+                                | HR_ CLOSE                                             {insertar("hr");}
+                                ;
+
+
+IMG_TAG                         : IMG _IMG                                              {insertar("img"); insertar("/img");}
                                 ;
 
 
@@ -290,66 +329,66 @@ INPUT_TAG                       : INPUT _INPUT                                  
                                 ;
 
 
-OL_TAG                          : OL_TAG LI_TAG _OL
-                                | OL
-                                | OL_
+OL_TAG                          : OL_TAG LI_TAG _OL                                     {insertar("/ol");}
+                                | OL                                                    {insertar("ol");}
+                                | OL_ CLOSE                                             {insertar("ol");}
                                 ;
 
 
-UL_TAG                          : UL_TAG LI_TAG _OL
-                                | UL
+UL_TAG                          : UL_TAG LI_TAG _UL                                     {insertar("/ul");}
+                                | UL                                                    {insertar("ul");}
                                 ;
 
 
-LI_TAG                          : LI_TAG TEXTUAL _LI
-                                | LI
-                                | LI_
+LI_TAG                          : LI_TAG TEXTUAL _LI                                    {insertar("/li");}
+                                | LI                                                    {insertar("li");}
+                                | LI_ CLOSE                                             {insertar("li");}
                                 ;
 
 
-LINK_TAG                        : LINK _LINK
+LINK_TAG                        : LINK _LINK                                            {insertar("link"); insertar("/link");}
                                 ;
 
 
-META_TAG                        : META _META
+META_TAG                        : META _META                                            {insertar("meta"); insertar("/meta");}
                                 ;
 
 
-P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P
+P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P               {insertar("/p");}
                                 ;
 
 
-P_TAG_OPEN                      : P
-                                | P_
+P_TAG_OPEN                      : P                                                     {insertar("p");}
+                                | P_ CLOSE                                              {insertar("/p");}
                                 ;
 
 
-PRE_TAG                         : PRE_TAG TEXTUAL  _PRE
-                                | PRE
-                                | PRE_
+PRE_TAG                         : PRE_TAG TEXTUAL _PRE                                  {insertar("/pre");}
+                                | PRE                                                   {insertar("pre");}
+                                | PRE_ CLOSE                                            {insertar("pre");}
                                 ;
 
 
-SCRIPT_TAG                      : SCRIPT_TAG TEXTUAL _SCRIPT
-                                | SCRIPT
-                                | SCRIPT_
+SCRIPT_TAG                      : SCRIPT_TAG TEXTUAL _SCRIPT                            {insertar("/script");}
+                                | SCRIPT                                                {insertar("script");}
+                                | SCRIPT_ CLOSE                                         {insertar("script");}
                                 ;
 
 
-SPAN_TAG                        : SPAN TEXTUAL _SPAN
+SPAN_TAG                        : SPAN TEXTUAL _SPAN                                    {insertar("span"); insertar("texto"); insertar("/span");}
                                 |
                                 ;
 
 
-STRONG_TAG                      : STRONG TEXTUAL _STRONG
+STRONG_TAG                      : STRONG TEXTUAL _STRONG                                {insertar("strong"); insertar("/strong");}
                                 ;
 
 
-STYLE_TAG                       : STYLE TEXTUAL _STYLE
+STYLE_TAG                       : STYLE TEXTUAL _STYLE                                  {insertar("style"); insertar("/style");}
                                 ;
 
 
-TABLE_TAG                       : TABLE CAPTION_TAG TR_TAG _TABLE
+TABLE_TAG                       : TABLE CAPTION_TAG TR_TAG _TABLE                       {insertar("table"); insertar("/table");}
                                 ;
 
 
@@ -358,17 +397,17 @@ CAPTION_TAG                     : CAPTION_TAG_OPEN TEXTUAL CAPTION_TAG_CLOSE
                                 ;
 
 
-CAPTION_TAG_OPEN                : CAPTION
-                                | CAPTION_
+CAPTION_TAG_OPEN                : CAPTION                                               {insertar("caption");}
+                                | CAPTION_ CLOSE                                        {insertar("caption");}
                                 ;
 
 
-CAPTION_TAG_CLOSE               : _CAPTION
+CAPTION_TAG_CLOSE               : _CAPTION                                              {insertar("/caption");}
                                 ;
 
 
-TR_TAG                          : TR_TAG TH_TD_TAG _TR
-                                | TR
+TR_TAG                          : TR_TAG TH_TD_TAG _TR                                  {insertar("/tr");}
+                                | TR                                                    {insertar("tr");}
                                 ;
 
 
@@ -377,25 +416,25 @@ TH_TD_TAG                       : TH_TAG
                                 ;
 
 
-TH_TAG                          : TH_TAG TEXTUAL _TH
-                                | TH
+TH_TAG                          : TH_TAG TEXTUAL _TH                                    {insertar("/th");}
+                                | TH                                                    {insertar("th");}
                                 ;
 
 
-TD_TAG                          : TD_TAG TEXTUAL _TD
-                                | TD
+TD_TAG                          : TD_TAG TEXTUAL _TD                                    {insertar("/td");}
+                                | TD                                                    {insertar("td");}
                                 ;
 
 
-TEXTAREA_TAG                    : TEXTAREA _TEXTAREA
-                                | TEXTAREA TEXTUAL _TEXTAREA
+TEXTAREA_TAG                    : TEXTAREA _TEXTAREA                                    {insertar("textarea"); insertar("/textarea");}
+                                | TEXTAREA TEXTUAL _TEXTAREA                            {insertar("textarea"); insertar("/textarea");}
                                 ;
 
 
 TEXTUAL                         : P_TAG
                                 | STRONG_TAG
                                 | EM_TAG
-                                | TEXTO
+                                | TEXTO                                                 {insertar("texto");}
                                 ;
 
 
