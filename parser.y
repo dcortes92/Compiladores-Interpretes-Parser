@@ -128,7 +128,7 @@
 %token UL
 %token _UL
 %token CLOSE
-%token E
+%token ERROR
 
 %%
 
@@ -164,7 +164,7 @@ CABEZA_CLOSE					: _HEAD                                                    {ins
 TITULO 							: TITULO_OPEN TITULO_CLOSE
 
 
-TITULO_OPEN						: TITULO_OPEN TEXTUAL                                      {insertar("texto");}
+TITULO_OPEN						: TITULO_OPEN TEXTUAL                                      {}
 								| TITLE                                                    {insertar("title");}
 								;
 
@@ -471,7 +471,7 @@ int cantidadTabsPorTag = 0;
 
 void yyerror(char *s)
 {
-	fprintf(stderr, "Error %s\n",s);
+	fprintf(stderr, "Error hola hola hola %s\n",s);
 }
 
 int main() {
@@ -574,48 +574,28 @@ void imprimir(void)
     while(ptr != NULL) /*Mientras que el puntero no sea NULL*/
     {
         ptrTemp = ptr;
-        cantidad = ptr -> cantidadTabs;
-        padreActual = ptr -> padre;
+        cantidad = ptrTemp -> cantidadTabs;
+        padreActual = strdup(ptrTemp -> padre);
 
-        if(strcmp((ptr -> padre), "ROOT") != 0)
+        if(strcmp(padreActual, "ROOT") == 0)
         {
-            printf("|");
+                printf("%s\n", ptr->etiqueta);                
         }
-
-
-        for(i = 0; i < cantidad - 1; i++)
+        else
         {
-            tagActual = ptrTemp -> etiqueta;
-            padreSiguiente = strdup(ptrTemp -> ptrSiguiente -> padre);
-            //printf("Padre actual: %s Padre siguiente: %s\n", padreActual, padreSiguiente);
-            if(strcmp(padreActual, padreActual) == 0)
-            {
-                printf("\t|");
-            }
-            else
-            {
-                printf("\t");
-            }
-        } 
+                for(i = 0; i < cantidad-1; i++)
+                {
+                    printf("\t");
+                }
 
-        for(i; i < cantidad; i++)
-        {
-            printf("____");
+                for(i; i < cantidad; i++)
+                {
+                        printf("|____");
+                }
+
+                printf("%s\n", ptr->etiqueta);
         }
-
-        printf("%s\n", ptr->etiqueta);
-
-        /*while(ptrTemp != NULL)
-        {
-            tagActual = ptrTemp -> padre;
-            if(strcmp(tagActual, padreActual) == 0)
-            {
-                printf("%s ", ptrTemp -> etiqueta);
-            }
-            ptrTemp = ptrTemp -> ptrSiguiente;
-        }
-
-        printf("\n");*/
+        
         ptr = ptr->ptrSiguiente; /*Se pasa al siguiente nodo*/
     }
     printf("\n*** Fin del Árbol de Parsing\n\n");

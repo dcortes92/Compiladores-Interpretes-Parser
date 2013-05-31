@@ -150,7 +150,8 @@
      _TR = 368,
      UL = 369,
      _UL = 370,
-     CLOSE = 371
+     CLOSE = 371,
+     ERROR = 372
    };
 #endif
 /* Tokens.  */
@@ -268,6 +269,7 @@
 #define UL 369
 #define _UL 370
 #define CLOSE 371
+#define ERROR 372
 
 
 
@@ -280,11 +282,14 @@ typedef union YYSTYPE
 #line 10 "parser.y"
 
         char *string;
+        int columna;
+        int linea;
+        int largo;
 
 
 
 /* Line 2068 of yacc.c  */
-#line 288 "y.tab.h"
+#line 293 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
