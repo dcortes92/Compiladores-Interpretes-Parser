@@ -172,11 +172,6 @@ TITULO_OPEN			: TITULO_OPEN TEXTUAL
 				;
 
 
-TITULO_OPEN			: TITULO_OPEN TEXTUAL                                      
-				| TITLE                                                    {insertar("title");}
-				;
-
-
 TITULO_CLOSE			: _TITLE                                                   {insertar("/title");}
 				;
 
@@ -284,7 +279,7 @@ DT_TAG                          : DT_TAG TEXTUAL _DT                            
                                 ;
 
 
-EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("/em";}
+EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("/em");}
                                 ;
 
 
