@@ -166,6 +166,12 @@ CABEZA_CLOSE			: _HEAD                                                    {inser
 TITULO 				: TITULO_OPEN TITULO_CLOSE
                                 ;
 
+
+TITULO_OPEN			: TITULO_OPEN TEXTUAL                                
+				| TITLE                                                    {insertar("title");}
+				;
+
+
 TITULO_OPEN			: TITULO_OPEN TEXTUAL                                      
 				| TITLE                                                    {insertar("title");}
 				;
@@ -253,7 +259,7 @@ BUTTON_TAG_CLOSE                : _BUTTON                                       
                                 ;
 
 
-CODE_TAG                        : CODE TEXTUAL _CODE                                    {insertar("code"); insertar("texto"); insertar("/code");}
+CODE_TAG                        : CODE TEXTUAL _CODE                                    {insertar("code"); insertar("/code");}
                                 ;
 
 
@@ -268,17 +274,17 @@ DL_TAG                          : DL DD_TAG _DL                                 
                                 ;
 
 
-DD_TAG                          : DD_TAG TEXTUAL _DD                                    {insertar("texto"); insertar("/dd");}
+DD_TAG                          : DD_TAG TEXTUAL _DD                                    {insertar("/dd");}
                                 | DD                                                    {insertar("dd");}
                                 ;
 
 
-DT_TAG                          : DT_TAG TEXTUAL _DT                                    {insertar("texto"); insertar("/dt");}
+DT_TAG                          : DT_TAG TEXTUAL _DT                                    {insertar("/dt");}
                                 | DT                                                    {insertar("dt");}
                                 ;
 
 
-EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("texto"); insertar("/em");}
+EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("/em";}
                                 ;
 
 
@@ -399,7 +405,7 @@ SCRIPT_TAG                      : SCRIPT_TAG TEXTUAL _SCRIPT                    
                                 ;
 
 
-SPAN_TAG                        : SPAN TEXTUAL _SPAN                                    {insertar("span"); insertar("texto"); insertar("/span");}
+SPAN_TAG                        : SPAN TEXTUAL _SPAN                                    {insertar("span"); insertar("/span");}
                                 |
                                 ;
 
@@ -473,7 +479,11 @@ int cantidadTabsPorTag = 0;
 
 void yyerror(char *s)
 {
+<<<<<<< HEAD
 	fprintf(stderr, "Error cerca de %s\n\n", yylval.string);
+=======
+	fprintf(stderr, "Error hola hola hola %s\n",s);
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
 }
 
 int main() {
@@ -576,48 +586,28 @@ void imprimir(void)
     while(ptr != NULL) /*Mientras que el puntero no sea NULL*/
     {
         ptrTemp = ptr;
-        cantidad = ptr -> cantidadTabs;
-        padreActual = ptr -> padre;
+        cantidad = ptrTemp -> cantidadTabs;
+        padreActual = strdup(ptrTemp -> padre);
 
-        if(strcmp((ptr -> padre), "ROOT") != 0)
+        if(strcmp(padreActual, "ROOT") == 0)
         {
-            printf("|");
+                printf("%s\n", ptr->etiqueta);                
         }
-
-
-        for(i = 0; i < cantidad - 1; i++)
+        else
         {
-            tagActual = ptrTemp -> etiqueta;
-            padreSiguiente = strdup(ptrTemp -> ptrSiguiente -> padre);
-            //printf("Padre actual: %s Padre siguiente: %s\n", padreActual, padreSiguiente);
-            if(strcmp(padreActual, padreActual) == 0)
-            {
-                printf("\t|");
-            }
-            else
-            {
-                printf("\t");
-            }
-        } 
+                for(i = 0; i < cantidad-1; i++)
+                {
+                    printf("\t");
+                }
 
-        for(i; i < cantidad; i++)
-        {
-            printf("____");
+                for(i; i < cantidad; i++)
+                {
+                        printf("|____");
+                }
+
+                printf("%s\n", ptr->etiqueta);
         }
-
-        printf("%s\n", ptr->etiqueta);
-
-        /*while(ptrTemp != NULL)
-        {
-            tagActual = ptrTemp -> padre;
-            if(strcmp(tagActual, padreActual) == 0)
-            {
-                printf("%s ", ptrTemp -> etiqueta);
-            }
-            ptrTemp = ptrTemp -> ptrSiguiente;
-        }
-
-        printf("\n");*/
+        
         ptr = ptr->ptrSiguiente; /*Se pasa al siguiente nodo*/
     }
     printf("\n*** Fin del Árbol de Parsing\n\n");

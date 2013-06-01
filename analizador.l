@@ -326,11 +326,11 @@ PCOMA						[\;]
 ">"										{yylval.string = yytext; return CLOSE;}						
 {TEXTO}									{yylval.string = yytext; return TEXTO;}
 
-{AMP}{HASH}[1-2]?{UNNUMERO}{PCOMA}		{error();}
-{AMP}{HASH}[3][0-1]{PCOMA}				{error();}
-"&#127;"								{error();}
-"<>"									{error();}
-"</>"									{error();}
+{AMP}{HASH}[1-2]?{UNNUMERO}{PCOMA}		{error;}
+{AMP}{HASH}[3][0-1]{PCOMA}				{error;}
+"&#127;"								{error;}
+"<>"									{error;}
+"</>"									{error;}
 {AMP}{HASH}{TEXTO}{PCOMA}				{return TEXTO;}
 {AMP}{TEXTO}{PCOMA}						{return TEXTO;}
 

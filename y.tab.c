@@ -671,12 +671,17 @@ static const yytype_uint16 yyprhs[] =
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int16 yyrhs[] =
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
      119,     0,    -1,   120,   122,   128,   121,    -1,    67,    -1,
       68,   116,    -1,    69,    -1,   123,   124,    -1,   123,   125,
       -1,   123,   170,    -1,   123,   162,    -1,   123,   163,    -1,
      123,   167,    -1,    59,    -1,    60,   116,    -1,    61,    -1,
      126,   127,    -1,   126,   180,    -1,   110,    -1,   111,    -1,
      129,   131,   130,    -1,    12,    -1,    13,   116,    -1,    14,
+<<<<<<< HEAD
       -1,   132,   131,    -1,   133,   131,    -1,   134,   131,    -1,
      137,   131,    -1,   138,   131,    -1,   141,   131,    -1,   142,
      131,    -1,   143,   131,    -1,   147,   131,    -1,   148,   131,
@@ -714,11 +719,95 @@ static const yytype_int16 yyrhs[] =
       -1,   178,    -1,   177,   180,   109,    -1,   108,    -1,   178,
      180,   104,    -1,   103,    -1,   105,   107,    -1,   105,   180,
      107,    -1,   164,    -1,   169,    -1,   146,    -1,     3,    -1
+=======
+      -1,   132,    -1,   133,    -1,   134,    -1,   137,    -1,   138,
+      -1,   141,    -1,   142,    -1,   143,    -1,   147,    -1,   148,
+      -1,   149,    -1,   156,    -1,   157,    -1,   158,    -1,   162,
+      -1,   159,    -1,   166,    -1,   167,    -1,   171,    -1,   179,
+      -1,   160,    -1,   180,    -1,     5,     6,    -1,     7,     8,
+      -1,   135,   164,   136,    -1,   135,   180,   136,    -1,     9,
+      -1,    10,   116,    -1,    11,    -1,    15,    16,    -1,   139,
+     157,   140,    -1,   139,   180,   140,    -1,    17,    -1,    18,
+     116,    -1,    19,    -1,    23,   180,    24,    -1,   142,   131,
+      27,    -1,    25,    -1,    26,   116,    -1,    28,   144,    29,
+      -1,    28,   145,    29,    -1,   144,   180,    33,    -1,    32,
+      -1,   145,   180,    31,    -1,    30,    -1,    34,   180,    35,
+      -1,    36,    37,    -1,   148,   158,    40,    -1,   148,   179,
+      40,    -1,   148,   138,    40,    -1,    38,    -1,    39,   116,
+      -1,   150,    -1,   151,    -1,   152,    -1,   153,    -1,   154,
+      -1,   155,    -1,   150,   180,    43,    -1,    41,    -1,    42,
+     116,    -1,   151,   180,    46,    -1,    44,    -1,    45,   116,
+      -1,   152,   180,    49,    -1,    47,    -1,    48,   116,    -1,
+     153,   180,    52,    -1,    50,    -1,    51,   116,    -1,   154,
+     180,    55,    -1,    53,    -1,    54,   116,    -1,   155,   180,
+      58,    -1,    56,    -1,    57,   116,    -1,   156,    66,    -1,
+      64,    -1,    65,   116,    -1,    70,    71,    -1,    72,    73,
+      -1,   159,   161,    85,    -1,    83,    -1,    84,   116,    -1,
+     160,   161,   115,    -1,   114,    -1,   161,   180,    76,    -1,
+      74,    -1,    75,   116,    -1,    77,    78,    -1,    79,    80,
+      -1,   165,   168,   180,   168,    88,    -1,    86,    -1,    87,
+     116,    -1,   166,   180,    91,    -1,    89,    -1,    90,   116,
+      -1,   167,   180,    94,    -1,    92,    -1,    93,   116,    -1,
+      95,   180,    96,    -1,    -1,    97,   180,    98,    -1,    99,
+     180,   100,    -1,   101,   172,   175,   102,    -1,   173,   180,
+     174,    -1,    -1,    20,    -1,    21,   116,    -1,    22,    -1,
+     175,   176,   113,    -1,   112,    -1,   177,    -1,   178,    -1,
+     177,   180,   109,    -1,   108,    -1,   178,   180,   104,    -1,
+     103,    -1,   105,   107,    -1,   105,   180,   107,    -1,   164,
+      -1,   169,    -1,   146,    -1,     3,    -1
+=======
+     119,     0,    -1,   120,   122,   128,   121,    -1,   181,    -1,
+      67,    -1,    68,   116,    -1,    69,    -1,   123,   124,    -1,
+     123,   125,    -1,   123,   170,    -1,   123,   162,    -1,   123,
+     163,    -1,   123,   167,    -1,    59,    -1,    60,   116,    -1,
+      61,    -1,   126,   127,    -1,   126,   180,    -1,   110,    -1,
+     111,    -1,   129,   131,   130,    -1,   181,    -1,    12,    -1,
+      13,   116,    -1,    14,    -1,   132,   131,    -1,   133,   131,
+      -1,   134,   131,    -1,   137,   131,    -1,   138,   131,    -1,
+     141,   131,    -1,   142,   131,    -1,   143,   131,    -1,   147,
+     131,    -1,   148,   131,    -1,   149,   131,    -1,   156,   131,
+      -1,   157,   131,    -1,   158,   131,    -1,   162,   131,    -1,
+     159,   131,    -1,   166,   131,    -1,   167,   131,    -1,   171,
+     131,    -1,   179,   131,    -1,   160,   131,    -1,   180,   131,
+      -1,    -1,     5,     6,    -1,     7,     8,    -1,   135,   164,
+     136,    -1,   135,   180,   136,    -1,     9,    -1,    10,   116,
+      -1,    11,    -1,    15,    16,    -1,   139,   157,   140,    -1,
+     139,   180,   140,    -1,    17,    -1,    18,   116,    -1,    19,
+      -1,    23,   180,    24,    -1,   142,   131,    27,    -1,    25,
+      -1,    26,   116,    -1,    28,   144,    29,    -1,    28,   145,
+      29,    -1,   144,   180,    33,    -1,    32,    -1,   145,   180,
+      31,    -1,    30,    -1,    34,   180,    35,    -1,    36,    37,
+      -1,   148,   158,    40,    -1,   148,   179,    40,    -1,   148,
+     138,    40,    -1,    38,    -1,    39,   116,    -1,   150,    -1,
+     151,    -1,   152,    -1,   153,    -1,   154,    -1,   155,    -1,
+     150,   180,    43,    -1,    41,    -1,    42,   116,    -1,   151,
+     180,    46,    -1,    44,    -1,    45,   116,    -1,   152,   180,
+      49,    -1,    47,    -1,    48,   116,    -1,   153,   180,    52,
+      -1,    50,    -1,    51,   116,    -1,   154,   180,    55,    -1,
+      53,    -1,    54,   116,    -1,   155,   180,    58,    -1,    56,
+      -1,    57,   116,    -1,   156,    66,    -1,    64,    -1,    65,
+     116,    -1,    70,    71,    -1,    72,    73,    -1,   159,   161,
+      85,    -1,    83,    -1,    84,   116,    -1,   160,   161,   115,
+      -1,   114,    -1,   161,   180,    76,    -1,    74,    -1,    75,
+     116,    -1,    77,    78,    -1,    79,    80,    -1,   165,   168,
+     180,   168,    88,    -1,    86,    -1,    87,   116,    -1,   166,
+     180,    91,    -1,    89,    -1,    90,   116,    -1,   167,   180,
+      94,    -1,    92,    -1,    93,   116,    -1,    95,   180,    96,
+      -1,    -1,    97,   180,    98,    -1,    99,   180,   100,    -1,
+     101,   172,   175,   102,    -1,   173,   180,   174,    -1,    -1,
+      20,    -1,    21,   116,    -1,    22,    -1,   175,   176,   113,
+      -1,   112,    -1,   177,    -1,   178,    -1,   177,   180,   109,
+      -1,   108,    -1,   178,   180,   104,    -1,   103,    -1,   105,
+     107,    -1,   105,   180,   107,    -1,   164,    -1,   169,    -1,
+     146,    -1,     3,    -1,   117,    -1
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
+<<<<<<< HEAD
        0,   136,   136,   140,   141,   145,   149,   152,   153,   154,
      155,   156,   157,   158,   162,   166,   169,   170,   174,   178,
      182,   183,   187,   191,   192,   193,   194,   195,   196,   197,
@@ -734,6 +823,42 @@ static const yytype_uint16 yyrline[] =
      392,   396,   397,   398,   402,   403,   407,   411,   415,   419,
      420,   424,   425,   429,   433,   434,   438,   439,   443,   444,
      448,   449,   453,   454,   458,   459,   460,   461
+=======
+<<<<<<< HEAD
+       0,   135,   135,   139,   140,   144,   148,   151,   152,   153,
+     154,   155,   156,   157,   161,   164,   167,   168,   172,   176,
+     179,   180,   184,   187,   188,   189,   190,   191,   192,   193,
+     194,   195,   196,   197,   198,   199,   200,   201,   202,   203,
+     204,   205,   206,   207,   208,   212,   216,   220,   221,   225,
+     226,   230,   233,   237,   238,   242,   243,   247,   251,   255,
+     256,   257,   261,   262,   266,   267,   271,   272,   276,   280,
+     284,   285,   286,   287,   288,   292,   293,   294,   295,   296,
+     297,   301,   302,   303,   307,   308,   309,   313,   314,   315,
+     319,   320,   321,   325,   326,   327,   331,   332,   333,   337,
+     338,   339,   343,   347,   351,   352,   353,   357,   358,   362,
+     363,   364,   368,   372,   376,   380,   381,   385,   386,   387,
+     391,   392,   393,   397,   398,   402,   406,   410,   414,   415,
+     419,   420,   424,   428,   429,   433,   434,   438,   439,   443,
+     444,   448,   449,   453,   454,   455,   456
+=======
+       0,   136,   136,   137,   141,   142,   146,   150,   153,   154,
+     155,   156,   157,   158,   159,   163,   166,   169,   170,   174,
+     178,   179,   182,   183,   187,   190,   191,   192,   193,   194,
+     195,   196,   197,   198,   199,   200,   201,   202,   203,   204,
+     205,   206,   207,   208,   209,   210,   211,   212,   216,   220,
+     224,   225,   229,   230,   234,   237,   241,   242,   246,   247,
+     251,   255,   259,   260,   261,   265,   266,   270,   271,   275,
+     276,   280,   284,   288,   289,   290,   291,   292,   296,   297,
+     298,   299,   300,   301,   305,   306,   307,   311,   312,   313,
+     317,   318,   319,   323,   324,   325,   329,   330,   331,   335,
+     336,   337,   341,   342,   343,   347,   351,   355,   356,   357,
+     361,   362,   366,   367,   368,   372,   376,   380,   384,   385,
+     389,   390,   391,   395,   396,   397,   401,   402,   406,   410,
+     414,   418,   419,   423,   424,   428,   432,   433,   437,   438,
+     442,   443,   447,   448,   452,   453,   457,   458,   459,   460,
+     464
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
 };
 #endif
 
@@ -768,7 +893,15 @@ static const char *const yytname[] =
   "META_TAG", "P_TAG", "P_TAG_OPEN", "PRE_TAG", "SCRIPT_TAG", "SPAN_TAG",
   "STRONG_TAG", "STYLE_TAG", "TABLE_TAG", "CAPTION_TAG",
   "CAPTION_TAG_OPEN", "CAPTION_TAG_CLOSE", "TR_TAG", "TH_TD_TAG", "TH_TAG",
+<<<<<<< HEAD
   "TD_TAG", "TEXTAREA_TAG", "TEXTUAL", 0
+=======
+<<<<<<< HEAD
+  "TD_TAG", "TEXTAREA_TAG", "TEXTUAL", 0
+=======
+  "TD_TAG", "TEXTAREA_TAG", "TEXTUAL", "ERROR_CAPTURADO", 0
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
 };
 #endif
 
@@ -795,6 +928,7 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
+<<<<<<< HEAD
        0,   118,   119,   120,   120,   121,   122,   123,   123,   123,
      123,   123,   123,   123,   124,   125,   126,   126,   127,   128,
      129,   129,   130,   131,   131,   131,   131,   131,   131,   131,
@@ -810,6 +944,42 @@ static const yytype_uint8 yyr1[] =
      166,   167,   167,   167,   168,   168,   169,   170,   171,   172,
      172,   173,   173,   174,   175,   175,   176,   176,   177,   177,
      178,   178,   179,   179,   180,   180,   180,   180
+=======
+<<<<<<< HEAD
+       0,   118,   119,   120,   120,   121,   122,   123,   123,   123,
+     123,   123,   123,   123,   124,   125,   126,   126,   127,   128,
+     129,   129,   130,   131,   131,   131,   131,   131,   131,   131,
+     131,   131,   131,   131,   131,   131,   131,   131,   131,   131,
+     131,   131,   131,   131,   131,   132,   133,   134,   134,   135,
+     135,   136,   137,   138,   138,   139,   139,   140,   141,   142,
+     142,   142,   143,   143,   144,   144,   145,   145,   146,   147,
+     148,   148,   148,   148,   148,   149,   149,   149,   149,   149,
+     149,   150,   150,   150,   151,   151,   151,   152,   152,   152,
+     153,   153,   153,   154,   154,   154,   155,   155,   155,   156,
+     156,   156,   157,   158,   159,   159,   159,   160,   160,   161,
+     161,   161,   162,   163,   164,   165,   165,   166,   166,   166,
+     167,   167,   167,   168,   168,   169,   170,   171,   172,   172,
+     173,   173,   174,   175,   175,   176,   176,   177,   177,   178,
+     178,   179,   179,   180,   180,   180,   180
+=======
+       0,   118,   119,   119,   120,   120,   121,   122,   123,   123,
+     123,   123,   123,   123,   123,   124,   125,   126,   126,   127,
+     128,   128,   129,   129,   130,   131,   131,   131,   131,   131,
+     131,   131,   131,   131,   131,   131,   131,   131,   131,   131,
+     131,   131,   131,   131,   131,   131,   131,   131,   132,   133,
+     134,   134,   135,   135,   136,   137,   138,   138,   139,   139,
+     140,   141,   142,   142,   142,   143,   143,   144,   144,   145,
+     145,   146,   147,   148,   148,   148,   148,   148,   149,   149,
+     149,   149,   149,   149,   150,   150,   150,   151,   151,   151,
+     152,   152,   152,   153,   153,   153,   154,   154,   154,   155,
+     155,   155,   156,   156,   156,   157,   158,   159,   159,   159,
+     160,   160,   161,   161,   161,   162,   163,   164,   165,   165,
+     166,   166,   166,   167,   167,   167,   168,   168,   169,   170,
+     171,   172,   172,   173,   173,   174,   175,   175,   176,   176,
+     177,   177,   178,   178,   179,   179,   180,   180,   180,   180,
+     181
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
@@ -1136,6 +1306,10 @@ static const yytype_int16 yycheck[] =
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
        0,    67,    68,   119,   120,   116,     0,    59,    60,   122,
      123,   116,    12,    13,   128,   129,    61,    77,    79,    92,
       93,    99,   110,   124,   125,   126,   162,   163,   167,   170,
@@ -1151,6 +1325,7 @@ static const yytype_uint8 yystos[] =
      116,    16,   116,   180,   116,    30,    32,   144,   145,   180,
       37,   116,   116,   116,   116,   116,   116,   116,   116,    71,
       73,   116,   116,   116,   180,    20,    21,   172,   173,   107,
+<<<<<<< HEAD
      180,    14,   130,   131,   131,   131,   164,   180,   131,   131,
      157,   180,   131,   131,   131,   131,   131,   138,   158,   179,
      131,   180,   180,   180,   180,   180,   180,    66,   131,   131,
@@ -1162,6 +1337,45 @@ static const yytype_uint8 yystos[] =
      115,   180,   180,    91,    33,    31,   102,   103,   108,   176,
      177,   178,    22,   174,    76,    96,   168,   113,   180,   180,
       88,   109,   104
+=======
+     180,    14,   130,   164,   180,   157,   180,   131,   138,   158,
+     179,   180,   180,   180,   180,   180,   180,    66,    74,    75,
+     161,   161,    95,   168,   180,   100,    94,    24,    29,   180,
+      29,   180,    35,    98,   116,   112,   175,   180,   107,    11,
+     136,   136,    19,   140,   140,    27,    40,    40,    40,    43,
+      46,    49,    52,    55,    58,   116,    85,   180,   115,   180,
+     180,    91,    33,    31,   102,   103,   108,   176,   177,   178,
+      22,   174,    76,    96,   168,   113,   180,   180,    88,   109,
+     104
+=======
+       0,    67,    68,   117,   119,   120,   181,   116,     0,    59,
+      60,   122,   123,   116,    12,    13,   128,   129,   181,    61,
+      77,    79,    92,    93,    99,   110,   124,   125,   126,   162,
+     163,   167,   170,   116,    69,   121,     3,     5,     7,     9,
+      10,    15,    17,    18,    23,    25,    26,    28,    34,    36,
+      38,    39,    41,    42,    44,    45,    47,    48,    50,    51,
+      53,    54,    56,    57,    64,    65,    70,    72,    83,    84,
+      86,    87,    89,    90,    97,   101,   105,   114,   131,   132,
+     133,   134,   135,   137,   138,   139,   141,   142,   143,   146,
+     147,   148,   149,   150,   151,   152,   153,   154,   155,   156,
+     157,   158,   159,   160,   162,   164,   165,   166,   167,   169,
+     171,   179,   180,    78,    80,   116,   180,   111,   127,   180,
+     180,     6,     8,   116,    16,   116,   180,   116,    30,    32,
+     144,   145,   180,    37,   116,   116,   116,   116,   116,   116,
+     116,   116,    71,    73,   116,   116,   116,   180,    20,    21,
+     172,   173,   107,   180,    14,   130,   131,   131,   131,   164,
+     180,   131,   131,   157,   180,   131,   131,   131,   131,   131,
+     138,   158,   179,   131,   180,   180,   180,   180,   180,   180,
+      66,   131,   131,   131,    74,    75,   131,   161,   131,   161,
+     131,    95,   168,   131,   180,   131,   180,   131,   131,   131,
+     100,    94,    24,    29,   180,    29,   180,    35,    98,   116,
+     112,   175,   180,   107,    11,   136,   136,    19,   140,   140,
+      27,    40,    40,    40,    43,    46,    49,    52,    55,    58,
+     116,    85,   180,   115,   180,   180,    91,    33,    31,   102,
+     103,   108,   176,   177,   178,    22,   174,    76,    96,   168,
+     113,   180,   180,    88,   109,   104
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1998,665 +2212,1415 @@ yyreduce:
         case 2:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 135 "parser.y"
+    {imprimir();}
+=======
 #line 136 "parser.y"
     {printf("CORRECTO\n");}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     break;
 
   case 3:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 140 "parser.y"
     {insertar("html");}
+=======
+<<<<<<< HEAD
+#line 139 "parser.y"
+    {insertar("html");}
+=======
+#line 137 "parser.y"
+    {printf("ERROR\n");}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     break;
 
   case 4:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 140 "parser.y"
+=======
 #line 141 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     {insertar("html");}
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 145 "parser.y"
     {insertar("/html");}
+=======
+<<<<<<< HEAD
+#line 144 "parser.y"
+    {insertar("/html");}
+=======
+#line 142 "parser.y"
+    {insertar("html");}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 157 "parser.y"
     {insertar("head");}
+=======
+<<<<<<< HEAD
+#line 156 "parser.y"
+    {insertar("head");}
+=======
+#line 146 "parser.y"
+    {insertar("/html");}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 157 "parser.y"
+=======
 #line 158 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     {insertar("head");}
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 162 "parser.y"
+=======
+<<<<<<< HEAD
+#line 161 "parser.y"
     {insertar("/head");}
+=======
+#line 159 "parser.y"
+    {insertar("head");}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+    break;
+
+  case 15:
+
+/* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 167 "parser.y"
+    {}
+=======
+#line 163 "parser.y"
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
+    {insertar("/head");}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     break;
 
   case 17:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 168 "parser.y"
+=======
 #line 170 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     {insertar("title");}
     break;
 
   case 18:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 172 "parser.y"
+=======
 #line 174 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     {insertar("/title");}
     break;
 
   case 20:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 179 "parser.y"
+=======
 #line 182 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     {insertar("body");}
     break;
 
   case 21:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 180 "parser.y"
+=======
 #line 183 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     {insertar("body");}
     break;
 
   case 22:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
+#line 184 "parser.y"
+=======
 #line 187 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     {insertar("/body");}
     break;
 
   case 46:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 217 "parser.y"
+=======
+<<<<<<< HEAD
+#line 212 "parser.y"
+=======
+#line 216 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("a"); insertar("/a");}
     break;
 
   case 47:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 221 "parser.y"
+=======
+<<<<<<< HEAD
+#line 216 "parser.y"
+=======
+#line 220 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("b"); insertar("/b");}
     break;
 
   case 50:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 230 "parser.y"
+=======
+<<<<<<< HEAD
+#line 225 "parser.y"
+=======
+#line 229 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("blockquote");}
     break;
 
   case 51:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 231 "parser.y"
+=======
+<<<<<<< HEAD
+#line 226 "parser.y"
+=======
+#line 230 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("blockquote");}
     break;
 
   case 52:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 235 "parser.y"
+=======
+<<<<<<< HEAD
+#line 230 "parser.y"
+=======
+#line 234 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/blockquote");}
     break;
 
   case 53:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 238 "parser.y"
+=======
+<<<<<<< HEAD
+#line 233 "parser.y"
+=======
+#line 237 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("br"); insertar("/br");}
     break;
 
   case 56:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 247 "parser.y"
+=======
+<<<<<<< HEAD
+#line 242 "parser.y"
+=======
+#line 246 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("button");}
     break;
 
   case 57:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 248 "parser.y"
+=======
+<<<<<<< HEAD
+#line 243 "parser.y"
+=======
+#line 247 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("button");}
     break;
 
   case 58:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 252 "parser.y"
+=======
+<<<<<<< HEAD
+#line 247 "parser.y"
+=======
+#line 251 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/button");}
     break;
 
   case 59:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 256 "parser.y"
+=======
+<<<<<<< HEAD
+#line 251 "parser.y"
+=======
+#line 255 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("code"); insertar("texto"); insertar("/code");}
     break;
 
   case 61:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 261 "parser.y"
+=======
+<<<<<<< HEAD
+#line 256 "parser.y"
+=======
+#line 260 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("div");}
     break;
 
   case 62:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 262 "parser.y"
+=======
+<<<<<<< HEAD
+#line 257 "parser.y"
+=======
+#line 261 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/div");}
     break;
 
   case 63:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 266 "parser.y"
+=======
+<<<<<<< HEAD
+#line 261 "parser.y"
+=======
+#line 265 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("dl"); insertar("dl");}
     break;
 
   case 65:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 271 "parser.y"
+=======
+<<<<<<< HEAD
+#line 266 "parser.y"
+=======
+#line 270 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("texto"); insertar("/dd");}
     break;
 
   case 66:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 272 "parser.y"
+=======
+<<<<<<< HEAD
+#line 267 "parser.y"
+=======
+#line 271 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("dd");}
     break;
 
   case 67:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 276 "parser.y"
+=======
+<<<<<<< HEAD
+#line 271 "parser.y"
+=======
+#line 275 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("texto"); insertar("/dt");}
     break;
 
   case 68:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 277 "parser.y"
+=======
+<<<<<<< HEAD
+#line 272 "parser.y"
+=======
+#line 276 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("dt");}
     break;
 
   case 69:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 281 "parser.y"
+=======
+<<<<<<< HEAD
+#line 276 "parser.y"
+=======
+#line 280 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("em"); insertar("texto"); insertar("/em");}
     break;
 
   case 70:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 285 "parser.y"
+=======
+<<<<<<< HEAD
+#line 280 "parser.y"
+=======
+#line 284 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("embed"); insertar("/embed");}
     break;
 
   case 71:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 289 "parser.y"
+=======
+<<<<<<< HEAD
+#line 284 "parser.y"
+=======
+#line 288 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/form");}
     break;
 
   case 72:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 290 "parser.y"
+=======
+<<<<<<< HEAD
+#line 285 "parser.y"
+=======
+#line 289 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/form");}
     break;
 
   case 73:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 291 "parser.y"
+=======
+<<<<<<< HEAD
+#line 286 "parser.y"
+=======
+#line 290 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/form");}
     break;
 
   case 74:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 292 "parser.y"
+=======
+<<<<<<< HEAD
+#line 287 "parser.y"
+=======
+#line 291 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("form");}
     break;
 
   case 75:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 293 "parser.y"
+=======
+<<<<<<< HEAD
+#line 288 "parser.y"
+=======
+#line 292 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("form");}
     break;
 
   case 82:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 306 "parser.y"
+=======
+<<<<<<< HEAD
+#line 301 "parser.y"
+=======
+#line 305 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/h1");}
     break;
 
   case 83:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 307 "parser.y"
+=======
+<<<<<<< HEAD
+#line 302 "parser.y"
+=======
+#line 306 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h1");}
     break;
 
   case 84:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 308 "parser.y"
+=======
+<<<<<<< HEAD
+#line 303 "parser.y"
+=======
+#line 307 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h1");}
     break;
 
   case 85:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 312 "parser.y"
+=======
+<<<<<<< HEAD
+#line 307 "parser.y"
+=======
+#line 311 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/h2");}
     break;
 
   case 86:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 313 "parser.y"
+=======
+<<<<<<< HEAD
+#line 308 "parser.y"
+=======
+#line 312 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h2");}
     break;
 
   case 87:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 314 "parser.y"
+=======
+<<<<<<< HEAD
+#line 309 "parser.y"
+=======
+#line 313 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h2");}
     break;
 
   case 88:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 318 "parser.y"
+=======
+<<<<<<< HEAD
+#line 313 "parser.y"
+=======
+#line 317 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/h3");}
     break;
 
   case 89:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 319 "parser.y"
+=======
+<<<<<<< HEAD
+#line 314 "parser.y"
+=======
+#line 318 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h3");}
     break;
 
   case 90:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 320 "parser.y"
+=======
+<<<<<<< HEAD
+#line 315 "parser.y"
+=======
+#line 319 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h3");}
     break;
 
   case 91:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 324 "parser.y"
+=======
+<<<<<<< HEAD
+#line 319 "parser.y"
+=======
+#line 323 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/h4");}
     break;
 
   case 92:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 325 "parser.y"
+=======
+<<<<<<< HEAD
+#line 320 "parser.y"
+=======
+#line 324 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h4");}
     break;
 
   case 93:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 326 "parser.y"
+=======
+<<<<<<< HEAD
+#line 321 "parser.y"
+=======
+#line 325 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h4");}
     break;
 
   case 94:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 330 "parser.y"
+=======
+<<<<<<< HEAD
+#line 325 "parser.y"
+=======
+#line 329 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/h5");}
     break;
 
   case 95:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 331 "parser.y"
+=======
+<<<<<<< HEAD
+#line 326 "parser.y"
+=======
+#line 330 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h5");}
     break;
 
   case 96:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 332 "parser.y"
+=======
+<<<<<<< HEAD
+#line 327 "parser.y"
+=======
+#line 331 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h5");}
     break;
 
   case 97:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 336 "parser.y"
+=======
+<<<<<<< HEAD
+#line 331 "parser.y"
+=======
+#line 335 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/h6");}
     break;
 
   case 98:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 337 "parser.y"
+=======
+<<<<<<< HEAD
+#line 332 "parser.y"
+=======
+#line 336 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h6");}
     break;
 
   case 99:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 338 "parser.y"
+=======
+<<<<<<< HEAD
+#line 333 "parser.y"
+=======
+#line 337 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("h6");}
     break;
 
   case 100:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 342 "parser.y"
+=======
+<<<<<<< HEAD
+#line 337 "parser.y"
+=======
+#line 341 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/hr");}
     break;
 
   case 101:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 343 "parser.y"
+=======
+<<<<<<< HEAD
+#line 338 "parser.y"
+=======
+#line 342 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("hr");}
     break;
 
   case 102:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 344 "parser.y"
+=======
+<<<<<<< HEAD
+#line 339 "parser.y"
+=======
+#line 343 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("hr");}
     break;
 
   case 103:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 348 "parser.y"
+=======
+<<<<<<< HEAD
+#line 343 "parser.y"
+=======
+#line 347 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("img"); insertar("/img");}
     break;
 
   case 104:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 352 "parser.y"
+=======
+<<<<<<< HEAD
+#line 347 "parser.y"
+=======
+#line 351 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("input"); insertar("/input");}
     break;
 
   case 105:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 356 "parser.y"
+=======
+<<<<<<< HEAD
+#line 351 "parser.y"
+=======
+#line 355 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/ol");}
     break;
 
   case 106:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 357 "parser.y"
+=======
+<<<<<<< HEAD
+#line 352 "parser.y"
+=======
+#line 356 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("ol");}
     break;
 
   case 107:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 358 "parser.y"
+=======
+<<<<<<< HEAD
+#line 353 "parser.y"
+=======
+#line 357 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("ol");}
     break;
 
   case 108:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 362 "parser.y"
+=======
+<<<<<<< HEAD
+#line 357 "parser.y"
+=======
+#line 361 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/ul");}
     break;
 
   case 109:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 363 "parser.y"
+=======
+<<<<<<< HEAD
+#line 358 "parser.y"
+=======
+#line 362 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("ul");}
     break;
 
   case 110:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 367 "parser.y"
+=======
+<<<<<<< HEAD
+#line 362 "parser.y"
+=======
+#line 366 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/li");}
     break;
 
   case 111:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 368 "parser.y"
+=======
+<<<<<<< HEAD
+#line 363 "parser.y"
+=======
+#line 367 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("li");}
     break;
 
   case 112:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 369 "parser.y"
+=======
+<<<<<<< HEAD
+#line 364 "parser.y"
+=======
+#line 368 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("li");}
     break;
 
   case 113:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 373 "parser.y"
+=======
+<<<<<<< HEAD
+#line 368 "parser.y"
+=======
+#line 372 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("link"); insertar("/link");}
     break;
 
   case 114:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 377 "parser.y"
+=======
+<<<<<<< HEAD
+#line 372 "parser.y"
+=======
+#line 376 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("meta"); insertar("/meta");}
     break;
 
   case 115:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 381 "parser.y"
+=======
+<<<<<<< HEAD
+#line 376 "parser.y"
+=======
+#line 380 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/p");}
     break;
 
   case 116:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 385 "parser.y"
+=======
+<<<<<<< HEAD
+#line 380 "parser.y"
+=======
+#line 384 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("p");}
     break;
 
   case 117:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 386 "parser.y"
+=======
+<<<<<<< HEAD
+#line 381 "parser.y"
+    {insertar("/p");}
+=======
+#line 385 "parser.y"
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("p");}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     break;
 
   case 118:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 390 "parser.y"
+=======
+<<<<<<< HEAD
+#line 385 "parser.y"
+=======
+#line 389 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/pre");}
     break;
 
   case 119:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 391 "parser.y"
+=======
+<<<<<<< HEAD
+#line 386 "parser.y"
+=======
+#line 390 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("pre");}
     break;
 
   case 120:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 392 "parser.y"
+=======
+<<<<<<< HEAD
+#line 387 "parser.y"
+=======
+#line 391 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("pre");}
     break;
 
   case 121:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 396 "parser.y"
+=======
+<<<<<<< HEAD
+#line 391 "parser.y"
+=======
+#line 395 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/script");}
     break;
 
   case 122:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 397 "parser.y"
+=======
+<<<<<<< HEAD
+#line 392 "parser.y"
+=======
+#line 396 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("script");}
     break;
 
   case 123:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 398 "parser.y"
+=======
+<<<<<<< HEAD
+#line 393 "parser.y"
+=======
+#line 397 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("script");}
     break;
 
   case 124:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 402 "parser.y"
+=======
+<<<<<<< HEAD
+#line 397 "parser.y"
+=======
+#line 401 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("span"); insertar("texto"); insertar("/span");}
     break;
 
   case 126:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 407 "parser.y"
+=======
+<<<<<<< HEAD
+#line 402 "parser.y"
+=======
+#line 406 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("strong"); insertar("/strong");}
     break;
 
   case 127:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 411 "parser.y"
+=======
+<<<<<<< HEAD
+#line 406 "parser.y"
+=======
+#line 410 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("style"); insertar("/style");}
     break;
 
   case 128:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 415 "parser.y"
+=======
+<<<<<<< HEAD
+#line 410 "parser.y"
+=======
+#line 414 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("table"); insertar("/table");}
     break;
 
   case 131:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 424 "parser.y"
+=======
+<<<<<<< HEAD
+#line 419 "parser.y"
+=======
+#line 423 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("caption");}
     break;
 
   case 132:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 425 "parser.y"
+=======
+<<<<<<< HEAD
+#line 420 "parser.y"
+=======
+#line 424 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("caption");}
     break;
 
   case 133:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 429 "parser.y"
+=======
+<<<<<<< HEAD
+#line 424 "parser.y"
+=======
+#line 428 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/caption");}
     break;
 
   case 134:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 433 "parser.y"
+=======
+<<<<<<< HEAD
+#line 428 "parser.y"
+=======
+#line 432 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/tr");}
     break;
 
   case 135:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 434 "parser.y"
+=======
+<<<<<<< HEAD
+#line 429 "parser.y"
+=======
+#line 433 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("tr");}
     break;
 
   case 138:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 443 "parser.y"
+=======
+<<<<<<< HEAD
+#line 438 "parser.y"
+=======
+#line 442 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/th");}
     break;
 
   case 139:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 444 "parser.y"
+=======
+<<<<<<< HEAD
+#line 439 "parser.y"
+=======
+#line 443 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("th");}
     break;
 
   case 140:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 448 "parser.y"
+=======
+<<<<<<< HEAD
+#line 443 "parser.y"
+=======
+#line 447 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("/td");}
     break;
 
   case 141:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 449 "parser.y"
+=======
+<<<<<<< HEAD
+#line 444 "parser.y"
+=======
+#line 448 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("td");}
     break;
 
   case 142:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 453 "parser.y"
+=======
+<<<<<<< HEAD
+#line 448 "parser.y"
+=======
+#line 452 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("textarea"); insertar("/textarea");}
     break;
 
   case 143:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 454 "parser.y"
+=======
+<<<<<<< HEAD
+#line 449 "parser.y"
+=======
+#line 453 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     {insertar("textarea"); insertar("/textarea");}
     break;
 
   case 147:
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 461 "parser.y"
+=======
+<<<<<<< HEAD
+#line 456 "parser.y"
+    {insertar("texto");}
+=======
+#line 460 "parser.y"
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
     { insertar("texto");}
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
     break;
 
 
 
 /* Line 1806 of yacc.c  */
+<<<<<<< HEAD
 #line 2660 "y.tab.c"
+=======
+<<<<<<< HEAD
+#line 2518 "y.tab.c"
+=======
+#line 2680 "y.tab.c"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2887,7 +3851,15 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
+<<<<<<< HEAD
 #line 465 "parser.y"
+=======
+<<<<<<< HEAD
+#line 464 "parser.y"
+=======
+#line 467 "parser.y"
+>>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
 
 
 /*Variables para el árbol de parsing*/
@@ -2899,7 +3871,11 @@ int cantidadTabsPorTag = 0;
 
 void yyerror(char *s)
 {
+<<<<<<< HEAD
 	fprintf(stderr, "Error cerca de %s\n\n", yylval.string);
+=======
+	fprintf(stderr, "Error hola hola hola %s\n",s);
+>>>>>>> 550c7e4d25589e18dac634846f0de1e2e8cd47c8
 }
 
 int main() {
@@ -3002,48 +3978,28 @@ void imprimir(void)
     while(ptr != NULL) /*Mientras que el puntero no sea NULL*/
     {
         ptrTemp = ptr;
-        cantidad = ptr -> cantidadTabs;
-        padreActual = ptr -> padre;
+        cantidad = ptrTemp -> cantidadTabs;
+        padreActual = strdup(ptrTemp -> padre);
 
-        if(strcmp((ptr -> padre), "ROOT") != 0)
+        if(strcmp(padreActual, "ROOT") == 0)
         {
-            printf("|");
+                printf("%s\n", ptr->etiqueta);                
         }
-
-
-        for(i = 0; i < cantidad - 1; i++)
+        else
         {
-            tagActual = ptrTemp -> etiqueta;
-            padreSiguiente = strdup(ptrTemp -> ptrSiguiente -> padre);
-            //printf("Padre actual: %s Padre siguiente: %s\n", padreActual, padreSiguiente);
-            if(strcmp(padreActual, padreActual) == 0)
-            {
-                printf("\t|");
-            }
-            else
-            {
-                printf("\t");
-            }
-        } 
+                for(i = 0; i < cantidad-1; i++)
+                {
+                    printf("\t");
+                }
 
-        for(i; i < cantidad; i++)
-        {
-            printf("____");
+                for(i; i < cantidad; i++)
+                {
+                        printf("|____");
+                }
+
+                printf("%s\n", ptr->etiqueta);
         }
-
-        printf("%s\n", ptr->etiqueta);
-
-        /*while(ptrTemp != NULL)
-        {
-            tagActual = ptrTemp -> padre;
-            if(strcmp(tagActual, padreActual) == 0)
-            {
-                printf("%s ", ptrTemp -> etiqueta);
-            }
-            ptrTemp = ptrTemp -> ptrSiguiente;
-        }
-
-        printf("\n");*/
+        
         ptr = ptr->ptrSiguiente; /*Se pasa al siguiente nodo*/
     }
     printf("\n*** Fin del Árbol de Parsing\n\n");
