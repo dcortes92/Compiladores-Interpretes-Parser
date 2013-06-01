@@ -3,16 +3,16 @@
 	#include <assert.h>
 	#include "Nodo.h"
 	#include "NodoPila.h"
+        #include <stdarg.h>
+
 	void yyerror(char *s);
 %}
 
 %union 
 {
         char *string;
-        int columna;
-        int linea;
-        int largo;
 }
+
 
 %token TEXTO
 %token DOCTYPE
@@ -134,7 +134,6 @@
 
 
 ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {printf("CORRECTO\n");}
-                                | ERROR_CAPTURADO                                          {printf("ERROR\n");}
 				;
 
 
@@ -161,6 +160,7 @@ CABEZA_OPEN			: CABEZA_OPEN TITULO
 
 
 CABEZA_CLOSE			: _HEAD                                                    {insertar("/head");}
+                                ;
 
 
 TITULO 				: TITULO_OPEN TITULO_CLOSE
@@ -176,7 +176,6 @@ TITULO_CLOSE			: _TITLE                                                   {inser
 
 
 CUERPO 				: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE
-                                | ERROR_CAPTURADO                                          {printf("ERROR\n");}
                                 ;
 
 
@@ -186,6 +185,7 @@ CUERPO_OPEN			: BODY                                                     {insert
 
 
 CUERPO_CLOSE			: _BODY                                                    {insertar("/body");}
+                                ;
 
 
 CONTENIDO_BODY                  : A_TAG CONTENIDO_BODY
@@ -462,9 +462,6 @@ TEXTUAL                         : P_TAG
                                 ;
 
 
-ERROR_CAPTURADO                 : ERROR
-                                ;
-
 %%
 
 /*Variables para el árbol de parsing*/
@@ -473,9 +470,10 @@ struct nodoLista *ptr = NULL;
 int cantidadTabsPorTag = 0;
 /*Fin variables para el árbol de parsing*/
 
+
 void yyerror(char *s)
 {
-	fprintf(stderr, "Error %s\n",s);
+	fprintf(stderr, "Error cerca de %s\n\n", yylval.string);
 }
 
 int main() {

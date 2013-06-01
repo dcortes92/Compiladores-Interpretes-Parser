@@ -1,6 +1,7 @@
 %{
 	#include <stdio.h>
 	#include "y.tab.h"
+	#include <string.h>
 	
 	int linea = 1, columna = 1;
 	void contar(void);
@@ -213,7 +214,7 @@ PCOMA						[\;]
 
 %%	
 
-[ \n\t]+								{}
+[ \n]									{linea++;}
 
 "<a"{A_ATTRIBUTE}+						{yylval.string = yytext; return A;}
 "</a>"									{yylval.string = yytext; return _A;}
@@ -332,8 +333,6 @@ PCOMA						[\;]
 "</>"									{error();}
 {AMP}{HASH}{TEXTO}{PCOMA}				{return TEXTO;}
 {AMP}{TEXTO}{PCOMA}						{return TEXTO;}
-
-.										{return ERROR; }
 
 
 %%
