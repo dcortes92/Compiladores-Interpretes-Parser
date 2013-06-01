@@ -133,7 +133,7 @@
 %%
 
 
-ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {printf("CORRECTO\n");}
+ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {imprimir();}
                                 | ERROR_CAPTURADO                                          {printf("ERROR\n");}
 				;
 
@@ -166,15 +166,12 @@ CABEZA_CLOSE			: _HEAD                                                    {inser
 TITULO 				: TITULO_OPEN TITULO_CLOSE
                                 ;
 
-<<<<<<< HEAD
 TITULO_OPEN						: TITULO_OPEN TEXTUAL                                      {}
 								| TITLE                                                    {insertar("title");}
 								;
-=======
 TITULO_OPEN			: TITULO_OPEN TEXTUAL                                      
 				| TITLE                                                    {insertar("title");}
 				;
->>>>>>> fb636fba3c431fb81bc778f31e626dbd5de97dc6
 
 
 TITULO_CLOSE			: _TITLE                                                   {insertar("/title");}
