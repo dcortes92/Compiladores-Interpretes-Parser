@@ -2900,7 +2900,6 @@ int cantidadTabsPorTag = 0;
 void yyerror(char *s)
 {
 	fprintf(stderr, "Error cerca de %s\n\n", yylval.string);
-	fprintf(stderr, "Error hola hola hola %s\n",s);
 }
 
 int main() {
