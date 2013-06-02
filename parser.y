@@ -132,14 +132,11 @@
 
 %%
 
-<<<<<<< HEAD
 ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {imprimir();}
                                 | ERROR_CAPTURADO                                          {printf("ERROR\n");}
 ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {printf("CORRECTO\n");}
-=======
 
 ARCHIVO				: DOCTYPE HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG       {imprimir();}
->>>>>>> 1bed195ebb5ea281e3de20d76eff1e5029765a1a
 				;
 
 
