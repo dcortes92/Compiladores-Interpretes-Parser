@@ -7,7 +7,11 @@
 	void contar(void);
 	void comentario(void);
 	void error();
+	
+	#define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno;
 %}
+
+%option yylineno
 
 LETRA						[a-z]
 
@@ -211,7 +215,7 @@ PCOMA						[\;]
 %%	
 
 [\n]									{linea++;}
-
+"<!--"									{comentario();}
 {DOCTYPE}								{yylval.string = yytext; return DOCTYPE;}
 "<a"{A_ATTRIBUTE}+						{yylval.string = yytext; return A;}
 "</a>"									{yylval.string = yytext; return _A;}
@@ -347,7 +351,7 @@ void comentario()
 		ante2 = ante1;
 		ante1 = c;
 	}
-	fprintf(stderr,"Error en linea %d, columna %d : comentario sin terminar\n", linea, columna);
+	fprintf(stderr,"Error: comentario sin terminar en línea %d. ¿Falta -->?\n", yylloc.first_line);
 }
 
 void contar()

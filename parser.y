@@ -13,6 +13,7 @@
 }
 
 %error-verbose
+%locations
 
 %token TEXTO
 %token DOCTYPE
@@ -148,7 +149,7 @@ CABEZA_TAGS                     : TITULO CABEZA_TAGS
                                 ;
 
 
-CABEZA_OPEN                     : HEAD CLOSE                                              {insertar("head");}  
+CABEZA_OPEN                     : HEAD                                              {insertar("head");}  
                                 ;               
 
 
@@ -181,33 +182,33 @@ CUERPO_CLOSE			: _BODY                                                    {inser
                                 ;
 
 
-CONTENIDO_BODY                  : A_TAG CONTENIDO_BODY
-                                | B_TAG CONTENIDO_BODY
-                                | BLOCKQUOTE_TAG CONTENIDO_BODY
-                                | BR_TAG CONTENIDO_BODY
-                                | BUTTON_TAG CONTENIDO_BODY
-                                | CODE_TAG CONTENIDO_BODY
-                                | DIV_TAG CONTENIDO_BODY
-                                | DL_TAG CONTENIDO_BODY
-                                | EMBED_TAG CONTENIDO_BODY
-                                | FORM_TAG CONTENIDO_BODY
-                                | H1_TAG CONTENIDO_BODY 
-                                | H2_TAG CONTENIDO_BODY
-                                | H3_TAG CONTENIDO_BODY
-                                | H4_TAG CONTENIDO_BODY
-                                | H5_TAG CONTENIDO_BODY
-                                | H6_TAG CONTENIDO_BODY
-                                | HR_TAG CONTENIDO_BODY
-                                | IMG_TAG CONTENIDO_BODY
-                                | INPUT_TAG CONTENIDO_BODY
-                                | LINK_TAG CONTENIDO_BODY
-                                | OL_TAG CONTENIDO_BODY
-                                | PRE_TAG CONTENIDO_BODY
-                                | SCRIPT_TAG CONTENIDO_BODY
-                                | TABLE_TAG CONTENIDO_BODY
-                                | TEXTAREA_TAG CONTENIDO_BODY
-                                | UL_TAG CONTENIDO_BODY
-                                | TEXTUAL CONTENIDO_BODY
+CONTENIDO_BODY                  : A_TAG 
+                                | B_TAG
+                                | BLOCKQUOTE_TAG
+                                | BR_TAG
+                                | BUTTON_TAG
+                                | CODE_TAG
+                                | DIV_TAG
+                                | DL_TAG
+                                | EMBED_TAG
+                                | FORM_TAG
+                                | H1_TAG
+                                | H2_TAG
+                                | H3_TAG
+                                | H4_TAG
+                                | H5_TAG
+                                | H6_TAG
+                                | HR_TAG
+                                | IMG_TAG
+                                | INPUT_TAG
+                                | LINK_TAG
+                                | OL_TAG
+                                | PRE_TAG
+                                | SCRIPT_TAG
+                                | TABLE_TAG
+                                | TEXTAREA_TAG
+                                | UL_TAG
+                                | TEXTUAL
                                 |
                                 ;
 
@@ -568,7 +569,7 @@ int cantidadTabsPorTag = 0;
 
 void yyerror(const char *s)
 {
-	fprintf(stderr, "Error cerca de %s >>> %s\n\n", yylval.string, s);
+	fprintf(stderr, "Error en la línea %d cerca de %s >>> %s\n\n", yylloc.first_line, yylval.string, s);
         yyclearin;
 }
 
