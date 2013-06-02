@@ -12,7 +12,10 @@
 LETRA						[a-z]
 
 	
-TEXTO						[a-zA-Z][a-zA-Z0-9]*
+TEXTO						[a-zA-Z][a-zA-Z0-9 ]*
+
+
+TEXTOURL					[a-zA-Z0-9]+
 
 
 UNNUMERO 					[0-9]
@@ -25,6 +28,9 @@ NUMERO_255					[0-255]
 
 
 HEX							[0-9A-Fa-f]+
+
+
+DOCTYPE						("<!DOCTYPE html>")|("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">")|(" <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">")|("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">")
 
 
 HTML_ATTRIBUTE				(" xmlns=\""{URL}"\"")
@@ -180,26 +186,23 @@ UL_ATTRIUTE					("compact")|(" type=\""{UL_TYPE_VALUE}"\"")
 UL_TYPE_VALUE				("disc")|("square")|("circle")
 							
 
-URL							{PROTOCOLO}{HOST}{DOMINIO}{DOMINIO_DE_PRIMER_NIVEL}({DIRECTORIO}{SUBDIRECTORIO}{RECURSO})
+URL							{PROTOCOLO}{HOST}{DOMINIO}{DOMINIO_DE_PRIMER_NIVEL}({DIRECTORIO})?
 
 
-PROTOCOLO					("http//")|("ftp//")|("gopher//")|("telnet")|("mailto")|("news")
+PROTOCOLO					("http://")|("ftp://")|("gopher://")|("telnet")|("mailto")|("news")
 							
 
-HOST						("www.")|({TEXTO}".")
+HOST						("www.")
 							
 
-DOMINIO						{TEXTO}
+DOMINIO						{TEXTOURL}
 							
 
-DOMINIO_DE_PRIMER_NIVEL		(".com")|(".cr")|(".es")|(".us")
+DOMINIO_DE_PRIMER_NIVEL		(".com")|(".cr")|(".es")|(".us")|(".org")
 
 
-DIRECTORIO					("/"{TEXTO})+
-							
-
-SUBDIRECTORIO				("/"{TEXTO})+
-							
+DIRECTORIO					("/"{TEXTOURL})+
+														
 
 RECURSO						("."{TEXTO})
 
@@ -214,8 +217,9 @@ PCOMA						[\;]
 
 %%	
 
-[ \n]									{linea++;}
+[\n]									{linea++;}
 
+{DOCTYPE}								{yylval.string = yytext; return DOCTYPE;}
 "<a"{A_ATTRIBUTE}+						{yylval.string = yytext; return A;}
 "</a>"									{yylval.string = yytext; return _A;}
 "<b>"									{yylval.string = yytext; return B;}
@@ -276,8 +280,7 @@ PCOMA						[\;]
 "<hr>"									{yylval.string = yytext; return HR;}
 "<hr"{HR_ATTRIBUTE}+					{yylval.string = yytext; return HR_;}
 "</hr>"									{yylval.string = yytext; return _HR;}
-"<html>"								{yylval.string = yytext; return HTML;}
-"<html"{HTML_ATTRIBUTE}					{yylval.string = yytext; return HTML_;}
+"<html"{HTML_ATTRIBUTE}					{yylval.string = yytext; return HTML;}
 "</html>"								{yylval.string = yytext; return _HTML;}
 "<img"{IMG_ATTRIBUTE}+					{yylval.string = yytext; return IMG;}
 "</img>"								{yylval.string = yytext; return _IMG;}
