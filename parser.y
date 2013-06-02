@@ -132,12 +132,8 @@
 
 %%
 
-ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {imprimir();}
-                                
-ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {printf("CORRECTO\n");}
-
 ARCHIVO				: DOCTYPE HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG       {imprimir();}
-				;
+                                ;
 
 
 HTML_OPEN_TAG			: HTML CLOSE                                               {insertar("html");}
@@ -148,37 +144,33 @@ HTML_CLOSE_TAG			: _HTML                                                    {ins
 				;
 
 
-CABEZA 				: CABEZA_OPEN CABEZA_CLOSE
+CABEZA 				: CABEZA_OPEN CABEZA_TAGS CABEZA_CLOSE
+                                ;
 
-
-CABEZA_OPEN			: CABEZA_OPEN TITULO
-                                | CABEZA_OPEN STYLE_TAG
-                                | CABEZA_OPEN LINK_TAG
-                                | CABEZA_OPEN META_TAG
-                                | CABEZA_OPEN SCRIPT_TAG
-
-				;
+CABEZA_TAGS                     : TITULO CABEZA_TAGS
+                                | STYLE_TAG CABEZA_TAGS
+                                | LINK_TAG CABEZA_TAGS
+                                | META_TAG CABEZA_TAGS
+                                | SCRIPT_TAG CABEZA_TAGS
+                                |
+                                ;
 
 
 CABEZA_OPEN                     : HEAD                                                     {insertar("head");}
-                                | HEAD_ CLOSE                                              {insertar("head");}                  
+                                | HEAD_ CLOSE                                              {insertar("head");}  
+                                ;               
 
 
 CABEZA_CLOSE			: _HEAD                                                    {insertar("/head");}
                                 ;
 
 
-TITULO 				: TITULO_OPEN TITULO_CLOSE
+TITULO 				: TITULO_OPEN TEXTUAL TITULO_CLOSE
                                 ;
 
-TITULO_OPEN						: TITULO_OPEN TEXTUAL                                      {}
-								| TITLE                                                    {insertar("title");}
-								;
-TITULO_OPEN			: TITULO_OPEN TEXTUAL                                      
 
-TITULO_OPEN			: TITULO_OPEN TEXTUAL                                
-				| TITLE                                                    {insertar("title");}
-				;
+TITULO_OPEN			: TITLE                                                    {insertar("title");}
+                                ;
 
 
 TITULO_CLOSE			: _TITLE                                                   {insertar("/title");}
@@ -237,12 +229,11 @@ A_TAG_OPEN                      : A CLOSE                                       
                                 ;
 
 
-B_TAG                           : B _B                                                  {insertar("b_tag"); insertar("/b_tag");}
+B_TAG                           : B TEXTO _B                                            {insertar("b_tag"); insertar("/b_tag");}
                                 ;
 
 
-BLOCKQUOTE_TAG                  : BLOCKQUOTE_TAG_OPEN P_TAG BLOCKQUOTE_TAG_CLOSE
-                                | BLOCKQUOTE_TAG_OPEN TEXTUAL BLOCKQUOTE_TAG_CLOSE
+BLOCKQUOTE_TAG                  : BLOCKQUOTE_TAG_OPEN TEXTUAL BLOCKQUOTE_TAG_CLOSE
                                 ;
 
 
