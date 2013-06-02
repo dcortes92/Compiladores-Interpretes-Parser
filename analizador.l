@@ -15,7 +15,7 @@ LETRA						[a-z]
 TEXTO						[a-zA-Z][a-zA-Z0-9 ]*
 
 
-TEXTOURL					[a-zA-Z0-9]+
+TEXTOURL					[a-zA-Z0-9\.]+
 
 
 UNNUMERO 					[0-9]
@@ -51,7 +51,7 @@ BLOCKQUOTE_ATTRIBUTE		(" cite=\""{URL}"\"")
 BODY_ATTRIBUTE				(" alink=\""{COLOR}"\"")|(" background=\""{URL_GENERAL}"\"")|(" bgcolor=\""{COLOR}"\"")|(" link=\""{COLOR}"\"")|(" vlink=\""{COLOR}"\"")
 
 
-URL_GENERAL					{URL}?{LOCAL_URL}?
+URL_GENERAL					{URL}|{LOCAL_URL}
 
 
 BUTTOM_ATTRIBUTE			(" autofocus")|(" disabled")|(" formtarget=\""{TARGET_VALUE}"\"")|(" name=\""{TEXTO}"\"")|(" type=\""{BUTTOM_TYPE_VALUE}"\"")|(" value=\""{TEXTO}"\"")
@@ -90,7 +90,7 @@ ALIGN_VALUE					("top")|("bottom")|("middle")|("left")|("right")
 INPUT_ATTRIBUTE				(" accept=\""{TEXTO}"\"")|(" align=\""{ALIGN_VALUE}"\"")|(" alt=\""{TEXTO}"\"")|("checked")|("disabled")|(" form=\""{TEXTO}"\"")|(" formtarget=\""{TARGET_VALUE}"\"")|(" height=\""{NUMERO}"\"")|(" max=\""{NUMERO}"\"")|(" maxlength=\""{NUMERO}"\"")|(" min=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" pattern=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" size=\""{NUMERO}"\"")|(" src=\""{URL}"\"")|(" type=\""{INPUT_TYPE_VALUE}"\"")|(" value=\""{TEXTO}"\"")|(" width=\""{NUMERO}"\"")
 							
 
-INPUT_TYPE_VALUE			("buttn")|("checkbox")|("color")|("date")|("datetime")|("datetime-local")|("email")|("file")|("hidden")|("image")|("month")|("number")|("password")|("radio")|("range")|("reset")|("search")|("submit")|("text")|("time")|("url")|("week")
+INPUT_TYPE_VALUE			("button")|("checkbox")|("color")|("date")|("datetime")|("datetime-local")|("email")|("file")|("hidden")|("image")|("month")|("number")|("password")|("radio")|("range")|("reset")|("search")|("submit")|("text")|("time")|("url")|("week")
 														
 
 LI_ATTRIBUTE				(" type=\""{LI_TYPE_VALUE}"\"")|(" value=\""{NUMERO}"\"")
@@ -174,13 +174,13 @@ T_ALIGN_VALUE				("rigth")|("left")|("center")|("justify")|("char")
 VALIGN_VALUE				("top")|("middle")|("bottom")|("baseline")
 			
 
-TEXTAREA_ATTRIBUTE			("autofocus")|(" cols=\""{NUMERO}"\"")|("disabled")|(" maxlength=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" rows=\""{NUMERO}"\"")|(" wrap=\""{H_S}"\"")
+TEXTAREA_ATTRIBUTE			(" autofocus")|(" cols=\""{NUMERO}"\"")|("disabled")|(" maxlength=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" rows=\""{NUMERO}"\"")|(" wrap=\""{H_S}"\"")
 							
 
 H_S							("hard")|("soft")
 							
 
-UL_ATTRIUTE					("compact")|(" type=\""{UL_TYPE_VALUE}"\"")
+UL_ATTRIUTE					(" compact")|(" type=\""{UL_TYPE_VALUE}"\"")
 							
 
 UL_TYPE_VALUE				("disc")|("square")|("circle")
@@ -207,7 +207,7 @@ DIRECTORIO					("/"{TEXTOURL})+
 RECURSO						("."{TEXTO})
 
 
-LOCAL_URL					({TEXTO}"/")+
+LOCAL_URL					({TEXTOURL}"/")+
 
 AMP							[\&]
 HASH						[\#]
