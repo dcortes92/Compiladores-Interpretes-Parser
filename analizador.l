@@ -8,7 +8,9 @@
 	void comentario(void);
 	void error();
 	
-	#define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno;
+	#define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno; \
+	yylloc.first_column = yylloc.last_column = columna + yyleng - 1;\
+
 %}
 
 %option yylineno
@@ -322,11 +324,11 @@ PCOMA						[\;]
 ">"										{yylval.string = yytext; return CLOSE;}						
 {TEXTO}									{yylval.string = yytext; return TEXTO;}
 
-{AMP}{HASH}[1-2]?{UNNUMERO}{PCOMA}		{error;}
-{AMP}{HASH}[3][0-1]{PCOMA}				{error;}
-"&#127;"								{error;}
-"<>"									{error;}
-"</>"									{error;}
+{AMP}{HASH}[1-2]?{UNNUMERO}{PCOMA}		{error();}
+{AMP}{HASH}[3][0-1]{PCOMA}				{error();}
+"&#127;"								{error();}
+"<>"									{error();}
+"</>"									{error();}
 {AMP}{HASH}{TEXTO}{PCOMA}				{return TEXTO;}
 {AMP}{TEXTO}{PCOMA}						{return TEXTO;}
 
@@ -351,7 +353,7 @@ void comentario()
 		ante2 = ante1;
 		ante1 = c;
 	}
-	fprintf(stderr,"Error: comentario sin terminar en línea %d. ¿Falta -->?\n", yylloc.first_line);
+	fprintf(stderr,"Error: se abre '<!--' en línea %d columna %d. Se espera '-->'\n", yylloc.first_line, yylloc.first_column);
 }
 
 void contar()
@@ -377,6 +379,6 @@ void contar()
 
 void error()
 {	
-	fprintf(stderr,"Caracter inválido en linea: %d columna: %d caracter: %s\n", linea, columna, yytext);
+	fprintf(stderr,"Caracter inválido en linea: %d columna: %d caracter: %s\n", yylloc.first_line, yylloc.first_column, yytext);
 	columna += yyleng;
 }

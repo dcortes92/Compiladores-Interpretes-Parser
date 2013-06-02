@@ -569,7 +569,7 @@ int cantidadTabsPorTag = 0;
 
 void yyerror(const char *s)
 {
-	fprintf(stderr, "Error en la línea %d cerca de %s >>> %s\n\n", yylloc.first_line, yylval.string, s);
+	fprintf(stderr, "Error en la línea %d columna %d cerca de %s >>> %s\n\n", yylloc.first_line, yylloc.first_column, yylval.string, s);
         yyclearin;
 }
 
