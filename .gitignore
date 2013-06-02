@@ -25,3 +25,6 @@ parser
 Lista
 y.output
 y.tab.c
+lex.yy.c
+analizador
+~*

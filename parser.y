@@ -3,16 +3,16 @@
 	#include <assert.h>
 	#include "Nodo.h"
 	#include "NodoPila.h"
+        #include <stdarg.h>
+
 	void yyerror(char *s);
 %}
 
 %union 
 {
         char *string;
-        int columna;
-        int linea;
-        int largo;
 }
+
 
 %token TEXTO
 %token DOCTYPE
@@ -132,9 +132,9 @@
 
 %%
 
-
 ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {imprimir();}
                                 | ERROR_CAPTURADO                                          {printf("ERROR\n");}
+ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {printf("CORRECTO\n");}
 				;
 
 
@@ -161,6 +161,7 @@ CABEZA_OPEN			: CABEZA_OPEN TITULO
 
 
 CABEZA_CLOSE			: _HEAD                                                    {insertar("/head");}
+                                ;
 
 
 TITULO 				: TITULO_OPEN TITULO_CLOSE
@@ -170,6 +171,8 @@ TITULO_OPEN						: TITULO_OPEN TEXTUAL                                      {}
 								| TITLE                                                    {insertar("title");}
 								;
 TITULO_OPEN			: TITULO_OPEN TEXTUAL                                      
+
+TITULO_OPEN			: TITULO_OPEN TEXTUAL                                
 				| TITLE                                                    {insertar("title");}
 				;
 
@@ -179,7 +182,6 @@ TITULO_CLOSE			: _TITLE                                                   {inser
 
 
 CUERPO 				: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE
-                                | ERROR_CAPTURADO                                          {printf("ERROR\n");}
                                 ;
 
 
@@ -189,6 +191,7 @@ CUERPO_OPEN			: BODY                                                     {insert
 
 
 CUERPO_CLOSE			: _BODY                                                    {insertar("/body");}
+                                ;
 
 
 CONTENIDO_BODY                  : A_TAG CONTENIDO_BODY
@@ -256,7 +259,7 @@ BUTTON_TAG_CLOSE                : _BUTTON                                       
                                 ;
 
 
-CODE_TAG                        : CODE TEXTUAL _CODE                                    {insertar("code"); insertar("texto"); insertar("/code");}
+CODE_TAG                        : CODE TEXTUAL _CODE                                    {insertar("code"); insertar("/code");}
                                 ;
 
 
@@ -271,17 +274,17 @@ DL_TAG                          : DL DD_TAG _DL                                 
                                 ;
 
 
-DD_TAG                          : DD_TAG TEXTUAL _DD                                    {insertar("texto"); insertar("/dd");}
+DD_TAG                          : DD_TAG TEXTUAL _DD                                    {insertar("/dd");}
                                 | DD                                                    {insertar("dd");}
                                 ;
 
 
-DT_TAG                          : DT_TAG TEXTUAL _DT                                    {insertar("texto"); insertar("/dt");}
+DT_TAG                          : DT_TAG TEXTUAL _DT                                    {insertar("/dt");}
                                 | DT                                                    {insertar("dt");}
                                 ;
 
 
-EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("texto"); insertar("/em");}
+EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("/em");}
                                 ;
 
 
@@ -402,7 +405,7 @@ SCRIPT_TAG                      : SCRIPT_TAG TEXTUAL _SCRIPT                    
                                 ;
 
 
-SPAN_TAG                        : SPAN TEXTUAL _SPAN                                    {insertar("span"); insertar("texto"); insertar("/span");}
+SPAN_TAG                        : SPAN TEXTUAL _SPAN                                    {insertar("span"); insertar("/span");}
                                 |
                                 ;
 
@@ -465,9 +468,6 @@ TEXTUAL                         : P_TAG
                                 ;
 
 
-ERROR_CAPTURADO                 : ERROR
-                                ;
-
 %%
 
 /*Variables para el árbol de parsing*/
@@ -476,9 +476,10 @@ struct nodoLista *ptr = NULL;
 int cantidadTabsPorTag = 0;
 /*Fin variables para el árbol de parsing*/
 
+
 void yyerror(char *s)
 {
-	fprintf(stderr, "Error hola hola hola %s\n",s);
+	fprintf(stderr, "Error cerca de %s\n\n", yylval.string);
 }
 
 int main() {

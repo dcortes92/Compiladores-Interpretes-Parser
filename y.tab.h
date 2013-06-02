@@ -279,17 +279,14 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 10 "parser.y"
+#line 12 "parser.y"
 
         char *string;
-        int columna;
-        int linea;
-        int largo;
 
 
 
 /* Line 2068 of yacc.c  */
-#line 293 "y.tab.h"
+#line 290 "y.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
