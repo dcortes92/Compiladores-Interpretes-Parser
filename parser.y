@@ -71,15 +71,11 @@
 %token H6_
 %token _H6
 %token HEAD
-%token HEAD_
 %token _HEAD
-%token HEADER
-%token _HEADER
 %token HR
 %token HR_
 %token _HR
 %token HTML
-%token HTML_
 %token _HTML
 %token IMG
 %token _IMG
@@ -92,8 +88,6 @@
 %token _LINK
 %token META
 %token _META
-%token OBJECT
-%token _OBJECT
 %token OL
 %token OL_
 %token _OL
@@ -117,7 +111,6 @@
 %token TD
 %token _TD
 %token TEXTAREA
-%token TEXTAREA_
 %token _TEXTAREA
 %token TH
 %token _TH
@@ -128,7 +121,6 @@
 %token UL
 %token _UL
 %token CLOSE
-%token ERROR
 
 %%
 
@@ -156,8 +148,7 @@ CABEZA_TAGS                     : TITULO CABEZA_TAGS
                                 ;
 
 
-CABEZA_OPEN                     : HEAD                                                     {insertar("head");}
-                                | HEAD_ CLOSE                                              {insertar("head");}  
+CABEZA_OPEN                     : HEAD CLOSE                                              {insertar("head");}  
                                 ;               
 
 
@@ -177,7 +168,7 @@ TITULO_CLOSE			: _TITLE                                                   {inser
 				;
 
 
-CUERPO 				: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE
+CUERPO 				: CUERPO_OPEN CONTENIDO_BODY CUERPO_CLOSE 
                                 ;
 
 
@@ -317,6 +308,7 @@ FORM_TAG_OPEN                   : FORM                                          
 
 
 FORM_TAG_CLOSE                  : _FORM                                                 {insertar("/form");}
+								;
 
 
 FORM_TAG_CONTENIDO              : INPUT_TAG FORM_TAG_CONTENIDO

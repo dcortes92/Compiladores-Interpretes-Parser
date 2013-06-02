@@ -75,9 +75,6 @@ FORM_ATTRIBUTE				("accept-charset=\""{ENCODING}"\"")|(" action=\""{URL}"\"")|("
 H1_H6_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")
 
 
-HEAD_ATTRIBUTE				(" profile=\""{URL}"\"")
-
-
 HR_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|("noshade")|(" size=\""{NUMERO}"\"")|("width\""{NUMERO}"\"")
 			
 
@@ -171,11 +168,7 @@ TD_TH_SCOPE_VALUE			("col")|("colgroup")|("row")|("rowgroup")
 T_ALIGN_VALUE				("rigth")|("left")|("center")|("justify")|("char")
 							
 
-VALIGN_VALUE				("top")|("middle")|("bottom")|("baseline")
-			
-
-TEXTAREA_ATTRIBUTE			(" autofocus")|(" cols=\""{NUMERO}"\"")|("disabled")|(" maxlength=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" rows=\""{NUMERO}"\"")|(" wrap=\""{H_S}"\"")
-							
+VALIGN_VALUE				("top")|("middle")|("bottom")|("baseline")							
 
 H_S							("hard")|("soft")
 							
@@ -275,7 +268,6 @@ PCOMA						[\;]
 "<h6"{H1_H6_ATTRIBUTE}+					{yylval.string = yytext; return H6_;}
 "</h6>"									{yylval.string = yytext; return _H6;}
 "<head>"								{yylval.string = yytext; return HEAD;}
-"<head"{HEAD_ATTRIBUTE}+				{yylval.string = yytext; return HEAD_;}
 "</head>"								{yylval.string = yytext; return _HEAD;}
 "<hr>"									{yylval.string = yytext; return HR;}
 "<hr"{HR_ATTRIBUTE}+					{yylval.string = yytext; return HR_;}
@@ -315,9 +307,6 @@ PCOMA						[\;]
 "</table>"								{yylval.string = yytext; return _TABLE;}
 "<td"{TD_TH_ATTRIBUTE}+					{yylval.string = yytext; return TD;}
 "</td>"									{yylval.string = yytext; return _TD;}
-"<textarea>"							{yylval.string = yytext; return TEXTAREA;}
-"<textarea"{TEXTAREA_ATTRIBUTE}+		{yylval.string = yytext; return TEXTAREA_;}
-"</textarea>"							{yylval.string = yytext; return _TEXTAREA;}
 "<th"{TD_TH_ATTRIBUTE}+					{yylval.string = yytext; return TH;}
 "</th>"									{yylval.string = yytext; return _TH;}
 "<title>"								{yylval.string = yytext; return TITLE;}

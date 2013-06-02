@@ -29,3 +29,4 @@ lex.yy.c
 y.tab.h
 analizador
 ~*
+*.txt
