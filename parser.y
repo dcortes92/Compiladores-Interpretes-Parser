@@ -3,9 +3,8 @@
 	#include <assert.h>
 	#include "Nodo.h"
 	#include "NodoPila.h"
-        #include <stdarg.h>
 
-	void yyerror(char *s);
+	void yyerror(const char *s);
 %}
 
 %union 
@@ -13,6 +12,7 @@
         char *string;
 }
 
+%error-verbose
 
 %token TEXTO
 %token DOCTYPE
@@ -132,14 +132,18 @@
 
 %%
 
+<<<<<<< HEAD
 ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {imprimir();}
                                 | ERROR_CAPTURADO                                          {printf("ERROR\n");}
 ARCHIVO				: HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG               {printf("CORRECTO\n");}
+=======
+
+ARCHIVO				: DOCTYPE HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE_TAG       {imprimir();}
+>>>>>>> 1bed195ebb5ea281e3de20d76eff1e5029765a1a
 				;
 
 
-HTML_OPEN_TAG			: HTML                                                     {insertar("html");}
-				| HTML_ CLOSE                                              {insertar("html");}
+HTML_OPEN_TAG			: HTML CLOSE                                               {insertar("html");}
 				;
 
 
@@ -155,9 +159,12 @@ CABEZA_OPEN			: CABEZA_OPEN TITULO
                                 | CABEZA_OPEN LINK_TAG
                                 | CABEZA_OPEN META_TAG
                                 | CABEZA_OPEN SCRIPT_TAG
-				| HEAD                                                     {insertar("head");}
-				| HEAD_ CLOSE                                              {insertar("head");}
+
 				;
+
+
+CABEZA_OPEN                     : HEAD                                                     {insertar("head");}
+                                | HEAD_ CLOSE                                              {insertar("head");}                  
 
 
 CABEZA_CLOSE			: _HEAD                                                    {insertar("/head");}
@@ -204,7 +211,12 @@ CONTENIDO_BODY                  : A_TAG CONTENIDO_BODY
                                 | DL_TAG CONTENIDO_BODY
                                 | EMBED_TAG CONTENIDO_BODY
                                 | FORM_TAG CONTENIDO_BODY
-                                | H1_H6_TAG CONTENIDO_BODY
+                                | H1_TAG CONTENIDO_BODY 
+                                | H2_TAG CONTENIDO_BODY
+                                | H3_TAG CONTENIDO_BODY
+                                | H4_TAG CONTENIDO_BODY
+                                | H5_TAG CONTENIDO_BODY
+                                | H6_TAG CONTENIDO_BODY
                                 | HR_TAG CONTENIDO_BODY
                                 | IMG_TAG CONTENIDO_BODY
                                 | INPUT_TAG CONTENIDO_BODY
@@ -220,11 +232,15 @@ CONTENIDO_BODY                  : A_TAG CONTENIDO_BODY
                                 ;
 
 
-A_TAG                           : A _A                                                  {insertar("a"); insertar("/a");}
+A_TAG                           : A_TAG_OPEN TEXTUAL _A                                 {insertar("/a_tag");}
                                 ;
 
 
-B_TAG                           : B _B                                                  {insertar("b"); insertar("/b");}
+A_TAG_OPEN                      : A CLOSE                                               {insertar("a_tag");}
+                                ;
+
+
+B_TAG                           : B _B                                                  {insertar("b_tag"); insertar("/b_tag");}
                                 ;
 
 
@@ -239,14 +255,86 @@ BLOCKQUOTE_TAG_OPEN             : BLOCKQUOTE                                    
 
 
 BLOCKQUOTE_TAG_CLOSE            : _BLOCKQUOTE                                           {insertar("/blockquote");}
+                                ;
 
 
-BR_TAG                          : BR _BR                                                {insertar("br"); insertar("/br");}
+BR_TAG                          : BR _BR                                                {insertar("br_tag"); insertar("/br_tag");}
                                 ;
 
 
 BUTTON_TAG                      : BUTTON_TAG_OPEN IMG_TAG BUTTON_TAG_CLOSE
                                 | BUTTON_TAG_OPEN TEXTUAL BUTTON_TAG_CLOSE
+                                ;
+
+
+CODE_TAG                        : CODE_TAG_OPEN TEXTUAL _CODE                           {insertar("/code");}
+                                ;
+
+
+CODE_TAG_OPEN                   : CODE                                                  {insertar("code");}
+                                ;
+
+
+DIV_TAG                         : DIV_TAG_OPEN CONTENIDO_BODY DIV_TAG_CLOSE
+                                ;
+
+
+DIV_TAG_OPEN                    : DIV                                                   {insertar("div_tag");}
+                                | DIV_ CLOSE                                            {insertar("div_tag");}
+                                ;
+
+
+DIV_TAG_CLOSE                   : _DIV                                                  {insertar("/div_tag");}
+                                ;
+
+
+DL_TAG                          : DL_TAG_OPEN DD_TAG _DL                                {insertar("/dl_tag");}
+                                | DL_TAG_OPEN DT_TAG _DL                                {insertar("/dl_tag");}
+                                ;
+
+
+DL_TAG_OPEN                     : DL                                                    {insertar("dl_tag");}
+                                ;
+
+
+DD_TAG                          : DD_TAG TEXTUAL _DD                                    {insertar("/dd_tag");}
+                                | DD                                                    {insertar("dd_tag");}
+                                ;
+
+
+DT_TAG                          : DT_TAG TEXTUAL _DT                                    {insertar("/dt_tag");}
+                                | DT                                                    {insertar("dt_tag");}
+                                ;
+
+
+EM_TAG                          : EMBED_TAG_OPEN TEXTUAL _EM                            {insertar("/em_tag");}
+                                ;
+
+
+EMBED_TAG_OPEN                  : EM                                                    {insertar("em_tag");}
+                                ;
+
+
+EMBED_TAG                       : EMBED CLOSE _EMBED                                    {insertar("embed"); insertar("/embed");}
+                                ;
+
+
+FORM_TAG                        : FORM_TAG_OPEN FORM_TAG_CONTENIDO FORM_TAG_CLOSE
+                                ;
+
+
+FORM_TAG_OPEN                   : FORM                                                  {insertar("form");}
+                                | FORM_ CLOSE                                           {insertar("form");}
+                                ;
+
+
+FORM_TAG_CLOSE                  : _FORM                                                 {insertar("/form");}
+
+
+FORM_TAG_CONTENIDO              : INPUT_TAG FORM_TAG_CONTENIDO
+                                | TEXTAREA_TAG FORM_TAG_CONTENIDO
+                                | BUTTON_TAG FORM_TAG_CONTENIDO
+                                |
                                 ;
 
 
@@ -259,137 +347,113 @@ BUTTON_TAG_CLOSE                : _BUTTON                                       
                                 ;
 
 
-CODE_TAG                        : CODE TEXTUAL _CODE                                    {insertar("code"); insertar("/code");}
+H1_TAG                          : H1_TAG_OPEN TEXTUAL _H1                               {insertar("/h1_tag");}
+                                ;
+
+H1_TAG_OPEN                     : H1                                                    {insertar("h1_tag");}
+                                | H1_ CLOSE                                             {insertar("h1_tag");}
                                 ;
 
 
-DIV_TAG                         : DIV_TAG CONTENIDO_BODY _DIV
-                                | DIV                                                   {insertar("div");}
-                                | DIV_ CLOSE                                            {insertar("/div");}
+H2_TAG                          : H2_TAG TEXTUAL _H2                                    {insertar("/h2_tag");}
+                                | H2                                                    {insertar("h2_tag");}
+                                | H2_ CLOSE                                             {insertar("h2_tag");}
                                 ;
 
 
-DL_TAG                          : DL DD_TAG _DL                                         {insertar("dl"); insertar("dl");}
-                                | DL DT_TAG _DL
+H3_TAG                          : H3_TAG TEXTUAL _H3                                    {insertar("/h3_tag");}
+                                | H3                                                    {insertar("h3_tag");}
+                                | H3_ CLOSE                                             {insertar("h3_tag");}
                                 ;
 
 
-DD_TAG                          : DD_TAG TEXTUAL _DD                                    {insertar("/dd");}
-                                | DD                                                    {insertar("dd");}
+H4_TAG                          : H4_TAG TEXTUAL _H4                                    {insertar("/h4_tag");}
+                                | H4                                                    {insertar("h4_tag");}
+                                | H4_ CLOSE                                             {insertar("h4_tag");}
                                 ;
 
 
-DT_TAG                          : DT_TAG TEXTUAL _DT                                    {insertar("/dt");}
-                                | DT                                                    {insertar("dt");}
+H5_TAG                          : H5_TAG TEXTUAL _H5                                    {insertar("/h5_tag");}
+                                | H5                                                    {insertar("h5_tag");}
+                                | H5_ CLOSE                                             {insertar("h5_tag");}
                                 ;
 
 
-EM_TAG                          : EM TEXTUAL _EM                                        {insertar("em"); insertar("/em");}
+H6_TAG                          : H6_TAG TEXTUAL _H6                                    {insertar("/h6_tag");}
+                                | H6                                                    {insertar("h6_tag");}
+                                | H6_ CLOSE                                             {insertar("h6_tag");}
                                 ;
 
 
-EMBED_TAG                       : EMBED _EMBED                                          {insertar("embed"); insertar("/embed");}
+HR_TAG                          : HR_TAG _HR                                            {insertar("/hr_tag");}
+                                | HR                                                    {insertar("hr_tag");}
+                                | HR_ CLOSE                                             {insertar("hr_tag");}
                                 ;
 
 
-FORM_TAG                        : FORM_TAG INPUT_TAG _FORM                              {insertar("/form");}
-                                | FORM_TAG TEXTAREA_TAG _FORM                           {insertar("/form");}
-                                | FORM_TAG BUTTON_TAG _FORM                             {insertar("/form");}
-                                | FORM                                                  {insertar("form");}
-                                | FORM_ CLOSE                                           {insertar("form");}
+IMG_TAG                         : IMG CLOSE _IMG                                        {insertar("img"); insertar("/img");}
                                 ;
 
 
-H1_H6_TAG                       : H1_TAG
-                                | H2_TAG
-                                | H3_TAG
-                                | H4_TAG
-                                | H5_TAG
-                                | H6_TAG
+INPUT_TAG                       : INPUT CLOSE _INPUT                                    {insertar("input"); insertar("/input");}
                                 ;
 
 
-H1_TAG                          : H1_TAG TEXTUAL _H1                                    {insertar("/h1");}
-                                | H1                                                    {insertar("h1");}
-                                | H1_ CLOSE                                             {insertar("h1");}
+OL_TAG                          : OL_TAG_OPEN LI_TAG OL_TAG_CLOSE OL_TAG
+                                | 
                                 ;
 
 
-H2_TAG                          : H2_TAG TEXTUAL _H2                                    {insertar("/h2");}
-                                | H2                                                    {insertar("h2");}
-                                | H2_ CLOSE                                             {insertar("h2");}
+OL_TAG_OPEN                     : OL                                                    {insertar("ol_tag");}
+                                | OL_ CLOSE                                             {insertar("ol_tag");}
+                                ;     
+
+
+OL_TAG_CLOSE                    : _OL                                                   {insertar("/ol_tag");}
                                 ;
 
 
-H3_TAG                          : H3_TAG TEXTUAL _H3                                    {insertar("/h3");}
-                                | H3                                                    {insertar("h3");}
-                                | H3_ CLOSE                                             {insertar("h3");}
+UL_TAG                          : UL_TAG_OPEN LI_TAG UL_TAG_CLOSE UL_TAG
+                                |                                    
                                 ;
 
 
-H4_TAG                          : H4_TAG TEXTUAL _H4                                    {insertar("/h4");}
-                                | H4                                                    {insertar("h4");}
-                                | H4_ CLOSE                                             {insertar("h4");}
+UL_TAG_OPEN                     : UL CLOSE                                              {insertar("ul_tag");}
                                 ;
 
 
-H5_TAG                          : H5_TAG TEXTUAL _H5                                    {insertar("/h5");}
-                                | H5                                                    {insertar("h5");}
-                                | H5_ CLOSE                                             {insertar("h5");}
+UL_TAG_CLOSE                    : _UL                                                   {insertar("/ul_tag");}
                                 ;
 
 
-H6_TAG                          : H6_TAG TEXTUAL _H6                                    {insertar("/h6");}
-                                | H6                                                    {insertar("h6");}
-                                | H6_ CLOSE                                             {insertar("h6");}
+LI_TAG                          : LI_TAG_OPEN TEXTUAL LI_TAG_CLOSE LI_TAG                                    
+                                | 
                                 ;
 
 
-HR_TAG                          : HR_TAG _HR                                            {insertar("/hr");}
-                                | HR                                                    {insertar("hr");}
-                                | HR_ CLOSE                                             {insertar("hr");}
+LI_TAG_OPEN                     : LI                                                    {insertar("li_tag");}
+                                | LI_ CLOSE                                             {insertar("li_tag");}
                                 ;
 
 
-IMG_TAG                         : IMG _IMG                                              {insertar("img"); insertar("/img");}
+LI_TAG_CLOSE                    : _LI                                                   {insertar("/li_tag");}
                                 ;
 
 
-INPUT_TAG                       : INPUT _INPUT                                          {insertar("input"); insertar("/input");}
+LINK_TAG                        : LINK CLOSE _LINK                                      {insertar("link"); insertar("/link");}
                                 ;
 
 
-OL_TAG                          : OL_TAG LI_TAG _OL                                     {insertar("/ol");}
-                                | OL                                                    {insertar("ol");}
-                                | OL_ CLOSE                                             {insertar("ol");}
+META_TAG                        : META CLOSE _META                                      {insertar("meta"); insertar("/meta");}
                                 ;
 
 
-UL_TAG                          : UL_TAG LI_TAG _UL                                     {insertar("/ul");}
-                                | UL                                                    {insertar("ul");}
+P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P               {insertar("/p_tag");}
                                 ;
 
 
-LI_TAG                          : LI_TAG TEXTUAL _LI                                    {insertar("/li");}
-                                | LI                                                    {insertar("li");}
-                                | LI_ CLOSE                                             {insertar("li");}
-                                ;
-
-
-LINK_TAG                        : LINK _LINK                                            {insertar("link"); insertar("/link");}
-                                ;
-
-
-META_TAG                        : META _META                                            {insertar("meta"); insertar("/meta");}
-                                ;
-
-
-P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P               {insertar("/p");}
-                                ;
-
-
-P_TAG_OPEN                      : P                                                     {insertar("p");}
-                                | P_ CLOSE                                              {insertar("p");}
+P_TAG_OPEN                      : P                                                     {insertar("p_tag");}
+                                | P_ CLOSE                                              {insertar("p_tag");}
                                 ;
 
 
@@ -399,26 +463,46 @@ PRE_TAG                         : PRE_TAG TEXTUAL _PRE                          
                                 ;
 
 
-SCRIPT_TAG                      : SCRIPT_TAG TEXTUAL _SCRIPT                            {insertar("/script");}
-                                | SCRIPT                                                {insertar("script");}
+SCRIPT_TAG                      : SCRIPT_TAG_OPEN TEXTUAL _SCRIPT                       {insertar("/script");}
+                                ;
+
+
+SCRIPT_TAG_OPEN                 : SCRIPT                                                {insertar("script");}
                                 | SCRIPT_ CLOSE                                         {insertar("script");}
                                 ;
 
 
-SPAN_TAG                        : SPAN TEXTUAL _SPAN                                    {insertar("span"); insertar("/span");}
+SPAN_TAG                        : SPAN_TAG_OPEN TEXTUAL _SPAN                           {insertar("/span");}
                                 |
                                 ;
 
 
-STRONG_TAG                      : STRONG TEXTUAL _STRONG                                {insertar("strong"); insertar("/strong");}
+SPAN_TAG_OPEN                   : SPAN CLOSE                                            {insertar("span");}
                                 ;
 
 
-STYLE_TAG                       : STYLE TEXTUAL _STYLE                                  {insertar("style"); insertar("/style");}
+STRONG_TAG                      : STRONG_TAG_OPEN TEXTUAL _STRONG                       {insertar("/strong");}
                                 ;
 
 
-TABLE_TAG                       : TABLE CAPTION_TAG TR_TAG _TABLE                       {insertar("table"); insertar("/table");}
+STRONG_TAG_OPEN                 : STRONG                                                {insertar("strong");}
+                                ;
+
+
+STYLE_TAG                       : STYLE_TAG_OPEN TEXTUAL _STYLE                         {insertar("/style");}
+                                | STYLE_TAG_OPEN _STYLE                                 {insertar("/style");}
+                                ;
+
+
+STYLE_TAG_OPEN                  : STYLE CLOSE                                           {insertar("style");}
+                                ;
+
+
+TABLE_TAG                       : TABLE_TAG_OPEN CAPTION_TAG TR_TAG _TABLE              {insertar("/table");}
+                                ;
+
+
+TABLE_TAG_OPEN                  : TABLE CLOSE                                           {insertar("table");}
                                 ;
 
 
@@ -436,35 +520,60 @@ CAPTION_TAG_CLOSE               : _CAPTION                                      
                                 ;
 
 
-TR_TAG                          : TR_TAG TH_TD_TAG _TR                                  {insertar("/tr");}
-                                | TR                                                    {insertar("tr");}
+TR_TAG                          : TR_TAG_OPEN TH_TAG TR_TAG_CLOSE TR_TAG                               
+                                | TR_TAG_OPEN TD_TAG TR_TAG_CLOSE TR_TAG
+                                |                                                                       
                                 ;
 
 
-TH_TD_TAG                       : TH_TAG
-                                | TD_TAG
+TR_TAG_OPEN                     : TR CLOSE                                              {insertar("tr_tag");}
                                 ;
 
 
-TH_TAG                          : TH_TAG TEXTUAL _TH                                    {insertar("/th");}
-                                | TH                                                    {insertar("th");}
+TR_TAG_CLOSE                    : _TR                                                   {insertar("/tr_tag");}
                                 ;
 
 
-TD_TAG                          : TD_TAG TEXTUAL _TD                                    {insertar("/td");}
-                                | TD                                                    {insertar("td");}
+TH_TAG                          : TH_TAG_OPEN TEXTUAL TH_TAG_CLOSE TH_TAG
+                                | 
                                 ;
 
 
-TEXTAREA_TAG                    : TEXTAREA _TEXTAREA                                    {insertar("textarea"); insertar("/textarea");}
-                                | TEXTAREA TEXTUAL _TEXTAREA                            {insertar("textarea"); insertar("/textarea");}
+TH_TAG_OPEN                     : TH CLOSE                                              {insertar("th_tag");}
+                                ;
+
+
+TH_TAG_CLOSE                    : _TH                                                   {insertar("/th_tag");}
+                                ;
+
+
+TD_TAG                          : TD_TAG_OPEN TEXTUAL TD_TAG_CLOSE TD_TAG
+                                |
+                                ;
+
+
+TD_TAG_OPEN                     : TD CLOSE                                              {insertar("td_tag");}
+                                ;
+
+
+TD_TAG_CLOSE                    : _TD                                                   {insertar("/td_tag");}
+                                ;
+
+
+TEXTAREA_TAG                    : TEXTAREA_TAG_OPEN _TEXTAREA                           {insertar("/textarea");}
+                                | TEXTAREA_TAG_OPEN TEXTUAL _TEXTAREA                   {insertar("/textarea");}
+                                ;
+
+
+TEXTAREA_TAG_OPEN               : TEXTAREA                                              {insertar("textarea");}
+                                | TEXTAREA CLOSE                                        {insertar("textarea");}
                                 ;
 
 
 TEXTUAL                         : P_TAG
                                 | STRONG_TAG
                                 | EM_TAG
-                                | TEXTO                                                 { insertar("texto");}
+                                | TEXTO                                                 {insertar("texto");}
                                 ;
 
 
@@ -477,9 +586,10 @@ int cantidadTabsPorTag = 0;
 /*Fin variables para el árbol de parsing*/
 
 
-void yyerror(char *s)
+void yyerror(const char *s)
 {
-	fprintf(stderr, "Error cerca de %s\n\n", yylval.string);
+	fprintf(stderr, "Error cerca de %s >>> %s\n\n", yylval.string, s);
+        yyclearin;
 }
 
 int main() {

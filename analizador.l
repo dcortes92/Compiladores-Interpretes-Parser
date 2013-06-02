@@ -12,7 +12,10 @@
 LETRA						[a-z]
 
 	
-TEXTO						[a-zA-Z][a-zA-Z0-9]*
+TEXTO						[a-zA-Z][a-zA-Z0-9 ]*
+
+
+TEXTOURL					[a-zA-Z0-9\.]+
 
 
 UNNUMERO 					[0-9]
@@ -25,6 +28,9 @@ NUMERO_255					[0-255]
 
 
 HEX							[0-9A-Fa-f]+
+
+
+DOCTYPE						("<!DOCTYPE html>")|("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">")|(" <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">")|("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">")
 
 
 HTML_ATTRIBUTE				(" xmlns=\""{URL}"\"")
@@ -45,7 +51,7 @@ BLOCKQUOTE_ATTRIBUTE		(" cite=\""{URL}"\"")
 BODY_ATTRIBUTE				(" alink=\""{COLOR}"\"")|(" background=\""{URL_GENERAL}"\"")|(" bgcolor=\""{COLOR}"\"")|(" link=\""{COLOR}"\"")|(" vlink=\""{COLOR}"\"")
 
 
-URL_GENERAL					{URL}?{LOCAL_URL}?
+URL_GENERAL					{URL}|{LOCAL_URL}
 
 
 BUTTOM_ATTRIBUTE			(" autofocus")|(" disabled")|(" formtarget=\""{TARGET_VALUE}"\"")|(" name=\""{TEXTO}"\"")|(" type=\""{BUTTOM_TYPE_VALUE}"\"")|(" value=\""{TEXTO}"\"")
@@ -84,7 +90,7 @@ ALIGN_VALUE					("top")|("bottom")|("middle")|("left")|("right")
 INPUT_ATTRIBUTE				(" accept=\""{TEXTO}"\"")|(" align=\""{ALIGN_VALUE}"\"")|(" alt=\""{TEXTO}"\"")|("checked")|("disabled")|(" form=\""{TEXTO}"\"")|(" formtarget=\""{TARGET_VALUE}"\"")|(" height=\""{NUMERO}"\"")|(" max=\""{NUMERO}"\"")|(" maxlength=\""{NUMERO}"\"")|(" min=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" pattern=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" size=\""{NUMERO}"\"")|(" src=\""{URL}"\"")|(" type=\""{INPUT_TYPE_VALUE}"\"")|(" value=\""{TEXTO}"\"")|(" width=\""{NUMERO}"\"")
 							
 
-INPUT_TYPE_VALUE			("buttn")|("checkbox")|("color")|("date")|("datetime")|("datetime-local")|("email")|("file")|("hidden")|("image")|("month")|("number")|("password")|("radio")|("range")|("reset")|("search")|("submit")|("text")|("time")|("url")|("week")
+INPUT_TYPE_VALUE			("button")|("checkbox")|("color")|("date")|("datetime")|("datetime-local")|("email")|("file")|("hidden")|("image")|("month")|("number")|("password")|("radio")|("range")|("reset")|("search")|("submit")|("text")|("time")|("url")|("week")
 														
 
 LI_ATTRIBUTE				(" type=\""{LI_TYPE_VALUE}"\"")|(" value=\""{NUMERO}"\"")
@@ -168,43 +174,40 @@ T_ALIGN_VALUE				("rigth")|("left")|("center")|("justify")|("char")
 VALIGN_VALUE				("top")|("middle")|("bottom")|("baseline")
 			
 
-TEXTAREA_ATTRIBUTE			("autofocus")|(" cols=\""{NUMERO}"\"")|("disabled")|(" maxlength=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" rows=\""{NUMERO}"\"")|(" wrap=\""{H_S}"\"")
+TEXTAREA_ATTRIBUTE			(" autofocus")|(" cols=\""{NUMERO}"\"")|("disabled")|(" maxlength=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" rows=\""{NUMERO}"\"")|(" wrap=\""{H_S}"\"")
 							
 
 H_S							("hard")|("soft")
 							
 
-UL_ATTRIUTE					("compact")|(" type=\""{UL_TYPE_VALUE}"\"")
+UL_ATTRIUTE					(" compact")|(" type=\""{UL_TYPE_VALUE}"\"")
 							
 
 UL_TYPE_VALUE				("disc")|("square")|("circle")
 							
 
-URL							{PROTOCOLO}{HOST}{DOMINIO}{DOMINIO_DE_PRIMER_NIVEL}({DIRECTORIO}{SUBDIRECTORIO}{RECURSO})
+URL							{PROTOCOLO}{HOST}{DOMINIO}{DOMINIO_DE_PRIMER_NIVEL}({DIRECTORIO})?
 
 
-PROTOCOLO					("http//")|("ftp//")|("gopher//")|("telnet")|("mailto")|("news")
+PROTOCOLO					("http://")|("ftp://")|("gopher://")|("telnet")|("mailto")|("news")
 							
 
-HOST						("www.")|({TEXTO}".")
+HOST						("www.")
 							
 
-DOMINIO						{TEXTO}
+DOMINIO						{TEXTOURL}
 							
 
-DOMINIO_DE_PRIMER_NIVEL		(".com")|(".cr")|(".es")|(".us")
+DOMINIO_DE_PRIMER_NIVEL		(".com")|(".cr")|(".es")|(".us")|(".org")
 
 
-DIRECTORIO					("/"{TEXTO})+
-							
-
-SUBDIRECTORIO				("/"{TEXTO})+
-							
+DIRECTORIO					("/"{TEXTOURL})+
+														
 
 RECURSO						("."{TEXTO})
 
 
-LOCAL_URL					({TEXTO}"/")+
+LOCAL_URL					({TEXTOURL}"/")+
 
 AMP							[\&]
 HASH						[\#]
@@ -214,8 +217,9 @@ PCOMA						[\;]
 
 %%	
 
-[ \n]									{linea++;}
+[\n]									{linea++;}
 
+{DOCTYPE}								{yylval.string = yytext; return DOCTYPE;}
 "<a"{A_ATTRIBUTE}+						{yylval.string = yytext; return A;}
 "</a>"									{yylval.string = yytext; return _A;}
 "<b>"									{yylval.string = yytext; return B;}
@@ -276,8 +280,7 @@ PCOMA						[\;]
 "<hr>"									{yylval.string = yytext; return HR;}
 "<hr"{HR_ATTRIBUTE}+					{yylval.string = yytext; return HR_;}
 "</hr>"									{yylval.string = yytext; return _HR;}
-"<html>"								{yylval.string = yytext; return HTML;}
-"<html"{HTML_ATTRIBUTE}					{yylval.string = yytext; return HTML_;}
+"<html"{HTML_ATTRIBUTE}					{yylval.string = yytext; return HTML;}
 "</html>"								{yylval.string = yytext; return _HTML;}
 "<img"{IMG_ATTRIBUTE}+					{yylval.string = yytext; return IMG;}
 "</img>"								{yylval.string = yytext; return _IMG;}
