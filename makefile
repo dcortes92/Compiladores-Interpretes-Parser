@@ -5,4 +5,4 @@ lex.yy.c:	analizador.l y.tab.c
 			flex analizador.l
 
 y.tab.c:	parser.y
-			bison -vdty parser.y
+			bison -vdty parser.y --report-file=reporte.txt
