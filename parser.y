@@ -257,7 +257,7 @@ H6_TAG_OPEN                     : H6                                            
                                 | H6_ CLOSE                                             {insertar("h6_tag");}
                                 ;
 
-P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTO SPAN_TAG _P               {insertar("/p_tag");}
+P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P               {insertar("/p_tag");}
                                 ;
 
 P_TAG_OPEN                      : P                                                     {insertar("p_tag");}
