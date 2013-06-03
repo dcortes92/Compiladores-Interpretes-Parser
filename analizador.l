@@ -174,6 +174,9 @@ TD_TH_SCOPE_VALUE			("col")|("colgroup")|("row")|("rowgroup")
 T_ALIGN_VALUE				("rigth")|("left")|("center")|("justify")|("char")
 							
 
+TEXTAREA_ATTRIBUTE			(" autofocus")|(" cols=\""{NUMERO}"\"")|("disabled")|(" maxlength=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" rows=\""{NUMERO}"\"")|(" wrap=\""{H_S}"\"")
+
+
 VALIGN_VALUE				("top")|("middle")|("bottom")|("baseline")							
 
 H_S							("hard")|("soft")
@@ -313,6 +316,9 @@ PCOMA						[\;]
 "</table>"								{yylval.string = yytext; return _TABLE;}
 "<td"{TD_TH_ATTRIBUTE}+					{yylval.string = yytext; return TD;}
 "</td>"									{yylval.string = yytext; return _TD;}
+"<textarea>"							{yylval.string = yytext; return TEXTAREA;}
+"<textarea"{TEXTAREA_ATTRIBUTE}+		{yylval.string = yytext; return TEXTAREA_;}
+"</textarea>"							{yylval.string = yytext; return _TEXTAREA;}
 "<th"{TD_TH_ATTRIBUTE}+					{yylval.string = yytext; return TH;}
 "</th>"									{yylval.string = yytext; return _TH;}
 "<title>"								{yylval.string = yytext; return TITLE;}

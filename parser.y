@@ -112,6 +112,7 @@
 %token TD
 %token _TD
 %token TEXTAREA
+%token TEXTAREA_
 %token _TEXTAREA
 %token TH
 %token _TH
@@ -197,7 +198,9 @@ BLOQUE                          : A_TAG
                                 | DIV_TAG
                                 | DL_TAG 
                                 | EMBED_TAG
+                                | FORM_TAG
                                 | HR_TAG
+                                | IMG_TAG
                                 | LINK_TAG
                                 | LIST_TAG
                                 | SCRIPT_TAG
@@ -309,7 +312,7 @@ CODE_TAG_OPEN                   : CODE                                          
                                 ;
 
 
-DIV_TAG                         : DIV_TAG_OPEN TEXTO DIV_TAG_CLOSE
+DIV_TAG                         : DIV_TAG_OPEN CONTENIDO DIV_TAG_CLOSE
                                 ;
 
 
@@ -319,6 +322,29 @@ DIV_TAG_OPEN                    : DIV                                           
 
 
 DIV_TAG_CLOSE                   : _DIV                                                  {insertar("/div_tag");}
+                                ;
+
+
+FORM_TAG                        : FORM_TAG_OPEN FORM_TAG_CONTENIDO FORM_TAG_CLOSE
+                                ;
+
+
+FORM_TAG_OPEN                   : FORM                                                  {insertar("form");}
+                                | FORM_ CLOSE                                           {insertar("form");}
+                                ;
+
+
+FORM_TAG_CLOSE                  : _FORM                                                 {insertar("/form");}
+
+
+FORM_TAG_CONTENIDO              : INPUT_TAG FORM_TAG_CONTENIDO
+                                | TEXTAREA_TAG FORM_TAG_CONTENIDO
+                                | BUTTON_TAG FORM_TAG_CONTENIDO
+                                |
+                                ;
+
+
+INPUT_TAG                       : INPUT CLOSE _INPUT                                    {insertar("input"); insertar("/input");}
                                 ;
 
 
@@ -378,7 +404,7 @@ LIST_TAG                        : OL_TAG
                                 | UL_TAG
                                 ;
 
-OL_TAG                          : OL_TAG_OPEN LI_TAG OL_TAG_CLOSE 
+OL_TAG                          : OL_TAG_OPEN LI_TAG OL_TAG_CLOSE
                                 ;
 
 
@@ -390,8 +416,8 @@ OL_TAG_OPEN                     : OL                                            
 OL_TAG_CLOSE                    : _OL                                                   {insertar("/ol_tag");}
                                 ;
 
-LI_TAG                          : LI_TAG_OPEN TEXTUAL LI_TAG_CLOSE                                    
-                                | 
+LI_TAG                          : LI_TAG_OPEN TEXTUAL LI_TAG_CLOSE LI_TAG
+                                |
                                 ;
 
 
