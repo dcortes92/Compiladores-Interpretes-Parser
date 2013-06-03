@@ -207,14 +207,14 @@ BLOQUE                          : A_TAG
                                 ;
 
 
-A_TAG                           : A_TAG_OPEN TEXTUAL _A {insertar("/a_tag");}
+A_TAG                           : A_TAG_OPEN CONTENIDO _A {insertar("/a_tag");}
                                 ;
 
 
 A_TAG_OPEN                      : A CLOSE                                               {insertar("a_tag");}
                                 ;
 
-H1_TAG                          : H1_TAG_OPEN TEXTUAL _H1                               {insertar("/h1_tag");}
+H1_TAG                          : H1_TAG_OPEN CONTENIDO _H1                               {insertar("/h1_tag");}
                                 ;
 
 H1_TAG_OPEN                     : H1                                                    {insertar("h1_tag");}
@@ -222,35 +222,35 @@ H1_TAG_OPEN                     : H1                                            
                                 ;
 
 
-H2_TAG                          : H2_TAG_OPEN TEXTUAL _H2                               {insertar("/h2_tag");}
+H2_TAG                          : H2_TAG_OPEN CONTENIDO _H2                               {insertar("/h2_tag");}
                                 ;
 
 H2_TAG_OPEN                     : H2                                                    {insertar("h2_tag");}
                                 | H2_ CLOSE                                             {insertar("h2_tag");}
                                 ;
 
-H3_TAG                          : H3_TAG_OPEN TEXTUAL _H3                               {insertar("/h3_tag");}
+H3_TAG                          : H3_TAG_OPEN CONTENIDO _H3                               {insertar("/h3_tag");}
                                 ;
 
 H3_TAG_OPEN                     : H3                                                    {insertar("h3_tag");}
                                 | H3_ CLOSE                                             {insertar("h3_tag");}
                                 ;
 
-H4_TAG                          : H4_TAG_OPEN TEXTUAL _H4                               {insertar("/h4_tag");}
+H4_TAG                          : H4_TAG_OPEN CONTENIDO _H4                               {insertar("/h4_tag");}
                                 ;
 
 H4_TAG_OPEN                     : H4                                                    {insertar("h4_tag");}
                                 | H4_ CLOSE                                             {insertar("h4_tag");}
                                 ;
 
-H5_TAG                          : H5_TAG_OPEN TEXTUAL _H5                               {insertar("/h5_tag");}
+H5_TAG                          : H5_TAG_OPEN CONTENIDO _H5                               {insertar("/h5_tag");}
                                 ;
 
 H5_TAG_OPEN                     : H5                                                    {insertar("h5_tag");}
                                 | H5_ CLOSE                                             {insertar("h5_tag");}
                                 ;
 
-H6_TAG                          : H6_TAG_OPEN TEXTUAL _H6                               {insertar("/h6_tag");}
+H6_TAG                          : H6_TAG_OPEN CONTENIDO _H6                               {insertar("/h6_tag");}
                                 ;
 
 H6_TAG_OPEN                     : H6                                                    {insertar("h6_tag");}
@@ -378,7 +378,7 @@ LIST_TAG                        : OL_TAG
                                 | UL_TAG
                                 ;
 
-OL_TAG                          : OL_TAG_OPEN LI_TAG OL_TAG_CLOSE  
+OL_TAG                          : OL_TAG_OPEN LI_TAG OL_TAG_CLOSE 
                                 ;
 
 
