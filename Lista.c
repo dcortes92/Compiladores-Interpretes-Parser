@@ -102,6 +102,59 @@ struct nodoLista* insertar(char *tag)
 }
 
 
+/*Si al insertar el nodo no hay nada en la lista, se crea la lista con un único nodo.*/
+struct nodoListaError* crearListaError(char *tag, int linea, int columna)
+{
+    /*Asignación de memoria*/
+    struct nodoListaError *ptr = (struct nodoListaError*)malloc(sizeof(struct nodoListaError));
+    if(ptr == NULL) /*No hay memoria suficiente.*/
+    {
+        printf("No se pudo crear el Nodo. No hay suficiente memoria.\n");
+    }
+    else
+    {
+        ptr->etiqueta = strdup(tag); /*Se establecen los valores de las datos del nodo*/
+        ptr->linea = linea;
+        ptr_>columna = columna;
+        ptr->ptrSiguiente = NULL;
+        nodoInicialError = nodoActual = ptr; /*Se actualiza la referencia al primer nodo*/
+
+        /*Se establece el nuevo padre*/
+        push(&ptrPila, tag);
+        cantidadTabsPorTag++;
+    }
+    return ptr;
+}
+
+/*Inserta un nuevo nodo en la lista enlazada.*/
+struct nodoListaError* insertarError(char *tag, int linea, int columna)
+{
+    /*Si la lista está vacía*/
+    if(nodoInicialError == NULL)
+    {
+        return (crearLista(tag));
+    }
+
+    /*Asignación de memoria*/
+    struct nodoListaError *ptr = (struct nodoListaError*)malloc(sizeof(struct nodoListaError));
+
+    if(ptr == NULL) /*No hay memoria suficiente*/
+    {
+        printf("No se pudo crear el Nodo. No hay suficiente memoria.\n");
+    }
+    else
+    {        
+            ptr->etiqueta = strdup(tag); /*Se establecen los valores de los datos del nodo*/
+            ptr->linea = linea;
+            ptr->columna = columna;
+            ptr->ptrSiguiente = NULL;
+            nodoActual->ptrSiguiente = ptr; /*Se actualiza la referencia al primer nodo*/
+            nodoActual = ptr;
+    }
+    return ptr;
+}
+
+
 void imprimir(void)
 {
     struct nodoLista *ptr = nodoInicial; /*Se crea una copia de la referencia 

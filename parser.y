@@ -15,6 +15,7 @@
 %error-verbose
 %locations
 
+%token TAG_ERROR
 %token TEXTO
 %token DOCTYPE
 %token A
@@ -95,9 +96,6 @@
 %token P
 %token P_
 %token _P
-%token PRE
-%token PRE_
-%token _PRE
 %token SCRIPT
 %token SCRIPT_
 %token _SCRIPT
@@ -131,6 +129,7 @@ ARCHIVO                         : DOCTYPE HTML_OPEN_TAG CABEZA CUERPO HTML_CLOSE
 
 
 HTML_OPEN_TAG                   : HTML CLOSE                                               {insertar("html");}
+                                | TAG_ERROR CLOSE                                          {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -175,6 +174,7 @@ CUERPO                          : CUERPO_OPEN CONTENIDO CUERPO_CLOSE
 
 CUERPO_OPEN                     : BODY                                                     {insertar("body");}
                                 | BODY_ CLOSE                                              {insertar("body");}
+                                | TAG_ERROR CLOSE                                          {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 CUERPO_CLOSE                    : _BODY                                                    {insertar("/body");}
@@ -210,18 +210,20 @@ BLOQUE                          : A_TAG
                                 ;
 
 
-A_TAG                           : A_TAG_OPEN CONTENIDO _A {insertar("/a_tag");}
+A_TAG                           : A_TAG_OPEN CONTENIDO _A                               {insertar("/a_tag");}
                                 ;
 
 
 A_TAG_OPEN                      : A CLOSE                                               {insertar("a_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
-H1_TAG                          : H1_TAG_OPEN CONTENIDO _H1                               {insertar("/h1_tag");}
+H1_TAG                          : H1_TAG_OPEN CONTENIDO _H1                              {insertar("/h1_tag");}
                                 ;
 
 H1_TAG_OPEN                     : H1                                                    {insertar("h1_tag");}
                                 | H1_ CLOSE                                             {insertar("h1_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -230,6 +232,7 @@ H2_TAG                          : H2_TAG_OPEN CONTENIDO _H2                     
 
 H2_TAG_OPEN                     : H2                                                    {insertar("h2_tag");}
                                 | H2_ CLOSE                                             {insertar("h2_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 H3_TAG                          : H3_TAG_OPEN CONTENIDO _H3                               {insertar("/h3_tag");}
@@ -237,6 +240,7 @@ H3_TAG                          : H3_TAG_OPEN CONTENIDO _H3                     
 
 H3_TAG_OPEN                     : H3                                                    {insertar("h3_tag");}
                                 | H3_ CLOSE                                             {insertar("h3_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 H4_TAG                          : H4_TAG_OPEN CONTENIDO _H4                               {insertar("/h4_tag");}
@@ -244,6 +248,7 @@ H4_TAG                          : H4_TAG_OPEN CONTENIDO _H4                     
 
 H4_TAG_OPEN                     : H4                                                    {insertar("h4_tag");}
                                 | H4_ CLOSE                                             {insertar("h4_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 H5_TAG                          : H5_TAG_OPEN CONTENIDO _H5                               {insertar("/h5_tag");}
@@ -251,6 +256,7 @@ H5_TAG                          : H5_TAG_OPEN CONTENIDO _H5                     
 
 H5_TAG_OPEN                     : H5                                                    {insertar("h5_tag");}
                                 | H5_ CLOSE                                             {insertar("h5_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 H6_TAG                          : H6_TAG_OPEN CONTENIDO _H6                               {insertar("/h6_tag");}
@@ -258,6 +264,7 @@ H6_TAG                          : H6_TAG_OPEN CONTENIDO _H6                     
 
 H6_TAG_OPEN                     : H6                                                    {insertar("h6_tag");}
                                 | H6_ CLOSE                                             {insertar("h6_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P               {insertar("/p_tag");}
@@ -265,6 +272,7 @@ P_TAG                           : P_TAG_OPEN SPAN_TAG TEXTUAL SPAN_TAG _P       
 
 P_TAG_OPEN                      : P                                                     {insertar("p_tag");}
                                 | P_ CLOSE                                              {insertar("p_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 SPAN_TAG                        : SPAN_TAG_OPEN TEXTUAL _SPAN                           {insertar("/span");}
@@ -273,6 +281,7 @@ SPAN_TAG                        : SPAN_TAG_OPEN TEXTUAL _SPAN                   
 
 
 SPAN_TAG_OPEN                   : SPAN CLOSE                                            {insertar("span");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 B_TAG                           : B TEXTO _B                                            {insertar("b_tag"); insertar("/b_tag");}
@@ -285,6 +294,7 @@ BLOCKQUOTE_TAG                  : BLOCKQUOTE_TAG_OPEN TEXTUAL BLOCKQUOTE_TAG_CLO
 
 BLOCKQUOTE_TAG_OPEN             : BLOCKQUOTE                                            {insertar("blockquote");}
                                 | BLOCKQUOTE_ CLOSE                                     {insertar("blockquote");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -301,6 +311,7 @@ BUTTON_TAG                      : BUTTON_TAG_OPEN IMG_TAG BUTTON_TAG_CLOSE
                                 ;
 
 IMG_TAG                         : IMG CLOSE _IMG                                        {insertar("img"); insertar("/img");}
+                                | TAG_ERROR CLOSE _IMG                                  {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -318,6 +329,7 @@ DIV_TAG                         : DIV_TAG_OPEN CONTENIDO DIV_TAG_CLOSE
 
 DIV_TAG_OPEN                    : DIV                                                   {insertar("div_tag");}
                                 | DIV_ CLOSE                                            {insertar("div_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -331,6 +343,7 @@ FORM_TAG                        : FORM_TAG_OPEN FORM_TAG_CONTENIDO FORM_TAG_CLOS
 
 FORM_TAG_OPEN                   : FORM                                                  {insertar("form");}
                                 | FORM_ CLOSE                                           {insertar("form");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -345,6 +358,7 @@ FORM_TAG_CONTENIDO              : INPUT_TAG FORM_TAG_CONTENIDO
 
 
 INPUT_TAG                       : INPUT CLOSE _INPUT                                    {insertar("input"); insertar("/input");}
+                                | TAG_ERROR CLOSE _INPUT                                {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -372,6 +386,7 @@ EM_TAG                          : EMBED_TAG_OPEN TEXTUAL _EM                    
 
 
 EMBED_TAG_OPEN                  : EM                                                    {insertar("em_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -381,6 +396,7 @@ EMBED_TAG                       : EMBED CLOSE _EMBED                            
 
 BUTTON_TAG_OPEN                 : BUTTON                                                {insertar("button");}
                                 | BUTTON_ CLOSE                                         {insertar("button");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -390,13 +406,16 @@ BUTTON_TAG_CLOSE                : _BUTTON                                       
 HR_TAG                          : HR_TAG _HR                                            {insertar("/hr_tag");}
                                 | HR                                                    {insertar("hr_tag");}
                                 | HR_ CLOSE                                             {insertar("hr_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 LINK_TAG                        : LINK CLOSE _LINK                                      {insertar("link"); insertar("/link");}
+                                | TAG_ERROR CLOSE _LINK                                 {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
 META_TAG                        : META CLOSE _META                                      {insertar("meta"); insertar("/meta");}
+                                | TAG_ERROR CLOSE _META                                 {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -410,6 +429,7 @@ OL_TAG                          : OL_TAG_OPEN LI_TAG OL_TAG_CLOSE
 
 OL_TAG_OPEN                     : OL                                                    {insertar("ol_tag");}
                                 | OL_ CLOSE                                             {insertar("ol_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;     
 
 
@@ -423,6 +443,7 @@ LI_TAG                          : LI_TAG_OPEN TEXTUAL LI_TAG_CLOSE LI_TAG
 
 LI_TAG_OPEN                     : LI                                                    {insertar("li_tag");}
                                 | LI_ CLOSE                                             {insertar("li_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -436,6 +457,7 @@ SCRIPT_TAG                      : SCRIPT_TAG_OPEN TEXTUAL _SCRIPT               
 
 SCRIPT_TAG_OPEN                 : SCRIPT                                                {insertar("script");}
                                 | SCRIPT_ CLOSE                                         {insertar("script");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -444,6 +466,7 @@ TABLE_TAG                       : TABLE_TAG_OPEN CAPTION_TAG TR_TAG _TABLE      
 
 
 TABLE_TAG_OPEN                  : TABLE CLOSE                                           {insertar("table");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -454,6 +477,7 @@ CAPTION_TAG                     : CAPTION_TAG_OPEN TEXTUAL CAPTION_TAG_CLOSE
 
 CAPTION_TAG_OPEN                : CAPTION                                               {insertar("caption");}
                                 | CAPTION_ CLOSE                                        {insertar("caption");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -468,6 +492,7 @@ TR_TAG                          : TR_TAG_OPEN TH_TAG TR_TAG_CLOSE
 
 
 TR_TAG_OPEN                     : TR CLOSE                                              {insertar("tr_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -481,6 +506,7 @@ TH_TAG                          : TH_TAG_OPEN TEXTUAL TH_TAG_CLOSE
 
 
 TH_TAG_OPEN                     : TH CLOSE                                              {insertar("th_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -493,6 +519,7 @@ TD_TAG                          : TD_TAG_OPEN TEXTUAL TD_TAG_CLOSE
 
 
 TD_TAG_OPEN                     : TD CLOSE                                              {insertar("td_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -506,7 +533,8 @@ TEXTAREA_TAG                    : TEXTAREA_TAG_OPEN _TEXTAREA                   
 
 
 TEXTAREA_TAG_OPEN               : TEXTAREA                                              {insertar("textarea");}
-                                | TEXTAREA CLOSE                                        {insertar("textarea");}
+                                | TEXTAREA_ CLOSE                                       {insertar("textarea");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 UL_TAG                          : UL_TAG_OPEN LI_TAG UL_TAG_CLOSE                                 
@@ -514,6 +542,7 @@ UL_TAG                          : UL_TAG_OPEN LI_TAG UL_TAG_CLOSE
 
 
 UL_TAG_OPEN                     : UL CLOSE                                              {insertar("ul_tag");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 
@@ -527,6 +556,7 @@ STYLE_TAG                       : STYLE_TAG_OPEN TEXTUAL _STYLE                 
 
 
 STYLE_TAG_OPEN                  : STYLE CLOSE                                           {insertar("style");}
+                                | TAG_ERROR CLOSE                                       {bandera = 1; insertarError(yylval.string, yylloc.first_line, yylloc.first_column);}
                                 ;
 
 TEXTUAL                         : P_TAG
@@ -639,7 +669,93 @@ struct nodoLista* insertar(char *tag)
 }
 
 
+/*Si al insertar el nodo no hay nada en la lista, se crea la lista con un único nodo.*/
+struct nodoListaError* crearListaError(char *tag, int linea, int columna)
+{
+    /*Asignación de memoria*/
+    struct nodoListaError *ptr = (struct nodoListaError*)malloc(sizeof(struct nodoListaError));
+    char *str;
+    if(ptr == NULL) /*No hay memoria suficiente.*/
+    {
+        printf("No se pudo crear el Nodo. No hay suficiente memoria.\n");
+    }
+    else
+    {
+
+        const char *const Error = "Error en atributos de ";
+
+        const size_t tagLength = strlen(tag);
+        const size_t errorLength = strlen(Error);
+        const size_t totalLength = tagLength + errorLength;
+
+        char *const strfinal = malloc(totalLength + 1);
+
+        strcpy(strfinal, Error);
+        strcpy(strfinal + errorLength, tag);
+
+        ptr->etiqueta = strfinal; /*Se establecen los valores de las datos del nodo*/
+        ptr->linea = linea;
+        ptr->columna = columna;
+        ptr->ptrSiguiente = NULL;
+        nodoInicialError = nodoActualError = ptr; /*Se actualiza la referencia al primer nodo*/
+    }
+    return ptr;
+}
+
+/*Inserta un nuevo nodo en la lista enlazada.*/
+struct nodoListaError* insertarError(char *tag, int linea, int columna)
+{
+    /*Si la lista está vacía*/
+    if(nodoInicialError == NULL)
+    {
+        return (crearListaError(tag, linea, columna));
+    }
+
+    /*Asignación de memoria*/
+    struct nodoListaError *ptr = (struct nodoListaError*)malloc(sizeof(struct nodoListaError));
+
+    if(ptr == NULL) /*No hay memoria suficiente*/
+    {
+        printf("No se pudo crear el Nodo. No hay suficiente memoria.\n");
+    }
+    else
+    {   
+            const char *const Error = "Error en atributos de ";
+
+            const size_t tagLength = strlen(tag);
+            const size_t errorLength = strlen(Error);
+            const size_t totalLength = tagLength + errorLength;
+
+            char *const strfinal = malloc(totalLength + 1);
+
+            strcpy(strfinal, Error);
+            strcpy(strfinal + errorLength, tag);
+
+            ptr->etiqueta = strfinal; /*Se establecen los valores de los datos del nodo*/
+            ptr->linea = linea;
+            ptr->columna = columna;
+            ptr->ptrSiguiente = NULL;
+            nodoActualError->ptrSiguiente = ptr; /*Se actualiza la referencia al primer nodo*/
+            nodoActualError = ptr;
+    }
+    return ptr;
+}
+
+
 void imprimir(void)
+{
+        if(bandera)
+        {
+                imprimirErrores();
+
+        }
+        else
+        {
+                imprimirArbol();
+        }
+}
+
+void imprimirArbol(void)
 {
     printf("\n*** Árbol de Parsing ***\n\n");
     struct nodoLista *ptr = nodoInicial; /*Se crea una copia de la referencia 
@@ -681,6 +797,23 @@ void imprimir(void)
         ptr = ptr->ptrSiguiente; /*Se pasa al siguiente nodo*/
     }
     printf("\n*** Fin del Árbol de Parsing\n\n");
+}
+
+
+void imprimirErrores(void)
+{
+    struct nodoListaError *ptr = nodoInicialError; /*Se crea una copia de la referencia 
+                                        al primer nodo para recorrer la lista*/
+
+    printf("\n**** ERRORES ****\n\n");
+
+    while(ptr != NULL) /*Mientras que el puntero no sea NULL*/
+    {
+        printf("%s en la linea: %d columna: %d\n", ptr->etiqueta, ptr->linea, ptr->columna);
+        
+        ptr = ptr->ptrSiguiente; /*Se pasa al siguiente nodo*/
+    }
+    printf("\n**** *****\n");
 }
 
 /*Funciones de la Pila*/
