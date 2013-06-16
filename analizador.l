@@ -15,7 +15,7 @@
 
 %option yylineno
 
-ATRIBUTO					[ ]{TEXTO}("=\""){TEXTO_2}("\"")
+ATRIBUTO					([ ]{TEXTO}("=\""){TEXTO_2}("\""))|([ ]{TEXTO_2})
 
 
 LETRA						[a-z]
@@ -331,33 +331,39 @@ PCOMA						[\;]
 "</ul>"									{return _UL;}
 ">"										{return CLOSE;}						
 
-"<a"{ATRIBUTO}+							{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<blockquote"{ATRIBUTO}+				{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<body"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<button"{ATRIBUTO}+					{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<caption"{ATRIBUTO}+					{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<div"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<embed"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<form"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<h"[1-6]{ATRIBUTO}+					{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<hr"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<html"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<img"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<input"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<li"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<link"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<meta"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<ol"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<p"{ATRIBUTO}+							{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<script"{ATRIBUTO}+					{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<span"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<style"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<table"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<td"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<textarea"{ATRIBUTO}+					{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva o no*/
-"<th"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<tr"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
-"<ul"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TAG_ERROR;}/*Lleva*/
+"<a"{ATRIBUTO}+							{yylval.string = strdup(yytext); return A_TAG_ERROR;}/*Lleva*/
+"<blockquote"{ATRIBUTO}+				{yylval.string = strdup(yytext); return BLOCKQUOTE_TAG_ERROR;}/*Lleva o no*/
+"<body"{ATRIBUTO}+						{yylval.string = strdup(yytext); return BODY_TAG_ERROR;}/*Lleva o no*/
+"<button"{ATRIBUTO}+					{yylval.string = strdup(yytext); return BUTTON_TAG_ERROR;}/*Lleva o no*/
+"<caption"{ATRIBUTO}+					{yylval.string = strdup(yytext); return CAPTION_TAG_ERROR;}/*Lleva o no*/
+"<div"{ATRIBUTO}+						{yylval.string = strdup(yytext); return DIV_TAG_ERROR;}/*Lleva o no*/
+"<embed"{ATRIBUTO}+						{yylval.string = strdup(yytext); return EMBED_TAG_ERROR;}/*Lleva*/
+"<form"{ATRIBUTO}+						{yylval.string = strdup(yytext); return FORM_TAG_ERROR;}/*Lleva o no*/
+"<h1"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H1_TAG_ERROR;}/*Lleva o no*/
+"<h2"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H2_TAG_ERROR;}/*Lleva o no*/
+"<h3"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H3_TAG_ERROR;}/*Lleva o no*/
+"<h4"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H4_TAG_ERROR;}/*Lleva o no*/
+"<h5"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H5_TAG_ERROR;}/*Lleva o no*/
+"<h6"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H6_TAG_ERROR;}/*Lleva o no*/
+"<hr"{ATRIBUTO}+						{yylval.string = strdup(yytext); return HR_TAG_ERROR;}/*Lleva o no*/
+"<html"{ATRIBUTO}+						{yylval.string = strdup(yytext); return HTML_TAG_ERROR;}/*Lleva*/
+"<img"{ATRIBUTO}+						{yylval.string = strdup(yytext); return IMG_TAG_ERROR;}/*Lleva*/
+"<input"{ATRIBUTO}+						{yylval.string = strdup(yytext); return INPUT_TAG_ERROR;}/*Lleva*/
+"<li"{ATRIBUTO}+						{yylval.string = strdup(yytext); return LI_TAG_ERROR;}/*Lleva o no*/
+"<link"{ATRIBUTO}+						{yylval.string = strdup(yytext); return LINK_TAG_ERROR;}/*Lleva*/
+"<meta"{ATRIBUTO}+						{yylval.string = strdup(yytext); return META_TAG_ERROR;}/*Lleva*/
+"<ol"{ATRIBUTO}+						{yylval.string = strdup(yytext); return OL_TAG_ERROR;}/*Lleva o no*/
+"<p"{ATRIBUTO}+							{yylval.string = strdup(yytext); return P_TAG_ERROR;}/*Lleva o no*/
+"<script"{ATRIBUTO}+					{yylval.string = strdup(yytext); return SCRIPT_TAG_ERROR;}/*Lleva o no*/
+"<span"{ATRIBUTO}+						{yylval.string = strdup(yytext); return SPAN_TAG_ERROR;}/*Lleva*/
+"<style"{ATRIBUTO}+						{yylval.string = strdup(yytext); return STYLE_TAG_ERROR;}/*Lleva*/
+"<table"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TABLE_TAG_ERROR;}/*Lleva*/
+"<td"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TD_TAG_ERROR;}/*Lleva*/
+"<textarea"{ATRIBUTO}+					{yylval.string = strdup(yytext); return TEXTAREA_TAG_ERROR;}/*Lleva o no*/
+"<th"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TH_TAG_ERROR;}/*Lleva*/
+"<tr"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TR_TAG_ERROR;}/*Lleva*/
+"<ul"{ATRIBUTO}+						{yylval.string = strdup(yytext); return UL_TAG_ERROR;}/*Lleva*/
+
 
 {TEXTO}									{return TEXTO;}
 
