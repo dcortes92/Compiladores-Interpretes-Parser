@@ -80,7 +80,7 @@ DIV_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|(" style=\""{COLOR}"\"")
 EMBED_ATTRIBUTE				(" height=\""{NUMERO}"\"")|(" src=\""{URL}"\"")|(" type=\""{LOCAL_URL}"\"")|(" width=\""{NUMERO}"\"")
 
 
-FORM_ATTRIBUTE				("accept-charset=\""{ENCODING}"\"")|(" action=\""{URL}"\"")|(" name=\""{TEXTO}"\"")|(" target=\""{TARGET_VALUE}"\"")
+FORM_ATTRIBUTE				(" accept-charset=\""{ENCODING}"\"")|(" action=\""{URL}"\"")|(" name=\""{TEXTO}"\"")|(" target=\""{TARGET_VALUE}"\"")
 
 
 H1_H6_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")
