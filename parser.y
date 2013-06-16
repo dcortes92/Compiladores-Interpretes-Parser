@@ -15,7 +15,6 @@
 %error-verbose
 %locations
 
-%token TAG_ERROR;
 %token A_TAG_ERROR;
 %token BLOCKQUOTE_TAG_ERROR
 %token BODY_TAG_ERROR
