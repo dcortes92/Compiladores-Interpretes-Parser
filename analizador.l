@@ -1,357 +1,382 @@
 %{
 	#include <stdio.h>
-	
-	/*mae tengo mas o menos una idea de como hacer algo que nos ayuda pero no se como 
-	  hacer las listas que tengo en mente.
-	  Mi idea es algo asi
-	  digamos que el archivo es algo asi: <a></a> <b><p></p></b>
-	  entonces lo que pienso mejor es hacer listas de listas(eso es lo que no se como hacer)
-	  en ese caso quedaria una lista algo asi:
-	  
-	  ___________________       ______________________________________
-	  | _____    ______ |       | _____    _____    ______    ______ |
-	  | |<a>| -> |</a>| | ----> | |<b>| -> |<p>| -> |</p>| -> |</b>| |
-	  | -----    ------ |       | -----    -----    ------    ------ |
-	  -------------------	    --------------------------------------
-	  
-	  entonces usar esas listas para los analisis.
-	  yo mas o menos tengo un seudocodigo para analizarlas, pero ese codigo seria en
-	  el caso del analizador sintactico. Lo importante creo yo es lograr esas listas que despues
-	  nos van a servir un monton.
-	  Yo creo q tambien nos serviria en ese nodo guardar cosas como: linea donde estan,
-	  la columna donde estan, entre otros.
-	  */
-	  
-	  
-	struct nodo{
-		char etiqueta[20];
-		struct nodo *siguiente;
-		int linea;
-		int columna;
-		int largo;
-	};
-	
-	struct node *listaEtiquetas;
-	struct node *listaEtiquetasTemporal;
-	/*listaEtiquetas->siguiente = 0;*/
+	#include "y.tab.h"
+	#include <string.h>
 	
 	int linea = 1, columna = 1;
 	void contar(void);
 	void comentario(void);
-	void error(void);
+	void error();
+	
+	#define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno; \
+	yylloc.first_column = yylloc.last_column = columna + yyleng - 1;\
+
 %}
 
-String		[^<>&]
-StringC		[^\"]
-Digito		[0-9]
-Espacios	[ ]*
-Etiqueta	{Espacios}[a-z][a-z0-9]*{Espacios}
-Comillas	[\"]
-Atributo	{StringC}*(\=){Espacios}{Comillas}{StringC}*{Comillas}|{String}*
-Cerradura	[\>]
-Amp		[\&]
-Hash		[\#]
-PComa		[\;]		
+%option yylineno
+
+ATRIBUTO					([ ]{TEXTO}("=\""){TEXTO_2}("\""))|([ ]{TEXTO_2})
+
+
+LETRA						[a-z]
+
+	
+TEXTO						[a-zA-Z][a-zA-Z0-9 ]*
+
+TEXTO_2						[a-zA-Z][a-zA-Z0-9\- ]*
+
+
+TEXTOURL					[a-zA-Z0-9\.]+
+
+
+UNNUMERO 					[0-9]
+
+
+NUMERO 						[0-9]+
+
+
+NUMERO_255					[0-255]
+
+
+HEX							[0-9A-Fa-f]+
+
+
+DOCTYPE						("<!DOCTYPE html>")|("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">")|(" <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">")|("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">")|("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">")
+
+
+HTML_ATTRIBUTE				(" xmlns=\""{URL}"\"")
+
+
+A_ATTRIBUTE					(" charset=\""{ENCODING}"\"")|(" coords=\""{NUMERO}","{NUMERO}","{NUMERO}","{NUMERO}"\"")|(" href=\""{URL}"\"")|(" hreflang=\""{LANGUAGE}"\"")|(" media=\""{MEDIA_VALUE}"\"")|(" name=\""{TEXTO}"\"")|(" rel=\""{REL_VALUE}"\"")|(" rev=\""{TEXTO}"\"")|(" shape=\""{SHAPE_VALUE}"\"")|(" target=\""{TARGET_VALUE}"\"")
+
+
+REL_VALUE				 	("alternate")|("author")|("bookmark")|("help")|("license")|("next")|("nofollow")|("noreferrer")|("prefetch")|("prev")|("search")|("tag")
+
+
+SHAPE_VALUE					("default")|("rect")|("circle")|("poly")
+
+
+BLOCKQUOTE_ATTRIBUTE		(" cite=\""{URL}"\"")
+
+
+BODY_ATTRIBUTE				(" alink=\""{COLOR}"\"")|(" background=\""{URL_GENERAL}"\"")|(" bgcolor=\""{COLOR}"\"")|(" link=\""{COLOR}"\"")|(" vlink=\""{COLOR}"\"")
+
+
+URL_GENERAL					{URL}|{LOCAL_URL}
+
+
+BUTTOM_ATTRIBUTE			(" autofocus")|(" disabled")|(" formtarget=\""{TARGET_VALUE}"\"")|(" name=\""{TEXTO}"\"")|(" type=\""{BUTTOM_TYPE_VALUE}"\"")|(" value=\""{TEXTO}"\"")
+
+
+BUTTOM_TYPE_VALUE			("button")|("reset")|("submit")
+
+
+CAPTION_ATTRIBUTE			(" align=\""{ALIGN_VALUE}"\"")
+
+
+DIV_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|(" style=\""{COLOR}"\"")
+
+
+EMBED_ATTRIBUTE				(" height=\""{NUMERO}"\"")|(" src=\""{URL}"\"")|(" type=\""{LOCAL_URL}"\"")|(" width=\""{NUMERO}"\"")
+
+
+FORM_ATTRIBUTE				(" accept-charset=\""{ENCODING}"\"")|(" action=\""{URL}"\"")|(" name=\""{TEXTO}"\"")|(" target=\""{TARGET_VALUE}"\"")
+
+
+H1_H6_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")
+
+
+HR_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|("noshade")|(" size=\""{NUMERO}"\"")|("width\""{NUMERO}"\"")
+			
+
+IMG_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|(" alt=\""{TEXTO}"\"")|(" border=\""{NUMERO}"\"")|(" height=\""{NUMERO}"\"")|("ismap")|(" longdesc=\""{URL}"\"")|(" src=\""{URL_GENERAL}"\"")|(" width=\""{NUMERO}"\"")|(" usemap=\"#"{TEXTO}"\"")
+							 
+
+ALIGN_VALUE					("top")|("bottom")|("middle")|("left")|("right")
+											
+
+INPUT_ATTRIBUTE				(" accept=\""{TEXTO}"\"")|(" align=\""{ALIGN_VALUE}"\"")|(" alt=\""{TEXTO}"\"")|("checked")|("disabled")|(" form=\""{TEXTO}"\"")|(" formtarget=\""{TARGET_VALUE}"\"")|(" height=\""{NUMERO}"\"")|(" max=\""{NUMERO}"\"")|(" maxlength=\""{NUMERO}"\"")|(" min=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" pattern=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" size=\""{NUMERO}"\"")|(" src=\""{URL}"\"")|(" type=\""{INPUT_TYPE_VALUE}"\"")|(" value=\""{TEXTO}"\"")|(" width=\""{NUMERO}"\"")
+							
+
+INPUT_TYPE_VALUE			("button")|("checkbox")|("color")|("date")|("datetime")|("datetime-local")|("email")|("file")|("hidden")|("image")|("month")|("number")|("password")|("radio")|("range")|("reset")|("search")|("submit")|("text")|("time")|("url")|("week")
+														
+
+LI_ATTRIBUTE				(" type=\""{LI_TYPE_VALUE}"\"")|(" value=\""{NUMERO}"\"")
+							
+
+LI_TYPE_VALUE				("1")|("a")|("i")|("disc")|("square")|("circle")
+							
+
+LINK_ATTRIBUTE				(" charset=\""{ENCODING}"\"")|(" href=\""{URL}"\"")|(" hreflang=\""{LANGUAGE}"\"")|(" rel=\""{REL_VALUE}"\"")|(" size=\""{NUMERO}"x"{NUMERO}"\"")|(" target=\""{TARGET_VALUE}"\"")|(" type=\""{LOCAL_URL}"\"")
+							
+
+ENCODING					("UTF-8")|("ISO-8859-1")
+							 
+
+LANGUAGE					("en")|("es")
+
+
+TARGET_VALUE				("_blank")|("_self")|("top")|("parent")|({TEXTO})
+							
+
+META_ATTRIBUTE				(" charset=\""{ENCODING}"\"")|(" content=\""{TEXTO}"\"")|("http-equiv=\""{META_HTTP_VALUE}"\"")|(" name=\""{META_NAME_VALUE}"\"")|(" scheme=\""{TEXTO}"/"{TEXTO}"\"")
+							
+
+META_HTTP_VALUE				("content_type")|("default-style")|("refresh")
+							
+
+META_NAME_VALUE				("application-name")|("author")|("description")|("generator")|("keywords")
+													
+
+OBJECT_ATTRIBUTE			(" align=\""{ALIGN_VALUE}"\"")|(" archive=\""{URL}"\"")|(" border=\""{NUMERO}"\"")|(" data=\""{URL}"\"")|(" form=\""{TEXTO}"\"")|(" height=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" type=\""{TEXTO}"\"")|(" width=\""{NUMERO}"\"")|(" usemap=\"#"{TEXTO}"\"")
+														
+
+OL_ATTRIBUTE				("compact")|("reversed")|(" start=\""{NUMERO}"\"")|(" type=\""{OL_TYPE_VALUE}"\"")
+							
+
+OL_TYPE_VALUE				("1")|("a")|("i")
+							
+
+P_ATTRIBUTE					(" align=\""{P_ALING_VALUE}"\"")
+
+
+P_ALING_VALUE				("left")|("rigth")|("center")|("justify")				
+
+
+PRE_ATTRIBUTE				(" width=\""{NUMERO}"\"")
+							
+
+SCRIPT_ATTRIBUTE			(" charset=\""{ENCODING}"\"")|(" defer")|(" src=\""{URL}"\"")|(" type=\""{TEXTO}"\"")|(" preserve")
+							
+
+SPAN_ATTRIBUTE				(" name=\""{TEXTO}"\"")|(" class=\""{TEXTO}"\"")|(" style=\""{TEXTO}"\"")|(" title=\""{TEXTO}"\"")|(" dir=\""{SPAN_DIR_VALUE}"\"")						
+
+
+SPAN_DIR_VALUE				("rtl")|("ltr")
+
+
+STYLE_ATTRIBUTE				(" media=\""{MEDIA_VALUE}"\"")|("scoped")|(" type=\""{LOCAL_URL}"\"")
+							
+
+MEDIA_VALUE					("all")|("aural")|("braile")|("handheld")|("projection")|("print")|("screen")|("tty")|("tv")
+							
+
+TABLE_ATTRIBUTE				(" align=\""{ALIGN_VALUE}"\"")|(" bgcolor=\""{COLOR}"\"")|(" border=\"1\"")|(" cellpadding=\""{NUMERO}"\"")|(" cellspacing=\""{NUMERO}"\"")|(" summary=\""{TEXTO}"\"")|(" width=\""{NUMERO}"\"")
+							
+
+COLOR						({TEXTO})|("#"{HEX})|("rgb("{NUMERO_255}","{NUMERO_255}","{NUMERO_255}")")
+														
+
+TR_ATTRIBUTE				(" align=\""{T_ALIGN_VALUE}"\"")|(" bgcolor=\""{COLOR}"\"")|(" char=\""{LETRA}"\"")|(" charoff=\""{NUMERO}"\"")|(" valign=\""{VALIGN_VALUE}"\"")
+										
+
+TD_TH_ATTRIBUTE				(" abbr=\""{TEXTO}"\"")|(" align=\""{T_ALIGN_VALUE}"\"")|(" axis=\""{TEXTO}"\"")|(" bgcolor=\""{COLOR}"\"")|(" char=\""{LETRA}"\"")|(" charoff=\""{NUMERO}"\"")|(" colspan=\""{NUMERO}"\"")|(" headers=\""{TEXTO}"\"")|(" height=\""{NUMERO}"\"")|(" rowspan=\""{NUMERO}"\"")|(" scope=\""{TD_TH_SCOPE_VALUE}"\"")|(" valign=\""{VALIGN_VALUE}"\"")|(" width=\""{NUMERO}"\"")
+							
+
+TD_TH_SCOPE_VALUE			("col")|("colgroup")|("row")|("rowgroup")
+							
+
+T_ALIGN_VALUE				("rigth")|("left")|("center")|("justify")|("char")
+							
+
+TEXTAREA_ATTRIBUTE			(" autofocus")|(" cols=\""{NUMERO}"\"")|("disabled")|(" maxlength=\""{NUMERO}"\"")|(" name=\""{TEXTO}"\"")|(" placeholder=\""{TEXTO}"\"")|("readonly")|("required")|(" rows=\""{NUMERO}"\"")|(" wrap=\""{H_S}"\"")
+
+
+VALIGN_VALUE				("top")|("middle")|("bottom")|("baseline")							
+
+H_S							("hard")|("soft")
+							
+
+UL_ATTRIUTE					(" compact")|(" type=\""{UL_TYPE_VALUE}"\"")
+							
+
+UL_TYPE_VALUE				("disc")|("square")|("circle")
+							
+
+URL							{PROTOCOLO}{HOST}{DOMINIO}{DOMINIO_DE_PRIMER_NIVEL}({DIRECTORIO})?
+
+
+PROTOCOLO					("http://")|("ftp://")|("gopher://")|("telnet")|("mailto")|("news")
+							
+
+HOST						("www.")
+							
+
+DOMINIO						{TEXTOURL}
+							
+
+DOMINIO_DE_PRIMER_NIVEL		(".com")|(".cr")|(".es")|(".us")|(".org")
+
+
+DIRECTORIO					("/"{TEXTOURL})+
+														
+
+RECURSO						("."{TEXTO})
+
+
+LOCAL_URL					({TEXTOURL}"/")+
+
+AMP							[\&]
+HASH						[\#]
+PCOMA						[\;]
+
+					
+
+%%	
+
+[\n]									{linea++;}
+"<!--"									{comentario();}
+{DOCTYPE}								{return DOCTYPE;}
+"<a"{A_ATTRIBUTE}+						{return A;}
+"</a>"									{return _A;}
+"<b>"									{return B;}
+"</b>"									{return _B;}
+"<blockquote>"							{return BLOCKQUOTE;}
+"<blockquote"{BLOCKQUOTE_ATTRIBUTE}+	{return BLOCKQUOTE_;}
+"</blockquote>"							{return _BLOCKQUOTE;}
+"<body>"								{return BODY;}
+"<body"{BODY_ATTRIBUTE}+				{return BODY_;}
+"</body>"								{return _BODY;}
+"<br>"									{return BR;}
+"</br>"									{return _BR;}
+"<button>"								{return BUTTON;}
+"<button"{BUTTOM_ATTRIBUTE}+			{return BUTTON_;}
+"</button>"								{return _BUTTON;}
+"<caption>"								{return CAPTION;}
+"<caption"{CAPTION_ATTRIBUTE}+			{return CAPTION_;}
+"</caption>"							{return _CAPTION;}
+"<code>"								{return CODE;}
+"</code>"								{return _CODE;}
+"<div>"									{return DIV;}
+"<div"{DIV_ATTRIBUTE}+					{return DIV_;}
+"</div>"								{return _DIV;}
+"<dl>"									{return DL;}
+"</dl>"									{return _DL;}
+"<dt>"									{return DT;}
+"</dt>"									{return _DT;}
+"<dd>"									{return DD;}
+"</dd>"									{return _DD;}
+"<em>"									{return EM;}
+"</em>"									{return _EM;}
+"<embed"{EMBED_ATTRIBUTE}+				{return EMBED;}
+"</embed>"								{return _EMBED;}
+"<form>"								{return FORM;}
+"<form"{FORM_ATTRIBUTE}+				{return FORM_;}
+"</form>"								{return _FORM;}
+"<h1>"									{return H1;}
+"<h1"{H1_H6_ATTRIBUTE}+					{return H1_;}
+"</h1>"									{return _H1;}
+"<h2>"									{return H2;}
+"<h2"{H1_H6_ATTRIBUTE}+					{return H2_;}
+"</h2>"									{return _H2;}
+"<h3>"									{return H3;}
+"<h3"{H1_H6_ATTRIBUTE}+					{return H3_;}
+"</h3>"									{return _H3;}
+"<h4>"									{return H4;}
+"<h4"{H1_H6_ATTRIBUTE}+					{return H4_;}
+"</h4>"									{return _H4;}
+"<h5>"									{return H5;}
+"<h5"{H1_H6_ATTRIBUTE}+					{return H5_;}
+"</h5>"									{return _H5;}
+"<h6>"									{return H6;}
+"<h6"{H1_H6_ATTRIBUTE}+					{return H6_;}
+"</h6>"									{return _H6;}
+"<head>"								{return HEAD;}
+"</head>"								{return _HEAD;}
+"<hr>"									{return HR;}
+"<hr"{HR_ATTRIBUTE}+					{return HR_;}
+"</hr>"									{return _HR;}
+"<html"{HTML_ATTRIBUTE}					{return HTML;}
+"</html>"								{return _HTML;}
+"<img"{IMG_ATTRIBUTE}+					{return IMG;}
+"</img>"								{return _IMG;}
+"<input"{INPUT_ATTRIBUTE}+				{return INPUT;}
+"</input>"								{return _INPUT;}
+"<li>"									{return LI;}
+"<li"{LI_ATTRIBUTE}+					{return LI_;}
+"</li>"									{return _LI;}
+"<link"{LINK_ATTRIBUTE}+				{return LINK;}
+"</link>"								{return _LINK;}
+"<meta"{META_ATTRIBUTE}+				{return META;}
+"</meta>"								{return _META;}
+"<ol>"									{return OL;}
+"<ol"{OL_ATTRIBUTE}+					{return OL_;}
+"</ol>"									{return _OL;}
+"<p>"									{return P;}
+"<p"{P_ATTRIBUTE}+						{return P_;}
+"</p>"									{return _P;}
+"<script>"								{return SCRIPT;}
+"<script"{SCRIPT_ATTRIBUTE}+			{return SCRIPT_;}
+"</script>"								{return _SCRIPT;}
+"<span"{SPAN_ATTRIBUTE}+				{return SPAN;}
+"</span>"								{return _SPAN;}
+"<strong>"								{return STRONG;}
+"</strong>"								{return _STRONG;}
+"<style"{STYLE_ATTRIBUTE}+				{return STYLE;}
+"</style>"								{return _STYLE;}
+"<table"{TABLE_ATTRIBUTE}+				{return TABLE;}
+"</table>"								{return _TABLE;}
+"<td"{TD_TH_ATTRIBUTE}+					{return TD;}
+"</td>"									{return _TD;}
+"<textarea>"							{return TEXTAREA;}
+"<textarea"{TEXTAREA_ATTRIBUTE}+		{return TEXTAREA_;}
+"</textarea>"							{return _TEXTAREA;}
+"<th"{TD_TH_ATTRIBUTE}+					{return TH;}
+"</th>"									{return _TH;}
+"<title>"								{return TITLE;}
+"</title>"								{return _TITLE;}
+"<tr"{TR_ATTRIBUTE}+					{return TR;}
+"</tr>"									{return _TR;}
+"<ul"{UL_ATTRIUTE}+						{return UL;}
+"</ul>"									{return _UL;}
+">"										{return CLOSE;}						
+
+"<a"{ATRIBUTO}+							{yylval.string = strdup(yytext); return A_TAG_ERROR;}/*Lleva*/
+"<blockquote"{ATRIBUTO}+				{yylval.string = strdup(yytext); return BLOCKQUOTE_TAG_ERROR;}/*Lleva o no*/
+"<body"{ATRIBUTO}+						{yylval.string = strdup(yytext); return BODY_TAG_ERROR;}/*Lleva o no*/
+"<button"{ATRIBUTO}+					{yylval.string = strdup(yytext); return BUTTON_TAG_ERROR;}/*Lleva o no*/
+"<caption"{ATRIBUTO}+					{yylval.string = strdup(yytext); return CAPTION_TAG_ERROR;}/*Lleva o no*/
+"<div"{ATRIBUTO}+						{yylval.string = strdup(yytext); return DIV_TAG_ERROR;}/*Lleva o no*/
+"<embed"{ATRIBUTO}+						{yylval.string = strdup(yytext); return EMBED_TAG_ERROR;}/*Lleva*/
+"<form"{ATRIBUTO}+						{yylval.string = strdup(yytext); return FORM_TAG_ERROR;}/*Lleva o no*/
+"<h1"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H1_TAG_ERROR;}/*Lleva o no*/
+"<h2"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H2_TAG_ERROR;}/*Lleva o no*/
+"<h3"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H3_TAG_ERROR;}/*Lleva o no*/
+"<h4"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H4_TAG_ERROR;}/*Lleva o no*/
+"<h5"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H5_TAG_ERROR;}/*Lleva o no*/
+"<h6"{ATRIBUTO}+						{yylval.string = strdup(yytext); return H6_TAG_ERROR;}/*Lleva o no*/
+"<hr"{ATRIBUTO}+						{yylval.string = strdup(yytext); return HR_TAG_ERROR;}/*Lleva o no*/
+"<html"{ATRIBUTO}+						{yylval.string = strdup(yytext); return HTML_TAG_ERROR;}/*Lleva*/
+"<img"{ATRIBUTO}+						{yylval.string = strdup(yytext); return IMG_TAG_ERROR;}/*Lleva*/
+"<input"{ATRIBUTO}+						{yylval.string = strdup(yytext); return INPUT_TAG_ERROR;}/*Lleva*/
+"<li"{ATRIBUTO}+						{yylval.string = strdup(yytext); return LI_TAG_ERROR;}/*Lleva o no*/
+"<link"{ATRIBUTO}+						{yylval.string = strdup(yytext); return LINK_TAG_ERROR;}/*Lleva*/
+"<meta"{ATRIBUTO}+						{yylval.string = strdup(yytext); return META_TAG_ERROR;}/*Lleva*/
+"<ol"{ATRIBUTO}+						{yylval.string = strdup(yytext); return OL_TAG_ERROR;}/*Lleva o no*/
+"<p"{ATRIBUTO}+							{yylval.string = strdup(yytext); return P_TAG_ERROR;}/*Lleva o no*/
+"<script"{ATRIBUTO}+					{yylval.string = strdup(yytext); return SCRIPT_TAG_ERROR;}/*Lleva o no*/
+"<span"{ATRIBUTO}+						{yylval.string = strdup(yytext); return SPAN_TAG_ERROR;}/*Lleva*/
+"<style"{ATRIBUTO}+						{yylval.string = strdup(yytext); return STYLE_TAG_ERROR;}/*Lleva*/
+"<table"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TABLE_TAG_ERROR;}/*Lleva*/
+"<td"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TD_TAG_ERROR;}/*Lleva*/
+"<textarea"{ATRIBUTO}+					{yylval.string = strdup(yytext); return TEXTAREA_TAG_ERROR;}/*Lleva o no*/
+"<th"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TH_TAG_ERROR;}/*Lleva*/
+"<tr"{ATRIBUTO}+						{yylval.string = strdup(yytext); return TR_TAG_ERROR;}/*Lleva*/
+"<ul"{ATRIBUTO}+						{yylval.string = strdup(yytext); return UL_TAG_ERROR;}/*Lleva*/
+
+
+{TEXTO}									{return TEXTO;}
+
+
+{AMP}{HASH}[1-2]?{UNNUMERO}{PCOMA}		{error();}
+{AMP}{HASH}[3][0-1]{PCOMA}				{error();}
+"&#127;"								{error();}
+"<>"									{error();}
+"</>"									{error();}
+{AMP}{HASH}{TEXTO}{PCOMA}				{return TEXTO;}
+{AMP}{TEXTO}{PCOMA}						{return TEXTO;}
 
 %%
-
-
-"<!--"							{printf("Encontr tag <!-- en linea: %d y columna: %d\n", linea, columna);comentario();}
-"<!DOCTYPE"{String}+">"				{printf("Encontro tag !DOCTYPE en linea: %d y columna: %d\n",linea, columna);contar();}
-[ \n\t]+					{printf("Encontro Enter-Tab-Space\n",yytext);contar();}
-"<a>"						{printf("Encontro tag A en linea: %d y columna: %d\n",linea, columna);contar();}
-"<a "{Atributo}*">"				{printf("Encontro tag A en linea: %d y columna: %d\n",linea, columna);contar();}
-"</a>"						{printf("Encontro tag A en linea: %d y columna: %d\n",linea, columna);contar();}
-"<acronym>"					{printf("Encontro tag ACRONYM en linea: %d y columna: %d\n",linea, columna);contar();}
-"<acronym "{Atributo}*">"			{printf("Encontro tag ACRONYM en linea: %d y columna: %d\n",linea, columna);contar();}
-"</acronym>"					{printf("Encontro tag ACRONYM en linea: %d y columna: %d\n",linea, columna);contar();}
-"<address>"					{printf("Encontro tag ADDRESS en linea: %d y columna: %d\n",linea, columna);contar();}
-"<address "{Atributo}*">"			{printf("Encontro tag ADDRESS en linea: %d y columna: %d\n",linea, columna);contar();}
-"</address>"					{printf("Encontro tag ADDRESS en linea: %d y columna: %d\n",linea, columna);contar();}
-"<applet>"					{printf("Encontro tag APPLET en linea: %d y columna: %d\n",linea, columna);contar();}
-"<applet "{Atributo}*">"			{printf("Encontro tag APPLET en linea: %d y columna: %d\n",linea, columna);contar();}
-"</applet>"					{printf("Encontro tag APPLET en linea: %d y columna: %d\n",linea, columna);contar();}
-"<area>"					{printf("Encontro tag AREA en linea: %d y columna: %d\n",linea, columna);contar();}
-"<area "{Atributo}*">"				{printf("Encontro tag AREA en linea: %d y columna: %d\n",linea, columna);contar();}
-"</area>"					{printf("Encontro tag AREA en linea: %d y columna: %d\n",linea, columna);contar();}
-"<b>"						{printf("Encontro tag B en linea: %d y columna: %d\n",linea, columna);contar();}
-"<b "{Atributo}*">"				{printf("Encontro tag B en linea: %d y columna: %d\n",linea, columna);contar();}
-"</b>"						{printf("Encontro tag B en linea: %d y columna: %d\n",linea, columna);contar();}
-"<base>"					{printf("Encontro tag BASE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<base "{Atributo}*">"				{printf("Encontro tag BASE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</base>"					{printf("Encontro tag BASE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<basefont>"					{printf("Encontro tag BASEFONT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<basefont "{Atributo}*">"			{printf("Encontro tag BASEFONT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</basefont>"					{printf("Encontro tag BASEFONT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<bdo>"						{printf("Encontro tag BDO en linea: %d y columna: %d\n",linea, columna);contar();}
-"<bdo "{Atributo}*">"				{printf("Encontro tag BDO en linea: %d y columna: %d\n",linea, columna);contar();}
-"</bdo>"					{printf("Encontro tag BDO en linea: %d y columna: %d\n",linea, columna);contar();}
-"<big>"						{printf("Encontro tag BIG en linea: %d y columna: %d\n",linea, columna);contar();}
-"<big "{Atributo}*">"				{printf("Encontro tag BIG en linea: %d y columna: %d\n",linea, columna);contar();}
-"</big>"					{printf("Encontro tag BIG en linea: %d y columna: %d\n",linea, columna);contar();}
-"<blockquote>"					{printf("Encontro tag BLOCKQUOTE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<blockquote "{Atributo}*">"			{printf("Encontro tag BLOCKQUOTE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</blockquote>"					{printf("Encontro tag BLOCKQUOTE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<body>"					{printf("Encontro tag BODY en linea: %d y columna: %d\n",linea, columna);contar();}
-"<body "{Atributo}*">"				{printf("Encontro tag BODY en linea: %d y columna: %d\n",linea, columna);contar();}
-"</body>"					{printf("Encontro tag BODY en linea: %d y columna: %d\n",linea, columna);contar();}
-"<br>"						{printf("Encontro tag BR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<br "{Atributo}*">"				{printf("Encontro tag BR en linea: %d y columna: %d\n",linea, columna);contar();}
-"</br>"						{printf("Encontro tag BR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<button>"					{printf("Encontro tag BUTTON en linea: %d y columna: %d\n",linea, columna);contar();}
-"<button "{Atributo}*">"			{printf("Encontro tag BUTTON en linea: %d y columna: %d\n",linea, columna);contar();}
-"</button>"					{printf("Encontro tag BUTTON en linea: %d y columna: %d\n",linea, columna);contar();}
-"<caption>"					{printf("Encontro tag CAPTION en linea: %d y columna: %d\n",linea, columna);contar();}
-"<caption "{Atributo}*">"			{printf("Encontro tag CAPTION en linea: %d y columna: %d\n",linea, columna);contar();}
-"</caption>"					{printf("Encontro tag CAPTION en linea: %d y columna: %d\n",linea, columna);contar();}
-"<center>"					{printf("Encontro tag CENTER en linea: %d y columna: %d\n",linea, columna);contar();}
-"<center "{Atributo}*">"			{printf("Encontro tag CENTER en linea: %d y columna: %d\n",linea, columna);contar();}
-"</center>"					{printf("Encontro tag CENTER en linea: %d y columna: %d\n",linea, columna);contar();}
-"<cite>"					{printf("Encontro tag CITE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<cite "{Atributo}*">"				{printf("Encontro tag CITE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</cite>"					{printf("Encontro tag CITE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<code>"					{printf("Encontro tag CODE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<code "{Atributo}*">"				{printf("Encontro tag CODE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</code>"					{printf("Encontro tag CODE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<col>"						{printf("Encontro tag COL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<col "{Atributo}*">"				{printf("Encontro tag COL en linea: %d y columna: %d\n",linea, columna);contar();}
-"</col>"					{printf("Encontro tag COL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<colgroup>"					{printf("Encontro tag COLGROUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<colgroup "{Atributo}*">"			{printf("Encontro tag COLGROUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"</colgroup>"					{printf("Encontro tag COLGROUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dd>"						{printf("Encontro tag DD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dd "{Atributo}*">"				{printf("Encontro tag DD en linea: %d y columna: %d\n",linea, columna);contar();}
-"</dd>"						{printf("Encontro tag DD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<del>"						{printf("Encontro tag DEL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<del "{Atributo}*">"				{printf("Encontro tag DEL en linea: %d y columna: %d\n",linea, columna);contar();}
-"</del>"					{printf("Encontro tag DEL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dir>"						{printf("Encontro tag DIR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dir "{Atributo}*">"				{printf("Encontro tag DIR en linea: %d y columna: %d\n",linea, columna);contar();}
-"</dir>"					{printf("Encontro tag DIR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<div>"						{printf("Encontro tag DIV en linea: %d y columna: %d\n",linea, columna);contar();}
-"<div "{Atributo}*">"				{printf("Encontro tag DIV en linea: %d y columna: %d\n",linea, columna);contar();}
-"</div>"					{printf("Encontro tag DIV en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dfn>"						{printf("Encontro tag DFN en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dfn "{Atributo}*">"				{printf("Encontro tag DFN en linea: %d y columna: %d\n",linea, columna);contar();}
-"</dfn>"					{printf("Encontro tag DFN en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dl>"						{printf("Encontro tag DL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dl "{Atributo}*">"				{printf("Encontro tag DL en linea: %d y columna: %d\n",linea, columna);contar();}
-"</dl>"						{printf("Encontro tag DL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dt>"						{printf("Encontro tag DT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<dt "{Atributo}*">"				{printf("Encontro tag DT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</dt>"						{printf("Encontro tag DT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<em>"						{printf("Encontro tag EM en linea: %d y columna: %d\n",linea, columna);contar();}
-"<em "{Atributo}*">"				{printf("Encontro tag EM en linea: %d y columna: %d\n",linea, columna);contar();}
-"</em>"						{printf("Encontro tag EM en linea: %d y columna: %d\n",linea, columna);contar();}
-"<fieldset>"					{printf("Encontro tag FIELDSET en linea: %d y columna: %d\n",linea, columna);contar();}
-"<fieldset "{Atributo}*">"			{printf("Encontro tag FIELDSET en linea: %d y columna: %d\n",linea, columna);contar();}
-"</fieldset>"					{printf("Encontro tag FIELDSET en linea: %d y columna: %d\n",linea, columna);contar();}
-"<font>"					{printf("Encontro tag FONT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<font "{Atributo}*">"				{printf("Encontro tag FONT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</font>"					{printf("Encontro tag FONT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<form>"					{printf("Encontro tag FORM en linea: %d y columna: %d\n",linea, columna);contar();}
-"<form "{Atributo}*">"				{printf("Encontro tag FORM en linea: %d y columna: %d\n",linea, columna);contar();}
-"</form>"					{printf("Encontro tag FORM en linea: %d y columna: %d\n",linea, columna);contar();}
-"<frame>"					{printf("Encontro tag FRAME en linea: %d y columna: %d\n",linea, columna);contar();}
-"<frame "{Atributo}*">"				{printf("Encontro tag FRAME en linea: %d y columna: %d\n",linea, columna);contar();}
-"</frame>"					{printf("Encontro tag FRAME en linea: %d y columna: %d\n",linea, columna);contar();}
-"<frameset>"					{printf("Encontro tag FRAMESET en linea: %d y columna: %d\n",linea, columna);contar();}
-"<frameset "{Atributo}*">"			{printf("Encontro tag FRAMESET en linea: %d y columna: %d\n",linea, columna);contar();}
-"</frameset>"					{printf("Encontro tag FRAMESET en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h1>"						{printf("Encontro tag H1 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h1 "{Atributo}*">"				{printf("Encontro tag H1 en linea: %d y columna: %d\n",linea, columna);contar();}
-"</h1>"						{printf("Encontro tag H1 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h2>"						{printf("Encontro tag H2 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h2 "{Atributo}*">"				{printf("Encontro tag H2 en linea: %d y columna: %d\n",linea, columna);contar();}
-"</h2>"						{printf("Encontro tag H2 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h3>"						{printf("Encontro tag H3 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h3 "{Atributo}*">"				{printf("Encontro tag H3 en linea: %d y columna: %d\n",linea, columna);contar();}
-"</h3>"						{printf("Encontro tag H3 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h4>"						{printf("Encontro tag H4 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h4 "{Atributo}*">"				{printf("Encontro tag H4 en linea: %d y columna: %d\n",linea, columna);contar();}
-"</h4>"						{printf("Encontro tag H4 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h5>"						{printf("Encontro tag H5 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h5 "{Atributo}*">"				{printf("Encontro tag H5 en linea: %d y columna: %d\n",linea, columna);contar();}
-"</h5>"						{printf("Encontro tag H5 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h6>"						{printf("Encontro tag H6 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<h6 "{Atributo}*">"				{printf("Encontro tag H6 en linea: %d y columna: %d\n",linea, columna);contar();}
-"</h6>"						{printf("Encontro tag H6 en linea: %d y columna: %d\n",linea, columna);contar();}
-"<head>"					{printf("Encontro tag HEAD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<head "{Atributo}*">"				{printf("Encontro tag HEAD en linea: %d y columna: %d\n",linea, columna);contar();}
-"</head>"					{printf("Encontro tag HEAD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<hr>"						{printf("Encontro tag HR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<hr "{Atributo}*">"				{printf("Encontro tag HR en linea: %d y columna: %d\n",linea, columna);contar();}
-"</hr>"						{printf("Encontro tag HR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<html>"					{printf("Encontro tag HTML en linea: %d y columna: %d\n",linea, columna);contar();}
-"<html "{Atributo}*">"				{printf("Encontro tag HTML en linea: %d y columna: %d\n",linea, columna);contar();}
-"</html>"					{printf("Encontro tag HTML en linea: %d y columna: %d\n",linea, columna);contar();}
-"<i>"						{printf("Encontro tag I en linea: %d y columna: %d\n",linea, columna);contar();}
-"<i "{Atributo}*">"				{printf("Encontro tag I en linea: %d y columna: %d\n",linea, columna);contar();}
-"</i>"						{printf("Encontro tag I en linea: %d y columna: %d\n",linea, columna);contar();}
-"<iframe>"					{printf("Encontro tag IFRAME en linea: %d y columna: %d\n",linea, columna);contar();}
-"<iframe "{Atributo}*">"			{printf("Encontro tag IFRAME en linea: %d y columna: %d\n",linea, columna);contar();}
-"</iframe>"					{printf("Encontro tag IFRAME en linea: %d y columna: %d\n",linea, columna);contar();}
-"<img>"						{printf("Encontro tag IMG en linea: %d y columna: %d\n",linea, columna);contar();}
-"<img "{Atributo}*">"				{printf("Encontro tag IMG en linea: %d y columna: %d\n",linea, columna);contar();}
-"</img>"					{printf("Encontro tag IMG en linea: %d y columna: %d\n",linea, columna);contar();}
-"<input>"					{printf("Encontro tag INPUT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<input "{Atributo}*">"				{printf("Encontro tag INPUT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</input>"					{printf("Encontro tag INPUT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<ins>"						{printf("Encontro tag INS en linea: %d y columna: %d\n",linea, columna);contar();}
-"<ins "{Atributo}*">"				{printf("Encontro tag INS en linea: %d y columna: %d\n",linea, columna);contar();}
-"</ins>"					{printf("Encontro tag INS en linea: %d y columna: %d\n",linea, columna);contar();}
-"<isindex>"					{printf("Encontro tag ISINDEX en linea: %d y columna: %d\n",linea, columna);contar();}
-"<isindex "{Atributo}*">"			{printf("Encontro tag ISINDEX en linea: %d y columna: %d\n",linea, columna);contar();}
-"</isindex>"					{printf("Encontro tag ISINDEX en linea: %d y columna: %d\n",linea, columna);contar();}
-"<kbd>"						{printf("Encontro tag KBD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<kbd "{Atributo}*">"				{printf("Encontro tag KBD en linea: %d y columna: %d\n",linea, columna);contar();}
-"</kbd>"					{printf("Encontro tag KBD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<label>"					{printf("Encontro tag LABEL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<label "{Atributo}*">"				{printf("Encontro tag LABEL en linea: %d y columna: %d\n",linea, columna);contar();}
-"</label>"					{printf("Encontro tag LABEL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<legend>"					{printf("Encontro tag LEGEND en linea: %d y columna: %d\n",linea, columna);contar();}
-"<legend "{Atributo}*">"			{printf("Encontro tag LEGEND en linea: %d y columna: %d\n",linea, columna);contar();}
-"</legend>"					{printf("Encontro tag LEGEND en linea: %d y columna: %d\n",linea, columna);contar();}
-"<li>"						{printf("Encontro tag LI en linea: %d y columna: %d\n",linea, columna);contar();}
-"<li "{Atributo}*">"				{printf("Encontro tag LI en linea: %d y columna: %d\n",linea, columna);contar();}
-"</li>"						{printf("Encontro tag LI en linea: %d y columna: %d\n",linea, columna);contar();}
-"<link>"					{printf("Encontro tag LINK en linea: %d y columna: %d\n",linea, columna);contar();}
-"<link "{Atributo}*">"				{printf("Encontro tag LINK en linea: %d y columna: %d\n",linea, columna);contar();}
-"</link>"					{printf("Encontro tag LINK en linea: %d y columna: %d\n",linea, columna);contar();}
-"<map>"						{printf("Encontro tag MAP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<map "{Atributo}*">"				{printf("Encontro tag MAP en linea: %d y columna: %d\n",linea, columna);contar();}
-"</map>"					{printf("Encontro tag MAP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<menu>"					{printf("Encontro tag MENU en linea: %d y columna: %d\n",linea, columna);contar();}
-"<menu "{Atributo}*">"				{printf("Encontro tag MENU en linea: %d y columna: %d\n",linea, columna);contar();}
-"</menu>"					{printf("Encontro tag MENU en linea: %d y columna: %d\n",linea, columna);contar();}
-"<meta>"					{printf("Encontro tag META en linea: %d y columna: %d\n",linea, columna);contar();}
-"<meta "{Atributo}*">"				{printf("Encontro tag META en linea: %d y columna: %d\n",linea, columna);contar();}
-"</meta>"					{printf("Encontro tag META en linea: %d y columna: %d\n",linea, columna);contar();}
-"<noframes>"					{printf("Encontro tag NOFRAMES en linea: %d y columna: %d\n",linea, columna);contar();}
-"<noframes "{Atributo}*">"			{printf("Encontro tag NOFRAMES en linea: %d y columna: %d\n",linea, columna);contar();}
-"</noframes>"					{printf("Encontro tag NOFRAMES en linea: %d y columna: %d\n",linea, columna);contar();}
-"<noscript>"					{printf("Encontro tag NOSCRIPT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<noscript "{Atributo}*">"			{printf("Encontro tag NOSCRIPT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</noscript>"					{printf("Encontro tag NOSCRIPT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<object>"					{printf("Encontro tag OBJECT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<object "{Atributo}*">"			{printf("Encontro tag OBJECT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</object>"					{printf("Encontro tag OBJECT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<ol>"						{printf("Encontro tag OL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<ol "{Atributo}*">"				{printf("Encontro tag OL en linea: %d y columna: %d\n",linea, columna);contar();}
-"</ol>"						{printf("Encontro tag OL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<optgroup>"					{printf("Encontro tag OPTGROUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<optgroup "{Atributo}*">"			{printf("Encontro tag OPTGROUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"</optgroup>"					{printf("Encontro tag OPTGROUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<option>"					{printf("Encontro tag OPTION en linea: %d y columna: %d\n",linea, columna);contar();}
-"<option "{Atributo}*">"			{printf("Encontro tag OPTION en linea: %d y columna: %d\n",linea, columna);contar();}
-"</option>"					{printf("Encontro tag OPTION en linea: %d y columna: %d\n",linea, columna);contar();}
-"<p>"						{printf("Encontro tag P en linea: %d y columna: %d\n",linea, columna);contar();}
-"<p "{Atributo}*">"				{printf("Encontro tag P en linea: %d y columna: %d\n",linea, columna);contar();}
-"</p>"						{printf("Encontro tag P en linea: %d y columna: %d\n",linea, columna);contar();}
-"<param>"					{printf("Encontro tag PARAM en linea: %d y columna: %d\n",linea, columna);contar();}
-"<param "{Atributo}*">"				{printf("Encontro tag PARAM en linea: %d y columna: %d\n",linea, columna);contar();}
-"</param>"					{printf("Encontro tag PARAM en linea: %d y columna: %d\n",linea, columna);contar();}
-"<pre>"						{printf("Encontro tag PRE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<pre "{Atributo}*">"				{printf("Encontro tag PRE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</pre>"					{printf("Encontro tag PRE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<q>"						{printf("Encontro tag Q en linea: %d y columna: %d\n",linea, columna);contar();}
-"<q "{Atributo}*">"				{printf("Encontro tag Q en linea: %d y columna: %d\n",linea, columna);contar();}
-"</q>"						{printf("Encontro tag Q en linea: %d y columna: %d\n",linea, columna);contar();}
-"<s>"						{printf("Encontro tag S en linea: %d y columna: %d\n",linea, columna);contar();}
-"<s "{Atributo}*">"				{printf("Encontro tag S en linea: %d y columna: %d\n",linea, columna);contar();}
-"</s>"						{printf("Encontro tag S en linea: %d y columna: %d\n",linea, columna);contar();}
-"<samp>"					{printf("Encontro tag SAMP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<samp "{Atributo}*">"				{printf("Encontro tag SAMP en linea: %d y columna: %d\n",linea, columna);contar();}
-"</samp>"					{printf("Encontro tag SAMP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<script>"					{printf("Encontro tag SCRIPT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<script "{Atributo}*">"			{printf("Encontro tag SCRIPT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</script>"					{printf("Encontro tag SCRIPT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<select>"					{printf("Encontro tag SELECT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<select "{Atributo}*">"			{printf("Encontro tag SELECT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</select>"					{printf("Encontro tag SELECT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<small>"					{printf("Encontro tag SMALL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<small "{Atributo}*">"				{printf("Encontro tag SMALL en linea: %d y columna: %d\n",linea, columna);contar();}
-"</small>"					{printf("Encontro tag SMALL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<span>"					{printf("Encontro tag SPAN en linea: %d y columna: %d\n",linea, columna);contar();}
-"<span "{Atributo}*">"				{printf("Encontro tag SPAN en linea: %d y columna: %d\n",linea, columna);contar();}
-"</span>"					{printf("Encontro tag SPAN en linea: %d y columna: %d\n",linea, columna);contar();}
-"<strike>"					{printf("Encontro tag STRIKE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<strike "{Atributo}*">"			{printf("Encontro tag STRIKE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</strike>"					{printf("Encontro tag STRIKE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<strong>"					{printf("Encontro tag STRONG en linea: %d y columna: %d\n",linea, columna);contar();}
-"<strong "{Atributo}*">"			{printf("Encontro tag STRONG en linea: %d y columna: %d\n",linea, columna);contar();}
-"</strong>"					{printf("Encontro tag STRONG en linea: %d y columna: %d\n",linea, columna);contar();}
-"<style>"					{printf("Encontro tag STYLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<style "{Atributo}*">"				{printf("Encontro tag STYLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</style>"					{printf("Encontro tag STYLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<sub>"						{printf("Encontro tag SUB en linea: %d y columna: %d\n",linea, columna);contar();}
-"<sub "{Atributo}*">"				{printf("Encontro tag SUB en linea: %d y columna: %d\n",linea, columna);contar();}
-"</sub>"					{printf("Encontro tag SUB en linea: %d y columna: %d\n",linea, columna);contar();}
-"<sup>"						{printf("Encontro tag SUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<sup "{Atributo}*">"				{printf("Encontro tag SUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"</sup>"					{printf("Encontro tag SUP en linea: %d y columna: %d\n",linea, columna);contar();}
-"<table>"					{printf("Encontro tag TABLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<table "{Atributo}*">"				{printf("Encontro tag TABLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</table>"					{printf("Encontro tag TABLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<tbody>"					{printf("Encontro tag TBODY en linea: %d y columna: %d\n",linea, columna);contar();}
-"<tbody "{Atributo}*">"				{printf("Encontro tag TBODY en linea: %d y columna: %d\n",linea, columna);contar();}
-"</tbody>"					{printf("Encontro tag TBODY en linea: %d y columna: %d\n",linea, columna);contar();}
-"<td>"						{printf("Encontro tag TD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<td "{Atributo}*">"				{printf("Encontro tag TD en linea: %d y columna: %d\n",linea, columna);contar();}
-"</td>"						{printf("Encontro tag TD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<textarea>"					{printf("Encontro tag TEXTAREA en linea: %d y columna: %d\n",linea, columna);contar();}
-"<textarea "{Atributo}*">"			{printf("Encontro tag TEXTAREA en linea: %d y columna: %d\n",linea, columna);contar();}
-"</textarea>"					{printf("Encontro tag TEXTAREA en linea: %d y columna: %d\n",linea, columna);contar();}
-"<tfoot>"					{printf("Encontro tag TFOOT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<tfoot "{Atributo}*">"				{printf("Encontro tag TFOOT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</tfoot>"					{printf("Encontro tag TFOOT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<th>"						{printf("Encontro tag TH en linea: %d y columna: %d\n",linea, columna);contar();}
-"<th "{Atributo}*">"				{printf("Encontro tag TH en linea: %d y columna: %d\n",linea, columna);contar();}
-"</th>"						{printf("Encontro tag TH en linea: %d y columna: %d\n",linea, columna);contar();}
-"<thead>"					{printf("Encontro tag THEAD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<thead "{Atributo}*">"				{printf("Encontro tag THEAD en linea: %d y columna: %d\n",linea, columna);contar();}
-"</thead>"					{printf("Encontro tag THEAD en linea: %d y columna: %d\n",linea, columna);contar();}
-"<title>"					{printf("Encontro tag TITLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<title "{Atributo}*">"				{printf("Encontro tag TITLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"</title>"					{printf("Encontro tag TITLE en linea: %d y columna: %d\n",linea, columna);contar();}
-"<tr>"						{printf("Encontro tag TR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<tr "{Atributo}*">"				{printf("Encontro tag TR en linea: %d y columna: %d\n",linea, columna);contar();}
-"</tr>"						{printf("Encontro tag TR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<tt>"						{printf("Encontro tag TT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<tt "{Atributo}*">"				{printf("Encontro tag TT en linea: %d y columna: %d\n",linea, columna);contar();}
-"</tt>"						{printf("Encontro tag TT en linea: %d y columna: %d\n",linea, columna);contar();}
-"<u>"						{printf("Encontro tag U en linea: %d y columna: %d\n",linea, columna);contar();}
-"<u "{Atributo}*">"				{printf("Encontro tag U en linea: %d y columna: %d\n",linea, columna);contar();}
-"</u>"						{printf("Encontro tag U en linea: %d y columna: %d\n",linea, columna);contar();}
-"<ul>"						{printf("Encontro tag UL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<ul "{Atributo}*">"				{printf("Encontro tag UL en linea: %d y columna: %d\n",linea, columna);contar();}
-"</ul>"						{printf("Encontro tag UL en linea: %d y columna: %d\n",linea, columna);contar();}
-"<var>"						{printf("Encontro tag VAR en linea: %d y columna: %d\n",linea, columna);contar();}
-"<var "{Atributo}*">"				{printf("Encontro tag VAR en linea: %d y columna: %d\n",linea, columna);contar();}
-"</var>"					{printf("Encontro tag VAR en linea: %d y columna: %d\n",linea, columna);contar();}
-
-{Amp}{Hash}[1-2]?{Digito}{PComa}		{error();}
-{Amp}{Hash}[3][0-1]{PComa}			{error();}
-"&#127;"					{error();}
-"<>"						{error();}
-"</>"						{error();}
-
-"<"{Etiqueta}{Atributo}*{Cerradura}		{printf("Encontro tag generico linea %d y columna %d\n", linea, columna);contar();}
-
-{Amp}{Hash}{String}+{PComa}			{contar();}
-{Amp}{String}+{PComa}				{contar();}
-
-{String}+					{printf("Encontro string: %s  linea %d y columna %d\n", yytext,linea, columna);contar();}
-
-%%
-
-/*{Apertura}{Etiqueta}{Atributo}*{Cerradura}		{contar();printf("e 3\n");}*/
-/*{AperturaC}{Etiqueta}{Ceradura}	 		{contar();printf("e 4\n");}*/
-/*ERRORES LEXICOS*/
-
-int main(){
-	yylex();
-}
 
 
 void comentario()
@@ -371,9 +396,8 @@ void comentario()
 		ante2 = ante1;
 		ante1 = c;
 	}
-	fprintf(stderr,"Error en linea %d, columna %d : comentario sin terminar\n", linea, columna);
+	fprintf(stderr,"Error: se abre '<!--' en línea %d columna %d. Se espera '-->'\n", yylloc.first_line, yylloc.first_column);
 }
-
 
 void contar()
 {
@@ -398,6 +422,6 @@ void contar()
 
 void error()
 {	
-	fprintf(stderr,"Caracter inválido en linea: %d columna: %d caracter: %s\n", linea, columna, yytext);
+	fprintf(stderr,"Caracter inválido en linea: %d columna: %d caracter: %s\n", yylloc.first_line, yylloc.first_column, yytext);
 	columna += yyleng;
 }
