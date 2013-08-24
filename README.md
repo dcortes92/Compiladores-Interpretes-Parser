@@ -1,7 +1,7 @@
-IC-5701-TP2-Y-TP3-CortesDaniel-RamirezIsaac
+Compiladores e Intérpretes
 =====================================
 
 Repositorio para la segunda y tercera tarea programada del curso de Compiladores e Intérpretes. Estudiantes: Daniel Cortés Sáenz, Isaac Ramírez Solano.
 
-En los últimos commits, se agregaron las funcionalidades del analizador semántico. Los cambios no eran tan extensos por lo que se
-decidió utilizar este mismo repositorio.
+Implementación de un analizador sintáctico y semántico para XHTML. El analizador sintáctico se creó usando Bison y el
+analizador semántico con reglas específicas.
